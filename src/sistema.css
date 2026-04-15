@@ -1,0 +1,1265 @@
+/* ============================================
+   SCALA SISTEMA — SaaS Design System
+   Prefix: sis-
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ── Color Tokens ── */
+:root {
+    --sis-bg-primary: #0A0D12;
+    --sis-bg-secondary: #0F1218;
+    --sis-bg-tertiary: #141820;
+    --sis-bg-card: #12161E;
+    --sis-bg-card-hover: #181D27;
+    --sis-bg-elevated: #1A1F2B;
+    --sis-bg-sidebar: #0C0F15;
+    --sis-bg-topbar: rgba(10, 13, 18, 0.85);
+    --sis-bg-input: #111520;
+
+    --sis-border: rgba(255, 255, 255, 0.04);
+    --sis-border-subtle: rgba(255, 255, 255, 0.02);
+    --sis-border-strong: rgba(255, 255, 255, 0.08);
+    --sis-border-focus: rgba(16, 185, 129, 0.3);
+
+    --sis-text-primary: #F0F2F5;
+    --sis-text-secondary: #8B8FA3;
+    --sis-text-tertiary: #5C6170;
+    --sis-text-muted: #3D4250;
+
+    --sis-accent: #10B981;
+    --sis-accent-hover: #059669;
+    --sis-accent-subtle: rgba(16, 185, 129, 0.08);
+    --sis-accent-glow: rgba(16, 185, 129, 0.15);
+
+    --sis-teal: #14B8A6;
+    --sis-blue: #3B82F6;
+    --sis-blue-subtle: rgba(59, 130, 246, 0.08);
+    --sis-purple: #8B5CF6;
+    --sis-purple-subtle: rgba(139, 92, 246, 0.08);
+    --sis-cyan: #06B6D4;
+
+    --sis-positive: #10B981;
+    --sis-positive-bg: rgba(16, 185, 129, 0.08);
+    --sis-warning: #F59E0B;
+    --sis-warning-bg: rgba(245, 158, 11, 0.08);
+    --sis-danger: #EF4444;
+    --sis-danger-bg: rgba(239, 68, 68, 0.08);
+
+    --sis-font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --sis-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --sis-sidebar-width: 260px;
+    --sis-topbar-height: 56px;
+    --sis-radius-sm: 6px;
+    --sis-radius-md: 10px;
+    --sis-radius-lg: 14px;
+    --sis-radius-xl: 20px;
+}
+
+/* ── Reset for /sistema pages ── */
+.sis-page {
+    font-family: var(--sis-font-sans);
+    background: var(--sis-bg-primary);
+    color: var(--sis-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+}
+
+.sis-page section {
+    padding: 0;
+}
+
+/* ── Typography ── */
+.sis-h1 {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--sis-text-primary);
+}
+
+.sis-h2 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--sis-text-primary);
+}
+
+.sis-h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--sis-text-primary);
+}
+
+.sis-h4 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: var(--sis-text-primary);
+}
+
+.sis-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--sis-text-secondary);
+}
+
+.sis-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sis-text-tertiary);
+}
+
+.sis-mono {
+    font-family: var(--sis-font-mono);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sis-metric {
+    font-family: var(--sis-font-mono);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.sis-accent-text {
+    color: var(--sis-accent);
+}
+
+/* ── Containers ── */
+.sis-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.sis-container-wide {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* ── Cards ── */
+.sis-card {
+    background: var(--sis-bg-card);
+    border: 1px solid var(--sis-border);
+    border-radius: var(--sis-radius-lg);
+    padding: 24px;
+    transition: all 0.2s ease;
+}
+
+.sis-card:hover {
+    background: var(--sis-bg-card-hover);
+    border-color: var(--sis-border-strong);
+}
+
+.sis-card-static {
+    background: var(--sis-bg-card);
+    border: 1px solid var(--sis-border);
+    border-radius: var(--sis-radius-lg);
+    padding: 24px;
+}
+
+.sis-card-glow {
+    background: var(--sis-bg-card);
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    border-radius: var(--sis-radius-lg);
+    padding: 24px;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.04);
+}
+
+/* ── KPI Cards ── */
+.sis-kpi {
+    background: var(--sis-bg-card);
+    border: 1px solid var(--sis-border);
+    border-radius: var(--sis-radius-lg);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sis-kpi-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sis-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.sis-kpi-value {
+    font-family: var(--sis-font-mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sis-text-primary);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.sis-kpi-change {
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.sis-kpi-change.positive {
+    color: var(--sis-positive);
+    background: var(--sis-positive-bg);
+}
+
+.sis-kpi-change.negative {
+    color: var(--sis-danger);
+    background: var(--sis-danger-bg);
+}
+
+.sis-kpi-change.warning {
+    color: var(--sis-warning);
+    background: var(--sis-warning-bg);
+}
+
+/* ── Buttons ── */
+.sis-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--sis-font-sans);
+    font-weight: 600;
+    border-radius: var(--sis-radius-md);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.sis-btn-primary {
+    background: var(--sis-accent);
+    color: #fff;
+}
+
+.sis-btn-primary:hover {
+    background: var(--sis-accent-hover);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+    transform: translateY(-1px);
+}
+
+.sis-btn-secondary {
+    background: transparent;
+    color: var(--sis-text-primary);
+    border: 1px solid var(--sis-border-strong);
+}
+
+.sis-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.sis-btn-ghost {
+    background: transparent;
+    color: var(--sis-text-secondary);
+    padding: 8px 14px;
+}
+
+.sis-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--sis-text-primary);
+}
+
+.sis-btn-lg {
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: var(--sis-radius-lg);
+}
+
+.sis-btn-sm {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: var(--sis-radius-sm);
+}
+
+/* ── Input Fields ── */
+.sis-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: var(--sis-font-sans);
+    font-size: 14px;
+    color: var(--sis-text-primary);
+    background: var(--sis-bg-input);
+    border: 1px solid var(--sis-border);
+    border-radius: var(--sis-radius-md);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.sis-input:focus {
+    border-color: var(--sis-border-focus);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
+}
+
+.sis-input::placeholder {
+    color: var(--sis-text-muted);
+}
+
+.sis-input-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sis-text-secondary);
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* ── Tags / Badges ── */
+.sis-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.sis-tag-green {
+    background: var(--sis-positive-bg);
+    color: var(--sis-positive);
+}
+
+.sis-tag-red {
+    background: var(--sis-danger-bg);
+    color: var(--sis-danger);
+}
+
+.sis-tag-yellow {
+    background: var(--sis-warning-bg);
+    color: var(--sis-warning);
+}
+
+.sis-tag-blue {
+    background: var(--sis-blue-subtle);
+    color: var(--sis-blue);
+}
+
+.sis-tag-purple {
+    background: var(--sis-purple-subtle);
+    color: var(--sis-purple);
+}
+
+.sis-tag-neutral {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--sis-text-secondary);
+}
+
+/* ── Tables ── */
+.sis-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.sis-table th {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sis-text-tertiary);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--sis-border);
+    background: var(--sis-bg-secondary);
+}
+
+.sis-table td {
+    font-size: 13px;
+    color: var(--sis-text-secondary);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--sis-border-subtle);
+}
+
+.sis-table tr:hover td {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+/* ── Tabs ── */
+.sis-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--sis-bg-secondary);
+    padding: 3px;
+    border-radius: var(--sis-radius-md);
+    border: 1px solid var(--sis-border);
+}
+
+.sis-tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sis-text-tertiary);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    font-family: var(--sis-font-sans);
+}
+
+.sis-tab:hover {
+    color: var(--sis-text-secondary);
+}
+
+.sis-tab.active {
+    background: var(--sis-bg-elevated);
+    color: var(--sis-text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Sidebar ── */
+.sis-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sis-sidebar-width);
+    height: 100vh;
+    background: var(--sis-bg-sidebar);
+    border-right: 1px solid var(--sis-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+    overflow-y: auto;
+}
+
+.sis-sidebar-logo {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--sis-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sis-sidebar-section {
+    padding: 16px 12px 8px;
+}
+
+.sis-sidebar-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--sis-text-muted);
+    padding: 0 12px 8px;
+}
+
+.sis-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sis-text-tertiary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: var(--sis-font-sans);
+}
+
+.sis-sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--sis-text-secondary);
+}
+
+.sis-sidebar-item.active {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--sis-text-primary);
+}
+
+.sis-sidebar-item.active svg {
+    color: var(--sis-accent);
+}
+
+.sis-sidebar-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.sis-sidebar-item.active .sis-sidebar-icon {
+    opacity: 1;
+}
+
+/* ── Topbar ── */
+.sis-topbar {
+    position: fixed;
+    top: 0;
+    left: var(--sis-sidebar-width);
+    right: 0;
+    height: var(--sis-topbar-height);
+    background: var(--sis-bg-topbar);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sis-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 35;
+}
+
+.sis-topbar-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    background: var(--sis-bg-secondary);
+    border: 1px solid var(--sis-border);
+    border-radius: 8px;
+    color: var(--sis-text-muted);
+    font-size: 13px;
+    min-width: 240px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sis-topbar-search:hover {
+    border-color: var(--sis-border-strong);
+}
+
+.sis-topbar-search kbd {
+    font-family: var(--sis-font-mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--sis-border);
+    border-radius: 4px;
+    color: var(--sis-text-muted);
+    margin-left: auto;
+}
+
+.sis-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sis-topbar-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    color: var(--sis-text-tertiary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+.sis-topbar-btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--sis-text-primary);
+}
+
+.sis-topbar-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--sis-accent);
+    border-radius: 50%;
+}
+
+.sis-topbar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sis-accent), var(--sis-teal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* ── App Layout ── */
+.sis-app-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--sis-bg-primary);
+}
+
+.sis-app-main {
+    margin-left: var(--sis-sidebar-width);
+    margin-top: var(--sis-topbar-height);
+    padding: 28px;
+    flex: 1;
+    min-height: calc(100vh - var(--sis-topbar-height));
+}
+
+.sis-page-header {
+    margin-bottom: 28px;
+}
+
+.sis-page-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--sis-text-primary);
+    letter-spacing: -0.02em;
+}
+
+.sis-page-subtitle {
+    font-size: 14px;
+    color: var(--sis-text-tertiary);
+    margin-top: 4px;
+}
+
+/* ── Charts (CSS-based) ── */
+.sis-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 160px;
+    padding-top: 20px;
+}
+
+.sis-bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    background: var(--sis-accent);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 24px;
+}
+
+.sis-bar:hover {
+    opacity: 1;
+}
+
+.sis-bar-label {
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--sis-text-muted);
+    white-space: nowrap;
+    font-family: var(--sis-font-mono);
+}
+
+/* ── Funnel ── */
+.sis-funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sis-funnel-stage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.sis-funnel-bar {
+    height: 28px;
+    background: var(--sis-accent);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sis-funnel-label {
+    font-size: 12px;
+    color: var(--sis-text-secondary);
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.sis-funnel-value {
+    font-family: var(--sis-font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sis-text-primary);
+    min-width: 60px;
+    text-align: right;
+}
+
+.sis-funnel-drop {
+    font-family: var(--sis-font-mono);
+    font-size: 11px;
+    color: var(--sis-danger);
+    min-width: 50px;
+}
+
+/* ── Kanban ── */
+.sis-kanban {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.sis-kanban-col {
+    min-width: 280px;
+    flex-shrink: 0;
+}
+
+.sis-kanban-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    margin-bottom: 8px;
+}
+
+.sis-kanban-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sis-text-secondary);
+}
+
+.sis-kanban-count {
+    font-family: var(--sis-font-mono);
+    font-size: 11px;
+    color: var(--sis-text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.sis-kanban-card {
+    background: var(--sis-bg-card);
+    border: 1px solid var(--sis-border);
+    border-radius: var(--sis-radius-md);
+    padding: 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sis-kanban-card:hover {
+    border-color: var(--sis-border-strong);
+    transform: translateY(-1px);
+}
+
+/* ── Chat Bubbles ── */
+.sis-chat-bubble {
+    max-width: 320px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--sis-text-primary);
+}
+
+.sis-chat-incoming {
+    background: var(--sis-bg-elevated);
+    border: 1px solid var(--sis-border);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+}
+
+.sis-chat-outgoing {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+}
+
+.sis-chat-time {
+    font-size: 10px;
+    color: var(--sis-text-muted);
+    margin-top: 4px;
+    font-family: var(--sis-font-mono);
+}
+
+/* ── Insight Cards ── */
+.sis-insight {
+    background: var(--sis-bg-card);
+    border: 1px solid var(--sis-border);
+    border-left: 3px solid var(--sis-accent);
+    border-radius: 0 var(--sis-radius-md) var(--sis-radius-md) 0;
+    padding: 14px 16px;
+}
+
+.sis-insight-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sis-accent);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sis-insight-body {
+    font-size: 13px;
+    color: var(--sis-text-secondary);
+    line-height: 1.5;
+}
+
+/* ── Progress Bar ── */
+.sis-progress {
+    width: 100%;
+    height: 6px;
+    background: var(--sis-bg-elevated);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.sis-progress-fill {
+    height: 100%;
+    background: var(--sis-accent);
+    border-radius: 3px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Score Circle ── */
+.sis-score-ring {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sis-font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.sis-score-high {
+    background: var(--sis-positive-bg);
+    color: var(--sis-positive);
+    border: 1.5px solid rgba(16, 185, 129, 0.2);
+}
+
+.sis-score-mid {
+    background: var(--sis-warning-bg);
+    color: var(--sis-warning);
+    border: 1.5px solid rgba(245, 158, 11, 0.2);
+}
+
+.sis-score-low {
+    background: var(--sis-danger-bg);
+    color: var(--sis-danger);
+    border: 1.5px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ── Skeleton Loader ── */
+.sis-skeleton {
+    background: linear-gradient(90deg, var(--sis-bg-secondary) 25%, var(--sis-bg-elevated) 50%, var(--sis-bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: sis-shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--sis-radius-sm);
+}
+
+@keyframes sis-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ── Empty States ── */
+.sis-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 32px;
+    text-align: center;
+}
+
+.sis-empty-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--sis-accent-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sis-accent);
+    margin-bottom: 16px;
+}
+
+.sis-empty-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--sis-text-primary);
+    margin-bottom: 6px;
+}
+
+.sis-empty-desc {
+    font-size: 13px;
+    color: var(--sis-text-tertiary);
+    max-width: 320px;
+}
+
+/* ── Coming Soon Badge ── */
+.sis-coming-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: var(--sis-purple-subtle);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--sis-purple);
+}
+
+/* ── Heatmap ── */
+.sis-heatmap {
+    display: grid;
+    gap: 3px;
+}
+
+.sis-heatmap-cell {
+    border-radius: 3px;
+    aspect-ratio: 1;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.sis-heatmap-cell:hover {
+    transform: scale(1.3);
+    z-index: 2;
+}
+
+/* ── Divider ── */
+.sis-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--sis-border);
+    margin: 20px 0;
+}
+
+/* ── Flow Builder ── */
+.sis-flow-node {
+    background: var(--sis-bg-card);
+    border: 1px solid var(--sis-border);
+    border-radius: var(--sis-radius-md);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.sis-flow-connector {
+    width: 2px;
+    height: 32px;
+    background: var(--sis-border);
+    margin-left: 28px;
+    position: relative;
+}
+
+.sis-flow-connector::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sis-border-strong);
+}
+
+/* ── Glow Effects ── */
+.sis-glow-green {
+    position: absolute;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+    filter: blur(80px);
+}
+
+.sis-glow-blue {
+    position: absolute;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    filter: blur(80px);
+}
+
+/* ── Login Page ── */
+.sis-login-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--sis-bg-primary);
+}
+
+.sis-login-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0A0D12 0%, #0F1923 50%, #0A1A14 100%);
+}
+
+.sis-login-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: var(--sis-bg-secondary);
+    border-left: 1px solid var(--sis-border);
+}
+
+.sis-login-form {
+    width: 100%;
+    max-width: 380px;
+}
+
+/* ── Grid Background Pattern ── */
+.sis-grid-pattern {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* ── Loading Animation ── */
+.sis-loading-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--sis-bg-primary);
+    gap: 32px;
+}
+
+.sis-loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--sis-border);
+    border-top-color: var(--sis-accent);
+    border-radius: 50%;
+    animation: sis-spin 0.8s linear infinite;
+}
+
+@keyframes sis-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.sis-loading-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 280px;
+}
+
+.sis-loading-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--sis-text-muted);
+    transition: all 0.4s ease;
+}
+
+.sis-loading-step.active {
+    color: var(--sis-text-primary);
+}
+
+.sis-loading-step.done {
+    color: var(--sis-accent);
+}
+
+.sis-loading-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--sis-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.sis-loading-step.active .sis-loading-check {
+    border-color: var(--sis-accent);
+    background: var(--sis-accent-subtle);
+}
+
+.sis-loading-step.done .sis-loading-check {
+    border-color: var(--sis-accent);
+    background: var(--sis-accent);
+}
+
+/* ── Product page sections ── */
+.sis-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.sis-section-alt {
+    background: var(--sis-bg-secondary);
+}
+
+.sis-hero-section {
+    padding: 160px 0 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sis-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: var(--sis-accent-subtle);
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sis-accent);
+    margin-bottom: 24px;
+}
+
+.sis-hero-ctas {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.sis-product-preview {
+    margin-top: 64px;
+    border-radius: var(--sis-radius-xl);
+    border: 1px solid var(--sis-border-strong);
+    overflow: hidden;
+    background: var(--sis-bg-card);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    position: relative;
+}
+
+.sis-preview-topbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--sis-bg-secondary);
+    border-bottom: 1px solid var(--sis-border);
+}
+
+.sis-preview-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sis-text-muted);
+}
+
+.sis-preview-dot.red {
+    background: #FF5F56;
+}
+
+.sis-preview-dot.yellow {
+    background: #FFBD2E;
+}
+
+.sis-preview-dot.green {
+    background: #27C93F;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .sis-login-page {
+        grid-template-columns: 1fr;
+    }
+
+    .sis-login-visual {
+        display: none;
+    }
+
+    .sis-sidebar {
+        display: none;
+    }
+
+    .sis-topbar {
+        left: 0;
+    }
+
+    .sis-app-main {
+        margin-left: 0;
+    }
+
+    .sis-h1 {
+        font-size: 36px;
+    }
+
+    .sis-h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .sis-container,
+    .sis-container-wide {
+        padding: 0 20px;
+    }
+
+    .sis-hero-section {
+        padding: 120px 0 60px;
+    }
+
+    .sis-section {
+        padding: 60px 0;
+    }
+
+    .sis-hero-ctas {
+        flex-direction: column;
+    }
+
+    .sis-kpi-value {
+        font-size: 22px;
+    }
+
+    .sis-kanban {
+        flex-direction: column;
+    }
+
+    .sis-kanban-col {
+        min-width: unset;
+    }
+}

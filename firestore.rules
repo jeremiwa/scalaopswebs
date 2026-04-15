@@ -1,0 +1,60 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Function to check if the user is a member of the given workspace
+    function isWorkspaceMember(workspaceId) {
+      return exists(path('/databases/' + database + '/documents/workspace_members/' + workspaceId + '_' + request.auth.uid));
+    }
+    
+    // Function to get the user's role in a workspace
+    function getWorkspaceRole(workspaceId) {
+      return get(path('/databases/' + database + '/documents/workspace_members/' + workspaceId + '_' + request.auth.uid)).data.role;
+    }
+
+    match /users/{userId} {
+      // Users can only read and write their own profile
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /workspaces/{workspaceId} {
+      // Any authenticated user can create a workspace
+      allow create: if request.auth != null;
+      // Members can read their workspace
+      allow read: if request.auth != null && isWorkspaceMember(workspaceId);
+      // Only owners/admins can update workspace settings
+      allow update: if request.auth != null && isWorkspaceMember(workspaceId) && getWorkspaceRole(workspaceId) in ['owner', 'admin'];
+      allow delete: if false; // Prevention against accidental deletion
+    }
+
+    match /workspace_members/{memberId} {
+      // memberId is formatted as workspaceId_userId
+      allow create: if request.auth != null; // Allowing first creation
+      allow read: if request.auth != null && (
+        memberId.matches('.*_' + request.auth.uid) || // User can read their own memberships
+        isWorkspaceMember(memberId.split('_')[0]) // Or members of the same workspace can read it
+      );
+      allow update, delete: if request.auth != null && isWorkspaceMember(memberId.split('_')[0]) && getWorkspaceRole(memberId.split('_')[0]) in ['owner', 'admin'];
+    }
+
+    match /workspace_playbooks/{workspaceId} {
+      allow read: if request.auth != null && isWorkspaceMember(workspaceId);
+      allow write: if request.auth != null && isWorkspaceMember(workspaceId) && getWorkspaceRole(workspaceId) in ['owner', 'admin', 'manager'];
+    }
+
+    match /calls/{callId} {
+      // Calls must have a workspaceId
+      // Read/write is allowed only if the user is a member of that workspace
+      allow read: if request.auth != null && isWorkspaceMember(resource.data.workspaceId);
+      allow create: if request.auth != null && isWorkspaceMember(request.resource.data.workspaceId);
+      allow update: if request.auth != null && isWorkspaceMember(resource.data.workspaceId) && isWorkspaceMember(request.resource.data.workspaceId);
+      allow delete: if request.auth != null && isWorkspaceMember(resource.data.workspaceId) && getWorkspaceRole(resource.data.workspaceId) in ['owner', 'admin', 'manager'];
+      
+      // Subcollections under calls (like chat messages)
+      match /chat_messages/{messageId} {
+        allow read, write: if request.auth != null && isWorkspaceMember(get(/databases/$(database)/documents/calls/$(callId)).data.workspaceId);
+      }
+    }
+  }
+}
