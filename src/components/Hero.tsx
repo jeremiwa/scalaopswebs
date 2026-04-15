@@ -25,7 +25,7 @@ export const Hero = () => {
 
           {/* Sub-copy */}
           <p style={{ fontSize: '17px', color: '#A0A0B5', opacity: 0.84, lineHeight: 1.5, maxWidth: '64ch', margin: '0 auto', marginBottom: '28px' }}>
-            Tenés cada vez más leads, y cada vez menos ventas. El problema suele estar oculto a simple vista.
+            Multiplicá hasta 21x tus oportunidades de venta sin gastar un dólar más.
           </p>
         </div>
 
