@@ -104,17 +104,10 @@ export const Resultados = () => {
                 lineHeight: 1.7,
                 fontStyle: 'italic',
                 marginBottom: '24px',
-                height: '135px',
+                height: '155px',
               }}>
-                "Dejamos de perder leads por contestar tarde. Hoy cada oportunidad tiene un camino claro desde el primer mensaje hasta el cierre o el descarte."
+                "La auditoría fue un antes y un después. Nos mostró fallas reales en cómo vendíamos: objeciones mal trabajadas, poco seguimiento y un equipo sin un proceso claro. Scala nos cambió el negocio."
               </p>
-
-              {/* Before/After */}
-              <div style={{ width: '100%', marginBottom: '24px' }}>
-                <BeforeAfterRow before="Respuestas en +4hs" now="Respuestas en <5min" />
-                <div style={{ height: '1px', width: '100%', background: 'rgba(255,255,255,0.04)', margin: '10px 0' }} />
-                <BeforeAfterRow before="Sin proceso de venta" now="Proceso con 5 etapas claras" />
-              </div>
 
               {/* Badge — centered */}
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -312,17 +305,10 @@ export const Resultados = () => {
                 lineHeight: 1.7,
                 fontStyle: 'italic',
                 marginBottom: '24px',
-                height: '135px',
+                height: '155px',
               }}>
-                "Por primera vez sabemos exactamente por qué se caen las ventas. Antes era todo intuición. Ahora tenemos datos."
+                "Implementamos IA en toda la empresa, la velocidad y profesionalismo 10 puntos. no solo los recomiendo, es casi una obligacion si tenes un negocio y no tenes IA"
               </p>
-
-              {/* Before/After */}
-              <div style={{ width: '100%', marginBottom: '24px' }}>
-                <BeforeAfterRow before="0 visibilidad de métricas" now="Tablero de perdidas en vivo" />
-                <div style={{ height: '1px', width: '100%', background: 'rgba(255,255,255,0.04)', margin: '10px 0' }} />
-                <BeforeAfterRow before="Seguimiento manual" now="Automatizado con alertas" />
-              </div>
 
               {/* Badge — centered */}
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>

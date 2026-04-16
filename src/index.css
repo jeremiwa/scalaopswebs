@@ -90,6 +90,49 @@ html {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
+/* ── Testimonial card system (Apple-like) ── */
+.testimonial-card {
+  transition:
+    transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.45s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
+
+.testimonial-card-featured {
+  transition:
+    transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.45s ease;
+}
+
+.testimonial-card-featured:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(34, 197, 94, 0.06);
+  border-color: rgba(34, 197, 94, 0.22) !important;
+}
+
+/* Video testimonial play button */
+.play-btn-ring {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+}
+.play-btn-ring:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.25), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   html {
