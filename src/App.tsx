@@ -43,14 +43,15 @@ const Home = () => {
       <main>
         {/* 1. Hero + VSL */}
         <Hero />
-        {/* 2. Micro-bloque */}
+        {/* 2. Proof / Testimonios */}
+        <Resultados />
+        {/* 3. Micro-bloque */}
         <QueEsScala />
         {/* 3. Storyboard dolor */}
         <StoryboardDolor />
         {/* 4. Calculadora de impacto */}
         <CostoInvisible />
-        {/* 5. Proof / Testimonios */}
-        <Resultados />
+
         {/* 6. Auditoría + Sprint de 30 días */}
         {/* <Sprint30Dias /> */}
         {/* 9. Ahora sí podés escalar */}
