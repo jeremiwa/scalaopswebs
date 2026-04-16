@@ -32,6 +32,10 @@ import { SistemaApp } from './pages/sistema/SistemaApp';
 import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
+// Web Institucional Elements (Nueva Arquitectura)
+import { WebLayout } from './components/web/WebLayout';
+import { WebHome } from './pages/web/WebHome';
+
 // Home Component that houses the main landing page
 const Home = () => {
   useAnimations();
@@ -77,6 +81,16 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/formulario" element={<Formulario />} />
       <Route path="/gracias-por-contactarnos" element={<Gracias />} />
+
+      {/* ── Web Institucional SCALA ── */}
+      <Route path="/web" element={<WebLayout />}>
+        {/* /web goes to WebHome */}
+        <Route index element={<WebHome />} />
+        {/* Futuras rutas:
+           <Route path="soluciones" element={<WebSoluciones />} /> 
+           <Route path="nosotros" element={<WebNosotros />} /> 
+        */}
+      </Route>
 
       {/* ── Sistema: public product page ── */}
       <Route path="/sistema" element={<SistemaPage />} />
