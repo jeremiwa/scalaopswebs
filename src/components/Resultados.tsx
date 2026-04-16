@@ -1,104 +1,418 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export const Resultados = () => {
-  const testimonials = [
-    {
-      name: "Martín S.",
-      role: "Director Comercial · Real Estate",
-      image: "/images/martin.jpg",
-      quote: "Dejamos de perder leads por contestar tarde. Hoy cada oportunidad tiene un camino claro desde el primer mensaje hasta el cierre o el descarte.",
-      before1: "Respuestas en +4hs",
-      now1: "Respuestas en <5min",
-      before2: "Sin proceso de venta",
-      now2: "Proceso con 5 etapas claras",
-      days: 27
-    },
-    {
-      name: "Laura G.",
-      role: "CEO · Agencia B2B",
-      image: "/images/laura.jpg",
-      quote: "Por primera vez sabemos exactamente por qué se caen las ventas. Antes era todo intuición. Ahora tenemos datos.",
-      before1: "0 visibilidad de métricas",
-      now1: "Tablero de perdidas en vivo",
-      before2: "Seguimiento manual",
-      now2: "Automatizado con alertas",
-      days: 30
-    }
-  ];
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
-    <section id="resultados" className="border-y border-white/[0.03]" style={{ background: '#0C0C14', borderTop: '1px solid rgba(255, 255, 255, 0.04)', borderBottom: '1px solid rgba(255, 255, 255, 0.04)', padding: '130px 0' }}>
-      {/* Decorative divider top */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, #22C55E, transparent)' }}></div>
+    <section
+      id="resultados"
+      style={{
+        background: '#0B0B12',
+        borderTop: '1px solid rgba(255, 255, 255, 0.04)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+        padding: '120px 0 130px',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Ambient glow — very subtle */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '45%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '800px',
+          height: '450px',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.04) 0%, transparent 65%)',
+          filter: 'blur(90px)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
 
       <div className="container-custom relative z-10 flex flex-col items-center">
 
         {/* Header */}
-        <div className="text-center mb-10 md:mb-14 reveal">
-          <span className="mb-4 block" style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#22C55E' }}>
-            RESULTADOS REALES
+        <div className="text-center mb-14 md:mb-16 reveal">
+          <span
+            style={{
+              display: 'block',
+              marginBottom: '14px',
+              fontSize: '12px',
+              fontWeight: 600,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: '#22C55E',
+            }}
+          >
+            Resultados reales
           </span>
-          <h2 style={{ fontSize: '48px', fontWeight: 700, color: '#F5F5F7', letterSpacing: '-0.03em', lineHeight: 1.08, marginBottom: '16px' }}>
+          <h2
+            style={{
+              fontSize: 'clamp(30px, 4.5vw, 46px)',
+              fontWeight: 700,
+              color: '#F5F5F7',
+              letterSpacing: '-0.03em',
+              lineHeight: 1.1,
+            }}
+          >
             Negocios que dejaron de perder ventas.
           </h2>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[1000px] reveal-stagger">
-          {testimonials.map((testial, i) => (
-            <div
-              key={i}
-              className="bg-[#111116] border-l-[3px] border-[#22C55E] border-y border-r rounded-[18px] p-8 md:p-10 flex flex-col items-start relative card-hover overflow-hidden"
-              style={{ borderColor: undefined, borderLeftColor: '#22C55E', borderTopColor: 'rgba(255,255,255,0.05)', borderRightColor: 'rgba(255,255,255,0.05)', borderBottomColor: 'rgba(255,255,255,0.05)' }}
-            >
-              {/* Watermark quote */}
-              <div className="absolute top-4 right-6 text-[80px] font-serif leading-none text-[rgba(34,197,94,0.06)] pointer-events-none select-none">"</div>
+        {/* ── 3-column grid — align-items: start so side cards are compact ── */}
+        <div
+          className="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-5 w-full"
+          style={{ maxWidth: '1120px', alignItems: 'start' }}
+        >
 
+          {/* ━━ LEFT CARD — Martín S. ━━ */}
+          <div className="order-2 lg:order-1 lg:mt-9">
+            <div
+              className="testimonial-card"
+              style={{
+                background: 'rgba(255,255,255,0.025)',
+                borderRadius: '22px',
+                border: '1px solid rgba(255,255,255,0.06)',
+                padding: '32px 28px 28px',
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.14), 0 0 0 0.5px rgba(255,255,255,0.03)',
+              }}
+            >
               {/* Profile */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-[56px] h-[56px] rounded-full border-[2px] border-white/10 bg-[#1A222C] flex items-center justify-center overflow-hidden shrink-0">
-                  <img src={testial.image} alt={testial.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement!.innerHTML = `<span class="text-[#8B8B9E] font-medium text-lg">${testial.name.charAt(0)}</span>`; }} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[16px] font-medium text-[#F5F5F7]">{testial.name}</span>
-                  <span className="text-[14px]" style={{ color: 'rgba(203,213,225,0.68)' }}>{testial.role}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px', height: '46px' }}>
+                <ProfileAvatar src="/images/martin.jpg" name="Martín S." />
+                <div>
+                  <p style={{ fontSize: '15px', fontWeight: 600, color: '#F5F5F7', letterSpacing: '-0.01em' }}>
+                    Martín S.
+                  </p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.40)', fontWeight: 400 }}>
+                    Director Comercial · Real Estate
+                  </p>
                 </div>
               </div>
 
               {/* Quote */}
-              <p className="text-[16px] md:text-[17px] text-[#F5F5F7] leading-[1.6] font-normal mb-8 italic relative z-10">
-                "{testial.quote}"
+              <p style={{
+                fontSize: '15px',
+                color: 'rgba(255,255,255,0.78)',
+                lineHeight: 1.7,
+                fontStyle: 'italic',
+                marginBottom: '24px',
+                height: '135px',
+              }}>
+                "Dejamos de perder leads por contestar tarde. Hoy cada oportunidad tiene un camino claro desde el primer mensaje hasta el cierre o el descarte."
               </p>
 
               {/* Before/After */}
-              <div className="w-full mb-8">
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-3 text-[15px]">
-                    <span className="text-[#5A5A6E] line-through decoration-[#1A222C] decoration-2 w-[40%] truncate">{testial.before1}</span>
-                    <span className="text-[#22C55E] shrink-0">→</span>
-                    <span className="text-[#F5F5F7] font-medium w-[55%] truncate">{testial.now1}</span>
-                  </div>
-                  <div className="h-[1px] w-full bg-white/[0.04]"></div>
-                  <div className="flex items-center gap-3 text-[15px]">
-                    <span className="text-[#5A5A6E] line-through decoration-[#1A222C] decoration-2 w-[40%] truncate">{testial.before2}</span>
-                    <span className="text-[#22C55E] shrink-0">→</span>
-                    <span className="text-[#F5F5F7] font-medium w-[55%] truncate">{testial.now2}</span>
-                  </div>
+              <div style={{ width: '100%', marginBottom: '24px' }}>
+                <BeforeAfterRow before="Respuestas en +4hs" now="Respuestas en <5min" />
+                <div style={{ height: '1px', width: '100%', background: 'rgba(255,255,255,0.04)', margin: '10px 0' }} />
+                <BeforeAfterRow before="Sin proceso de venta" now="Proceso con 5 etapas claras" />
+              </div>
+
+              {/* Badge — centered */}
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <Badge label="Implementado en 27 días" />
+              </div>
+            </div>
+          </div>
+
+          {/* ━━ CENTER CARD — Jordi Falcon (video) ━━ */}
+          <div className="order-1 lg:order-2">
+            <div
+              className="testimonial-card-featured"
+              style={{
+                background: 'rgba(255,255,255,0.022)',
+                borderRadius: '22px',
+                border: '1px solid rgba(34,197,94,0.10)',
+                padding: '28px 28px 20px',
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.18), 0 0 30px rgba(34,197,94,0.025), 0 0 0 0.5px rgba(34,197,94,0.06)',
+              }}
+            >
+              {/* Subtle top accent line */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '60%',
+                  height: '1px',
+                  background: 'linear-gradient(90deg, transparent, rgba(34,197,94,0.25), transparent)',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              {/* Profile — same style as side cards */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
+                <ProfileAvatar src="/images/jordi.jpg" name="Jordi Falcon" />
+                <div>
+                  <p style={{ fontSize: '15px', fontWeight: 600, color: '#F5F5F7', letterSpacing: '-0.01em' }}>
+                    Jordi Falcon
+                  </p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.40)', fontWeight: 400 }}>
+                    CEO · Servicios inmobiliarios · Barcelona
+                  </p>
                 </div>
               </div>
 
-              {/* Badge */}
-              <div className="mt-auto bg-[#22C55E]/8 px-4 py-1.5 rounded-full border border-[#22C55E]/20">
-                <span className="text-[#22C55E] text-[13px] font-semibold tracking-wide">
-                  Implementado en {testial.days} días
-                </span>
+              {/* Quote */}
+              <p style={{
+                fontSize: '15px',
+                color: 'rgba(255,255,255,0.78)',
+                lineHeight: 1.7,
+                fontStyle: 'italic',
+                marginBottom: '14px',
+              }}>
+                "Los recomiendo mucho, gran predisposición y conocimiento técnico."
+              </p>
+
+              {/* Video — contained, elegant */}
+              <div style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                marginBottom: '0',
+              }}>
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '180px',
+                    borderRadius: '14px',
+                    overflow: 'hidden',
+                    background: '#08080D',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    boxShadow: '0 6px 28px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(255,255,255,0.04)',
+                    aspectRatio: '9 / 16',
+                  }}
+                >
+                  {!videoPlaying ? (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'linear-gradient(170deg, rgba(17,17,22,0.95) 0%, rgba(10,10,16,1) 100%)',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => setVideoPlaying(true)}
+                      aria-label="Reproducir testimonio de Jordi Falcon"
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => e.key === 'Enter' && setVideoPlaying(true)}
+                    >
+                      {/* Glow behind play */}
+                      <div
+                        aria-hidden="true"
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          width: '100px',
+                          height: '100px',
+                          background: 'radial-gradient(circle, rgba(34,197,94,0.10) 0%, transparent 70%)',
+                          filter: 'blur(18px)',
+                          pointerEvents: 'none',
+                        }}
+                      />
+                      {/* Play button */}
+                      <div
+                        className="play-btn-ring"
+                        style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '50%',
+                          background: 'rgba(34,197,94,0.10)',
+                          border: '1.5px solid rgba(34,197,94,0.35)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backdropFilter: 'blur(8px)',
+                          boxShadow: '0 0 20px rgba(34,197,94,0.12)',
+                          marginBottom: '8px',
+                        }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <polygon points="8,5 20,12 8,19" fill="#22C55E" />
+                        </svg>
+                      </div>
+                      <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                        Ver video
+                      </p>
+                    </div>
+                  ) : (
+                    <iframe
+                      src="https://player.vimeo.com/video/1183439807?badge=0&autopause=0&autoplay=1&player_id=0&app_id=58479"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      title="Testimonio Jordi Falcon – Scala"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    />
+                  )}
+                </div>
               </div>
 
             </div>
-          ))}
-        </div>
+          </div>
 
+          {/* ━━ RIGHT CARD — Laura G. ━━ */}
+          <div className="order-3 lg:mt-9">
+            <div
+              className="testimonial-card"
+              style={{
+                background: 'rgba(255,255,255,0.025)',
+                borderRadius: '22px',
+                border: '1px solid rgba(255,255,255,0.06)',
+                padding: '32px 28px 28px',
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.14), 0 0 0 0.5px rgba(255,255,255,0.03)',
+              }}
+            >
+              {/* Profile */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px', height: '46px' }}>
+                <ProfileAvatar src="/images/laura.jpg" name="Laura G." />
+                <div>
+                  <p style={{ fontSize: '15px', fontWeight: 600, color: '#F5F5F7', letterSpacing: '-0.01em' }}>
+                    Laura G.
+                  </p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.40)', fontWeight: 400 }}>
+                    CEO · Agencia B2B
+                  </p>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <p style={{
+                fontSize: '15px',
+                color: 'rgba(255,255,255,0.78)',
+                lineHeight: 1.7,
+                fontStyle: 'italic',
+                marginBottom: '24px',
+                height: '135px',
+              }}>
+                "Por primera vez sabemos exactamente por qué se caen las ventas. Antes era todo intuición. Ahora tenemos datos."
+              </p>
+
+              {/* Before/After */}
+              <div style={{ width: '100%', marginBottom: '24px' }}>
+                <BeforeAfterRow before="0 visibilidad de métricas" now="Tablero de perdidas en vivo" />
+                <div style={{ height: '1px', width: '100%', background: 'rgba(255,255,255,0.04)', margin: '10px 0' }} />
+                <BeforeAfterRow before="Seguimiento manual" now="Automatizado con alertas" />
+              </div>
+
+              {/* Badge — centered */}
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <Badge label="Implementado en 30 días" />
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
 };
+
+
+/* ── Micro-components ── */
+
+const ProfileAvatar = ({ src, name }: { src: string; name: string }) => (
+  <div
+    style={{
+      width: '46px',
+      height: '46px',
+      borderRadius: '50%',
+      border: '1.5px solid rgba(255,255,255,0.08)',
+      background: '#1A1A24',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+      flexShrink: 0,
+    }}
+  >
+    <img
+      src={src}
+      alt={name}
+      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      onError={(e) => {
+        e.currentTarget.style.display = 'none';
+        (e.currentTarget.parentElement as HTMLElement).innerHTML =
+          `<span style="color:rgba(255,255,255,0.35);font-weight:500;font-size:16px">${name.charAt(0)}</span>`;
+      }}
+    />
+  </div>
+);
+
+const BeforeAfterRow = ({ before, now }: { before: string; now: string }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px' }}>
+    <span style={{
+      color: 'rgba(255,255,255,0.28)',
+      textDecoration: 'line-through',
+      textDecorationColor: 'rgba(255,255,255,0.12)',
+      flex: '0 0 auto',
+      maxWidth: '45%',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    }}>
+      {before}
+    </span>
+    <span style={{ color: 'rgba(34,197,94,0.6)', flexShrink: 0, fontSize: '12px' }}>→</span>
+    <span style={{
+      color: 'rgba(255,255,255,0.72)',
+      fontWeight: 500,
+      flex: '0 0 auto',
+      maxWidth: '50%',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    }}>
+      {now}
+    </span>
+  </div>
+);
+
+const Badge = ({ label }: { label: string }) => (
+  <div
+    style={{
+      background: 'rgba(34,197,94,0.06)',
+      border: '1px solid rgba(34,197,94,0.14)',
+      borderRadius: '100px',
+      padding: '5px 14px',
+    }}
+  >
+    <span style={{
+      fontSize: '12px',
+      fontWeight: 600,
+      color: 'rgba(34,197,94,0.75)',
+      letterSpacing: '0.03em',
+    }}>
+      {label}
+    </span>
+  </div>
+);
