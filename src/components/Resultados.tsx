@@ -69,7 +69,7 @@ export const Resultados = () => {
         >
 
           {/* ━━ LEFT CARD — Martín S. ━━ */}
-          <div className="order-2 lg:order-1 lg:mt-9">
+          <div className="order-2 lg:order-1 lg:mt-[88px]">
             <div
               className="testimonial-card"
               style={{
@@ -270,7 +270,7 @@ export const Resultados = () => {
           </div>
 
           {/* ━━ RIGHT CARD — Laura G. ━━ */}
-          <div className="order-3 lg:mt-9">
+          <div className="order-3 lg:mt-[88px]">
             <div
               className="testimonial-card"
               style={{
