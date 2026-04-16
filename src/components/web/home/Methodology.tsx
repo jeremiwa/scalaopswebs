@@ -3,73 +3,52 @@ import React from 'react';
 const steps = [
   {
     num: "01",
-    title: "Diagnóstico",
-    desc: "Escuchamos llamadas, revisamos chats, analizamos seguimiento y detectamos fugas reales de capital."
+    title: "Auditamos",
+    desc: "Detectamos oportunidades concretas de IA en ventas, atención, operación y procesos."
   },
   {
     num: "02",
-    title: "Diseño",
-    desc: "Definimos proceso de punta a punta, responsables, automatizaciones clave, guiones y métricas objetivo."
+    title: "Implementamos",
+    desc: "Diseñamos agentes, automatizaciones, CRM inteligente y herramientas internas."
   },
   {
     num: "03",
-    title: "Implementación",
-    desc: "Lo dejamos estructurado y funcionando dentro de la operación real del negocio."
-  },
-  {
-    num: "04",
-    title: "Entrenamiento",
-    desc: "Alineamos al equipo de ventas para que trabajen con un nuevo estándar comercial superior."
-  },
-  {
-    num: "05",
-    title: "Optimización",
-    desc: "Medimos la conversión, corregimos desvíos y mejoramos agresivamente basándonos en datos."
+    title: "Optimizamos",
+    desc: "Medimos resultados, ajustamos la solución y escalamos lo que funciona."
   }
 ];
 
 export const Methodology = () => {
   return (
-    <section className="py-32 bg-[#030712] relative overflow-hidden">
+    <section className="py-24 bg-[#030712] relative">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center mb-24 reveal">
-          <span className="block mb-4 text-xs font-semibold tracking-[0.2em] uppercase text-scala-green">Cómo Trabajamos</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">El Método Scala</h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">No somos consultoría de PDF. Somos una unidad operativa externa que entra a tu empresa e instala un sistema que factura.</p>
+        <div className="text-center mb-16 reveal">
+          <span className="block mb-4 text-[11px] font-bold tracking-[0.2em] uppercase text-scala-green">Cómo trabajamos</span>
+          <h2 className="text-3xl md:text-[44px] font-bold text-white mb-5 tracking-tight leading-tight">Auditamos. Implementamos. Optimizamos.</h2>
+          <p className="text-white/45 text-lg max-w-xl mx-auto">No vendemos teoría sobre IA. La aterrizamos dentro de tu empresa.</p>
         </div>
 
-        {/* Timeline Desktop Interactivo */}
-        <div className="max-w-4xl mx-auto relative hidden md:block">
-          {/* Línea central */}
-          <div className="absolute left-[38px] top-4 bottom-4 w-px bg-white/10 hidden md:block"></div>
-          
-          <div className="flex flex-col gap-16">
-            {steps.map((step, i) => (
-               <div key={i} className="relative flex gap-12 group reveal-stagger">
-                 <div className="relative z-10 w-20 h-20 rounded-full bg-[#0A0A0F] border-2 border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-scala-green group-hover:shadow-[0_0_30px_rgba(34,197,94,0.2)] transition-all duration-500">
-                    <span className="text-xl font-bold text-white group-hover:text-scala-green transition-colors">{step.num}</span>
-                 </div>
-                 <div className="pt-4 pb-8 border-b border-white/5 flex-grow group-hover:border-white/20 transition-colors">
-                    <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{step.title}</h3>
-                    <p className="text-lg text-white/50 leading-relaxed font-light">{step.desc}</p>
-                 </div>
-               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile View */}
-        <div className="md:hidden flex flex-col gap-8 reveal">
+        {/* 3 Steps — horizontal on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto reveal-stagger">
           {steps.map((step, i) => (
-             <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 relative overflow-hidden">
-                <span className="absolute top-4 right-4 text-4xl font-black text-white/[0.03] select-none">{step.num}</span>
-                <h3 className="text-xl font-bold text-white mb-3 relative z-10">{step.title}</h3>
-                <p className="text-white/50 text-sm relative z-10">{step.desc}</p>
-             </div>
+            <div key={i} className="relative bg-[#0A0D14] border border-white/5 rounded-2xl p-8 text-center group hover:border-scala-green/20 transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-scala-green/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+              <div className="relative z-10">
+                <span className="text-5xl font-black text-white/[0.04] block mb-4 select-none">{step.num}</span>
+                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">{step.title}</h3>
+                <p className="text-white/45 text-[14px] leading-relaxed">{step.desc}</p>
+              </div>
+
+              {/* Connector arrow (desktop only, not on last) */}
+              {i < steps.length - 1 && (
+                <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-20 text-white/10">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </div>
+              )}
+            </div>
           ))}
         </div>
-        
       </div>
     </section>
   );
