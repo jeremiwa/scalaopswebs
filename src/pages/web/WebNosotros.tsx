@@ -101,17 +101,13 @@ export const WebNosotros = () => {
               </div>
             </motion.div>
 
-            {/* Foto Placeholder Franco */}
+            {/* Foto Franco */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-              className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden order-1 lg:order-2"
-              style={{ background: 'linear-gradient(180deg, #111111 0%, #080808 100%)', border: '1px solid rgba(255,255,255,0.05)' }}
+              className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden order-1 lg:order-2 bg-[#080808]"
+              style={{ border: '1px solid rgba(255,255,255,0.05)' }}
             >
-              {/* Eliminar cuando se agregue <img src="/images/franco.jpg" /> */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-40">
-                <svg className="w-16 h-16 text-[#185de8] mb-4 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span className="text-[11px] font-bold tracking-widest text-[#185de8] uppercase">Foto Franco</span>
-              </div>
+              <img src="/images/franco.jpg" alt="Franco Villa" className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale-[20%]" />
               <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black to-transparent z-10" />
             </motion.div>
 
@@ -124,17 +120,13 @@ export const WebNosotros = () => {
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
-            {/* Foto Placeholder Jeremías */}
+            {/* Foto Jeremías */}
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-              className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden"
-              style={{ background: 'linear-gradient(180deg, #111111 0%, #080808 100%)', border: '1px solid rgba(255,255,255,0.05)' }}
+              className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-[#080808]"
+              style={{ border: '1px solid rgba(255,255,255,0.05)' }}
             >
-              {/* Eliminar cuando se agregue <img src="/images/jeremias.jpg" /> */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-40">
-                <svg className="w-16 h-16 text-[#6bdda1] mb-4 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span className="text-[11px] font-bold tracking-widest text-[#6bdda1] uppercase">Foto Jeremías</span>
-              </div>
+              <img src="/images/jeremias.jpg" alt="Jeremías Walsh" className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale-[20%]" />
               <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black to-transparent z-10" />
             </motion.div>
 
