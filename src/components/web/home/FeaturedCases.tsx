@@ -176,37 +176,37 @@ export const FeaturedCases = () => {
                <path d="M0,100 L20,80 L40,90 L60,40 L80,50 L100,10 L100,100 Z" fill="currentColor" opacity="0.2" stroke="none" />
             </svg>
 
-            <div className="flex-1 flex flex-col items-center justify-center p-6 relative w-full z-10">
-              <h3 className="text-[64px] md:text-[96px] font-black leading-none mb-2" 
+            <div className="flex-1 flex flex-col items-center justify-start p-2 sm:p-6 relative w-full z-10">
+              <h3 className="text-[56px] md:text-[80px] lg:text-[96px] font-black leading-none mb-4" 
                   style={{ fontFamily: 'var(--font-primary)', backgroundImage: 'linear-gradient(90deg, #185de8, #6bdda1)', WebkitBackgroundClip: 'text', color: 'transparent', backgroundClip: 'text' }}>
-                <CountUpNumber from={0} to={35} duration={1.5} prefix="+" suffix="%" />
+                <CountUpNumber from={0} to={21} duration={1.5} suffix="X" />
               </h3>
-              <p className="text-[13px] text-[#999999] tracking-[0.2em] uppercase font-medium mt-2" style={{ fontFamily: 'var(--font-secondary)' }}>
-                Recuperación de oportunidades
+              <p className="text-[11px] md:text-[12px] text-[#999999] tracking-[0.15em] md:tracking-[0.2em] uppercase font-bold text-center leading-[1.6] max-w-[240px]" style={{ fontFamily: 'var(--font-secondary)' }}>
+                Más oportunidades de venta al responder en los primeros minutos
               </p>
             </div>
 
             <div className="hidden md:block w-px h-[100px] z-10" style={{ backgroundImage: 'linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)' }} />
 
-            <div className="flex-1 flex flex-col items-center justify-center p-6 relative w-full z-10">
-              <h3 className="text-[64px] md:text-[96px] font-black leading-none mb-2" 
+            <div className="flex-1 flex flex-col items-center justify-start p-2 sm:p-6 relative w-full z-10">
+              <h3 className="text-[56px] md:text-[80px] lg:text-[96px] font-black leading-none mb-4" 
                   style={{ fontFamily: 'var(--font-primary)', backgroundImage: 'linear-gradient(90deg, #185de8, #6bdda1)', WebkitBackgroundClip: 'text', color: 'transparent', backgroundClip: 'text' }}>
-                <CountUpNumber from={0} to={40} duration={1.5} suffix="hs" />
+                <CountUpNumber from={0} to={120} duration={1.5} suffix="HS" />
               </h3>
-              <p className="text-[13px] text-[#999999] tracking-[0.2em] uppercase font-medium mt-2 text-center" style={{ fontFamily: 'var(--font-secondary)' }}>
-                Ahorradas por mes en operativa
+              <p className="text-[11px] md:text-[12px] text-[#999999] tracking-[0.15em] md:tracking-[0.2em] uppercase font-bold text-center leading-[1.6] max-w-[240px]" style={{ fontFamily: 'var(--font-secondary)' }}>
+                Automatizadas por mes en gestión y seguimiento
               </p>
             </div>
 
             <div className="hidden md:block w-px h-[100px] z-10" style={{ backgroundImage: 'linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)' }} />
 
-            <div className="flex-1 flex flex-col items-center justify-center p-6 relative w-full z-10">
-              <h3 className="text-[64px] md:text-[96px] font-black leading-none mb-2" 
+            <div className="flex-1 flex flex-col items-center justify-start p-2 sm:p-6 relative w-full z-10">
+              <h3 className="text-[56px] md:text-[80px] lg:text-[96px] font-black leading-none mb-4" 
                   style={{ fontFamily: 'var(--font-primary)', backgroundImage: 'linear-gradient(90deg, #185de8, #6bdda1)', WebkitBackgroundClip: 'text', color: 'transparent', backgroundClip: 'text' }}>
                 24/7
               </h3>
-              <p className="text-[13px] text-[#999999] tracking-[0.2em] uppercase font-medium mt-2 text-center" style={{ fontFamily: 'var(--font-secondary)' }}>
-                Calificación en piloto automático
+              <p className="text-[11px] md:text-[12px] text-[#999999] tracking-[0.15em] md:tracking-[0.2em] uppercase font-bold text-center leading-[1.6] max-w-[240px]" style={{ fontFamily: 'var(--font-secondary)' }}>
+                Calificación automática de nuevos leads
               </p>
             </div>
 
