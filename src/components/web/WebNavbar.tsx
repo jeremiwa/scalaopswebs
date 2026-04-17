@@ -35,7 +35,7 @@ export const WebNavbar = () => {
             <div className="h-[3px] w-[30px] bg-white rounded-sm" />
           </div>
           {/* Logo Logotype (Wide tracking, sans-serif flat) */}
-          <span className="text-[22px] text-white tracking-[0.15em] font-bold" style={{ fontFamily: 'var(--font-primary)", "Space Grotesk", sans-serif' }}>
+          <span className="text-[22px] text-white tracking-[0.15em] font-bold" style={{ fontFamily: 'var(--font-primary)' }}>
             SCALA
           </span>
         </Link>
@@ -51,7 +51,7 @@ export const WebNavbar = () => {
           <Link to="/web/casos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors">
             RESULTADOS
           </Link>
-          <Link to="/web/contacto" className="text-[11px] font-bold tracking-[0.08em] uppercase text-[#00FF94] hover:text-[#00FF94]/80 transition-colors">
+          <Link to="/web/contacto" className="text-[11px] font-bold tracking-[0.08em] uppercase text-[#6bdda1] hover:text-[#6bdda1]/80 transition-colors">
             CONTÁCTANOS
           </Link>
         </div>
@@ -73,7 +73,7 @@ export const WebNavbar = () => {
           <Link to="/web/nosotros" className="text-xl font-bold tracking-widest uppercase text-white">NOSOTROS</Link>
           <Link to="/web/como-funciona" className="text-xl font-bold tracking-widest uppercase text-white">¿CÓMO FUNCIONA?</Link>
           <Link to="/web/casos" className="text-xl font-bold tracking-widest uppercase text-white">RESULTADOS</Link>
-          <Link to="/web/contacto" className="text-xl font-bold tracking-widest uppercase text-[#00FF94]">CONTÁCTANOS</Link>
+          <Link to="/web/contacto" className="text-xl font-bold tracking-widest uppercase text-[#6bdda1]">CONTÁCTANOS</Link>
         </div>
       </div>
     </nav>
