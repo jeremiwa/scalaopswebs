@@ -124,13 +124,7 @@ export const TheProblem = () => {
                 }} 
               />
 
-              {/* Número gigante al fondo */}
-              <div 
-                className="absolute -right-4 -bottom-8 md:-bottom-12 text-[150px] font-black text-white pointer-events-none transition-opacity duration-400 ease-in-out select-none opacity-5 group-hover:opacity-10"
-                style={{ fontFamily: 'var(--font-primary)' }}
-              >
-                0{i + 1}
-              </div>
+
 
               {/* Zona 1: Ícono */}
               <div className="mb-10 inline-flex relative w-12 h-12 items-center justify-center rounded-full bg-[#030303]">
@@ -164,12 +158,12 @@ export const TheProblem = () => {
                 <div className="h-[2px] w-12 rounded-full mb-3" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
                 
                 <div className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-[#FF8A65] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-4 h-4 text-[#E8E8E8] shrink-0 mt-0.5 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
                     <line x1="12" y1="9" x2="12" y2="13"></line>
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
                   </svg>
-                  <span className="text-[13px] md:text-[14px] font-semibold tracking-wide" style={{ color: '#FF8A65', fontFamily: 'var(--font-secondary)' }}>
+                  <span className="text-[13px] md:text-[14px] font-semibold tracking-wide opacity-80" style={{ color: '#E8E8E8', fontFamily: 'var(--font-secondary)' }}>
                     {prob.metric}
                   </span>
                 </div>
