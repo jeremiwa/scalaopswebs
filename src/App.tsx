@@ -35,6 +35,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 // Web Institucional Elements (Nueva Arquitectura)
 import { WebLayout } from './components/web/WebLayout';
 import { WebHome } from './pages/web/WebHome';
+import { WebNosotros } from './pages/web/WebNosotros';
 
 // Home Component that houses the main landing page
 const Home = () => {
@@ -87,9 +88,8 @@ export default function App() {
         {/* /web goes to WebHome */}
         <Route index element={<WebHome />} />
         {/* Futuras rutas:
-           <Route path="soluciones" element={<WebSoluciones />} /> 
-           <Route path="nosotros" element={<WebNosotros />} /> 
-        */}
+           <Route path="soluciones" element={<WebSoluciones />} />  */}
+        <Route path="nosotros" element={<WebNosotros />} /> 
       </Route>
 
       {/* ── Sistema: public product page ── */}
