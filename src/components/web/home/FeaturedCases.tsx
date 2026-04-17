@@ -5,7 +5,7 @@ const unifiedCases = [
   {
     name: "Martín S.",
     role: "Director Comercial · Real Estate",
-    avatar: "https://i.pravatar.cc/150?u=martin",
+    avatar: "/images/martin.jpg",
     quote: "La auditoría nos mostró fallas reales: objeciones mal trabajadas y un equipo sin proceso claro. Scala nos cambió el negocio.",
     antes: "Respuesta lenta y sin seguimiento a leads premium.",
     despues: "Agentes IA perfiladores integrados al CRM que asignan automáticamente.",
@@ -17,7 +17,7 @@ const unifiedCases = [
   {
     name: "Jordi Falcon",
     role: "CEO · Servicios Inmobiliarios",
-    avatar: "https://i.pravatar.cc/150?u=jordi",
+    avatar: "/images/jordi.jpg",
     quote: "Los recomiendo mucho, gran conocimiento técnico. Nos ayudaron a escalar la operativa operativa sin sumar más gasto en personal.",
     antes: "Desorden en el onboarding y reportes manuales que frenaban ventas.",
     despues: "Sistemas de automatización y dashboard operativo integral.",
@@ -29,7 +29,7 @@ const unifiedCases = [
   {
     name: "Laura G.",
     role: "CEO · Agencia B2B",
-    avatar: "https://i.pravatar.cc/150?u=laura",
+    avatar: "/images/laura.jpg",
     quote: "La velocidad y profesionalismo 10 puntos. No solo los recomiendo, es casi una obligación si tenés un negocio y no tenés IA.",
     antes: "Tráfico alto pero ventas tardaba días en filtrar interesados reales.",
     despues: "Bot transaccional que pre-califica, agenda llamadas y nutre prospectos.",
