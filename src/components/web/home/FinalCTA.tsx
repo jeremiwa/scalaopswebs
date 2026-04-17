@@ -123,9 +123,7 @@ export const FinalCTA = () => {
           <div className="relative mb-10 w-full sm:w-auto">
             <motion.div variants={buttonVariants}>
               <motion.a
-                href="https://calendar.app.google/your-link-here"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="https://scalaops.com/formulario"
                 className="group relative flex items-center justify-center overflow-hidden text-black text-[16px] transition-all w-full sm:w-auto text-center"
                 style={{
                    padding: '22px 56px',

@@ -104,8 +104,9 @@ export const HeroInstitutional = () => {
             transition={{ delay: 0.9, duration: 0.6, ease: customEase }}
           >
             {/* Primary CTA */}
-            <motion.button
-              className="relative text-[#000000] overflow-hidden flex items-center justify-center transition-shadow group"
+            <motion.a
+              href="https://scalaops.com/formulario"
+              className="relative text-[#000000] overflow-hidden flex items-center justify-center transition-shadow group cursor-pointer"
               style={{
                 background: 'linear-gradient(90deg, #185de8, #6bdda1)',
                 padding: '20px 48px',
@@ -114,7 +115,8 @@ export const HeroInstitutional = () => {
                 fontWeight: 800,
                 fontSize: '16px',
                 boxShadow: '0 0 40px rgba(107, 221, 161, 0.1)',
-                transformOrigin: 'center center'
+                transformOrigin: 'center center',
+                textDecoration: 'none'
               }}
               whileHover={{ 
                 scale: 1.03,
@@ -130,7 +132,7 @@ export const HeroInstitutional = () => {
                 transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 3, ease: 'easeOut' }}
               />
               Agendar llamada
-            </motion.button>
+            </motion.a>
 
             {/* Secondary CTA */}
             <a href="#soluciones" className="group flex items-center text-white text-[15px] font-bold transition-colors">
