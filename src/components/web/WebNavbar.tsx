@@ -50,10 +50,10 @@ export const WebNavbar = () => {
               </div>
             </div>
           </div>
-          <Link to="/web/como-funciona" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors relative">
+          <Link to="/web#como-trabajamos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors relative">
             ¿CÓMO FUNCIONA?
           </Link>
-          <Link to="/web/casos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors">
+          <Link to="/web#casos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors">
             RESULTADOS
           </Link>
           <a href="https://scalaops.com/formulario" className="text-[11px] font-bold tracking-[0.08em] uppercase text-[#6bdda1] hover:text-[#6bdda1]/80 transition-colors">
@@ -80,8 +80,8 @@ export const WebNavbar = () => {
             <Link to="/web/nosotros" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Quiénes somos</Link>
             <Link to="/web/filosofia" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Nuestra filosofía</Link>
           </div>
-          <Link to="/web/como-funciona" className="text-xl font-bold tracking-widest uppercase text-white mt-4">¿CÓMO FUNCIONA?</Link>
-          <Link to="/web/casos" className="text-xl font-bold tracking-widest uppercase text-white">RESULTADOS</Link>
+          <Link to="/web#como-trabajamos" className="text-xl font-bold tracking-widest uppercase text-white mt-4">¿CÓMO FUNCIONA?</Link>
+          <Link to="/web#casos" className="text-xl font-bold tracking-widest uppercase text-white">RESULTADOS</Link>
           <a href="https://scalaops.com/formulario" className="text-xl font-bold tracking-widest uppercase text-[#6bdda1]">CONTÁCTANOS</a>
         </div>
       </div>

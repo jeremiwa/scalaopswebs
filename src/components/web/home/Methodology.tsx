@@ -53,7 +53,7 @@ export const Methodology = () => {
   const lineHeight = "100%";
 
   return (
-    <section className="relative py-10 md:py-16 overflow-hidden bg-[#000000]" ref={containerRef}>
+    <section id="como-trabajamos" className="relative py-10 md:py-16 overflow-hidden bg-[#000000]" ref={containerRef}>
       
       {/* Fondo Textura (Grain) */}
       <div 
