@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { WebNavbar } from './WebNavbar';
 import { WebFooter } from './WebFooter';
 import { useAnimations } from '../../hooks/useAnimations';
@@ -7,6 +7,21 @@ import { useAnimations } from '../../hooks/useAnimations';
 export const WebLayout = () => {
   // Inicializamos las animaciones de scroll para toda la rama /web
   useAnimations();
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Pequeño delay para asegurar que el DOM esté listo
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash, pathname]);
 
   return (
     <div className="min-h-screen bg-[#000000] selection:bg-[#6bdda1] selection:text-[#030712] relative overflow-x-hidden font-sans">
