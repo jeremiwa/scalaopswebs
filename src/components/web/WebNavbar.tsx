@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from '../ui/Logo';
 
 export const WebNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -16,6 +17,22 @@ export const WebNavbar = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
+
+  const scrollToSection = (sectionId: string) => {
+    setMobileMenuOpen(false);
+    const doScroll = () => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+    if (pathname !== '/web') {
+      navigate('/web');
+      setTimeout(doScroll, 300);
+    } else {
+      doScroll();
+    }
+  };
 
   return (
     <nav
@@ -50,12 +67,12 @@ export const WebNavbar = () => {
               </div>
             </div>
           </div>
-          <Link to="/web#como-trabajamos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors relative">
+          <button onClick={() => scrollToSection('como-trabajamos')} className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors relative cursor-pointer bg-transparent border-none outline-none">
             ¿CÓMO FUNCIONA?
-          </Link>
-          <Link to="/web#casos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors">
+          </button>
+          <button onClick={() => scrollToSection('casos')} className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors cursor-pointer bg-transparent border-none outline-none">
             RESULTADOS
-          </Link>
+          </button>
           <a href="https://scalaops.com/formulario" className="text-[11px] font-bold tracking-[0.08em] uppercase text-[#6bdda1] hover:text-[#6bdda1]/80 transition-colors">
             CONTÁCTANOS
           </a>
@@ -80,8 +97,8 @@ export const WebNavbar = () => {
             <Link to="/web/nosotros" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Quiénes somos</Link>
             <Link to="/web/filosofia" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Nuestra filosofía</Link>
           </div>
-          <Link to="/web#como-trabajamos" className="text-xl font-bold tracking-widest uppercase text-white mt-4">¿CÓMO FUNCIONA?</Link>
-          <Link to="/web#casos" className="text-xl font-bold tracking-widest uppercase text-white">RESULTADOS</Link>
+          <button onClick={() => scrollToSection('como-trabajamos')} className="text-xl font-bold tracking-widest uppercase text-white mt-4 text-left bg-transparent border-none outline-none cursor-pointer">¿CÓMO FUNCIONA?</button>
+          <button onClick={() => scrollToSection('casos')} className="text-xl font-bold tracking-widest uppercase text-white text-left bg-transparent border-none outline-none cursor-pointer">RESULTADOS</button>
           <a href="https://scalaops.com/formulario" className="text-xl font-bold tracking-widest uppercase text-[#6bdda1]">CONTÁCTANOS</a>
         </div>
       </div>
