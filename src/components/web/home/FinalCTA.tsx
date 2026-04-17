@@ -33,7 +33,7 @@ export const FinalCTA = () => {
   };
 
   const textMessage = encodeURIComponent("Hola Scala, me gustaría saber más sobre la auditoría.");
-  const whatsappUrl = `https://wa.me/5491100000000?text=${textMessage}`;
+  const whatsappUrl = `https://wa.link/sn01qs`;
 
   return (
     <section className="relative py-10 md:py-16 overflow-hidden bg-[#000000]">

@@ -38,7 +38,7 @@ export const CtaFinal = () => {
           </div>
 
           <div className="mt-10">
-            <a href="https://wa.me/message" target="_blank" rel="noopener noreferrer" className="text-[14px] hover:text-[#22C55E] transition-colors border-b border-transparent hover:border-[#22C55E] pb-0.5 inline-flex flex-col md:flex-row items-center gap-1" style={{ color: 'rgba(203,213,225,0.60)' }}>
+            <a href="https://wa.link/sn01qs" target="_blank" rel="noopener noreferrer" className="text-[14px] hover:text-[#22C55E] transition-colors border-b border-transparent hover:border-[#22C55E] pb-0.5 inline-flex flex-col md:flex-row items-center gap-1" style={{ color: 'rgba(203,213,225,0.60)' }}>
               ¿Preferís escribirnos? Abrir WhatsApp →
             </a>
           </div>
