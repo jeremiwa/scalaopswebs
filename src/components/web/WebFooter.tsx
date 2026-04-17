@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Logo } from '../ui/Logo';
 
 export const WebFooter = () => {
   return (
@@ -23,14 +24,7 @@ export const WebFooter = () => {
             
             {/* Logo Scala en Blanco */}
             <Link to="/web" className="flex items-center gap-3 transition-opacity hover:opacity-80">
-              <div className="flex flex-col items-start gap-[4px] justify-center mt-1">
-                <div className="h-[3px] w-[14px] bg-white rounded-sm" />
-                <div className="h-[3px] w-[22px] bg-white rounded-sm" />
-                <div className="h-[3px] w-[30px] bg-white rounded-sm" />
-              </div>
-              <span className="text-[22px] text-white tracking-[0.15em] font-bold" style={{ fontFamily: 'var(--font-primary)", "Space Grotesk", sans-serif' }}>
-                SCALA
-              </span>
+              <Logo />
             </Link>
 
             <p className="text-[15px] text-[#999999] leading-relaxed font-normal max-w-[320px]" style={{ fontFamily: 'var(--font-secondary)' }}>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Logo } from '../ui/Logo';
 
 export const WebNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,16 +29,7 @@ export const WebNavbar = () => {
 
         {/* Logo - EXACT MATCH TO SCREENSHOT */}
         <Link to="/web" className="flex items-center gap-3 z-50 group hover:opacity-80 transition-opacity">
-          {/* Logo Isotype (Escalera left-aligned, pure white) */}
-          <div className="flex flex-col items-start gap-[4px] justify-center mt-1">
-            <div className="h-[3px] w-[14px] bg-white rounded-sm" />
-            <div className="h-[3px] w-[22px] bg-white rounded-sm" />
-            <div className="h-[3px] w-[30px] bg-white rounded-sm" />
-          </div>
-          {/* Logo Logotype (Wide tracking, sans-serif flat) */}
-          <span className="text-[22px] text-white tracking-[0.15em] font-bold" style={{ fontFamily: 'var(--font-primary)' }}>
-            SCALA
-          </span>
+          <Logo />
         </Link>
 
         {/* Desktop Nav */}
