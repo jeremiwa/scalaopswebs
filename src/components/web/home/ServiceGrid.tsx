@@ -65,16 +65,16 @@ export const ServiceGrid = () => {
   };
 
   return (
-    <section className="py-24 bg-[#000000] relative overflow-hidden" id="soluciones">
+    <section className="py-16 bg-[#000000] relative overflow-hidden" id="soluciones">
       {/* Opcional: fondo general grid sutil o glow de seccion si hiciera falta */}
 
       <div className="container-custom relative z-10">
         
         {/* Header Block */}
-        <div className="text-center lg:text-left mb-16 lg:mb-24 flex flex-col items-center lg:items-start max-w-4xl mx-auto lg:mx-0">
+        <div className="text-center mb-16 lg:mb-20 flex flex-col items-center max-w-4xl mx-auto">
           
           {/* ADN Scala: Las 3 barras */}
-          <div className="flex flex-col gap-2 mb-6 opacity-80">
+          <div className="flex flex-col items-center gap-2 mb-6 opacity-80">
             <div className="h-[4px] w-[60px] rounded-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
             <div className="h-[4px] w-[100px] rounded-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
             <div className="h-[4px] w-[140px] rounded-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />

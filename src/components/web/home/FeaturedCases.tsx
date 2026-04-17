@@ -92,7 +92,7 @@ export const FeaturedCases = () => {
   };
 
   return (
-    <section className="py-24 bg-[#000000] border-y border-white/[0.02] overflow-hidden" id="casos">
+    <section className="py-16 bg-[#000000] border-y border-white/[0.02] overflow-hidden" id="casos">
       
       {/* Elemento de background (Separadores ADN) */}
       <div className="absolute left-[5%] top-[10%] w-[100px] opacity-10 flex flex-col gap-2 pointer-events-none">

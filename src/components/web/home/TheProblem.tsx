@@ -62,7 +62,7 @@ const cardVariants = {
 
 export const TheProblem = () => {
   return (
-    <section className="relative py-28 bg-[#000000] overflow-hidden">
+    <section className="relative py-16 bg-[#000000] overflow-hidden">
       
       {/* Sutil divider arriba (ADN Scala gradient) */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(24,93,232,0.3) 50%, rgba(107,221,161,0.3) 100%, transparent 100%)' }} />
@@ -70,7 +70,7 @@ export const TheProblem = () => {
       <div className="container-custom relative z-10">
         
         {/* Header content */}
-        <div className="max-w-3xl mx-auto mb-16 text-center lg:text-left flex flex-col items-center lg:items-start">
+        <div className="max-w-3xl mx-auto mb-16 text-center flex flex-col items-center">
           <span className="block text-[11px] font-bold text-[#6bdda1] uppercase tracking-[0.2em] mb-4">
             EL PROBLEMA
           </span>
@@ -175,21 +175,9 @@ export const TheProblem = () => {
 
         {/* Bajada de Cierre */}
         <div className="max-w-2xl mx-auto text-center mt-8">
-          <p className="text-[18px] md:text-[20px] text-white leading-[1.6] font-medium mb-8" style={{ fontFamily: 'var(--font-secondary)' }}>
+          <p className="text-[18px] md:text-[20px] text-white leading-[1.6] font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
             Scala entra exactamente ahí. Auditamos, corregimos y automatizamos <br className="hidden md:block"/> para que dejes de perder ventas que ya tenías.
           </p>
-          <a
-            href="#soluciones"
-            className="group inline-flex items-center text-[#6bdda1] font-bold text-[16px] transition-colors hover:text-white"
-            style={{ fontFamily: 'var(--font-primary)' }}
-          >
-            Ver cómo lo hacemos
-            <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-            <div className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#185de8] to-[#6bdda1] transition-all duration-300 group-hover:w-full" />
-          </a>
         </div>
 
       </div>
