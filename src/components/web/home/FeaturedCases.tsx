@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, AnimatePresence } from 'framer-motion';
 
 const unifiedCases = [
   {
@@ -91,7 +91,50 @@ export const FeaturedCases = () => {
     }
   };
 
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
+    <>
+      {/* Modal de Video */}
+      <AnimatePresence>
+        {videoOpen && (
+          <motion.div 
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#000000]/90 p-4 backdrop-blur-md cursor-pointer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setVideoOpen(false)}
+          >
+            <motion.div 
+              className="relative w-full max-w-[360px] bg-black rounded-[24px] overflow-hidden border border-white/10 shadow-2xl cursor-default"
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className="absolute top-4 right-4 z-50 w-8 h-8 flex items-center justify-center bg-black/60 hover:bg-[#6bdda1] hover:text-black text-white rounded-full backdrop-blur-md transition-colors"
+                onClick={() => setVideoOpen(false)}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+              
+              <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
+                <iframe 
+                  src="https://player.vimeo.com/video/1183439807?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" 
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+                  title="TESTIMONIO">
+                </iframe>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     <section className="py-10 md:py-16 bg-[#000000] border-y border-white/[0.02] overflow-hidden" id="casos">
       
       {/* Elemento de background (Separadores ADN) */}
@@ -236,7 +279,10 @@ export const FeaturedCases = () => {
                   </div>
 
                   {c.video ? (
-                    <button className="flex items-center gap-1.5 px-3 py-2 rounded-md bg-[#111] hover:bg-[#6bdda1] text-[#6bdda1] hover:text-black transition-all text-[12px] font-bold tracking-wide group/btn">
+                    <button 
+                      className="flex items-center gap-1.5 px-3 py-2 rounded-md bg-[#111] hover:bg-[#6bdda1] text-[#6bdda1] hover:text-black transition-all text-[12px] font-bold tracking-wide group/btn"
+                      onClick={() => setVideoOpen(true)}
+                    >
                       <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                       Ver video
                     </button>
@@ -255,5 +301,6 @@ export const FeaturedCases = () => {
 
       </motion.div>
     </section>
+    </>
   );
 };
