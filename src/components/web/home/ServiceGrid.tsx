@@ -1,104 +1,239 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const services = [
   {
-    title: "Auditoría IA",
-    desc: "Detectamos dónde aplicar IA primero.",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" strokeLinecap="round" />
-      </svg>
-    )
+    badge: "7 días",
+    title: "Auditoría Comercial",
+    desc: "Encontramos dónde perdés plata. Con datos reales, no con opiniones.",
+    features: [
+      "Análisis de respuesta y seguimiento",
+      "Revisión de pipeline y CRM",
+      "Escucha de llamadas y chats",
+      "Plan de acción priorizado"
+    ],
+    cta: "Agendar auditoría",
+    link: "#",
+    featured: false
   },
   {
-    title: "Agentes IA",
-    desc: "Venden, responden y ejecutan tareas.",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    )
+    badge: "30 días",
+    title: "Sistema Comercial Completo",
+    desc: "Dejamos la máquina armada. Para que no dependas de nadie.",
+    features: [
+      "Guiones y estructura de ventas",
+      "Automatizaciones zapier/make",
+      "Tablero de control en tiempo real",
+      "Entrenamiento a tu equipo"
+    ],
+    cta: "Ver alcance",
+    link: "#",
+    featured: true
   },
   {
-    title: "Automatizaciones",
-    desc: "Conectan procesos y canales.",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    )
-  },
-  {
-    title: "CRM con IA",
-    desc: "Prioriza, ordena y da visibilidad.",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" />
-      </svg>
-    )
-  },
-  {
-    title: "Apps internas",
-    desc: "Herramientas hechas para tu negocio.",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" />
-      </svg>
-    )
-  },
-  {
-    title: "Integraciones",
-    desc: "Unimos IA con tus sistemas.",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
-      </svg>
-    )
+    badge: "24/7",
+    title: "Empleado IA",
+    desc: "Responde en 4 segundos. Califica, agenda y hace seguimiento automático.",
+    features: [
+      "Agente conectado a WhatsApp/IG",
+      "Calificación de leads en tiempo real",
+      "Integración total con tu CRM",
+      "Traspaso a humano inteligente"
+    ],
+    cta: "Ver cómo funciona",
+    link: "/web/soluciones/empleado-ia",
+    featured: false
   }
 ];
 
 export const ServiceGrid = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.15 } 
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.21, 1.02, 0.73, 1] } 
+    }
+  };
+
   return (
-    <section className="py-24 relative">
-      <div className="container-custom">
-        {/* Header */}
-        <div className="mb-16 text-center max-w-xl mx-auto reveal">
-          <span className="block mb-4 text-[10px] font-bold tracking-[0.22em] uppercase text-[#22C55E]">Lo que implementamos</span>
-          <h2 className="text-[32px] md:text-[44px] font-extrabold text-white mb-4 tracking-[-0.02em] leading-[1.1]">Soluciones de IA para empresas y negocios.</h2>
-          <p className="text-white/40 text-[16px]">Detectamos dónde aplicar IA y la implementamos dentro de tu operación.</p>
+    <section className="py-24 bg-[#000000] relative overflow-hidden" id="soluciones">
+      {/* Opcional: fondo general grid sutil o glow de seccion si hiciera falta */}
+
+      <div className="container-custom relative z-10">
+        
+        {/* Header Block */}
+        <div className="text-center lg:text-left mb-16 lg:mb-24 flex flex-col items-center lg:items-start max-w-4xl mx-auto lg:mx-0">
+          
+          {/* ADN Scala: Las 3 barras */}
+          <div className="flex flex-col gap-2 mb-6 opacity-80">
+            <div className="h-[4px] w-[60px] rounded-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
+            <div className="h-[4px] w-[100px] rounded-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
+            <div className="h-[4px] w-[140px] rounded-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
+          </div>
+
+          <span className="block text-[11px] font-bold text-[#185de8] uppercase tracking-[0.2em] mb-4">
+            LO QUE HACEMOS
+          </span>
+          <h2 className="text-[38px] md:text-[52px] font-bold text-white tracking-tight leading-[1.1] mb-6" style={{ fontFamily: 'var(--font-primary)' }}>
+            Tres servicios. Un solo objetivo:<br/>que vendas más.
+          </h2>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {services.map((svc, i) => (
-            <div
+        {/* Cards Grid */}
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {services.map((s, i) => (
+            <motion.div 
               key={i}
-              className="group relative rounded-2xl overflow-hidden transition-all duration-500 reveal-stagger"
-              style={{
-                padding: '36px 32px',
-                background: 'linear-gradient(145deg, rgba(10,13,20,0.9), rgba(6,8,14,0.95))',
-                border: '1px solid rgba(255,255,255,0.05)',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.2), 0 0 0 0.5px rgba(255,255,255,0.02)',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.15)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(0,0,0,0.3), 0 0 30px rgba(34,197,94,0.04)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.2), 0 0 0 0.5px rgba(255,255,255,0.02)'; }}
+              variants={cardVariants}
+              className={`relative flex flex-col ${s.featured ? 'lg:-translate-y-4 shadow-2xl z-10 pt-[16px]' : 'z-0 pt-[16px]'}`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              {/* Contenedor oficial de la tarjeta */}
+              <div 
+                className={`card-base h-full relative p-8 md:p-10 flex flex-col transition-all duration-400 cursor-default rounded-[24px] overflow-visible group ${s.featured ? 'card-featured' : 'card-normal'}`}
+              >
 
-              <div className="relative z-10">
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 text-white/60 group-hover:text-[#22C55E] transition-all duration-300" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
-                  onMouseEnter={(e) => { const el = e.currentTarget; el.style.background = 'rgba(34,197,94,0.1)'; el.style.borderColor = 'rgba(34,197,94,0.15)'; }}
-                  onMouseLeave={(e) => { const el = e.currentTarget; el.style.background = 'rgba(255,255,255,0.03)'; el.style.borderColor = 'rgba(255,255,255,0.06)'; }}
-                >
-                  {svc.icon}
+                {/* Badge Producto Estrella (Solo Featured) */}
+                {s.featured && (
+                  <div className="absolute top-0 right-8 -translate-y-1/2 rounded-full px-4 py-1.5 shadow-[0_8px_20px_rgba(24,93,232,0.3)] z-50 pointer-events-none" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }}>
+                    <span className="text-[11px] text-black font-black tracking-widest uppercase flex items-center gap-1.5">
+                      <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      Producto Estrella
+                    </span>
+                  </div>
+                )}
+
+                {/* Badge Superior */}
+                <div className="mb-8">
+                  <span className="inline-block px-3 py-1.5 rounded-md text-[11px] font-bold tracking-[0.1em] uppercase bg-[#185de8]/10 text-[#6bdda1] border border-[#185de8]/20">
+                    {s.badge}
+                  </span>
                 </div>
-                <h3 className="text-[17px] font-bold text-white mb-2 tracking-tight">{svc.title}</h3>
-                <p className="text-white/40 text-[13px] leading-relaxed">{svc.desc}</p>
+
+                {/* Header Card */}
+                <h3 className="text-[24px] font-bold text-white mb-3 tracking-tight" style={{ fontFamily: 'var(--font-primary)' }}>
+                  {s.title}
+                </h3>
+                <p className="text-[15px] text-[#999999] leading-relaxed mb-8 h-[48px]" style={{ fontFamily: 'var(--font-secondary)' }}>
+                  {s.desc}
+                </p>
+
+                {/* Features (Checkmarks rediseñados) */}
+                <ul className="space-y-4 mb-10 flex-grow">
+                  {s.features.map((feat, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <div className="mt-[2px] shrink-0 w-[18px] h-[18px] rounded-full flex items-center justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ background: 'linear-gradient(135deg, #185de8, #6bdda1)' }} />
+                        <svg className="w-[10px] h-[10px] text-[#6bdda1] flex-shrink-0 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span className="text-[14px] text-white/80 leading-snug font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
+                        {feat}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Final (más premium) */}
+                <div className="mt-auto pt-6 border-t border-white/[0.04]">
+                  <a href={s.link} className="group/cta inline-flex items-center text-[15px] font-bold text-[#6bdda1] transition-colors hover:text-white" style={{ fontFamily: 'var(--font-primary)' }}>
+                    {s.cta}
+                    <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    {/* Hover Gradient Underline */}
+                    <div className="absolute -bottom-[2px] left-0 w-0 h-[2px] transition-all duration-300 group-hover/cta:w-full" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
+                  </a>
+                </div>
+
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
+
+      <style>{`
+        /* Card Normal */
+        .card-normal {
+          background: #0A0A0A;
+          border: 1px solid #1A1A1A;
+          position: relative;
+        }
+        .card-normal::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at top left, rgba(24,93,232,0.05) 0%, transparent 60%);
+          border-radius: inherit;
+          pointer-events: none;
+        }
+        .card-normal:hover {
+          border-color: rgba(107, 221, 161, 0.3);
+          transform: translateY(-4px);
+          box-shadow: 0 10px 40px rgba(107, 221, 161, 0.05);
+        }
+
+        /* Card Featured (Vercel Style Rotating Gradient) */
+        @property --v-angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
+        }
+        .card-featured {
+          background: #0A0A0A;
+          position: relative;
+          z-index: 1;
+        }
+        /* Fallback de CSS puro para navegadores usando animacion wrapper. Dado que tailwind bloquea @property en varios escenarios, usaremos el wrapper tradicional. */
+        
+        .card-featured::after {
+          /* El background interior sólido negro */
+          content: "";
+          position: absolute;
+          inset: 1px; /* 1px border o 2px */
+          background: #050505; /* Fondo solido de la card para tapar el pseudo elemento gradiente */
+          border-radius: 23px;
+          z-index: -1;
+        }
+        
+        .card-featured::before {
+          /* Animacion de borde conic-gradient pseudo elemento giratorio */
+          content: "";
+          position: absolute;
+          inset: -1px; /* Grueso del borde! */
+          background: conic-gradient(from var(--v-angle), #185de8, #6bdda1, #185de8);
+          border-radius: 24px;
+          z-index: -2;
+          animation: spin-conic 4s linear infinite;
+        }
+        
+        @keyframes spin-conic {
+          0% { --v-angle: 0deg; }
+          100% { --v-angle: 360deg; }
+        }
+
+        /* Si el browser no soporta @property --v-angle, usamos un keyframe block con background-position de barrido rotatorio, o clip-path. Un wrapper animado seria perfecto */
+        @supports not (background: paint(something)) {
+          /* Fallback si arroja problemas (Chrome siempre lo soporta) */
+        }
+      `}</style>
     </section>
   );
 };

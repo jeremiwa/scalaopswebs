@@ -8,23 +8,23 @@ const brands = [
 
 export const TrustBand = () => {
   return (
-    <section className="py-10 border-y border-white/[0.04] bg-[#030712]/80 overflow-hidden">
+    <section className="py-10 border-y border-white/[0.04] bg-[#000] overflow-hidden">
       <div className="container-custom mb-6">
-        <p className="text-[10px] uppercase tracking-[0.22em] text-white/20 font-semibold text-center">
-          Empresas y negocios que confían en Scala
+        <p className="text-[12px] uppercase tracking-widest text-[#0055FF] font-bold text-center" style={{ fontFamily: 'var(--font-primary)' }}>
+          / EMPRESAS Y NEGOCIOS QUE CONFÍAN EN SCALA
         </p>
       </div>
 
       {/* Marquee */}
       <div className="relative w-full overflow-hidden">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #030712, transparent)' }} />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #030712, transparent)' }} />
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #000, transparent)' }} />
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #000, transparent)' }} />
 
         <div className="flex animate-marquee">
           {brands.map((name, i) => (
-            <div key={i} className="flex items-center justify-center px-10 flex-shrink-0">
-              <span className="text-[16px] md:text-[18px] font-bold text-white/[0.12] tracking-tight whitespace-nowrap hover:text-white/25 transition-colors duration-500 cursor-default select-none">{name}</span>
+            <div key={i} className="flex items-center justify-center px-12 flex-shrink-0">
+              <span className="text-[20px] font-bold text-white/[0.15] tracking-wide whitespace-nowrap hover:text-white/30 transition-colors duration-500 cursor-default select-none" style={{ fontFamily: 'var(--font-primary)' }}>{name}</span>
             </div>
           ))}
         </div>

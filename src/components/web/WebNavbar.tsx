@@ -16,59 +16,44 @@ export const WebNavbar = () => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  const navLinks = [
-    { name: 'Inicio', path: '/web' },
-    { name: 'Soluciones', path: '/web/soluciones' },
-    { name: 'Casos', path: '/web/casos' },
-    { name: 'Nosotros', path: '/web/nosotros' },
-    { name: 'Blog', path: '/web/blog' },
-    { name: 'Contacto', path: '/web/contacto' },
-  ];
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled || mobileMenuOpen
-          ? 'bg-[#030712]/85 backdrop-blur-xl border-b border-white/5 py-3.5'
-          : 'bg-transparent py-5'
+          ? 'bg-[#000000]/90 backdrop-blur-xl border-b border-white/[0.04] py-4'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
 
-        {/* Logo */}
-        <Link to="/web" className="flex items-center gap-2 z-50 group">
-          <div className="w-7 h-7 rounded bg-gradient-to-br from-[#22C55E] to-[#166534] flex items-center justify-center shadow-[0_0_12px_rgba(34,197,94,0.25)] group-hover:shadow-[0_0_18px_rgba(34,197,94,0.45)] transition-all">
-            <span className="text-white font-bold text-sm tracking-tighter">S</span>
+        {/* Logo - EXACT MATCH TO SCREENSHOT */}
+        <Link to="/web" className="flex items-center gap-3 z-50 group hover:opacity-80 transition-opacity">
+          {/* Logo Isotype (Escalera left-aligned, pure white) */}
+          <div className="flex flex-col items-start gap-[4px] justify-center mt-1">
+            <div className="h-[3px] w-[14px] bg-white rounded-sm" />
+            <div className="h-[3px] w-[22px] bg-white rounded-sm" />
+            <div className="h-[3px] w-[30px] bg-white rounded-sm" />
           </div>
-          <span className="text-lg font-bold text-white tracking-widest uppercase">Scala</span>
+          {/* Logo Logotype (Wide tracking, sans-serif flat) */}
+          <span className="text-[22px] text-white tracking-[0.15em] font-bold" style={{ fontFamily: 'var(--font-primary)", "Space Grotesk", sans-serif' }}>
+            SCALA
+          </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`text-[12px] font-semibold tracking-wide uppercase transition-colors ${
-                pathname === link.path ? 'text-white' : 'text-white/50 hover:text-white'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:flex">
-          <a
-            href="https://calendar.app.google/your-link-here"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-            style={{ fontSize: '12px', padding: '8px 18px' }}
-          >
-            Agendar Llamada
-          </a>
+        <div className="hidden md:flex items-center gap-10">
+          <Link to="/web/nosotros" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors">
+            NOSOTROS
+          </Link>
+          <Link to="/web/como-funciona" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors relative">
+            ¿CÓMO FUNCIONA?
+          </Link>
+          <Link to="/web/casos" className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors">
+            RESULTADOS
+          </Link>
+          <Link to="/web/contacto" className="text-[11px] font-bold tracking-[0.08em] uppercase text-[#00FF94] hover:text-[#00FF94]/80 transition-colors">
+            CONTÁCTANOS
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -83,17 +68,12 @@ export const WebNavbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed inset-0 bg-[#030712] z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-24 px-6 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex flex-col gap-5">
-          {navLinks.map((link) => (
-            <Link key={link.name} to={link.path} className={`text-2xl font-semibold tracking-tight ${pathname === link.path ? 'text-white' : 'text-white/50'}`}>
-              {link.name}
-            </Link>
-          ))}
-        </div>
-        <div className="mt-auto mb-10 flex flex-col gap-3">
-          <a href="https://wa.me/xxx" target="_blank" rel="noopener noreferrer" className="btn-secondary w-full justify-center">WhatsApp</a>
-          <a href="https://calendar.app.google/your-link-here" target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center">Agendar Llamada</a>
+      <div className={`fixed inset-0 bg-[#000000] z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-24 px-6 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col gap-6">
+          <Link to="/web/nosotros" className="text-xl font-bold tracking-widest uppercase text-white">NOSOTROS</Link>
+          <Link to="/web/como-funciona" className="text-xl font-bold tracking-widest uppercase text-white">¿CÓMO FUNCIONA?</Link>
+          <Link to="/web/casos" className="text-xl font-bold tracking-widest uppercase text-white">RESULTADOS</Link>
+          <Link to="/web/contacto" className="text-xl font-bold tracking-widest uppercase text-[#00FF94]">CONTÁCTANOS</Link>
         </div>
       </div>
     </nav>

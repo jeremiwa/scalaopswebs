@@ -1,132 +1,203 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { motion, useAnimation } from 'framer-motion';
 
 export const HeroInstitutional = () => {
+  const customEase = [0.21, 1.02, 0.73, 1];
+
+  const titleWordsFirst = "Implementamos IA".split(" ");
+  const titleWordsSecond = "en tu empresa.".split(" ");
+
+  // Stagger Text Container
+  const textContainerParent = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 }
+    }
+  };
+
+  const textWord = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: customEase }
+    }
+  };
+
+  // Massive Blurred Aurora Bars matching the exact screenshot
+  const bars = [
+    { width: '70%', height: 160, delay: 0 },
+    { width: '85%', height: 160, delay: 0.2 },
+    { width: '100%', height: 160, delay: 0.4 },
+  ];
+
   return (
-    <section className="relative pt-12 pb-24 overflow-hidden">
-      {/* Background glow - MUY SUTIL para mantener la sobriedad */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-scala-green/[0.02] blur-[150px] rounded-full pointer-events-none" />
+    <section className="relative w-full min-h-[95vh] flex items-center bg-[#000000] overflow-hidden pt-20">
       
-      <div className="container-custom relative z-10 w-full flex flex-col items-center text-center">
-        {/* Eyebrow */}
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.06] text-white/60 text-[10px] font-semibold tracking-[0.2em] uppercase mb-8 reveal" style={{ background: 'rgba(255,255,255,0.015)' }}>
-          Soluciones de IA para empresas
-        </span>
+      {/* 1. Fondo Textura (Grain) */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0 mix-blend-overlay" 
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")',
+          opacity: 0.03
+        }} 
+      />
 
-        {/* Headline */}
-        <h1 className="text-[44px] md:text-[64px] lg:text-[76px] font-extrabold text-white tracking-[-0.03em] leading-[1.05] max-w-[900px] mx-auto mb-6 reveal">
-          Implementamos IA en tu empresa.
-        </h1>
+      {/* 2. Orbs Glow */}
+      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
 
-        {/* Subheadline */}
-        <p className="text-[17px] md:text-[20px] text-white/50 max-w-[640px] mx-auto mb-10 leading-[1.6] font-light reveal-stagger">
-          Auditamos tu negocio y diseñamos agentes, bots, automatizaciones, CRM inteligente y apps internas para vender más, operar mejor y escalar.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-10 reveal-stagger">
-          {/* Primary Button */}
-          <a
-            href="https://calendar.app.google/your-link-here"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center rounded-xl text-[14px] font-semibold tracking-wide text-white transition-all duration-300"
-            style={{
-              padding: '16px 40px',
-              background: 'linear-gradient(135deg, rgba(34,197,94,0.9) 0%, rgba(22,163,74,0.9) 100%)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              boxShadow: '0 0 24px rgba(34,197,94,0.15)',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 0 32px rgba(34,197,94,0.25)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 0 24px rgba(34,197,94,0.15)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-          >
-            Agendar llamada
-          </a>
-          {/* Secondary Ghost Button */}
-          <Link
-            to="/web/soluciones"
-            className="inline-flex items-center justify-center rounded-xl text-[14px] font-semibold tracking-wide text-white/60 transition-all duration-300 hover:text-white hover:border-white/20"
-            style={{
-              padding: '16px 40px',
-              border: '1px solid rgba(255,255,255,0.08)',
-              background: 'rgba(255,255,255,0.01)',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.01)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; }}
-          >
-            Ver soluciones
-          </Link>
-        </div>
-
-        {/* Chips discretos */}
-        <div className="flex flex-wrap justify-center gap-3 mb-20 reveal-stagger">
-          {['Agentes IA', 'Automatizaciones', 'CRM con IA', 'Apps a medida', 'Integraciones'].map((chip) => (
-            <span key={chip} className="px-3 py-1.5 rounded-md text-[11px] font-medium tracking-wide text-white/30 border border-white/[0.04] bg-white/[0.01] transition-colors hover:text-white/40">
-              {chip}
-            </span>
-          ))}
-        </div>
-
-        {/* ═══ MINIMALIST VISUAL PANEL ═══ */}
-        <div className="relative w-full max-w-[1000px] mx-auto reveal-stagger">
+      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-8 items-center mt-[15vh] lg:mt-0">
+        
+        {/* Left Column: Text & CTAs */}
+        <div className="flex flex-col items-start text-left pt-10 pb-20 lg:py-0">
           
-          <div className="relative rounded-2xl md:rounded-[32px] p-8 md:p-14 text-left overflow-hidden" 
-               style={{ 
-                 background: 'linear-gradient(180deg, rgba(10,12,18,0.7) 0%, rgba(3,5,8,0.9) 100%)', 
-                 border: '1px solid rgba(255,255,255,0.05)', 
-                 boxShadow: '0 24px 64px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.02)' 
-               }}>
+          <h1 className="text-[48px] md:text-[68px] lg:text-[76px] font-bold tracking-tight leading-[1.05] text-white mb-8" style={{ fontFamily: 'var(--font-primary)' }}>
             
-            {/* Very subtle glow inside the panel */}
-            <div className="absolute inset-0 bg-gradient-to-br from-scala-green/[0.01] via-transparent to-transparent pointer-events-none" />
+            <motion.div 
+              variants={textContainerParent}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap gap-[0.3em] mb-2"
+            >
+              {titleWordsFirst.map((word, i) => (
+                <motion.span key={i} variants={textWord} className="inline-block whitespace-nowrap">
+                  {word}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            <motion.div 
+              variants={textContainerParent}
+              initial="hidden"
+              animate="visible"
+              transition={{ delayChildren: 0.4 }}
+              className="flex flex-wrap gap-[0.3em]"
+            >
+              {titleWordsSecond.map((word, i) => (
+                <motion.span 
+                  key={i} 
+                  variants={textWord} 
+                  className="inline-block whitespace-nowrap text-white"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.div>
+          </h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8, ease: customEase }}
+            className="text-[17px] md:text-[20px] text-[#999999] max-w-[540px] mb-12 leading-[1.6]"
+            style={{ fontFamily: 'var(--font-secondary)' }}
+          >
+            Auditamos tu operación comercial, implementamos IA y armamos el sistema para que vendas más con lo que ya tenés.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row items-center gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6, ease: customEase }}
+          >
+            {/* Primary CTA */}
+            <motion.button
+              className="relative text-[#000000] overflow-hidden flex items-center justify-center transition-shadow group"
+              style={{
+                background: 'linear-gradient(90deg, #185de8, #6bdda1)',
+                padding: '20px 48px',
+                borderRadius: '100px',
+                fontFamily: 'var(--font-primary)',
+                fontWeight: 800,
+                fontSize: '16px',
+                boxShadow: '0 0 40px rgba(107, 221, 161, 0.1)',
+                transformOrigin: 'center center'
+              }}
+              whileHover={{ 
+                scale: 1.03,
+                boxShadow: '0 0 50px rgba(24, 93, 232, 0.4)',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {/* Shimmer interno */}
+              <motion.div
+                className="absolute inset-0 bg-white/30 skew-x-[-20deg]"
+                style={{ left: '-30%', width: '30%' }}
+                animate={{ left: ['-30%', '130%'] }}
+                transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 3, ease: 'easeOut' }}
+              />
+              Agendar llamada
+            </motion.button>
+
+            {/* Secondary CTA */}
+            <a href="#soluciones" className="group flex items-center text-white text-[15px] font-bold transition-colors">
+              Ver soluciones
+              <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              {/* Subrayado gradiente animado */}
+              <div className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#185de8] to-[#6bdda1] transition-all duration-300 group-hover:w-full" />
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Right Column Placeholder to keep layout spacing */}
+        <div className="relative w-full h-full min-h-[500px] hidden lg:block"></div>
+      </div>
+
+      {/* Right Column: Barras Escalonadas Gigantes (Mockup Match) BLOWING OUT TO RIGHT EDGE */}
+      <div className="absolute top-[80px] lg:top-1/2 right-0 lg:-translate-y-1/2 w-full lg:w-[45vw] h-[300px] lg:h-[80%] flex flex-col justify-center gap-3 lg:gap-[60px] select-none pointer-events-none z-10 overflow-hidden">
+        {bars.map((bar, i) => (
+          <div key={i} className="w-full flex justify-end relative h-[60px] lg:h-[160px]">
             
-            {/* Top Left Label */}
-            <div className="mb-14 relative z-10 flex">
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.16em] bg-white/[0.03] px-3 py-1.5 rounded-full border border-white/[0.05]">
-                Cómo implementamos IA en una empresa
-              </span>
-            </div>
-
-            {/* 4 Nodos Horizontales */}
-            <div className="relative z-10">
-              {/* Connecting line (desktop only) */}
-              <div className="hidden md:block absolute top-[24px] left-[12%] right-[12%] h-px bg-white/[0.06] pointer-events-none" />
-
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4 relative">
-                {[
-                  { title: 'Auditoría', desc: 'Detectamos oportunidades' },
-                  { title: 'Diseño', desc: 'Definimos la solución' },
-                  { title: 'Implementación', desc: 'Integramos herramientas' },
-                  { title: 'Optimización', desc: 'Mejoramos resultados' }
-                ].map((node, i) => (
-                  <div key={i} className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-5 md:gap-5 relative">
-                    
-                    {/* Node Circle */}
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 relative bg-[#06080C] border border-white/10 z-10 transition-colors hover:border-scala-green/30"
-                         style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.4), inset 0 0 12px rgba(255,255,255,0.02)' }}>
-                      {/* Inner dot */}
-                      <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                    </div>
-
-                    {/* Node Content */}
-                    <div className="flex flex-col items-start md:items-center">
-                      <h3 className="text-[15px] font-semibold text-white tracking-tight mb-1.5">{node.title}</h3>
-                      <p className="text-[13px] text-white/40 font-light w-full max-w-[140px] leading-snug">{node.desc}</p>
-                    </div>
-                  </div>
-                ))}
+            <motion.div
+              className="relative w-full h-full"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 + bar.delay, duration: 1.5, ease: customEase }}
+            >
+              <div style={{ width: bar.width }} className="absolute right-0 h-full">
+                {/* La aurora central de la barra con super blur */}
+                <motion.div 
+                  className="w-full h-full absolute right-0"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, #185de8 60%, #6bdda1 100%)',
+                    filter: 'blur(30px) sm:blur(50px)'
+                  }}
+                  animate={{ opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut" }}
+                />
+                {/* Núcleo de luz más brillante en el centro para dar el efecto de tubo de neón */}
+                <motion.div 
+                  className="w-full h-[30%] absolute right-0 top-1/2 -translate-y-1/2"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(24,93,232,0.8) 70%, rgba(107,221,161,1) 100%)',
+                    filter: 'blur(15px)'
+                  }}
+                  animate={{ opacity: [0.6, 0.9, 0.6] }}
+                  transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
               </div>
-            </div>
+            </motion.div>
 
           </div>
-
-          <p className="text-[13px] text-white/30 mt-8 font-light tracking-[0.05em] text-center">
-            IA aplicada con criterio de negocio.
-          </p>
-
-        </div>
-
+        ))}
       </div>
+
+      <style>{`
+        @keyframes gradient-slow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient-slow {
+          animation: gradient-slow 8s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };
