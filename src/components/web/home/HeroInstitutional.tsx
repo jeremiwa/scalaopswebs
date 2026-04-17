@@ -150,7 +150,7 @@ export const HeroInstitutional = () => {
       </div>
 
       {/* Right Column: Barras Escalonadas Gigantes (Mockup Match) BLOWING OUT TO RIGHT EDGE */}
-      <div className="absolute top-[80px] lg:top-1/2 right-0 lg:-translate-y-1/2 w-[80vw] lg:w-[45vw] h-[250px] lg:h-[80%] flex flex-col justify-center gap-4 lg:gap-[60px] select-none pointer-events-none z-0 lg:z-10 overflow-hidden">
+      <div className="absolute bottom-10 lg:bottom-auto lg:top-1/2 right-0 lg:-translate-y-1/2 w-[90vw] lg:w-[45vw] h-[180px] lg:h-[80%] flex flex-col justify-end lg:justify-center gap-3 lg:gap-[60px] select-none pointer-events-none z-0 lg:z-10 overflow-hidden">
         {bars.map((bar, i) => (
           <div key={i} className="w-full flex justify-end relative h-[60px] lg:h-[160px]">
             

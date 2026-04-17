@@ -164,11 +164,6 @@ export const FinalCTA = () => {
             <span className="hidden sm:inline text-white/10">|</span>
             <span className="flex items-center gap-2">
               <svg className="w-4 h-4 text-[#6bdda1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg> 
-              Resultados en 72hs
-            </span>
-            <span className="hidden sm:inline text-white/10">|</span>
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#6bdda1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg> 
               Sin permanencia
             </span>
           </motion.div>
