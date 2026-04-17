@@ -36,7 +36,7 @@ export const FinalCTA = () => {
   const whatsappUrl = `https://wa.me/5491100000000?text=${textMessage}`;
 
   return (
-    <section className="relative py-16 overflow-hidden bg-[#000000]">
+    <section className="relative py-10 md:py-16 overflow-hidden bg-[#000000]">
       
       {/* Elemento Gráfico de Fondo: Barras de Marca Desplazándose */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex flex-col justify-center items-center gap-[40px] opacity-[0.12]">

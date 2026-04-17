@@ -62,7 +62,7 @@ const cardVariants = {
 
 export const TheProblem = () => {
   return (
-    <section className="relative py-16 bg-[#000000] overflow-hidden">
+    <section className="relative py-10 md:py-16 bg-[#000000] overflow-hidden">
       
       {/* Sutil divider arriba (ADN Scala gradient) */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(24,93,232,0.3) 50%, rgba(107,221,161,0.3) 100%, transparent 100%)' }} />
@@ -70,7 +70,7 @@ export const TheProblem = () => {
       <div className="container-custom relative z-10">
         
         {/* Header content */}
-        <div className="max-w-3xl mx-auto mb-16 text-center flex flex-col items-center">
+        <div className="max-w-3xl mx-auto mb-10 md:mb-16 text-center flex flex-col items-center">
           <span className="block text-[11px] font-bold text-[#6bdda1] uppercase tracking-[0.2em] mb-4">
             EL PROBLEMA
           </span>

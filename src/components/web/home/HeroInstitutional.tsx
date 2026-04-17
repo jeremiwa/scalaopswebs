@@ -48,7 +48,7 @@ export const HeroInstitutional = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
 
-      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-8 items-center mt-[15vh] lg:mt-0">
+      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6 lg:gap-8 items-center mt-[10vh] lg:mt-0">
         
         {/* Left Column: Text & CTAs */}
         <div className="flex flex-col items-start text-left pt-10 pb-20 lg:py-0">
@@ -150,7 +150,7 @@ export const HeroInstitutional = () => {
       </div>
 
       {/* Right Column: Barras Escalonadas Gigantes (Mockup Match) BLOWING OUT TO RIGHT EDGE */}
-      <div className="absolute top-[80px] lg:top-1/2 right-0 lg:-translate-y-1/2 w-full lg:w-[45vw] h-[300px] lg:h-[80%] flex flex-col justify-center gap-3 lg:gap-[60px] select-none pointer-events-none z-10 overflow-hidden">
+      <div className="absolute top-[80px] lg:top-1/2 right-0 lg:-translate-y-1/2 w-[80vw] lg:w-[45vw] h-[250px] lg:h-[80%] flex flex-col justify-center gap-4 lg:gap-[60px] select-none pointer-events-none z-0 lg:z-10 overflow-hidden">
         {bars.map((bar, i) => (
           <div key={i} className="w-full flex justify-end relative h-[60px] lg:h-[160px]">
             
