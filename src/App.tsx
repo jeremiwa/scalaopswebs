@@ -36,6 +36,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { WebLayout } from './components/web/WebLayout';
 import { WebHome } from './pages/web/WebHome';
 import { WebNosotros } from './pages/web/WebNosotros';
+import { WebFilosofia } from './pages/web/WebFilosofia';
 
 // Home Component that houses the main landing page
 const Home = () => {
@@ -90,6 +91,7 @@ export default function App() {
         {/* Futuras rutas:
            <Route path="soluciones" element={<WebSoluciones />} />  */}
         <Route path="nosotros" element={<WebNosotros />} /> 
+        <Route path="filosofia" element={<WebFilosofia />} /> 
       </Route>
 
       {/* ── Sistema: public product page ── */}

@@ -58,6 +58,7 @@ export const WebFooter = () => {
           <div className="flex flex-col gap-4 lg:col-span-2">
             <h4 className="text-[12px] font-bold text-white uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-secondary)' }}>Compañía</h4>
             <Link to="/web/nosotros" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Nosotros</Link>
+            <Link to="/web/filosofia" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Misión y Filosofía</Link>
             <Link to="/web/casos" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Casos</Link>
             <Link to="/web/blog" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Blog</Link>
           </div>
