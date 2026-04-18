@@ -34,39 +34,28 @@ const painPoints = [
 
 const auditAreas = [
   {
-    letter: "A",
     title: "Proceso comercial",
-    items: ["Flujo completo del lead", "Tiempos de respuesta", "Velocidad de contacto", "Seguimiento y cierres", "Etapas, transiciones y puntos sin acción"]
+    items: ["Flujo de vida del lead", "Tiempos de respuesta", "Velocidad de contacto", "Estructura de seguimiento", "Próximos pasos definidos"]
   },
   {
-    letter: "B",
     title: "Gestión de oportunidades",
-    items: ["Leads sin seguimiento", "Oportunidades estancadas", "Falta de próximo paso", "Leads desordenados o mal calificados", "Motivos de pérdida no registrados"]
+    items: ["Leads desatendidos", "Oportunidades estancadas", "Calificación comercial", "Registro de información", "Análisis de pérdidas"]
   },
   {
-    letter: "C",
     title: "Equipo comercial",
-    items: ["Nivel de ejecución individual", "Estructura y roles del equipo", "Consistencia en el seguimiento", "Criterios de priorización", "Gaps de performance"]
+    items: ["Ejecución individual", "Estructura de roles", "Consistencia operativa", "Priorización de cuentas", "Desempeño y gaps"]
   },
   {
-    letter: "D",
-    title: "Relato y comunicación de venta",
-    items: ["Claridad del mensaje comercial", "Propuesta de valor", "Ángulos de venta y narrativa", "Autoridad percibida", "Conexión con el dolor del cliente"]
+    title: "Relato de venta",
+    items: ["Claridad del mensaje", "Propuesta de valor", "Ángulos conversacionales", "Posicionamiento y autoridad", "Conexión con el cliente"]
   },
   {
-    letter: "E",
     title: "Manejo de objeciones",
-    items: ["Objeciones frecuentes no resueltas", "Respuestas débiles o genéricas", "Puntos de fricción comercial", "Dudas sin resolver", "Pérdida por falta de argumento"]
+    items: ["Fricciones comerciales", "Respuestas estandarizadas", "Resolución de dudas", "Identificación de bloqueos", "Defensa del precio"]
   },
   {
-    letter: "F",
-    title: "Automatización e IA",
-    items: ["Tareas manuales repetitivas", "Calificación y scoring de leads", "Seguimiento automatizable", "Derivación inteligente", "Oportunidades de IA en ventas"]
-  },
-  {
-    letter: "G",
-    title: "Herramientas y sistema",
-    items: ["CRM y pipelines", "Formularios y WhatsApp", "Integraciones activas", "Trazabilidad y reportes", "Estructura operativa general"]
+    title: "Sistemas, datos e IA",
+    items: ["Estructura de CRM y pipelines", "Integraciones y trazabilidad", "Automatización de seguimientos", "Calificación y scoring", "Casos de uso de IA en ventas"]
   }
 ];
 
@@ -236,18 +225,17 @@ export const WebAuditoria = () => {
             </motion.h2>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 lg:gap-y-8">
             {auditAreas.map((area, i) => (
-              <motion.div key={i} variants={cardFade} className={`group flex flex-col bg-[#080808] border border-white/[0.06] rounded-[20px] p-7 transition-all duration-300 hover:border-[#185de8]/30 ${i === 6 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-[28px] font-black text-transparent leading-none" style={{ WebkitTextStroke: '1.5px #185de8', fontFamily: 'var(--font-primary)' }}>{area.letter}</span>
-                  <h3 className="text-[18px] font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-primary)' }}>{area.title}</h3>
+              <motion.div key={i} variants={cardFade} className="group flex flex-col bg-[#050505] border border-white/[0.04] rounded-[24px] p-8 md:p-9 transition-all duration-500 hover:border-[#185de8]/20 hover:bg-[#080808]">
+                <div className="flex flex-col mb-7">
+                  <h3 className="text-[18px] md:text-[20px] font-bold text-white tracking-tight mb-4" style={{ fontFamily: 'var(--font-primary)' }}>{area.title}</h3>
+                  <div className="w-10 h-[2px]" style={{ background: 'linear-gradient(90deg, #185de8, rgba(24,93,232,0))' }} />
                 </div>
-                <div className="w-8 h-[2px] mb-5" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)' }} />
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-3.5">
                   {area.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-[14px] text-[#888] leading-[1.5]" style={{ fontFamily: 'var(--font-secondary)' }}>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#185de8]/50 mt-[7px] shrink-0" />
+                    <li key={j} className="flex items-start gap-3 text-[14.5px] text-[#777] group-hover:text-[#aaa] transition-colors duration-300 leading-[1.5]" style={{ fontFamily: 'var(--font-secondary)' }}>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#185de8]/40 mt-[7px] shrink-0" />
                       {item}
                     </li>
                   ))}
