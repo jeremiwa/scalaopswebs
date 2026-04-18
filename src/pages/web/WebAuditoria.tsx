@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AuditPipelineAnimation from '../../components/web/AuditPipelineAnimation';
 
 /* ─── Animation Variants ─── */
 const fadeUp = {
@@ -173,32 +174,7 @@ export const WebAuditoria = () => {
 
           {/* Right: Abstract dashboard visual */}
           <div className="relative w-full min-h-[450px] hidden lg:flex items-center justify-center">
-            {/* Pipeline visual */}
-            <div className="absolute inset-0 flex flex-col justify-center gap-5 pr-4">
-              {[
-                { label: "Leads entrantes", value: "847", color: "#185de8", w: "90%" },
-                { label: "Contactados < 5 min", value: "312", color: "#3b82f6", w: "75%" },
-                { label: "Con seguimiento activo", value: "184", color: "#6bdda1", w: "55%" },
-                { label: "Propuesta enviada", value: "96", color: "#6bdda1", w: "38%" },
-                { label: "Cerrados", value: "41", color: "#22c55e", w: "22%" },
-              ].map((row, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 + i * 0.12, duration: 0.7 }} className="relative">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[11px] font-bold tracking-[0.1em] uppercase text-white/50" style={{ fontFamily: 'var(--font-secondary)' }}>{row.label}</span>
-                    <span className="text-[13px] font-bold text-white/70 tabular-nums" style={{ fontFamily: 'var(--font-primary)' }}>{row.value}</span>
-                  </div>
-                  <div className="w-full h-[6px] bg-white/[0.04] rounded-full overflow-hidden">
-                    <motion.div className="h-full rounded-full" style={{ width: row.w, background: row.color, boxShadow: `0 0 12px ${row.color}40` }} initial={{ width: 0 }} animate={{ width: row.w }} transition={{ delay: 0.8 + i * 0.12, duration: 1.2, ease: [0.21, 1.02, 0.73, 1] }} />
-                  </div>
-                  {i < 4 && (
-                    <div className="absolute -bottom-3.5 left-4 flex items-center gap-1.5">
-                      <svg className="w-2.5 h-2.5 text-red-400/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9" /></svg>
-                      <span className="text-[10px] text-red-400/50 font-medium">{["−63%", "−41%", "−48%", "−57%"][i]} fuga</span>
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+            <AuditPipelineAnimation />
           </div>
         </div>
       </section>
