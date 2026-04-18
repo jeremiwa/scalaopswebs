@@ -4,8 +4,8 @@ import { motion, useAnimation } from 'framer-motion';
 export const HeroInstitutional = () => {
   const customEase = [0.21, 1.02, 0.73, 1];
 
-  const titleWordsFirst = "Implementamos IA".split(" ");
-  const titleWordsSecond = "en tu empresa.".split(" ");
+  const titleWordsFirst = "Aplicamos IA para que".split(" ");
+  const titleWordsSecond = "tu empresa venda más.".split(" ");
 
   // Stagger Text Container
   const textContainerParent = {
@@ -94,7 +94,7 @@ export const HeroInstitutional = () => {
             className="text-[17px] md:text-[20px] text-[#999999] max-w-[540px] mb-12 leading-[1.6]"
             style={{ fontFamily: 'var(--font-secondary)' }}
           >
-            Auditamos tu operación comercial, implementamos IA y armamos el sistema para que vendas más con lo que ya tenés.
+            Auditamos tu operación comercial, implementamos sistemas inteligentes y corregimos fugas para que no se pierdan oportunidades de venta.
           </motion.p>
 
           <motion.div
