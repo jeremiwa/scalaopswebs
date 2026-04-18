@@ -48,7 +48,7 @@ export const WebFooter = () => {
           {/* Col 2: Soluciones */}
           <div className="flex flex-col gap-4 lg:col-span-2 lg:col-start-7">
             <h4 className="text-[12px] font-bold text-white uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-secondary)' }}>Soluciones</h4>
-            <Link to="/web/contacto" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Auditoría</Link>
+            <Link to="/web/auditoria" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Auditoría</Link>
             <Link to="/web/soluciones/empleado-ia" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Empleado IA</Link>
             <Link to="/web/soluciones" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Implementación</Link>
             <Link to="/web/soluciones" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Ver todas</Link>
