@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 
 export const Formulario = () => {
@@ -72,6 +72,14 @@ export const Formulario = () => {
                             <div className="text-white/50 animate-pulse text-lg font-medium tracking-wide">Cargando formulario...</div>
                         </div>
                     )}
+
+                    {/* Legal consent */}
+                    <p className="text-center text-[12px] text-white/30 mt-6 leading-[1.6]">
+                      Al enviar este formulario aceptás nuestra{' '}
+                      <Link to="/web/legales/privacidad" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Política de Privacidad</Link>
+                      {' '}y nuestros{' '}
+                      <Link to="/web/legales/terminos" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Términos y Condiciones</Link>.
+                    </p>
                 </div>
             </main>
 

@@ -37,6 +37,8 @@ import { WebLayout } from './components/web/WebLayout';
 import { WebHome } from './pages/web/WebHome';
 import { WebNosotros } from './pages/web/WebNosotros';
 import { WebFilosofia } from './pages/web/WebFilosofia';
+import { WebPrivacidad } from './pages/web/WebPrivacidad';
+import { WebTerminos } from './pages/web/WebTerminos';
 
 // Home Component that houses the main landing page
 const Home = () => {
@@ -92,6 +94,8 @@ export default function App() {
            <Route path="soluciones" element={<WebSoluciones />} />  */}
         <Route path="nosotros" element={<WebNosotros />} /> 
         <Route path="filosofia" element={<WebFilosofia />} /> 
+        <Route path="legales/privacidad" element={<WebPrivacidad />} />
+        <Route path="legales/terminos" element={<WebTerminos />} />
       </Route>
 
       {/* ── Sistema: public product page ── */}
