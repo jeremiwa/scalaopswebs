@@ -36,10 +36,10 @@ export const WebNavbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 py-4 ${
         isScrolled || mobileMenuOpen
-          ? 'bg-[#000000]/90 backdrop-blur-xl border-b border-white/[0.04] py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-[#000000]/90 backdrop-blur-xl border-b border-white/[0.04]'
+          : 'bg-transparent'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
