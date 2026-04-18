@@ -48,12 +48,12 @@ export const HeroInstitutional = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
 
-      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6 lg:gap-8 items-center mt-[10vh] lg:mt-0">
+      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[65%_35%] gap-6 lg:gap-4 items-center mt-[10vh] lg:mt-0">
         
         {/* Left Column: Text & CTAs */}
         <div className="flex flex-col items-start text-left pt-10 pb-20 lg:py-0">
           
-          <h1 className="text-[48px] md:text-[68px] lg:text-[76px] font-bold tracking-tight leading-[1.05] text-white mb-8" style={{ fontFamily: 'var(--font-primary)' }}>
+          <h1 className="text-[42px] md:text-[56px] lg:text-[68px] font-bold tracking-tight leading-[1.08] text-white mb-6" style={{ fontFamily: 'var(--font-primary)' }}>
             
             <motion.div 
               variants={textContainerParent}
@@ -91,7 +91,7 @@ export const HeroInstitutional = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8, ease: customEase }}
-            className="text-[17px] md:text-[20px] text-[#999999] max-w-[540px] mb-12 leading-[1.6]"
+            className="text-[17px] md:text-[20px] text-[#999999] max-w-[520px] mb-12 leading-[1.6]"
             style={{ fontFamily: 'var(--font-secondary)' }}
           >
             Auditamos tu operación comercial, implementamos sistemas inteligentes y corregimos fugas para que no se pierdan oportunidades de venta.
