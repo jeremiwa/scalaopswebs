@@ -40,6 +40,8 @@ import { WebFilosofia } from './pages/web/WebFilosofia';
 import { WebPrivacidad } from './pages/web/WebPrivacidad';
 import { WebTerminos } from './pages/web/WebTerminos';
 import { WebAuditoria } from './pages/web/WebAuditoria';
+import { WebImplementacion } from './pages/web/WebImplementacion';
+import { WebEmpleadoIA } from './pages/web/WebEmpleadoIA';
 
 // Home Component that houses the main landing page
 const Home = () => {
@@ -109,6 +111,8 @@ export default function App() {
         <Route path="legales/terminos" element={<WebTerminos />} />
         <Route path="contacto" element={<WebAuditoria />} />
         <Route path="auditoria" element={<WebAuditoria />} />
+        <Route path="implementacion" element={<WebImplementacion />} />
+        <Route path="empleado-ia" element={<WebEmpleadoIA />} />
       </Route>
 
       {/* ── Sistema: public product page ── */}

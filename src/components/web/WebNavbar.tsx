@@ -53,6 +53,26 @@ export const WebNavbar = () => {
         <div className="hidden md:flex items-center gap-10">
           <div className="relative group py-6">
             <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors cursor-pointer flex items-center gap-1">
+              SERVICIOS
+              <svg className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </span>
+            <div className="absolute top-[80%] left-0 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
+              <div className="bg-[#050505] border border-white/[0.08] rounded-[16px] w-[220px] p-2 flex flex-col shadow-2xl backdrop-blur-xl">
+                <Link to="/web/auditoria" className="text-[12px] font-bold tracking-widest uppercase text-white hover:bg-white/5 hover:text-[#6bdda1] px-4 py-3 rounded-lg transition-colors flex items-center gap-2">
+                  Auditoría
+                </Link>
+                <Link to="/web/implementacion" className="text-[12px] font-bold tracking-widest uppercase text-white hover:bg-white/5 hover:text-[#185de8] px-4 py-3 rounded-lg transition-colors flex items-center gap-2">
+                  Implementación
+                </Link>
+                <Link to="/web/empleado-ia" className="text-[12px] font-bold tracking-widest uppercase text-white hover:bg-white/5 hover:text-[#6bdda1] px-4 py-3 rounded-lg transition-colors flex items-center gap-2">
+                  Empleado IA
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative group py-6">
+            <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-white hover:text-white transition-colors cursor-pointer flex items-center gap-1">
               NOSOTROS
               <svg className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </span>
@@ -92,6 +112,12 @@ export const WebNavbar = () => {
       {/* Mobile Menu */}
       <div className={`fixed inset-0 bg-[#000000] z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-24 px-6 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
+            <span className="text-xl font-bold tracking-widest uppercase text-white/50">SERVICIOS</span>
+            <Link to="/web/auditoria" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Auditoría</Link>
+            <Link to="/web/implementacion" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Implementación</Link>
+            <Link to="/web/empleado-ia" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#6bdda1]/30 hover:border-[#6bdda1] transition-colors">Empleado IA</Link>
+          </div>
           <div className="flex flex-col gap-4">
             <span className="text-xl font-bold tracking-widest uppercase text-white/50">NOSOTROS</span>
             <Link to="/web/nosotros" className="text-[18px] font-bold tracking-widest uppercase text-white pl-4 border-l-2 border-[#185de8]/30 hover:border-[#185de8] transition-colors">Quiénes somos</Link>
