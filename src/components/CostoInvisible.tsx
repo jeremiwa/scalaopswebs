@@ -2,20 +2,20 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 export const CostoInvisible = () => {
   return (
-    <section className="relative" style={{ background: '#0A0A0F', padding: '130px 0' }}>
-      <div style={{ position: 'absolute', top: '-100px', left: '-120px', right: '-120px', bottom: '-100px', zIndex: 0, pointerEvents: 'none', borderRadius: '80px', background: 'radial-gradient(ellipse at 45% 50%, rgba(34,197,94,0.05) 0%, transparent 55%), radial-gradient(ellipse at 60% 50%, rgba(99,102,241,0.03) 0%, transparent 55%)', filter: 'blur(120px)', transform: 'translateZ(0)' }}></div>
+    <section className="relative" style={{ background: '#000000', padding: '130px 0' }}>
+      <div style={{ position: 'absolute', top: '-100px', left: '-120px', right: '-120px', bottom: '-100px', zIndex: 0, pointerEvents: 'none', borderRadius: '80px', background: 'radial-gradient(ellipse at 45% 50%, rgba(107, 221, 161,0.05) 0%, transparent 55%), radial-gradient(ellipse at 60% 50%, rgba(24, 93, 232,0.03) 0%, transparent 55%)', filter: 'blur(120px)', transform: 'translateZ(0)' }}></div>
 
       <div className="container-custom relative z-10 flex flex-col items-center">
 
         {/* ── MODULE CARD (PREMIUM) ── */}
         <div className="w-full card-premium" style={{
           maxWidth: '860px', margin: '0 auto', padding: '1px', borderRadius: '24px',
-          background: 'linear-gradient(145deg, rgba(99,102,241,0.18) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.03) 60%, rgba(34,197,94,0.14) 100%)',
+          background: 'linear-gradient(145deg, rgba(24, 93, 232,0.18) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.03) 60%, rgba(107, 221, 161,0.14) 100%)',
           transition: 'all 0.4s ease'
         }}>
           <div className="w-full flex flex-col items-center" style={{
-            background: '#0C0C14', borderRadius: '23px', padding: '44px 48px 36px',
-            backgroundImage: 'radial-gradient(ellipse at 30% 0%, rgba(99,102,241,0.04) 0%, transparent 40%)',
+            background: '#050505', borderRadius: '23px', padding: '44px 48px 36px',
+            backgroundImage: 'radial-gradient(ellipse at 30% 0%, rgba(24, 93, 232,0.04) 0%, transparent 40%)',
             textAlign: 'center'
           }}>
 
@@ -27,7 +27,7 @@ export const CostoInvisible = () => {
               transition={{ duration: 0.6 }}
               className="text-center w-full"
             >
-              <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#22C55E', marginBottom: '12px', display: 'block' }}>
+              <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#6bdda1', marginBottom: '12px', display: 'block' }}>
                 LO QUE ESTÁ EN JUEGO
               </span>
               <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#F5F5F7', letterSpacing: '-0.03em', lineHeight: 1.08, margin: '0 0 10px' }}>
@@ -64,7 +64,7 @@ export const CostoInvisible = () => {
 
               {/* DESPUÉS */}
               <div className="rounded-[18px] p-7 md:p-8 flex flex-col justify-between w-full flex-1" style={{ background: 'rgba(15,23,42,0.35)', border: '1px solid rgba(16,185,129,0.15)' }}>
-                <div className="text-[11px] font-semibold tracking-widest uppercase text-[#22C55E] mb-8">DESPUÉS</div>
+                <div className="text-[11px] font-semibold tracking-widest uppercase text-[#6bdda1] mb-8">DESPUÉS</div>
                 <div className="flex flex-col gap-5">
                   <div className="flex justify-between items-center border-b border-white/[0.04] pb-5">
                     <span className="text-[15px]" style={{ color: 'rgba(203,213,225,0.68)' }}>Leads / mes</span>
@@ -72,7 +72,7 @@ export const CostoInvisible = () => {
                   </div>
                   <div className="flex justify-between items-center border-b border-white/[0.04] pb-5">
                     <span className="text-[15px]" style={{ color: 'rgba(203,213,225,0.68)' }}>Tasa de cierre</span>
-                    <span className="text-[20px] text-[#22C55E] font-medium">6%</span>
+                    <span className="text-[20px] text-[#6bdda1] font-medium">6%</span>
                   </div>
                   <div className="flex justify-between items-center pt-2">
                     <span className="text-[15px]" style={{ color: 'rgba(203,213,225,0.68)' }}>Facturación</span>
@@ -84,11 +84,11 @@ export const CostoInvisible = () => {
 
             {/* ── DINERO RECUPERADO ── */}
             <div className="w-full relative mt-1">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '38px 24px', marginTop: '24px', background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.02) 100%)', border: '1px solid rgba(34, 197, 94, 0.15)', borderRadius: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '38px 24px', marginTop: '24px', background: 'linear-gradient(135deg, rgba(107, 221, 161, 0.08) 0%, rgba(107, 221, 161, 0.02) 100%)', border: '1px solid rgba(107, 221, 161, 0.15)', borderRadius: '16px' }}>
                 <span style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#A0A0B5', marginBottom: '4px' }}>Dinero recuperado:</span>
-                <span style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-0.02em', color: '#22C55E', lineHeight: 1 }}>
+                <span style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-0.02em', color: '#6bdda1', lineHeight: 1 }}>
                   <span className="counter-up" data-target="20000" data-prefix="+$" data-duration="1500">+$0</span>
-                  <span style={{ fontSize: '20px', fontWeight: 500, color: 'rgba(34, 197, 94, 0.7)', marginLeft: '4px' }}>/mes</span>
+                  <span style={{ fontSize: '20px', fontWeight: 500, color: 'rgba(107, 221, 161, 0.7)', marginLeft: '4px' }}>/mes</span>
                 </span>
                 <span style={{ marginTop: '8px', fontSize: '14px', color: '#F5F5F7', fontWeight: 500 }}>Sin gastar un dólar más en publicidad.</span>
               </div>
@@ -102,7 +102,7 @@ export const CostoInvisible = () => {
 
         {/* ── CTA INTERMEDIO ── */}
         <div style={{ textAlign: 'center', paddingTop: '20px', width: '100%' }}>
-          <Link to="/formulario" target="_blank" rel="noopener noreferrer" className="mid-cta-btn" style={{ display: 'inline-block', padding: '14px 32px', background: 'transparent', color: '#22C55E', border: '1.5px solid rgba(34, 197, 94, 0.3)', borderRadius: '10px', fontSize: '16px', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s ease' }}>Quiero recuperar esas ventas</Link>
+          <Link to="/formulario" target="_blank" rel="noopener noreferrer" className="mid-cta-btn" style={{ display: 'inline-block', padding: '14px 32px', background: 'transparent', color: '#6bdda1', border: '1.5px solid rgba(107, 221, 161, 0.3)', borderRadius: '10px', fontSize: '16px', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s ease' }}>Quiero recuperar esas ventas</Link>
           <p style={{ marginTop: '10px', fontSize: '13px', color: '#5A5A6E' }}>Llamada gratuita. Sin compromiso.</p>
         </div>
 
@@ -114,7 +114,7 @@ export const CostoInvisible = () => {
           @keyframes slideFromRight { from { opacity:0; transform: translateX(40px); } to { opacity:1; transform: translateX(0); } }
           .calc-slide-left.visible { animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
           .calc-slide-right.visible { animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 200ms; }
-          .mid-cta-btn:hover { background: rgba(34, 197, 94, 0.08) !important; border-color: rgba(34, 197, 94, 0.5) !important; box-shadow: 0 0 20px rgba(34, 197, 94, 0.10) !important; }
+          .mid-cta-btn:hover { background: rgba(107, 221, 161, 0.08) !important; border-color: rgba(107, 221, 161, 0.5) !important; box-shadow: 0 0 20px rgba(107, 221, 161, 0.10) !important; }
         `}} />
     </section>
   );

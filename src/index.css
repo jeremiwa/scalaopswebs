@@ -131,8 +131,8 @@ html {
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.4),
     0 8px 20px rgba(0, 0, 0, 0.3),
-    0 0 60px rgba(34, 197, 94, 0.06);
-  border-color: rgba(34, 197, 94, 0.22) !important;
+    0 0 60px rgba(107, 221, 161, 0.06);
+  border-color: rgba(107, 221, 161, 0.22) !important;
 }
 
 /* Video testimonial play button */
@@ -141,7 +141,7 @@ html {
 }
 .play-btn-ring:hover {
   transform: scale(1.08) !important;
-  box-shadow: 0 0 40px rgba(34, 197, 94, 0.25), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 40px rgba(107, 221, 161, 0.25), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
 
@@ -185,7 +185,7 @@ html {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22C55E;
+  background: #6bdda1;
   flex-shrink: 0;
   animation: proof-pulse 2s ease-in-out infinite;
 }
@@ -194,11 +194,11 @@ html {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    box-shadow: 0 0 0 0 rgba(107, 221, 161, 0.4);
   }
 
   50% {
-    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 6px rgba(107, 221, 161, 0);
   }
 }
 
@@ -259,9 +259,9 @@ html {
   padding: 48px 32px;
   margin-top: 32px;
   background: linear-gradient(135deg,
-      rgba(34, 197, 94, 0.08) 0%,
-      rgba(34, 197, 94, 0.02) 100%);
-  border: 1px solid rgba(34, 197, 94, 0.12);
+      rgba(107, 221, 161, 0.08) 0%,
+      rgba(107, 221, 161, 0.02) 100%);
+  border: 1px solid rgba(107, 221, 161, 0.12);
   border-radius: 16px;
 }
 
@@ -277,7 +277,7 @@ html {
 .calc-result-amount {
   font-size: 56px;
   font-weight: 800;
-  color: #22C55E;
+  color: #6bdda1;
   letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 12px;
@@ -341,7 +341,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   overflow: hidden;
-  background: #0C0C14;
+  background: #050505;
 }
 
 /* HEADER ROW */
@@ -386,15 +386,15 @@ html {
 
 /* COLUMNA SCALA — destacada */
 .comp-col-scala {
-  color: #22C55E;
+  color: #6bdda1;
   font-weight: 700;
-  background: rgba(34, 197, 94, 0.04);
+  background: rgba(107, 221, 161, 0.04);
   font-size: 14px;
   letter-spacing: 0.06em;
 }
 
 .comp-cell-scala {
-  background: rgba(34, 197, 94, 0.03);
+  background: rgba(107, 221, 161, 0.03);
 }
 
 /* CRITERIA COLUMN — texto a la izquierda */
@@ -414,8 +414,8 @@ html {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(34, 197, 94, 0.12);
-  color: #22C55E;
+  background: rgba(107, 221, 161, 0.12);
+  color: #6bdda1;
   font-size: 14px;
   font-weight: 700;
 }
@@ -454,7 +454,7 @@ html {
 }
 
 .comp-row:not(.comp-header):hover .comp-cell-scala {
-  background: rgba(34, 197, 94, 0.06);
+  background: rgba(107, 221, 161, 0.06);
 }
 
 /* MOBILE — cambiar a layout compacto */
@@ -500,7 +500,7 @@ html {
   right: -60px;
   bottom: -40px;
   background: radial-gradient(ellipse at 75% 50%,
-      rgba(34, 197, 94, 0.04) 0%,
+      rgba(107, 221, 161, 0.04) 0%,
       transparent 60%);
   filter: blur(60px);
   z-index: -1;
@@ -625,7 +625,7 @@ html {
   width: 700px;
   height: 400px;
   background: radial-gradient(ellipse at 50% 50%,
-      rgba(34, 197, 94, 0.06) 0%,
+      rgba(107, 221, 161, 0.06) 0%,
       transparent 70%);
   filter: blur(80px);
   z-index: 0;
@@ -641,10 +641,10 @@ html {
   height: 350px;
   background:
     radial-gradient(ellipse at 40% 50%,
-      rgba(34, 197, 94, 0.08) 0%,
+      rgba(107, 221, 161, 0.08) 0%,
       transparent 60%),
     radial-gradient(ellipse at 60% 50%,
-      rgba(99, 102, 241, 0.05) 0%,
+      rgba(24, 93, 232, 0.05) 0%,
       transparent 60%);
   filter: blur(80px);
   z-index: 0;
@@ -659,7 +659,7 @@ html {
   height: 500px;
   background:
     radial-gradient(ellipse at 50% 50%,
-      rgba(59, 130, 246, 0.07) 0%,
+      rgba(24, 93, 232, 0.07) 0%,
       transparent 60%);
   filter: blur(80px);
   z-index: 0;
@@ -674,7 +674,7 @@ html {
   width: 500px;
   height: 300px;
   background: radial-gradient(ellipse at 50% 50%,
-      rgba(34, 197, 94, 0.10) 0%,
+      rgba(107, 221, 161, 0.10) 0%,
       transparent 65%);
   filter: blur(80px);
   z-index: 0;
@@ -698,33 +698,33 @@ html {
 
 /* 2. FONDOS DIFERENCIADOS POR SECCIÓN */
 .section-hero {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-scala {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-pain {
-  background: #0B0B12;
+  background: #020202;
 }
 
 .section-calc {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-proof {
-  background: #0C0C14;
+  background: #050505;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .section-sprint {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-escala {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-ia {
@@ -732,15 +732,15 @@ html {
 }
 
 .section-diff {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-faq {
-  background: #0B0B12;
+  background: #020202;
 }
 
 .section-cta {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 /* 3. BORDES DE CARDS */
@@ -766,18 +766,18 @@ html {
   padding: 1px;
   border-radius: 24px;
   background: linear-gradient(145deg,
-      rgba(99, 102, 241, 0.20) 0%,
+      rgba(24, 93, 232, 0.20) 0%,
       rgba(255, 255, 255, 0.05) 30%,
       rgba(255, 255, 255, 0.03) 60%,
-      rgba(34, 197, 94, 0.15) 100%);
+      rgba(107, 221, 161, 0.15) 100%);
 }
 
 .card-premium-inner {
-  background: #0C0C14;
+  background: #050505;
   border-radius: 23px;
   padding: 48px 44px;
   background-image: radial-gradient(ellipse at 20% 0%,
-      rgba(99, 102, 241, 0.04) 0%,
+      rgba(24, 93, 232, 0.04) 0%,
       transparent 45%);
 }
 
@@ -800,7 +800,7 @@ html {
 }
 
 .section-label.accent {
-  color: #22C55E;
+  color: #6bdda1;
 }
 
 .section-h2 {
@@ -846,25 +846,25 @@ html {
 
 /* 5. GLOW DEL TIMELINE */
 .timeline-line-fill {
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.20);
+  box-shadow: 0 0 8px rgba(107, 221, 161, 0.20);
 }
 
 .node-badge-green {
-  border: 1px solid rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(107, 221, 161, 0.12);
 }
 
 .node-badge-blue {
-  border: 1px solid rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(24, 93, 232, 0.12);
 }
 
 .node-icon-green {
-  box-shadow: 0 0 16px rgba(34, 197, 94, 0.06);
+  box-shadow: 0 0 16px rgba(107, 221, 161, 0.06);
 }
 
 .node-icon-result {
   box-shadow:
-    0 0 20px rgba(34, 197, 94, 0.15),
-    0 0 40px rgba(34, 197, 94, 0.06);
+    0 0 20px rgba(107, 221, 161, 0.15),
+    0 0 40px rgba(107, 221, 161, 0.06);
 }
 
 /* 6. CTAs INTERMEDIOS */
@@ -877,8 +877,8 @@ html {
   display: inline-block;
   padding: 14px 32px;
   background: transparent;
-  color: #22C55E;
-  border: 1.5px solid rgba(34, 197, 94, 0.3);
+  color: #6bdda1;
+  border: 1.5px solid rgba(107, 221, 161, 0.3);
   border-radius: 10px;
   font-size: 16px;
   font-weight: 600;
@@ -887,9 +887,9 @@ html {
 }
 
 .mid-cta-btn:hover {
-  background: rgba(34, 197, 94, 0.08);
-  border-color: rgba(34, 197, 94, 0.5);
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.10);
+  background: rgba(107, 221, 161, 0.08);
+  border-color: rgba(107, 221, 161, 0.5);
+  box-shadow: 0 0 20px rgba(107, 221, 161, 0.10);
 }
 
 .mid-cta-sub {
@@ -949,7 +949,7 @@ html {
   left: 0;
   right: 0;
   height: 40%;
-  background: linear-gradient(transparent, #0A0A0F);
+  background: linear-gradient(transparent, #000000);
   pointer-events: none;
 }
 
@@ -982,7 +982,7 @@ button {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #22C55E, #10B981);
+  background: linear-gradient(90deg, #6bdda1, #10B981);
   z-index: 9999;
   width: 0;
   transition: width 0.05s linear;
@@ -997,7 +997,7 @@ button {
   width: 700px;
   height: 400px;
   background: radial-gradient(ellipse at 50% 50%,
-      rgba(34, 197, 94, 0.06) 0%,
+      rgba(107, 221, 161, 0.06) 0%,
       transparent 70%);
   filter: blur(80px);
   z-index: 0;
@@ -1013,10 +1013,10 @@ button {
   height: 350px;
   background:
     radial-gradient(ellipse at 40% 50%,
-      rgba(34, 197, 94, 0.08) 0%,
+      rgba(107, 221, 161, 0.08) 0%,
       transparent 60%),
     radial-gradient(ellipse at 60% 50%,
-      rgba(99, 102, 241, 0.05) 0%,
+      rgba(24, 93, 232, 0.05) 0%,
       transparent 60%);
   filter: blur(80px);
   z-index: 0;
@@ -1031,7 +1031,7 @@ button {
   height: 500px;
   background:
     radial-gradient(ellipse at 50% 50%,
-      rgba(59, 130, 246, 0.07) 0%,
+      rgba(24, 93, 232, 0.07) 0%,
       transparent 60%);
   filter: blur(80px);
   z-index: 0;
@@ -1046,7 +1046,7 @@ button {
   width: 500px;
   height: 300px;
   background: radial-gradient(ellipse at 50% 50%,
-      rgba(34, 197, 94, 0.10) 0%,
+      rgba(107, 221, 161, 0.10) 0%,
       transparent 65%);
   filter: blur(80px);
   z-index: 0;
@@ -1070,33 +1070,33 @@ button {
 
 /* 2. FONDOS DIFERENCIADOS POR SECCIÓN */
 .section-hero {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-scala {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-pain {
-  background: #0B0B12;
+  background: #020202;
 }
 
 .section-calc {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-proof {
-  background: #0C0C14;
+  background: #050505;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .section-sprint {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-escala {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-ia {
@@ -1104,15 +1104,15 @@ button {
 }
 
 .section-diff {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 .section-faq {
-  background: #0B0B12;
+  background: #020202;
 }
 
 .section-cta {
-  background: #0A0A0F;
+  background: #000000;
 }
 
 /* 3. BORDES DE CARDS */
@@ -1138,18 +1138,18 @@ button {
   padding: 1px;
   border-radius: 24px;
   background: linear-gradient(145deg,
-      rgba(99, 102, 241, 0.20) 0%,
+      rgba(24, 93, 232, 0.20) 0%,
       rgba(255, 255, 255, 0.05) 30%,
       rgba(255, 255, 255, 0.03) 60%,
-      rgba(34, 197, 94, 0.15) 100%);
+      rgba(107, 221, 161, 0.15) 100%);
 }
 
 .card-premium-inner {
-  background: #0C0C14;
+  background: #050505;
   border-radius: 23px;
   padding: 48px 44px;
   background-image: radial-gradient(ellipse at 20% 0%,
-      rgba(99, 102, 241, 0.04) 0%,
+      rgba(24, 93, 232, 0.04) 0%,
       transparent 45%);
 }
 
@@ -1172,7 +1172,7 @@ button {
 }
 
 .section-label.accent {
-  color: #22C55E;
+  color: #6bdda1;
 }
 
 .section-h2 {
@@ -1218,25 +1218,25 @@ button {
 
 /* 5. GLOW DEL TIMELINE */
 .timeline-line-fill {
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.20);
+  box-shadow: 0 0 8px rgba(107, 221, 161, 0.20);
 }
 
 .node-badge-green {
-  border: 1px solid rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(107, 221, 161, 0.12);
 }
 
 .node-badge-blue {
-  border: 1px solid rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(24, 93, 232, 0.12);
 }
 
 .node-icon-green {
-  box-shadow: 0 0 16px rgba(34, 197, 94, 0.06);
+  box-shadow: 0 0 16px rgba(107, 221, 161, 0.06);
 }
 
 .node-icon-result {
   box-shadow:
-    0 0 20px rgba(34, 197, 94, 0.15),
-    0 0 40px rgba(34, 197, 94, 0.06);
+    0 0 20px rgba(107, 221, 161, 0.15),
+    0 0 40px rgba(107, 221, 161, 0.06);
 }
 
 /* 6. CTAs INTERMEDIOS */
@@ -1249,8 +1249,8 @@ button {
   display: inline-block;
   padding: 14px 32px;
   background: transparent;
-  color: #22C55E;
-  border: 1.5px solid rgba(34, 197, 94, 0.3);
+  color: #6bdda1;
+  border: 1.5px solid rgba(107, 221, 161, 0.3);
   border-radius: 10px;
   font-size: 16px;
   font-weight: 600;
@@ -1259,9 +1259,9 @@ button {
 }
 
 .mid-cta-btn:hover {
-  background: rgba(34, 197, 94, 0.08);
-  border-color: rgba(34, 197, 94, 0.5);
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.10);
+  background: rgba(107, 221, 161, 0.08);
+  border-color: rgba(107, 221, 161, 0.5);
+  box-shadow: 0 0 20px rgba(107, 221, 161, 0.10);
 }
 
 .mid-cta-sub {
@@ -1321,7 +1321,7 @@ button {
   left: 0;
   right: 0;
   height: 40%;
-  background: linear-gradient(transparent, #0A0A0F);
+  background: linear-gradient(transparent, #000000);
   pointer-events: none;
 }
 
@@ -1354,7 +1354,7 @@ button {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #22C55E, #10B981);
+  background: linear-gradient(90deg, #6bdda1, #10B981);
   z-index: 9999;
   width: 0;
   transition: width 0.05s linear;
@@ -1413,7 +1413,7 @@ button {
 
 .btn-hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(34, 197, 94, 0.35) !important;
+  box-shadow: 0 8px 25px -5px rgba(107, 221, 161, 0.35) !important;
 }
 
 /* COSTO INVISIBLE QUOTE (BOXLESS PREMIUM) */
@@ -1466,7 +1466,7 @@ button {
   bottom: -6px;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.55), rgba(34, 197, 94, 0.20), transparent);
+  background: linear-gradient(90deg, rgba(107, 221, 161, 0.55), rgba(107, 221, 161, 0.20), transparent);
   border-radius: 2px;
 }
 

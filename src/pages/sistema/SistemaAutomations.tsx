@@ -76,7 +76,7 @@ export const SistemaAutomations = () => {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0' }}>
                     {/* Trigger */}
-                    <div className="sis-flow-node" style={{ borderColor: 'rgba(59, 130, 246, 0.2)', background: 'rgba(59, 130, 246, 0.04)' }}>
+                    <div className="sis-flow-node" style={{ borderColor: 'rgba(24, 93, 232, 0.2)', background: 'rgba(24, 93, 232, 0.04)' }}>
                         <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--sis-blue-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <Clock size={16} style={{ color: 'var(--sis-blue)' }} />
                         </div>

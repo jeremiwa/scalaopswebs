@@ -4,14 +4,9 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (
-    <section className="relative" style={{ background: '#0A0A0F', paddingTop: '120px', paddingBottom: '32px' }}>
-      <div style={{
-        position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%) translateZ(0)',
-        width: '700px', height: '400px',
-        background: 'radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.06) 0%, transparent 70%)',
-        filter: 'blur(80px)',
-        zIndex: 0, pointerEvents: 'none'
-      }}></div>
+    <section className="relative overflow-hidden" style={{ background: '#000000', paddingTop: '120px', paddingBottom: '32px' }}>
+      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
 
       <div className="container-custom relative z-10 flex flex-col items-center text-center">
 
@@ -31,8 +26,8 @@ export const Hero = () => {
 
         {/* Video (Hero Card) */}
         <div className="relative w-full" style={{ maxWidth: '680px' }}>
-          <div style={{ position: 'absolute', top: '-180px', left: '-180px', right: '-180px', bottom: '-180px', zIndex: 0, pointerEvents: 'none', borderRadius: '100px', background: 'radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.015) 0%, rgba(99,102,241,0.012) 40%, transparent 70%)', filter: 'blur(160px)', transform: 'translateZ(0)' }}></div>
-          <div className="video-wrapper bg-[#0C0C14] relative shadow-lg overflow-hidden z-20" style={{ borderRadius: '24px', border: '1px solid rgba(255,255,255,0.10)', boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
+          <div style={{ position: 'absolute', top: '-180px', left: '-180px', right: '-180px', bottom: '-180px', zIndex: 0, pointerEvents: 'none', borderRadius: '100px', background: 'radial-gradient(ellipse at 50% 50%, rgba(107, 221, 161,0.015) 0%, rgba(24, 93, 232,0.012) 40%, transparent 70%)', filter: 'blur(160px)', transform: 'translateZ(0)' }}></div>
+          <div className="video-wrapper bg-[#050505] relative shadow-lg overflow-hidden z-20" style={{ borderRadius: '24px', border: '1px solid rgba(255,255,255,0.10)', boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
             <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
               <iframe
                 src="https://player.vimeo.com/video/1180578010?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"

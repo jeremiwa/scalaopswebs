@@ -57,7 +57,7 @@ export const StoryboardDolor = () => {
     const formatted = count.toLocaleString('es-AR');
 
     return (
-        <section className="relative" style={{ background: '#0B0B12', padding: '130px 0' }}>
+        <section className="relative" style={{ background: '#020202', padding: '130px 0' }}>
             <div style={{ position: 'absolute', top: '-150px', left: '-150px', right: '-150px', bottom: '-150px', zIndex: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse at 50% 40%, rgba(239,68,68,0.020) 0%, rgba(239,68,68,0.008) 40%, transparent 65%)', filter: 'blur(150px)', transform: 'translateZ(0)' }}></div>
             <div className="container-custom relative z-10 flex flex-col items-center">
                 <div className="relative w-full max-w-[1200px] mx-auto">
@@ -89,7 +89,7 @@ export const StoryboardDolor = () => {
                             {/* ═══ CARD 1 — WhatsApp ═══ */}
                             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
                                 className="flex flex-col"
-                                style={{ background: '#0C0C14', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '16px', overflow: 'hidden', minHeight: '480px', padding: 0 }}>
+                                style={{ background: '#050505', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '16px', overflow: 'hidden', minHeight: '480px', padding: 0 }}>
 
                                 {/* WA header */}
                                 <div className="flex items-center gap-[10px] px-4 py-[10px]" style={{ background: '#1F2C34', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
@@ -142,7 +142,7 @@ export const StoryboardDolor = () => {
                             {/* ═══ CARD 2 — Instagram DM ═══ */}
                             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.08 }}
                                 className="flex flex-col"
-                                style={{ background: '#0C0C14', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '16px', overflow: 'hidden', minHeight: '480px', padding: 0 }}>
+                                style={{ background: '#050505', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '16px', overflow: 'hidden', minHeight: '480px', padding: 0 }}>
 
                                 {/* IG header */}
                                 <div className="flex items-center gap-[10px] px-4 py-[10px] relative" style={{ background: '#000000', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -201,7 +201,7 @@ export const StoryboardDolor = () => {
                             {/* ═══ CARD 3 — Dinero perdido (hero-metric) ═══ */}
                             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.16 }}
                                 className="flex flex-col"
-                                style={{ background: '#0C0C14', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '16px', overflow: 'hidden', minHeight: '480px', padding: 0 }}>
+                                style={{ background: '#050505', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '16px', overflow: 'hidden', minHeight: '480px', padding: 0 }}>
 
                                 <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                                     {/* Header */}
@@ -246,7 +246,7 @@ export const StoryboardDolor = () => {
 
                         {/* Mid-CTA below explicitely requested */}
                         <div style={{ textAlign: 'center', padding: '48px 0 0', width: '100%' }}>
-                            <Link to="/formulario" target="_blank" rel="noopener noreferrer" className="mid-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 32px', background: 'transparent', border: '1.5px solid rgba(34,197,94,0.4)', borderRadius: '100px', color: '#22C55E', fontSize: '15px', fontWeight: 600, textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s ease', width: 'auto' }}>¿Te pasa esto? Agendá tu llamada gratuita</Link>
+                            <Link to="/formulario" target="_blank" rel="noopener noreferrer" className="mid-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 32px', background: 'transparent', border: '1.5px solid rgba(107, 221, 161,0.4)', borderRadius: '100px', color: '#6bdda1', fontSize: '15px', fontWeight: 600, textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s ease', width: 'auto' }}>¿Te pasa esto? Agendá tu llamada gratuita</Link>
                             <p style={{ marginTop: '10px', fontSize: '13px', color: '#5A5A6E' }}>Llamada sin costo. Sin compromiso.</p>
                         </div>
 
@@ -255,7 +255,7 @@ export const StoryboardDolor = () => {
 
                 <style dangerouslySetInnerHTML={{
                     __html: `
-                        .mid-cta-btn:hover { background: rgba(34,197,94,0.08) !important; border-color: rgba(34,197,94,0.6) !important; }
+                        .mid-cta-btn:hover { background: rgba(107, 221, 161,0.08) !important; border-color: rgba(107, 221, 161,0.6) !important; }
                         @keyframes typing-fade { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.5; } }
                     `
                 }} />

@@ -40,11 +40,11 @@ export const Escalar = () => {
     ];
 
     return (
-        <section className="relative text-center" style={{ background: '#0A0A0F', padding: '130px 0' }}>
+        <section className="relative text-center" style={{ background: '#000000', padding: '130px 0' }}>
             <div className="container-custom relative z-10 flex flex-col items-center">
 
                 <div className="reveal">
-                    <span className="mb-4 block" style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#22C55E' }}>
+                    <span className="mb-4 block" style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#6bdda1' }}>
                         LO QUE VIENE DESPUÉS
                     </span>
                 </div>
@@ -68,8 +68,8 @@ export const Escalar = () => {
                             <svg className="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
                                 <defs>
                                     <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stopColor="#22C55E" stopOpacity="0.12" />
-                                        <stop offset="100%" stopColor="#22C55E" stopOpacity="0" />
+                                        <stop offset="0%" stopColor="#6bdda1" stopOpacity="0.12" />
+                                        <stop offset="100%" stopColor="#6bdda1" stopOpacity="0" />
                                     </linearGradient>
                                 </defs>
                                 <path
@@ -78,7 +78,7 @@ export const Escalar = () => {
                                 />
                                 <path
                                     d="M200,152 C220,140 240,120 270,95 C300,70 330,50 370,25 C385,18 395,12 400,8"
-                                    fill="none" stroke="#22C55E" strokeWidth="2.5"
+                                    fill="none" stroke="#6bdda1" strokeWidth="2.5"
                                     strokeDasharray="300"
                                     strokeDashoffset={animated ? "0" : "300"}
                                     style={{ transition: 'stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
@@ -92,27 +92,27 @@ export const Escalar = () => {
                             </svg>
 
                             <div className="absolute left-1/2 top-0 bottom-[30px] flex flex-col items-center">
-                                <div className="w-[1px] flex-1" style={{ background: 'repeating-linear-gradient(to bottom, rgba(34,197,94,0.25) 0px, rgba(34,197,94,0.25) 4px, transparent 4px, transparent 8px)' }}></div>
-                                <div className="text-[11px] font-bold text-[#22C55E] tracking-[0.1em] mt-2 px-2.5 py-0.5 bg-[#22C55E]/8 rounded">SCALA</div>
+                                <div className="w-[1px] flex-1" style={{ background: 'repeating-linear-gradient(to bottom, rgba(107, 221, 161,0.25) 0px, rgba(107, 221, 161,0.25) 4px, transparent 4px, transparent 8px)' }}></div>
+                                <div className="text-[11px] font-bold text-[#6bdda1] tracking-[0.1em] mt-2 px-2.5 py-0.5 bg-[#6bdda1]/8 rounded">SCALA</div>
                             </div>
 
                             <div className="absolute bottom-0 left-0 right-0 flex justify-between mt-2">
                                 <span className="text-[12px] text-[#5A5A6E] opacity-50">Sin sistema</span>
-                                <span className="text-[12px] text-[#22C55E]">Con sistema</span>
+                                <span className="text-[12px] text-[#6bdda1]">Con sistema</span>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/[0.05] text-center">
                             <div>
-                                <span className="block text-[22px] font-bold text-[#22C55E] tabular-nums">{c1}x</span>
+                                <span className="block text-[22px] font-bold text-[#6bdda1] tabular-nums">{c1}x</span>
                                 <span className="block text-[12px] mt-1 leading-[1.3]" style={{ color: 'rgba(203,213,225,0.60)' }}>Más cierres por vendedor</span>
                             </div>
                             <div>
-                                <span className="block text-[22px] font-bold text-[#22C55E] tabular-nums">-{c2}%</span>
+                                <span className="block text-[22px] font-bold text-[#6bdda1] tabular-nums">-{c2}%</span>
                                 <span className="block text-[12px] mt-1 leading-[1.3]" style={{ color: 'rgba(203,213,225,0.60)' }}>Leads sin seguimiento</span>
                             </div>
                             <div>
-                                <span className="block text-[22px] font-bold text-[#22C55E] tabular-nums">+{c3}%</span>
+                                <span className="block text-[22px] font-bold text-[#6bdda1] tabular-nums">+{c3}%</span>
                                 <span className="block text-[12px] mt-1 leading-[1.3]" style={{ color: 'rgba(203,213,225,0.60)' }}>Tasa de respuesta</span>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ export const Escalar = () => {
                             const Icon = pt.icon;
                             return (
                                 <div key={i} className="flex gap-4 items-start p-5 rounded-[14px] border border-transparent hover:bg-white/[0.02] hover:border-white/[0.05] transition-all duration-300">
-                                    <div className="w-10 h-10 min-w-[40px] flex items-center justify-center rounded-[10px] bg-[#22C55E]/8 text-[#22C55E]">
+                                    <div className="w-10 h-10 min-w-[40px] flex items-center justify-center rounded-[10px] bg-[#6bdda1]/8 text-[#6bdda1]">
                                         <Icon size={22} strokeWidth={1.5} />
                                     </div>
                                     <div>

@@ -16,7 +16,7 @@ export const Sprint30Dias = () => {
     const timelineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <section id="como-funciona" className="relative" style={{ background: '#0A0A0F', padding: '130px 0' }}>
+        <section id="como-funciona" className="relative" style={{ background: '#000000', padding: '130px 0' }}>
             <div className="container-custom relative z-10 flex flex-col items-center">
 
                 {/* ── HEADER ── */}
@@ -45,7 +45,7 @@ export const Sprint30Dias = () => {
                     {/* Timeline */}
                     <div className="w-full lg:w-1/2 relative py-2 lg:py-6 flex flex-col justify-between h-auto" ref={containerRef}>
                         <div className="absolute left-[6px] top-2 bottom-6 w-[1px] bg-white/[0.08]" />
-                        <motion.div className="absolute left-[6px] top-2 w-[1px] bg-[#22C55E]" style={{ height: timelineHeight }} />
+                        <motion.div className="absolute left-[6px] top-2 w-[1px] bg-[#6bdda1]" style={{ height: timelineHeight }} />
                         {phases.map((phase, i) => (
                             <div key={i} className="relative pl-10 md:pl-12 pb-8 last:pb-0 group reveal">
                                 <motion.div
@@ -53,10 +53,10 @@ export const Sprint30Dias = () => {
                                     whileInView={{ scale: 1, opacity: 1 }}
                                     viewport={{ margin: "-30%" }}
                                     transition={{ duration: 0.3 }}
-                                    className="absolute left-[1px] top-1.5 w-[11px] h-[11px] rounded-full bg-[#22C55E] z-10"
+                                    className="absolute left-[1px] top-1.5 w-[11px] h-[11px] rounded-full bg-[#6bdda1] z-10"
                                 />
                                 <div className="text-[13px] font-bold tracking-wider mb-1.5 flex items-center gap-1.5">
-                                    <span className="text-[#22C55E]">{phase.day}</span>
+                                    <span className="text-[#6bdda1]">{phase.day}</span>
                                     <span className="text-[#5A5A6E] font-normal">·</span>
                                     <span className="text-[#F5F5F7]">{phase.title}</span>
                                 </div>

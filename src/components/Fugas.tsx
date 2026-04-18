@@ -49,7 +49,7 @@ export const Fugas = () => {
   }, []);
 
   return (
-    <section className="py-[72px] md:py-[90px] relative" style={{ background: '#0A0A0F' }}>
+    <section className="py-[72px] md:py-[90px] relative" style={{ background: '#000000' }}>
       <div className="container-custom relative z-10 flex flex-col items-center">
 
         {/* ── MODULE CARD WRAPPER ── */}
@@ -113,7 +113,7 @@ export const Fugas = () => {
                     className="h-full rounded-full transition-all duration-500 ease-out"
                     style={{
                       width: `${(active / 4) * 100}%`,
-                      background: 'linear-gradient(90deg, #22C55E, #10B981)',
+                      background: 'linear-gradient(90deg, #6bdda1, #10B981)',
                       boxShadow: '0 0 10px rgba(16,185,129,0.20)',
                     }}
                   />
@@ -130,7 +130,7 @@ export const Fugas = () => {
                     {/* Num */}
                     <div
                       className="text-[10px] font-bold uppercase tracking-widest mb-2 transition-colors duration-300"
-                      style={{ color: i <= active ? '#22C55E' : '#5A5A6E' }}
+                      style={{ color: i <= active ? '#6bdda1' : '#5A5A6E' }}
                     >
                       {f.num}
                     </div>
@@ -139,15 +139,15 @@ export const Fugas = () => {
                     <div
                       className="w-[30px] h-[30px] rounded-full flex items-center justify-center transition-all duration-300 mb-3 shrink-0"
                       style={{
-                        background: i === active ? 'rgba(34,197,94,0.15)' : '#0D0D14',
-                        border: `2px solid ${i <= active ? '#22C55E' : 'rgba(148,163,184,0.15)'}`,
-                        boxShadow: i === active ? '0 0 16px rgba(34,197,94,0.25)' : 'none',
+                        background: i === active ? 'rgba(107, 221, 161,0.15)' : '#0D0D14',
+                        border: `2px solid ${i <= active ? '#6bdda1' : 'rgba(148,163,184,0.15)'}`,
+                        boxShadow: i === active ? '0 0 16px rgba(107, 221, 161,0.25)' : 'none',
                       }}
                     >
                       <div
                         className="w-[8px] h-[8px] rounded-full transition-all duration-300"
                         style={{
-                          background: i <= active ? '#22C55E' : 'rgba(148,163,184,0.20)',
+                          background: i <= active ? '#6bdda1' : 'rgba(148,163,184,0.20)',
                         }}
                       />
                     </div>

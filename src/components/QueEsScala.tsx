@@ -84,40 +84,40 @@ export const QueEsScala = () => {
 
     const colorMap = {
         green: {
-            badgeBg: 'rgba(34,197,94,0.06)',
-            badgeBorder: 'rgba(34,197,94,0.15)',
-            badgeBgActive: 'rgba(34,197,94,0.1)',
-            badgeBorderActive: 'rgba(34,197,94,0.3)',
-            badgeShadow: 'rgba(34,197,94,0.1)',
-            iconBg: 'rgba(34,197,94,0.06)',
-            iconBorder: 'rgba(34,197,94,0.1)',
-            iconBgActive: 'rgba(34,197,94,0.1)',
-            iconShadow: 'rgba(34,197,94,0.08)',
-            textColor: '#22C55E',
+            badgeBg: 'rgba(107, 221, 161,0.06)',
+            badgeBorder: 'rgba(107, 221, 161,0.15)',
+            badgeBgActive: 'rgba(107, 221, 161,0.1)',
+            badgeBorderActive: 'rgba(107, 221, 161,0.3)',
+            badgeShadow: 'rgba(107, 221, 161,0.1)',
+            iconBg: 'rgba(107, 221, 161,0.06)',
+            iconBorder: 'rgba(107, 221, 161,0.1)',
+            iconBgActive: 'rgba(107, 221, 161,0.1)',
+            iconShadow: 'rgba(107, 221, 161,0.08)',
+            textColor: '#6bdda1',
         },
         blue: {
-            badgeBg: 'rgba(59,130,246,0.06)',
-            badgeBorder: 'rgba(59,130,246,0.15)',
-            badgeBgActive: 'rgba(59,130,246,0.1)',
-            badgeBorderActive: 'rgba(59,130,246,0.3)',
-            badgeShadow: 'rgba(59,130,246,0.1)',
-            iconBg: 'rgba(59,130,246,0.06)',
-            iconBorder: 'rgba(59,130,246,0.1)',
-            iconBgActive: 'rgba(59,130,246,0.1)',
-            iconShadow: 'rgba(59,130,246,0.08)',
+            badgeBg: 'rgba(24, 93, 232,0.06)',
+            badgeBorder: 'rgba(24, 93, 232,0.15)',
+            badgeBgActive: 'rgba(24, 93, 232,0.1)',
+            badgeBorderActive: 'rgba(24, 93, 232,0.3)',
+            badgeShadow: 'rgba(24, 93, 232,0.1)',
+            iconBg: 'rgba(24, 93, 232,0.06)',
+            iconBorder: 'rgba(24, 93, 232,0.1)',
+            iconBgActive: 'rgba(24, 93, 232,0.1)',
+            iconShadow: 'rgba(24, 93, 232,0.08)',
             textColor: '#3B82F6',
         },
         result: {
-            badgeBg: 'rgba(34,197,94,0.08)',
-            badgeBorder: 'rgba(34,197,94,0.2)',
-            badgeBgActive: 'rgba(34,197,94,0.14)',
-            badgeBorderActive: 'rgba(34,197,94,0.4)',
-            badgeShadow: 'rgba(34,197,94,0.15)',
-            iconBg: 'rgba(34,197,94,0.1)',
-            iconBorder: 'rgba(34,197,94,0.2)',
-            iconBgActive: 'rgba(34,197,94,0.15)',
-            iconShadow: 'rgba(34,197,94,0.25)',
-            textColor: '#22C55E',
+            badgeBg: 'rgba(107, 221, 161,0.08)',
+            badgeBorder: 'rgba(107, 221, 161,0.2)',
+            badgeBgActive: 'rgba(107, 221, 161,0.14)',
+            badgeBorderActive: 'rgba(107, 221, 161,0.4)',
+            badgeShadow: 'rgba(107, 221, 161,0.15)',
+            iconBg: 'rgba(107, 221, 161,0.1)',
+            iconBorder: 'rgba(107, 221, 161,0.2)',
+            iconBgActive: 'rgba(107, 221, 161,0.15)',
+            iconShadow: 'rgba(107, 221, 161,0.25)',
+            textColor: '#6bdda1',
         },
     };
 
@@ -139,7 +139,7 @@ export const QueEsScala = () => {
                             left: '-250px',
                             right: '-250px',
                             bottom: '-250px',
-                            background: `radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.22), transparent 50%)`,
+                            background: `radial-gradient(ellipse at 50% 50%, rgba(24, 93, 232,0.22), transparent 50%)`,
                             filter: 'blur(30px)',
                         }}
                     />
@@ -152,7 +152,7 @@ export const QueEsScala = () => {
                             left: '-200px',
                             right: '-200px',
                             height: '500px',
-                            background: `radial-gradient(1000px 400px at 50% 100%, rgba(59,130,246,0.55), transparent 60%), radial-gradient(700px 300px at 65% 85%, rgba(99,102,241,0.35), transparent 55%), radial-gradient(500px 250px at 35% 90%, rgba(79,70,229,0.25), transparent 55%)`,
+                            background: `radial-gradient(1000px 400px at 50% 100%, rgba(24, 93, 232,0.55), transparent 60%), radial-gradient(700px 300px at 65% 85%, rgba(24, 93, 232,0.35), transparent 55%), radial-gradient(500px 250px at 35% 90%, rgba(79,70,229,0.25), transparent 55%)`,
                             filter: 'blur(20px)',
                         }}
                     />
@@ -165,7 +165,7 @@ export const QueEsScala = () => {
                             left: '-200px',
                             right: '-200px',
                             height: '500px',
-                            background: `radial-gradient(1000px 400px at 50% 0%, rgba(59,130,246,0.50), transparent 60%), radial-gradient(700px 300px at 40% 15%, rgba(99,102,241,0.30), transparent 55%), radial-gradient(500px 250px at 60% 10%, rgba(79,70,229,0.22), transparent 55%)`,
+                            background: `radial-gradient(1000px 400px at 50% 0%, rgba(24, 93, 232,0.50), transparent 60%), radial-gradient(700px 300px at 40% 15%, rgba(24, 93, 232,0.30), transparent 55%), radial-gradient(500px 250px at 60% 10%, rgba(79,70,229,0.22), transparent 55%)`,
                             filter: 'blur(20px)',
                         }}
                     />
@@ -175,12 +175,12 @@ export const QueEsScala = () => {
                         className="relative rounded-[24px] flex flex-col items-center"
                         style={{
                             background: 'linear-gradient(180deg, rgba(13,13,20,0.95) 0%, rgba(10,10,15,0.90) 100%)',
-                            border: '1px solid rgba(99,102,241,0.15)',
+                            border: '1px solid rgba(24, 93, 232,0.15)',
                             padding: '56px 48px 40px',
                             boxShadow: `
-                                0 0 30px rgba(59,130,246,0.20),
-                                0 0 80px rgba(59,130,246,0.16),
-                                0 0 160px rgba(59,130,246,0.12),
+                                0 0 30px rgba(24, 93, 232,0.20),
+                                0 0 80px rgba(24, 93, 232,0.16),
+                                0 0 160px rgba(24, 93, 232,0.12),
                                 0 0 300px rgba(79,70,229,0.08),
                                 0 20px 60px rgba(0,0,0,0.5)
                             `,
@@ -226,7 +226,7 @@ export const QueEsScala = () => {
                                         className="h-full rounded-full timeline-line-fill"
                                         style={{
                                             width: lineFill,
-                                            background: 'linear-gradient(90deg, #22C55E 0%, #10B981 33%, #3B82F6 66%, #22C55E 100%)',
+                                            background: 'linear-gradient(90deg, #6bdda1 0%, #10B981 33%, #3B82F6 66%, #6bdda1 100%)',
                                         }}
                                     />
                                 </div>
@@ -238,8 +238,8 @@ export const QueEsScala = () => {
                                     className="w-full rounded-full"
                                     style={{
                                         height: lineFill,
-                                        background: 'linear-gradient(180deg, #22C55E, #10B981, #3B82F6)',
-                                        boxShadow: '0 0 12px rgba(34,197,94,0.2)',
+                                        background: 'linear-gradient(180deg, #6bdda1, #10B981, #3B82F6)',
+                                        boxShadow: '0 0 12px rgba(107, 221, 161,0.2)',
                                     }}
                                 />
                             </div>
@@ -277,7 +277,7 @@ export const QueEsScala = () => {
 
                                             {/* Icon — on left line in mobile, centered in desktop */}
                                             <div
-                                                className={`w-[48px] h-[48px] flex items-center justify-center rounded-full mb-4 md:mb-6 transition-all duration-400 z-10 md:relative absolute left-0 md:left-auto ${isResult ? 'node-icon-result' : c.textColor === '#22C55E' ? 'node-icon-green' : ''}`}
+                                                className={`w-[48px] h-[48px] flex items-center justify-center rounded-full mb-4 md:mb-6 transition-all duration-400 z-10 md:relative absolute left-0 md:left-auto ${isResult ? 'node-icon-result' : c.textColor === '#6bdda1' ? 'node-icon-green' : ''}`}
                                                 style={{
                                                     background: '#0D0D14',
                                                     border: `2px solid ${isInView ? c.textColor : c.iconBorder}`,
@@ -290,7 +290,7 @@ export const QueEsScala = () => {
                                             {/* Title */}
                                             <h3
                                                 className="text-[17px] font-semibold mb-2 tracking-tight"
-                                                style={{ color: isResult ? '#22C55E' : '#F5F5F7' }}
+                                                style={{ color: isResult ? '#6bdda1' : '#F5F5F7' }}
                                             >
                                                 {node.title}
                                             </h3>
@@ -298,7 +298,7 @@ export const QueEsScala = () => {
                                             {/* Description */}
                                             <p
                                                 className="text-[14.5px] leading-relaxed max-w-[220px]"
-                                                style={{ color: isResult ? 'rgba(34,197,94,0.85)' : '#A0A0B0' }}
+                                                style={{ color: isResult ? 'rgba(107, 221, 161,0.85)' : '#A0A0B0' }}
                                             >
                                                 {node.desc}
                                             </p>

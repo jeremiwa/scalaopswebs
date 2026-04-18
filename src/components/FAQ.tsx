@@ -41,8 +41,8 @@ export const FAQ = () => {
   ];
 
   return (
-    <section className="relative border-t border-white/[0.03]" style={{ background: '#0B0B12', padding: '100px 0' }}>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, #22C55E, transparent)' }}></div>
+    <section className="relative border-t border-white/[0.03]" style={{ background: '#020202', padding: '100px 0' }}>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, #6bdda1, transparent)' }}></div>
       <div className="container-custom relative z-10 flex flex-col items-center">
         {/* Header */}
         <div className="text-center mb-10 md:mb-14 reveal">
@@ -54,7 +54,7 @@ export const FAQ = () => {
             <div key={i} onClick={() => toggleFaq(i)} className={`faq-item border-b border-white/[0.06] py-6 cursor-pointer ${i === 0 ? 'border-t' : ''} ${openIndex === i ? 'open' : ''}`}>
               <div className="flex justify-between items-center text-[17px] font-medium text-[#F5F5F7] group">
                 <span className="group-hover:text-white transition-colors">{faq.q}</span>
-                <ChevronDown size={20} className={`faq-chevron text-[#5A5A6E] transition-transform duration-300 shrink-0 ml-4 ${openIndex === i ? 'rotate-180 text-[#22C55E]' : ''}`} />
+                <ChevronDown size={20} className={`faq-chevron text-[#5A5A6E] transition-transform duration-300 shrink-0 ml-4 ${openIndex === i ? 'rotate-180 text-[#6bdda1]' : ''}`} />
               </div>
               <div className="faq-answer overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] text-[15px] leading-[1.6]" style={{ maxHeight: openIndex === i ? '300px' : '0px', opacity: openIndex === i ? 1 : 0, paddingTop: openIndex === i ? '12px' : '0px', color: 'rgba(203,213,225,0.72)' }}>
                 {faq.a}

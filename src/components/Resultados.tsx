@@ -7,7 +7,7 @@ export const Resultados = () => {
     <section
       id="resultados"
       style={{
-        background: '#0B0B12',
+        background: '#020202',
         borderTop: '1px solid rgba(255, 255, 255, 0.04)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
         padding: '120px 0 130px',
@@ -25,7 +25,7 @@ export const Resultados = () => {
           transform: 'translate(-50%, -50%)',
           width: '800px',
           height: '450px',
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.04) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(107, 221, 161,0.04) 0%, transparent 65%)',
           filter: 'blur(90px)',
           pointerEvents: 'none',
           zIndex: 0,
@@ -44,7 +44,7 @@ export const Resultados = () => {
               fontWeight: 600,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: '#22C55E',
+              color: '#6bdda1',
             }}
           >
             Resultados reales
@@ -123,13 +123,13 @@ export const Resultados = () => {
               style={{
                 background: 'rgba(255,255,255,0.022)',
                 borderRadius: '22px',
-                border: '1px solid rgba(34,197,94,0.10)',
+                border: '1px solid rgba(107, 221, 161,0.10)',
                 padding: '28px 28px 20px',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.18), 0 0 30px rgba(34,197,94,0.025), 0 0 0 0.5px rgba(34,197,94,0.06)',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.18), 0 0 30px rgba(107, 221, 161,0.025), 0 0 0 0.5px rgba(107, 221, 161,0.06)',
               }}
             >
               {/* Subtle top accent line */}
@@ -142,7 +142,7 @@ export const Resultados = () => {
                   transform: 'translateX(-50%)',
                   width: '60%',
                   height: '1px',
-                  background: 'linear-gradient(90deg, transparent, rgba(34,197,94,0.25), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(107, 221, 161,0.25), transparent)',
                   pointerEvents: 'none',
                 }}
               />
@@ -218,7 +218,7 @@ export const Resultados = () => {
                           transform: 'translate(-50%, -50%)',
                           width: '100px',
                           height: '100px',
-                          background: 'radial-gradient(circle, rgba(34,197,94,0.10) 0%, transparent 70%)',
+                          background: 'radial-gradient(circle, rgba(107, 221, 161,0.10) 0%, transparent 70%)',
                           filter: 'blur(18px)',
                           pointerEvents: 'none',
                         }}
@@ -230,18 +230,18 @@ export const Resultados = () => {
                           width: '48px',
                           height: '48px',
                           borderRadius: '50%',
-                          background: 'rgba(34,197,94,0.10)',
-                          border: '1.5px solid rgba(34,197,94,0.35)',
+                          background: 'rgba(107, 221, 161,0.10)',
+                          border: '1.5px solid rgba(107, 221, 161,0.35)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           backdropFilter: 'blur(8px)',
-                          boxShadow: '0 0 20px rgba(34,197,94,0.12)',
+                          boxShadow: '0 0 20px rgba(107, 221, 161,0.12)',
                           marginBottom: '8px',
                         }}
                       >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <polygon points="8,5 20,12 8,19" fill="#22C55E" />
+                          <polygon points="8,5 20,12 8,19" fill="#6bdda1" />
                         </svg>
                       </div>
                       <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
@@ -368,7 +368,7 @@ const BeforeAfterRow = ({ before, now }: { before: string; now: string }) => (
     }}>
       {before}
     </span>
-    <span style={{ color: 'rgba(34,197,94,0.6)', flexShrink: 0, fontSize: '12px' }}>→</span>
+    <span style={{ color: 'rgba(107, 221, 161,0.6)', flexShrink: 0, fontSize: '12px' }}>→</span>
     <span style={{
       color: 'rgba(255,255,255,0.72)',
       fontWeight: 500,
@@ -386,8 +386,8 @@ const BeforeAfterRow = ({ before, now }: { before: string; now: string }) => (
 const Badge = ({ label }: { label: string }) => (
   <div
     style={{
-      background: 'rgba(34,197,94,0.06)',
-      border: '1px solid rgba(34,197,94,0.14)',
+      background: 'rgba(107, 221, 161,0.06)',
+      border: '1px solid rgba(107, 221, 161,0.14)',
       borderRadius: '100px',
       padding: '5px 14px',
     }}
@@ -395,7 +395,7 @@ const Badge = ({ label }: { label: string }) => (
     <span style={{
       fontSize: '12px',
       fontWeight: 600,
-      color: 'rgba(34,197,94,0.75)',
+      color: 'rgba(107, 221, 161,0.75)',
       letterSpacing: '0.03em',
     }}>
       {label}

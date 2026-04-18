@@ -1,10 +1,10 @@
 export const Diferencial = () => {
   return (
-    <section className="relative" style={{ background: '#0A0A0F', padding: '130px 0' }}>
+    <section className="relative" style={{ background: '#000000', padding: '130px 0' }}>
       <div className="container-custom relative z-10 flex flex-col items-center">
         {/* Header */}
         <div className="text-center mb-10 md:mb-14 reveal">
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 20px', background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.12)', borderRadius: '100px', fontSize: '14px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#6EE7A0', marginBottom: '20px' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 20px', background: 'rgba(107, 221, 161,0.06)', border: '1px solid rgba(107, 221, 161,0.12)', borderRadius: '100px', fontSize: '14px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#6EE7A0', marginBottom: '20px' }}>
             CÓMO SOMOS DISTINTOS
           </span>
           <h2 className="mx-auto" style={{ fontSize: '48px', fontWeight: 700, color: '#F5F5F7', letterSpacing: '-0.03em', lineHeight: 1.08, marginBottom: '16px' }}>
@@ -15,10 +15,10 @@ export const Diferencial = () => {
         {/* Table in Premium Card */}
         <div className="card-premium mb-12 w-full reveal" style={{
           maxWidth: '800px', margin: '32px auto 0', padding: '1px', borderRadius: '24px',
-          background: 'linear-gradient(145deg, rgba(34,197,94,0.15) 0%, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0.03) 60%, rgba(34,197,94,0.10) 100%)',
+          background: 'linear-gradient(145deg, rgba(107, 221, 161,0.15) 0%, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0.03) 60%, rgba(107, 221, 161,0.10) 100%)',
           transition: 'all 0.4s ease'
         }}>
-          <div style={{ background: '#0C0C14', borderRadius: '23px', padding: '40px 36px' }}>
+          <div style={{ background: '#050505', borderRadius: '23px', padding: '40px 36px' }}>
             <div className="comparison-table">
 
               {/* HEADER ROW */}

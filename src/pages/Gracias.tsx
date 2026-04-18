@@ -8,12 +8,12 @@ export const Gracias = () => {
     }, []);
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0A0A0F] px-4 relative overflow-hidden">
+        <div className="min-h-screen flex items-center justify-center bg-[#000000] px-4 relative overflow-hidden">
             {/* Background glow similar to Hero */}
             <div style={{
                 position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
                 width: '600px', height: '600px',
-                background: 'radial-gradient(circle at center, rgba(34, 197, 94, 0.08) 0%, transparent 60%)',
+                background: 'radial-gradient(circle at center, rgba(107, 221, 161, 0.08) 0%, transparent 60%)',
                 filter: 'blur(60px)',
                 zIndex: 0, pointerEvents: 'none'
             }}></div>

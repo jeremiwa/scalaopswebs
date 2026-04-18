@@ -5,24 +5,24 @@ import { Link } from 'react-router-dom';
 export const CapaIA = () => {
     return (
         <section className="relative" style={{ background: '#08080D', padding: '130px 0' }}>
-            <div style={{ position: 'absolute', top: '-100px', left: '-100px', right: '-100px', bottom: '-100px', zIndex: 0, pointerEvents: 'none', borderRadius: '80px', background: 'radial-gradient(ellipse at 35% 40%, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 40%, transparent 65%)', filter: 'blur(120px)', transform: 'translateZ(0)' }}></div>
+            <div style={{ position: 'absolute', top: '-100px', left: '-100px', right: '-100px', bottom: '-100px', zIndex: 0, pointerEvents: 'none', borderRadius: '80px', background: 'radial-gradient(ellipse at 35% 40%, rgba(24, 93, 232,0.06) 0%, rgba(24, 93, 232,0.02) 40%, transparent 65%)', filter: 'blur(120px)', transform: 'translateZ(0)' }}></div>
             {/* The Wrapper */}
             <div className="relative w-full max-w-[1200px] mx-auto px-4 md:px-8">
 
                 {/* --- MODULE CARD --- */}
                 <div className="w-full" style={{
                     maxWidth: '1100px', margin: '0 auto', padding: '1px', borderRadius: '24px',
-                    background: 'linear-gradient(145deg, rgba(59,130,246,0.18) 0%, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0.03) 60%, rgba(99,102,241,0.12) 100%)',
+                    background: 'linear-gradient(145deg, rgba(24, 93, 232,0.18) 0%, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0.03) 60%, rgba(24, 93, 232,0.12) 100%)',
                     position: 'relative', zIndex: 1
                 }}>
                     <div className="w-full flex flex-col items-center" style={{
                         background: '#08080D', borderRadius: '23px', padding: '64px 48px',
-                        backgroundImage: 'radial-gradient(ellipse at 30% 0%, rgba(59,130,246,0.04) 0%, transparent 45%)'
+                        backgroundImage: 'radial-gradient(ellipse at 30% 0%, rgba(24, 93, 232,0.04) 0%, transparent 45%)'
                     }}>
                         {/* A) HEADER CENTRADO */}
                         <div className="flex flex-col items-center text-center w-full mb-12 md:mb-16">
                             {/* Pill */}
-                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 20px', background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)', borderRadius: '100px', fontSize: '14px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#93B4F5', marginBottom: '20px' }}>
+                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 20px', background: 'rgba(24, 93, 232,0.06)', border: '1px solid rgba(24, 93, 232,0.15)', borderRadius: '100px', fontSize: '14px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#93B4F5', marginBottom: '20px' }}>
                                 <Bot size={14} color="#93B4F5" />
                                 EMPLEADO IA
                             </div>
