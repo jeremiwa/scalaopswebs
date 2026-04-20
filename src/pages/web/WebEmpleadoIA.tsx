@@ -19,7 +19,7 @@ import {
   Shield,
   Layers
 } from 'lucide-react';
-import EmpleadoIANetworkAnimation from '../../components/web/EmpleadoIANetworkAnimation';
+import AIEmployeeLiveDemo from '../../components/web/AIEmployeeLiveDemo';
 
 /* ═══════════════════════════════════════════════════════════════════
    DATA & TEXT RESOURCES
@@ -211,7 +211,7 @@ export const WebEmpleadoIA = () => {
           </div>
 
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.4 }} className="relative h-full w-full hidden lg:flex items-center justify-center">
-            <EmpleadoIANetworkAnimation />
+            <AIEmployeeLiveDemo />
           </motion.div>
         </div>
       </section>
