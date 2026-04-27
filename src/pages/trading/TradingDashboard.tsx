@@ -269,7 +269,7 @@ export function TradingDashboard() {
                 </span>
                 Bot Status: ACTIVE
               </Pill>
-              <Pill variant="disclaimer">Backtest simulation · Educational use only</Pill>
+              <img src="/images/scala-logo-white.png" alt="Scala" style={{ height: 28, width: 'auto', opacity: 0.85 }} />
             </div>
           </header>
 
