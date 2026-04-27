@@ -123,6 +123,7 @@ export const QueEsScala = () => {
 
     return (
         <section
+            id="como-funciona"
             ref={sectionRef}
             className="section-scala relative flex flex-col items-center"
         >
@@ -226,7 +227,7 @@ export const QueEsScala = () => {
                                         className="h-full rounded-full timeline-line-fill"
                                         style={{
                                             width: lineFill,
-                                            background: 'linear-gradient(90deg, #6bdda1 0%, #10B981 33%, #3B82F6 66%, #6bdda1 100%)',
+                                            background: 'linear-gradient(90deg, #6bdda1 0%, #185de8 33%, #3B82F6 66%, #6bdda1 100%)',
                                         }}
                                     />
                                 </div>
@@ -238,7 +239,7 @@ export const QueEsScala = () => {
                                     className="w-full rounded-full"
                                     style={{
                                         height: lineFill,
-                                        background: 'linear-gradient(180deg, #6bdda1, #10B981, #3B82F6)',
+                                        background: 'linear-gradient(180deg, #6bdda1, #185de8, #3B82F6)',
                                         boxShadow: '0 0 12px rgba(107, 221, 161,0.2)',
                                     }}
                                 />

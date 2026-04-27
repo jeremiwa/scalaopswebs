@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 /* ── Unified badge component ── */
 const Badge = ({ dot = 'teal', children }: { dot?: 'teal' | 'orange' | 'red'; children: React.ReactNode }) => {
-    const dotColor = dot === 'orange' ? '#F59E0B' : dot === 'red' ? '#EF4444' : '#10B981';
+    const dotColor = dot === 'orange' ? '#F59E0B' : dot === 'red' ? '#EF4444' : '#6bdda1';
     return (
         <div
             className="inline-flex items-center gap-2 h-[32px] px-3 rounded-full text-[12px] font-medium"

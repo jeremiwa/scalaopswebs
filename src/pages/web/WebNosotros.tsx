@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Star, Target, Zap, Shield, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { SEO } from '../../components/SEO';
 
 export const WebNosotros = () => {
   // Animaciones standard
@@ -14,7 +17,12 @@ export const WebNosotros = () => {
   };
 
   return (
-    <div className="bg-[#000000] min-h-screen text-white overflow-hidden pb-20">
+    <div className="w-full bg-[#000000] text-white overflow-hidden relative">
+      <SEO 
+        title="Nosotros | Conoce al equipo de ScalaOps" 
+        description="Ayudamos a líderes y dueños de empresas B2B a dejar de apagar incendios y empezar a operar como verdaderos sistemas escalables."
+        canonical="https://scalaops.com/nosotros"
+      />
       
       {/* 1. HERO / TÍTULO PRINCIPAL */}
       <section className="relative pt-[180px] pb-16 md:pb-32 overflow-hidden">
@@ -107,7 +115,7 @@ export const WebNosotros = () => {
               className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden order-1 lg:order-2 bg-[#080808]"
               style={{ border: '1px solid rgba(255,255,255,0.05)' }}
             >
-              <img src="/images/franco.jpg" alt="Franco Villa" className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale-[20%]" />
+              <img src="/images/franco.jpg" alt="Franco Villa" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale-[20%]" />
               <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black to-transparent z-10" />
             </motion.div>
 
@@ -126,7 +134,7 @@ export const WebNosotros = () => {
               className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-[#080808]"
               style={{ border: '1px solid rgba(255,255,255,0.05)' }}
             >
-              <img src="/images/jeremias.jpg" alt="Jeremías Walsh" className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale-[20%]" />
+              <img src="/images/jeremias.jpg" alt="Jeremías Walsh" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale-[20%]" />
               <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black to-transparent z-10" />
             </motion.div>
 

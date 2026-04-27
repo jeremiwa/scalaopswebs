@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { SEO } from '../../components/SEO';
 
 const values = [
   {
@@ -40,7 +41,12 @@ export const WebFilosofia = () => {
   };
 
   return (
-    <div className="bg-[#000000] min-h-screen text-white overflow-hidden pb-10">
+    <div className="w-full bg-[#000000] text-white overflow-hidden relative pb-32">
+      <SEO 
+        title="Nuestra Filosofía | ScalaOps" 
+        description="Por qué no somos una agencia de marketing más. Entendemos las ventas B2B como un sistema y operamos bajo ingeniería de procesos."
+        canonical="https://scalaops.com/filosofia"
+      />
       
       {/* 1. HERO / TÍTULO PRINCIPAL */}
       <section className="relative pt-[180px] pb-16 md:pb-24 overflow-hidden border-b border-white/[0.04]">

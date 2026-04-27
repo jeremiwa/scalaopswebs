@@ -3,11 +3,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { WebNavbar } from './WebNavbar';
 import { WebFooter } from './WebFooter';
 import { useAnimations } from '../../hooks/useAnimations';
+import { useVSLModal } from '../../hooks/useVSLModal';
+import { VSLInviteModal } from './VSLInviteModal';
 
 export const WebLayout = () => {
   // Inicializamos las animaciones de scroll para toda la rama /web
   useAnimations();
   const { hash, pathname } = useLocation();
+  const { isOpen, close, onCTAClick, onSecondaryClick } = useVSLModal();
 
   useEffect(() => {
     if (hash) {
@@ -35,7 +38,6 @@ export const WebLayout = () => {
         }} 
       />
 
-      {/* Navbar global corporativo */}
       <WebNavbar />
 
       {/* Contenido Inyectado por React Router (Home, Soluciones, Casos...) */}
@@ -46,6 +48,13 @@ export const WebLayout = () => {
       {/* Footer corporativo pesado */}
       <WebFooter />
 
+      {/* Modal de Tráfico Frío Global */}
+      <VSLInviteModal 
+        isOpen={isOpen} 
+        onClose={close} 
+        onCTAClick={onCTAClick} 
+        onSecondaryClick={onSecondaryClick} 
+      />
     </div>
   );
 };

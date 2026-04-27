@@ -1,4 +1,16 @@
 {
+    "redirects": [
+        {
+            "source": "/web/:path*",
+            "destination": "/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/web",
+            "destination": "/",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/api/(.*)",

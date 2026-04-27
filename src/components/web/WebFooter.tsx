@@ -23,7 +23,7 @@ export const WebFooter = () => {
           <div className="flex flex-col gap-6 lg:col-span-5 pr-0 lg:pr-12">
             
             {/* Logo Scala en Blanco */}
-            <Link to="/web" className="flex items-center gap-3 transition-opacity hover:opacity-80">
+            <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
               <Logo />
             </Link>
 
@@ -48,19 +48,19 @@ export const WebFooter = () => {
           {/* Col 2: Soluciones */}
           <div className="flex flex-col gap-4 lg:col-span-2 lg:col-start-7">
             <h4 className="text-[12px] font-bold text-white uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-secondary)' }}>Soluciones</h4>
-            <Link to="/web/auditoria" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Auditoría</Link>
-            <Link to="/web/implementacion" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Implementación</Link>
-            <Link to="/web/empleado-ia" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Empleado IA</Link>
-            <Link to="/web/soluciones" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Ver todas</Link>
+            <Link to="/auditoria" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Auditoría</Link>
+            <Link to="/implementacion" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Implementación</Link>
+            <Link to="/empleado-ia" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Empleado IA</Link>
+            <Link to="/soluciones" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Ver todas</Link>
           </div>
 
           {/* Col 3: Compañía */}
           <div className="flex flex-col gap-4 lg:col-span-2">
             <h4 className="text-[12px] font-bold text-white uppercase tracking-widest mb-2" style={{ fontFamily: 'var(--font-secondary)' }}>Compañía</h4>
-            <Link to="/web/nosotros" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Nosotros</Link>
-            <Link to="/web/filosofia" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Misión y Filosofía</Link>
-            <Link to="/web/casos" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Casos</Link>
-            <Link to="/web/blog" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Blog</Link>
+            <Link to="/nosotros" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Nosotros</Link>
+            <Link to="/filosofia" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Misión y Filosofía</Link>
+            <Link to="/casos" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Casos</Link>
+            <Link to="/blog" className="text-[14px] text-[#999999] hover:text-[#185de8] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>Blog</Link>
           </div>
 
           {/* Col 4: Contacto */}
@@ -85,9 +85,9 @@ export const WebFooter = () => {
             Copyright © 2026 Scala
           </p>
           <div className="flex gap-4 items-center">
-            <Link to="/web/legales/privacidad" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Política de privacidad</Link>
+            <Link to="/legales/privacidad" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Política de privacidad</Link>
             <span className="text-white/10">|</span>
-            <Link to="/web/legales/terminos" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Términos y condiciones</Link>
+            <Link to="/legales/terminos" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Términos y condiciones</Link>
           </div>
         </div>
         

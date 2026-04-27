@@ -11,8 +11,14 @@ export const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#como-funciona" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Cómo funciona</a>
-          <a href="#resultados" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Resultados</a>
+          <button onClick={() => {
+            const el = document.getElementById('como-funciona');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }} className="text-sm font-medium text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none outline-none">Cómo funciona</button>
+          <button onClick={() => {
+            const el = document.getElementById('resultados');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }} className="text-sm font-medium text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none outline-none">Resultados</button>
         </div>
 
         <div className="flex items-center gap-4">

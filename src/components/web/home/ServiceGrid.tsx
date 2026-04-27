@@ -13,7 +13,7 @@ const services = [
       "Plan de acción priorizado"
     ],
     cta: "Agendar auditoría",
-    link: "#",
+    link: "/auditoria",
     featured: false
   },
   {
@@ -27,7 +27,7 @@ const services = [
       "Entrenamiento a tu equipo"
     ],
     cta: "Ver alcance",
-    link: "#",
+    link: "/implementacion",
     featured: true
   },
   {
@@ -41,7 +41,7 @@ const services = [
       "Traspaso a humano inteligente"
     ],
     cta: "Ver cómo funciona",
-    link: "/web/soluciones/empleado-ia",
+    link: "/empleado-ia",
     featured: false
   }
 ];

@@ -14,6 +14,7 @@ import {
   CheckCircle2,
   ArrowRight
 } from 'lucide-react';
+import { SEO } from '../../components/SEO';
 import ImplementacionNetworkAnimation from '../../components/web/ImplementacionNetworkAnimation';
 import ImplementacionProcessAnimation from '../../components/web/ImplementacionProcessAnimation';
 
@@ -188,8 +189,27 @@ const staggerContainer = {
 export const WebImplementacion = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  };
+
   return (
-    <div className="bg-[#000000] min-h-screen text-white overflow-hidden">
+    <div className="w-full bg-[#000000] text-white overflow-hidden relative">
+      <SEO 
+        title="Implementación de Sistemas SCALA | ScalaOps" 
+        description="Estructuramos, configuramos y documentamos tu CRM y procesos comerciales para que dejes de depender del talento aislado y empieces a operar como sistema."
+        canonical="https://scalaops.com/implementacion"
+        schema={faqSchema}
+      />
       
       {/* ═══ 1. HERO ═══ */}
       <section className="relative w-full min-h-[90vh] flex items-center bg-[#000000] overflow-hidden pt-20">

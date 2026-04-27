@@ -52,6 +52,14 @@ a, button {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.scala-gradient-text {
+  background: linear-gradient(90deg, #0066FF 0%, #00D4AA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 /* Global Animations System */
 html {
   scroll-behavior: smooth;
@@ -747,7 +755,7 @@ html {
 .card-standard {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
+  border-radius: 24px;
   padding: 28px;
   transition: all 0.3s ease;
 }
@@ -756,10 +764,11 @@ html {
 .storyboard-card:hover,
 .diff-card:hover,
 .escala-point:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.10);
-  transform: translateY(-2px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #080808;
+  border-color: rgba(24, 93, 232, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(24, 93, 232, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-premium {
@@ -781,7 +790,27 @@ html {
       transparent 45%);
 }
 
-/* 4. TIPOGRAFÍA — AJUSTES DE CONTRASTE Y TAMAÑO */
+/* 4. TIPOGRAFÍA Y ANIMACIONES DE BOTONES */
+@keyframes shimmer-btn {
+  0% { left: -50%; }
+  15% { left: 150%; }
+  100% { left: 150%; }
+}
+.animate-shimmer-btn {
+  animation: shimmer-btn 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover-scale {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.btn-hover-scale:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 0 40px rgba(24, 93, 232, 0.4) !important;
+}
+.btn-hover-scale:active {
+  transform: scale(0.98) !important;
+}
+
 .hero-sub {
   font-size: 19px;
   color: #A0A0B5;

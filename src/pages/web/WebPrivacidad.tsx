@@ -237,10 +237,10 @@ export const WebPrivacidad = () => {
 
           {/* Bottom nav */}
           <div className="mt-20 pt-10 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <Link to="/web" className="text-[14px] text-[#666] hover:text-white transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
+            <Link to="/" className="text-[14px] text-[#666] hover:text-white transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
               ← Volver al inicio
             </Link>
-            <Link to="/web/legales/terminos" className="text-[14px] text-[#666] hover:text-[#6bdda1] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
+            <Link to="/legales/terminos" className="text-[14px] text-[#666] hover:text-[#6bdda1] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
               Ver Términos y Condiciones →
             </Link>
           </div>

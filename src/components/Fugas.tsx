@@ -113,7 +113,7 @@ export const Fugas = () => {
                     className="h-full rounded-full transition-all duration-500 ease-out"
                     style={{
                       width: `${(active / 4) * 100}%`,
-                      background: 'linear-gradient(90deg, #6bdda1, #10B981)',
+                      background: 'linear-gradient(90deg, #6bdda1, #185de8)',
                       boxShadow: '0 0 10px rgba(16,185,129,0.20)',
                     }}
                   />

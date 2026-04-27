@@ -82,29 +82,29 @@ export const CapaIA = () => {
                                                 <div className="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center text-[#8B8B9E]"><UserCheck size={14} /></div>
                                                 <div className="flex flex-col"><span className="text-[#F5F5F7] text-[13px] font-medium">Jenny</span><span className="text-[#8B8B9E] text-[11px]">Hola, quiero info...</span></div>
                                             </div>
-                                            <div className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                                            <div className="w-2 h-2 rounded-full bg-[#6bdda1] shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
                                         </div>
                                         <div className="bg-[#0A0D10]/60 backdrop-blur-sm border border-white/[0.05] rounded-xl p-3 flex items-center justify-between opacity-80">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center text-[#8B8B9E]"><UserCheck size={14} /></div>
                                                 <div className="flex flex-col"><span className="text-[#F5F5F7] text-[13px] font-medium">Robert</span><span className="text-[#8B8B9E] text-[11px]">Precio y tiempos...</span></div>
                                             </div>
-                                            <div className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_5px_rgba(16,185,129,0.5)]"></div>
+                                            <div className="w-2 h-2 rounded-full bg-[#6bdda1] shadow-[0_0_5px_rgba(16,185,129,0.5)]"></div>
                                         </div>
                                         <div className="bg-[#0A0D10]/40 backdrop-blur-sm border border-white/[0.05] rounded-xl p-3 flex items-center justify-between opacity-50">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center text-[#8B8B9E]"><UserCheck size={14} /></div>
                                                 <div className="flex flex-col"><span className="text-[#F5F5F7] text-[13px] font-medium">Emily</span><span className="text-[#8B8B9E] text-[11px]">Quiero agendar...</span></div>
                                             </div>
-                                            <div className="w-2 h-2 rounded-full bg-[#10B981]"></div>
+                                            <div className="w-2 h-2 rounded-full bg-[#6bdda1]"></div>
                                         </div>
                                     </div>
-                                    <div className="w-[1px] h-10 bg-gradient-to-b from-white/10 to-[#10B981]/60 mb-4"></div>
-                                    <div className="w-full bg-[#030712]/80 backdrop-blur-sm border border-[#10B981]/30 rounded-xl p-5 relative shadow-[0_0_30px_rgba(16,185,129,0.1)]">
-                                        <div className="absolute inset-0 rounded-xl border border-[#10B981]/40 animate-pulse pointer-events-none"></div>
+                                    <div className="w-[1px] h-10 bg-gradient-to-b from-white/10 to-[#6bdda1]/60 mb-4"></div>
+                                    <div className="w-full bg-[#030712]/80 backdrop-blur-sm border border-[#6bdda1]/30 rounded-xl p-5 relative shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+                                        <div className="absolute inset-0 rounded-xl border border-[#6bdda1]/40 animate-pulse pointer-events-none"></div>
                                         <div className="flex items-center justify-between mb-4 border-b border-white/[0.05] pb-3">
                                             <div className="flex items-center gap-2">
-                                                <span className="w-2 h-2 bg-[#10B981] rounded-full animate-pulse shadow-[0_0_8px_#10B981]"></span>
+                                                <span className="w-2 h-2 bg-[#6bdda1] rounded-full animate-pulse shadow-[0_0_8px_#6bdda1]"></span>
                                                 <span className="text-[#F5F5F7] text-[13px] font-medium">Agente SCALA procesando</span>
                                             </div>
                                             <Bot size={16} className="text-[#8B8B9E]" />

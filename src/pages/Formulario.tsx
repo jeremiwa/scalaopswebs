@@ -1,22 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
+import { SEO } from '../components/SEO';
 
 export const Formulario = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const iframeRef = useRef<HTMLIFrameElement>(null);
     const navigate = useNavigate();
 
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        // We only want to append the script once
-        if (containerRef.current && !containerRef.current.querySelector('script')) {
-            const script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = 'https://form.jotform.com/jsform/260604555033046';
-            script.async = true;
-            containerRef.current.appendChild(script);
-        }
 
         const handleIframeMessage = (e: MessageEvent) => {
             console.log('Jotform Message Received:', e.data);
@@ -36,6 +29,16 @@ export const Formulario = () => {
             // Jotform sends 'setHeight' or similar events when it renders
             if (dataStr.includes('setHeight') || dataStr.includes('MinHeight')) {
                 setIsLoaded(true);
+                const parts = dataStr.split(':');
+                if (parts.length >= 2 && parts[0] === 'setHeight' && iframeRef.current) {
+                    iframeRef.current.style.height = `${parts[1]}px`;
+                } else if (dataStr.includes('MinHeight') && iframeRef.current) {
+                    // MinHeight fallback
+                    let minHeightMatch = dataStr.match(/MinHeight:(\d+)/i);
+                    if (minHeightMatch && minHeightMatch[1]) {
+                        iframeRef.current.style.height = `${minHeightMatch[1]}px`;
+                    }
+                }
             }
 
             // Check if it's from Jotform and indicates a completion
@@ -43,11 +46,15 @@ export const Formulario = () => {
                 dataStr.includes('JotFormIFrame') &&
                 (dataStr.includes('completed') || dataStr.includes('submission-completed'))
             ) {
+                if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala' });
+                if ((window as any).fbq) (window as any).fbq('track', 'Lead');
                 navigate('/gracias-por-contactarnos');
             } else if (
                 // Some jotform embeds send a different action when redirecting
                 e.data && e.data.action === 'submission-completed'
             ) {
+                if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala' });
+                if ((window as any).fbq) (window as any).fbq('track', 'Lead');
                 navigate('/gracias-por-contactarnos');
             }
         };
@@ -61,11 +68,29 @@ export const Formulario = () => {
 
     return (
         <div className="min-h-screen bg-scala-bg selection:bg-scala-green selection:text-[#030712] relative overflow-x-hidden flex flex-col">
+            <SEO
+              title="Contacto | Agendar llamada con ScalaOps"
+              description="Completá el formulario para que un especialista de Scala te contacte y analice cómo optimizar tu operación comercial."
+              canonical="https://scalaops.com/formulario"
+              noindex={true}
+            />
             <main className="flex-grow flex items-center justify-center pt-16 pb-16 px-4">
                 <div className="w-full max-w-4xl mx-auto bg-[#050505] rounded-3xl border border-white/5 p-4 md:p-8 shadow-2xl relative">
-                    {/* The Jotform script will inject the iframe here */}
-                    <div ref={containerRef} className="jotform-container w-full min-h-[600px] flex items-center justify-center">
-                    </div>
+                    {/* El Iframe directo corta radicalmente el "waterfall load" evitando inyectar el pesado script wrapper */}
+                    <iframe
+                      ref={iframeRef}
+                      id="JotFormIFrame-260604555033046"
+                      title="Formulario Scala"
+                      onLoad={() => { window.scrollTo(0,0); setIsLoaded(true); }}
+                      allowTransparency={true}
+                      allowFullScreen={true}
+                      allow="geolocation; microphone; camera"
+                      src="https://form.jotform.com/260604555033046"
+                      frameBorder="0"
+                      style={{ minWidth: '100%', maxWidth: '100%', border: 'none', height: '600px', transition: 'height 0.2s ease-out' }}
+                      scrolling="no"
+                      className={`w-full transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    ></iframe>
 
                     {!isLoaded && (
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -76,9 +101,9 @@ export const Formulario = () => {
                     {/* Legal consent */}
                     <p className="text-center text-[12px] text-white/30 mt-6 leading-[1.6]">
                       Al enviar este formulario aceptás nuestra{' '}
-                      <Link to="/web/legales/privacidad" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Política de Privacidad</Link>
+                      <Link to="/legales/privacidad" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Política de Privacidad</Link>
                       {' '}y nuestros{' '}
-                      <Link to="/web/legales/terminos" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Términos y Condiciones</Link>.
+                      <Link to="/legales/terminos" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Términos y Condiciones</Link>.
                     </p>
                 </div>
             </main>

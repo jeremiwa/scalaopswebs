@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Bot, Target, FileSearch } from 'lucide-react';
+import { SEO } from '../../components/SEO';
 import AuditPipelineAnimation from '../../components/web/AuditPipelineAnimation';
 
 /* ─── Animation Variants ─── */
@@ -126,8 +128,27 @@ const faqs = [
 export const WebAuditoria = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  };
+
   return (
-    <div className="bg-[#000000] min-h-screen text-white overflow-hidden">
+    <div className="w-full bg-[#000000] text-white overflow-hidden relative">
+      <SEO 
+        title="Auditoría de Procesos Comerciales | ScalaOps" 
+        description="Analizamos el 100% de tus embudos de venta para detectar fugas de conversión y recomendar sistemas de IA que multipliquen tus cierres."
+        canonical="https://scalaops.com/auditoria"
+        schema={faqSchema}
+      />
 
       {/* ═══ 1. HERO ═══ */}
       <section className="relative w-full min-h-[90vh] flex items-center bg-[#000000] overflow-hidden pt-20">

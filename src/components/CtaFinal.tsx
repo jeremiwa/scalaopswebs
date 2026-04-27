@@ -24,8 +24,9 @@ export const CtaFinal = () => {
 
           <div className="relative inline-block">
             <div className="absolute -inset-4 rounded-[18px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(107, 221, 161,0.12) 0%, transparent 70%)', filter: 'blur(20px)' }}></div>
-            <Link to="/formulario" target="_blank" rel="noopener noreferrer" className="cta-final-btn relative" style={{ display: 'inline-block', padding: '16px 36px', background: '#6bdda1', color: '#000000', fontSize: '17px', fontWeight: 700, borderRadius: '12px', border: 'none', cursor: 'pointer', boxShadow: '0 0 30px rgba(107, 221, 161,0.25)', transition: 'all 0.3s ease', textDecoration: 'none' }}>
-              Agendar llamada gratuita
+            <Link to="/formulario" target="_blank" rel="noopener noreferrer" className="relative btn-hover-scale text-[#000] overflow-hidden flex items-center justify-center cursor-pointer" style={{ background: 'linear-gradient(90deg, #185de8, #6bdda1)', padding: '18px 44px', borderRadius: '100px', fontFamily: 'var(--font-primary)', fontWeight: 800, fontSize: '15px', boxShadow: '0 0 40px rgba(107,221,161,0.1)', textDecoration: 'none' }}>
+              <div className="absolute inset-0 bg-white/30 skew-x-[-20deg] animate-shimmer-btn" style={{ width: '30%' }} />
+              <span className="relative z-10">Agendar llamada gratuita</span>
             </Link>
           </div>
 
@@ -46,7 +47,6 @@ export const CtaFinal = () => {
       </div>
       <style dangerouslySetInnerHTML={{
         __html: `
-                .cta-final-btn:hover { background: #16A34A !important; box-shadow: 0 0 40px rgba(107, 221, 161,0.35) !important; transform: translateY(-2px); }
                 .card-premium:hover { background: linear-gradient(145deg, rgba(24, 93, 232,0.28) 0%, rgba(255,255,255,0.07) 30%, rgba(255,255,255,0.04) 60%, rgba(107, 221, 161,0.22) 100%) !important; }
             `}} />
     </section>

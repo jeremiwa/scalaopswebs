@@ -15,12 +15,12 @@ export const Hero = () => {
           <h1 className="text-[32px] md:text-[48px] lg:text-[52px] font-[800] leading-[1.05] tracking-[-0.03em]" style={{ marginBottom: '12px' }}>
             <span className="text-white">Si sentís que podrías estar facturando mucho más...</span>
             <br />
-            <span style={{ fontSize: '0.88em', fontWeight: 600, color: 'rgba(255,255,255,0.76)' }}>Probablemente tengas razón.</span>
+            <span className="scala-gradient-text" style={{ fontSize: '0.88em', fontWeight: 600 }}>Probablemente tengas razón.</span>
           </h1>
 
           {/* Sub-copy */}
           <p style={{ fontSize: '17px', color: '#A0A0B5', opacity: 0.84, lineHeight: 1.5, maxWidth: '64ch', margin: '0 auto', marginBottom: '28px' }}>
-            Multiplicá hasta 21 veces tus oportunidades de venta sin gastar un dólar más.
+            Multiplicá hasta <span className="scala-gradient-text">21 veces</span> tus oportunidades de venta sin gastar un dólar más.
           </p>
         </div>
 

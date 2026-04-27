@@ -7,21 +7,20 @@ export const HeroInstitutional = () => {
   const titleWordsFirst = "Aplicamos IA para que".split(" ");
   const titleWordsSecond = "tu empresa venda más.".split(" ");
 
-  // Stagger Text Container
   const textContainerParent = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08 }
+      transition: { staggerChildren: 0.03 }
     }
   };
 
   const textWord = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: customEase }
+      transition: { duration: 0.5, ease: customEase }
     }
   };
 
@@ -35,23 +34,23 @@ export const HeroInstitutional = () => {
   return (
     <section className="relative w-full min-h-[95vh] flex items-center bg-[#000000] overflow-hidden pt-20">
       
-      {/* 1. Fondo Textura (Grain) */}
+      {/* 1. Fondo Textura (Grain) - Optimizado sin mix-blend para mobile GPU */}
       <div 
-        className="absolute inset-0 pointer-events-none z-0 mix-blend-overlay" 
+        className="absolute inset-0 pointer-events-none z-0" 
         style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")',
-          opacity: 0.03
+          opacity: 0.04
         }} 
       />
 
-      {/* 2. Orbs Glow */}
-      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
+      {/* 2. Orbs Glow - Reducidos en mobile para performance */}
+      <div className="absolute top-[-10%] left-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[70px] md:blur-[120px] opacity-15 rounded-full" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[70px] md:blur-[120px] opacity-15 rounded-full" />
 
-      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[65%_35%] gap-6 lg:gap-4 items-center mt-[10vh] lg:mt-0">
+      <div className="container-custom relative z-10 w-full grid grid-cols-1 lg:grid-cols-[65%_35%] gap-6 lg:gap-4 items-center mt-0 lg:mt-0">
         
         {/* Left Column: Text & CTAs */}
-        <div className="flex flex-col items-start text-left pt-10 pb-20 lg:py-0">
+        <div className="flex flex-col items-start text-left pt-8 pb-16 lg:py-0">
           
           <h1 className="text-[42px] md:text-[56px] lg:text-[68px] font-bold tracking-tight leading-[1.08] text-white mb-6" style={{ fontFamily: 'var(--font-primary)' }}>
             
@@ -72,7 +71,7 @@ export const HeroInstitutional = () => {
               variants={textContainerParent}
               initial="hidden"
               animate="visible"
-              transition={{ delayChildren: 0.4 }}
+              transition={{ delayChildren: 0.15 }}
               className="flex flex-wrap gap-[0.3em]"
             >
               {titleWordsSecond.map((word, i) => (
@@ -88,9 +87,9 @@ export const HeroInstitutional = () => {
           </h1>
 
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8, ease: customEase }}
+            transition={{ delay: 0.25, duration: 0.6, ease: customEase }}
             className="text-[17px] md:text-[20px] text-[#999999] max-w-[520px] mb-12 leading-[1.6]"
             style={{ fontFamily: 'var(--font-secondary)' }}
           >
@@ -99,9 +98,9 @@ export const HeroInstitutional = () => {
 
           <motion.div
             className="flex flex-col sm:flex-row items-center gap-8"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6, ease: customEase }}
+            transition={{ delay: 0.35, duration: 0.5, ease: customEase }}
           >
             {/* Primary CTA */}
             <motion.a

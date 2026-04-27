@@ -199,7 +199,9 @@ export const Resultados = () => {
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        background: 'linear-gradient(170deg, rgba(17,17,22,0.95) 0%, rgba(10,10,16,1) 100%)',
+                        backgroundImage: 'linear-gradient(170deg, rgba(8,8,13,0.6) 0%, rgba(5,5,10,0.9) 100%), url(/images/jordi.jpg)',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
                         cursor: 'pointer',
                       }}
                       onClick={() => setVideoPlaying(true)}
