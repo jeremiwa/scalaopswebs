@@ -163,32 +163,30 @@ export function simulateResults(inputs: SimulatorInputs): SimulatedResults {
 }
 
 export function getScaledEquitySeries(inputs: SimulatorInputs, results: SimulatedResults) {
-  const capitalMultiplier = inputs.initialCapital / 100000;
   const tradeMultiplier = inputs.totalTrades / BASE_RESULTS.totalTrades;
   const winRateRatio = inputs.winRate / BASE_RESULTS.winRate;
 
-  return BASE_EQUITY_SERIES.map((point, i) => {
-    const baseReturn = (point.equity - 100000) / 100000;
-    const scaledReturn = baseReturn * capitalMultiplier * Math.sqrt(tradeMultiplier);
-    const adjustedReturn = scaledReturn * winRateRatio;
-    const equity = inputs.initialCapital + adjustedReturn * inputs.initialCapital;
+  // Helper: compute equity at a given index
+  const equityAt = (idx: number): number => {
+    if (idx === 0) return inputs.initialCapital;
+    // baseReturn is already a percentage (e.g., 0.075 = 7.5%)
+    const baseReturn = (BASE_EQUITY_SERIES[idx].equity - 100000) / 100000;
+    const adjustedReturn = baseReturn * Math.sqrt(tradeMultiplier) * winRateRatio;
+    return inputs.initialCapital * (1 + adjustedReturn);
+  };
 
+  return BASE_EQUITY_SERIES.map((point, i) => {
     if (i === 0) return { ...point, equity: inputs.initialCapital, monthlyPnl: 0 };
 
-    const getPrevEquity = (idx: number) => {
-      const prevBase = (BASE_EQUITY_SERIES[idx].equity - 100000) / 100000;
-      return inputs.initialCapital + prevBase * capitalMultiplier * Math.sqrt(tradeMultiplier) * winRateRatio * inputs.initialCapital;
-    };
+    // Last point snaps to the calculated finalCapital for consistency
+    const equity = (i === BASE_EQUITY_SERIES.length - 1)
+      ? results.finalCapital
+      : Math.round(equityAt(i) * 100) / 100;
 
-    if (i === BASE_EQUITY_SERIES.length - 1) {
-      return { ...point, equity: results.finalCapital, monthlyPnl: results.finalCapital - getPrevEquity(i - 1) };
-    }
+    const prevEquity = equityAt(i - 1);
+    const monthlyPnl = Math.round((equity - prevEquity) * 100) / 100;
 
-    return {
-      ...point,
-      equity: Math.round(equity * 100) / 100,
-      monthlyPnl: Math.round((equity - getPrevEquity(i - 1)) * 100) / 100,
-    };
+    return { ...point, equity, monthlyPnl };
   });
 }
 
