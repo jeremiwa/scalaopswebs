@@ -3,8 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Routes, Route } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Navbar } from './components/Navbar';
+import { SEO } from './components/SEO';
 import { Hero } from './components/Hero';
 import { QueEsScala } from './components/QueEsScala';
 import { StoryboardDolor } from './components/StoryboardDolor';
@@ -34,21 +37,40 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 
 // Web Institucional Elements (Nueva Arquitectura)
 import { WebLayout } from './components/web/WebLayout';
-import { WebHome } from './pages/web/WebHome';
-import { WebNosotros } from './pages/web/WebNosotros';
-import { WebFilosofia } from './pages/web/WebFilosofia';
 import { WebPrivacidad } from './pages/web/WebPrivacidad';
 import { WebTerminos } from './pages/web/WebTerminos';
-import { WebAuditoria } from './pages/web/WebAuditoria';
-import { WebImplementacion } from './pages/web/WebImplementacion';
-import { WebEmpleadoIA } from './pages/web/WebEmpleadoIA';
+
+const WebHome = lazy(() => import('./pages/web/WebHome').then(module => ({ default: module.WebHome })));
+const WebNosotros = lazy(() => import('./pages/web/WebNosotros').then(module => ({ default: module.WebNosotros })));
+const WebFilosofia = lazy(() => import('./pages/web/WebFilosofia').then(module => ({ default: module.WebFilosofia })));
+const WebAuditoria = lazy(() => import('./pages/web/WebAuditoria').then(module => ({ default: module.WebAuditoria })));
+const WebImplementacion = lazy(() => import('./pages/web/WebImplementacion').then(module => ({ default: module.WebImplementacion })));
+const WebEmpleadoIA = lazy(() => import('./pages/web/WebEmpleadoIA').then(module => ({ default: module.WebEmpleadoIA })));
+const TradingDashboard = lazy(() => import('./pages/trading/TradingDashboard').then(module => ({ default: module.TradingDashboard })));
 
 // Home Component that houses the main landing page
 const Home = () => {
   useAnimations();
 
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Testimonio Jordi Falcon - ScalaOps",
+    "description": "Jordi Falcon, CEO de una empresa de servicios inmobiliarios en Barcelona, comparte su experiencia trabajando con ScalaOps.",
+    "thumbnailUrl": "https://scalaops.com/images/jordi.jpg",
+    "uploadDate": "2025-01-01",
+    "contentUrl": "https://vimeo.com/1183439807",
+    "embedUrl": "https://player.vimeo.com/video/1183439807"
+  };
+
   return (
     <div className="min-h-screen bg-[#000000] selection:bg-[#6bdda1] selection:text-[#030712] relative overflow-x-hidden">
+      <SEO
+        title="Por qué Scala | Método para escalar ventas B2B"
+        description="Descubrí cómo ScalaOps ayuda a empresas B2B a detectar fugas de venta, estructurar procesos comerciales y recuperar ingresos en 30 días con IA."
+        canonical="https://scalaops.com/por-que-scala"
+        schema={videoSchema}
+      />
       
       {/* Global Noise Layer para dar la textura tipo film grain (Premium) */}
       <div 
@@ -93,44 +115,48 @@ const Home = () => {
 
 export default function App() {
   return (
-    <Routes>
-      {/* ── Public routes (unchanged) ── */}
-      <Route path="/" element={<Home />} />
-      <Route path="/formulario" element={<Formulario />} />
-      <Route path="/gracias-por-contactarnos" element={<Gracias />} />
+    <Suspense fallback={<div className="bg-[#000000] min-h-screen"></div>}>
+      <Routes>
+        {/* ── Web Institucional SCALA (ahora raíz) ── */}
+        <Route path="/" element={<WebLayout />}>
+          <Route index element={<WebHome />} />
+          <Route path="nosotros" element={<WebNosotros />} /> 
+          <Route path="filosofia" element={<WebFilosofia />} /> 
+          <Route path="legales/privacidad" element={<WebPrivacidad />} />
+          <Route path="legales/terminos" element={<WebTerminos />} />
+          <Route path="contacto" element={<WebAuditoria />} />
+          <Route path="auditoria" element={<WebAuditoria />} />
+          <Route path="implementacion" element={<WebImplementacion />} />
+          <Route path="empleado-ia" element={<WebEmpleadoIA />} />
+        </Route>
 
-      {/* ── Web Institucional SCALA ── */}
-      <Route path="/web" element={<WebLayout />}>
-        {/* /web goes to WebHome */}
-        <Route index element={<WebHome />} />
-        {/* Futuras rutas:
-           <Route path="soluciones" element={<WebSoluciones />} />  */}
-        <Route path="nosotros" element={<WebNosotros />} /> 
-        <Route path="filosofia" element={<WebFilosofia />} /> 
-        <Route path="legales/privacidad" element={<WebPrivacidad />} />
-        <Route path="legales/terminos" element={<WebTerminos />} />
-        <Route path="contacto" element={<WebAuditoria />} />
-        <Route path="auditoria" element={<WebAuditoria />} />
-        <Route path="implementacion" element={<WebImplementacion />} />
-        <Route path="empleado-ia" element={<WebEmpleadoIA />} />
-      </Route>
+        {/* ── Landing page antigua → /por-que-scala ── */}
+        <Route path="/por-que-scala" element={<Home />} />
+        <Route path="/formulario" element={<Formulario />} />
+        <Route path="/gracias-por-contactarnos" element={<Gracias />} />
+        <Route path="/prueba123" element={<TradingDashboard />} />
 
-      {/* ── Sistema: public product page ── */}
-      <Route path="/sistema" element={<SistemaPage />} />
+        {/* ── Redirect legacy /web/* URLs ── */}
+        <Route path="/web" element={<Navigate to="/" replace />} />
+        <Route path="/web/*" element={<Navigate to="/" replace />} />
 
-      {/* ── Sistema: auth-wrapped routes ── */}
-      <Route path="/sistema/login" element={
-        <AuthProvider>
-          <SistemaLogin />
-        </AuthProvider>
-      } />
-      <Route path="/sistema/app/*" element={
-        <AuthProvider>
-          <ProtectedRoute>
-            <SistemaApp />
-          </ProtectedRoute>
-        </AuthProvider>
-      } />
-    </Routes>
+        {/* ── Sistema: public product page ── */}
+        <Route path="/sistema" element={<SistemaPage />} />
+
+        {/* ── Sistema: auth-wrapped routes ── */}
+        <Route path="/sistema/login" element={
+          <AuthProvider>
+            <SistemaLogin />
+          </AuthProvider>
+        } />
+        <Route path="/sistema/app/*" element={
+          <AuthProvider>
+            <ProtectedRoute>
+              <SistemaApp />
+            </ProtectedRoute>
+          </AuthProvider>
+        } />
+      </Routes>
+    </Suspense>
   );
 }
