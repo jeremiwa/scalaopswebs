@@ -1,77 +1,172 @@
-import { Play } from 'lucide-react';
+import { useRef, useEffect, useState } from 'react';
 import { Button } from '../ui/Button';
 import { Link } from 'react-router-dom';
 
+const CTA_URL = '/formulario';
+
+const trackEvent = (location: string) => {
+  if ((window as any).dataLayer) {
+    (window as any).dataLayer.push({
+      event: 'sentinel_cta_clicked',
+      location,
+      page: 'agente-ia',
+      offer: 'sentinel_997',
+    });
+  }
+};
+
 export const Hero = () => {
+  const videoRef = useRef<HTMLDivElement>(null);
+  const [videoVisible, setVideoVisible] = useState(false);
+
+  useEffect(() => {
+    if ((window as any).dataLayer) {
+      (window as any).dataLayer.push({ event: 'sentinel_page_view', page: 'agente-ia' });
+    }
+  }, []);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVideoVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <section className="relative overflow-hidden" style={{ background: '#000000', paddingTop: '120px', paddingBottom: '32px' }}>
+    <section className="relative overflow-hidden" style={{ background: '#000000', paddingTop: '120px', paddingBottom: '48px' }}>
+      {/* Glows */}
       <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
 
       <div className="container-custom relative z-10 flex flex-col items-center text-center">
 
+        {/* Badge */}
+        <div
+          className="sentinel-fade-in inline-flex items-center gap-2 mb-6"
+          style={{
+            padding: '8px 20px',
+            background: 'rgba(107, 221, 161, 0.06)',
+            border: '1px solid rgba(107, 221, 161, 0.15)',
+            borderRadius: '100px',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: '#6bdda1',
+          }}
+        >
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#6bdda1', flexShrink: 0 }} />
+          Precio lanzamiento · USD 997
+        </div>
+
         {/* H1 */}
-        <div className="max-w-[900px] mx-auto px-4 md:px-0">
-          <h1 className="text-[32px] md:text-[48px] lg:text-[52px] font-[800] leading-[1.05] tracking-[-0.03em]" style={{ marginBottom: '12px' }}>
-            <span className="text-white">Si sentís que podrías estar facturando mucho más...</span>
-            <br />
-            <span className="scala-gradient-text" style={{ fontSize: '0.88em', fontWeight: 600 }}>Probablemente tengas razón.</span>
+        <div className="max-w-[800px] mx-auto px-4 md:px-0">
+          <h1
+            className="sentinel-fade-in text-[28px] md:text-[44px] lg:text-[50px] font-[800] leading-[1.08] tracking-[-0.03em]"
+            style={{ marginBottom: '16px', animationDelay: '0.1s' }}
+          >
+            <span className="text-white">Tu negocio no necesita otro bot. </span>
+            <span className="scala-gradient-text">Necesita un Empleado IA que no deje clientes sin responder.</span>
           </h1>
 
-          {/* Sub-copy */}
-          <p style={{ fontSize: '17px', color: '#A0A0B5', opacity: 0.84, lineHeight: 1.5, maxWidth: '64ch', margin: '0 auto', marginBottom: '28px' }}>
-            Multiplicá hasta <span className="scala-gradient-text">21 veces</span> tus oportunidades de venta sin gastar un dólar más.
+          <p
+            className="sentinel-fade-in"
+            style={{
+              fontSize: '17px',
+              color: '#A0A0B5',
+              opacity: 0.88,
+              lineHeight: 1.55,
+              maxWidth: '58ch',
+              margin: '0 auto',
+              marginBottom: '36px',
+              animationDelay: '0.2s',
+            }}
+          >
+            Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram, con el tono y proceso de tu negocio.
           </p>
         </div>
 
-        {/* Video (Hero Card) */}
-        <div className="relative w-full" style={{ maxWidth: '680px' }}>
-          <div style={{ position: 'absolute', top: '-180px', left: '-180px', right: '-180px', bottom: '-180px', zIndex: 0, pointerEvents: 'none', borderRadius: '100px', background: 'radial-gradient(ellipse at 50% 50%, rgba(107, 221, 161,0.015) 0%, rgba(24, 93, 232,0.012) 40%, transparent 70%)', filter: 'blur(160px)', transform: 'translateZ(0)' }}></div>
-          <div className="video-wrapper bg-[#050505] relative shadow-lg overflow-hidden z-20" style={{ borderRadius: '24px', border: '1px solid rgba(255,255,255,0.10)', boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
+        {/* Video */}
+        <div
+          ref={videoRef}
+          className="sentinel-scale-in relative w-full"
+          style={{ maxWidth: '720px', animationDelay: '0.3s' }}
+        >
+          {/* Video glow */}
+          <div style={{
+            position: 'absolute', top: '-100px', left: '-100px', right: '-100px', bottom: '-100px',
+            zIndex: 0, pointerEvents: 'none', borderRadius: '80px',
+            background: 'radial-gradient(ellipse at 50% 50%, rgba(107, 221, 161, 0.025) 0%, rgba(24, 93, 232, 0.015) 40%, transparent 70%)',
+            filter: 'blur(120px)', transform: 'translateZ(0)',
+          }} />
+          <div
+            className="bg-[#050505] relative shadow-lg overflow-hidden z-20"
+            style={{
+              borderRadius: '20px',
+              border: '1px solid rgba(107, 221, 161, 0.12)',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(107, 221, 161, 0.04), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}
+          >
             <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-              <iframe
-                src="https://player.vimeo.com/video/1180578010?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                title="VSL SCALA">
-              </iframe>
+              {videoVisible && (
+                <iframe
+                  src="https://player.vimeo.com/video/1180578010?badge=0&autopause=0&player_id=0&app_id=58479"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                  title="Sentinel — Empleado IA Comercial"
+                  loading="lazy"
+                />
+              )}
             </div>
           </div>
+          {/* Caption */}
+          <p style={{
+            textAlign: 'center', marginTop: '14px', fontSize: '13px',
+            color: '#5A5A6E', fontStyle: 'italic', fontWeight: 500,
+          }}>
+            Miralo antes de contratar otro vendedor.
+          </p>
         </div>
 
-        {/* Social Proof — Logo Belt */}
-        <div style={{ marginTop: '36px', marginBottom: '36px', width: '100%', height: '56px', display: 'flex', alignItems: 'center' }}>
-          <div className="logo-belt-container">
-            <div className="logo-track">
-              {/* Double list mapped twice for linear marquee loop */}
-              {[...Array(2)].map((_, i) => (
-                <div key={i} style={{ display: 'flex', gap: '48px' }}>
-                  {['Grupo Riviera', 'Vertex Digital', 'GangAI', 'Capital Sur', 'Instituto NW'].map((name) => (
-                    <span key={name} className="logo-item">{name}</span>
-                  ))}
-                  {/* Additional gap so the loop meets perfectly */}
-                  <span style={{ width: '0' }}></span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto" style={{ marginTop: '0px' }}>
-          <Link to="/formulario" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-            <Button variant="primary" className="text-lg w-full sm:w-auto px-10 btn-hover-lift">Agendar llamada gratuita</Button>
+        {/* CTA */}
+        <div className="sentinel-fade-in flex flex-col items-center mt-10" style={{ animationDelay: '0.45s' }}>
+          <Link
+            to={CTA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none' }}
+            onClick={() => trackEvent('hero')}
+          >
+            <Button variant="primary" className="text-lg px-10 py-4 btn-hover-lift">
+              Quiero implementar Sentinel
+            </Button>
           </Link>
+          <p style={{
+            marginTop: '14px', fontSize: '13px', color: '#5A5A6E',
+            display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px 16px',
+          }}>
+            <span>Implementación personalizada</span>
+            <span style={{ color: 'rgba(255,255,255,0.12)' }}>·</span>
+            <span>Precio lanzamiento</span>
+            <span style={{ color: 'rgba(255,255,255,0.12)' }}>·</span>
+            <span>En pocos días funcionando</span>
+          </p>
         </div>
-
       </div>
 
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @media (max-width: 768px) {
-          .logo-item { font-size: 14px !important; }
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes sentinel-fade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes sentinel-scale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+        .sentinel-fade-in { animation: sentinel-fade 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .sentinel-scale-in { animation: sentinel-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        @media (prefers-reduced-motion: reduce) {
+          .sentinel-fade-in, .sentinel-scale-in { animation: none; opacity: 1; transform: none; }
         }
       `}} />
     </section>

@@ -1,336 +1,159 @@
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
-import { Search, Wrench, Bot, TrendingUp, MessageCircle, Camera, Users } from 'lucide-react';
 
-export const QueEsScala = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const timelineRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(sectionRef, { once: true, margin: "-20%" });
+const chatMessages = [
+  { from: 'client', text: 'Hola, quería saber precios.', time: '10:02' },
+  { from: 'sentinel', text: 'Hola, ¿cómo estás? Te ayudo. Para recomendarte bien, ¿buscás esto para vos o para tu empresa?', time: '10:02' },
+  { from: 'client', text: 'Para mi empresa.', time: '10:03' },
+  { from: 'sentinel', text: 'Perfecto. Te hago dos preguntas rápidas y te derivo con un asesor para que te muestren la mejor opción.', time: '10:03' },
+];
 
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start 80%", "center center"]
-    });
+const chips = ['Responde', 'Califica', 'Sigue', 'Deriva'];
 
-    const lineFill = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+const cards = [
+  { title: 'Responde', desc: 'Atiende consultas incluso cuando tu equipo no está conectado.' },
+  { title: 'Califica', desc: 'Detecta si el cliente tiene intención real o solo está preguntando.' },
+  { title: 'Sigue', desc: 'Vuelve a contactar oportunidades que normalmente se enfrían.' },
+];
 
-    // Badge counter animation
-    const [count1, setCount1] = useState(0);
-    const [count2, setCount2] = useState(0);
+export const WhatIsSentinel = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [visibleMsgs, setVisibleMsgs] = useState(0);
 
-    useEffect(() => {
-        if (!isInView) return;
-        const dur1 = 800;
-        const start1 = performance.now();
-        function tick1(now: number) {
-            const p = Math.min((now - start1) / dur1, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            setCount1(Math.round(7 * eased));
-            if (p < 1) requestAnimationFrame(tick1);
-        }
-        requestAnimationFrame(tick1);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setIsVisible(true); obs.disconnect(); }
+    }, { threshold: 0.15 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
-        setTimeout(() => {
-            const dur2 = 800;
-            const start2 = performance.now();
-            function tick2(now: number) {
-                const p = Math.min((now - start2) / dur2, 1);
-                const eased = 1 - Math.pow(1 - p, 3);
-                setCount2(Math.round(30 * eased));
-                if (p < 1) requestAnimationFrame(tick2);
-            }
-            requestAnimationFrame(tick2);
-        }, 200);
-    }, [isInView]);
+  useEffect(() => {
+    if (!isVisible) return;
+    let i = 0;
+    const timer = setInterval(() => {
+      i++;
+      setVisibleMsgs(i);
+      if (i >= chatMessages.length) clearInterval(timer);
+    }, 600);
+    return () => clearInterval(timer);
+  }, [isVisible]);
 
-    const nodes = [
-        {
-            step: 1,
-            number: "01",
-            days: `${count1} días`,
-            icon: Search,
-            title: "Auditoría profunda",
-            desc: "Escuchamos tus llamadas, leemos tus chats y medimos dónde exactamente se te escapan ventas.",
-            color: "green" as const,
-        },
-        {
-            step: 2,
-            number: "02",
-            days: `${count2} días`,
-            icon: Wrench,
-            title: "Implementación completa",
-            desc: "Rearmamos discurso de venta, proceso comercial, automatizaciones, tablero de métricas y entrenamos a tu equipo.",
-            color: "green" as const,
-        },
-        {
-            step: 3,
-            number: "03",
-            days: "Empleado IA",
-            icon: Bot,
-            title: "Agente 24/7",
-            desc: "Responde en segundos, califica leads y agenda reuniones. Integrado a tu proceso y con traspaso a humano con contexto.",
-            color: "green" as const,
-        },
-        {
-            step: 4,
-            number: "∞",
-            days: "Resultado",
-            icon: TrendingUp,
-            title: "SCALA",
-            desc: "Más ventas. Más cierres. Mismo presupuesto.",
-            color: "result" as const,
-        },
-    ];
+  return (
+    <section
+      ref={sectionRef}
+      className="relative"
+      style={{ background: '#020202', borderTop: '1px solid rgba(255,255,255,0.04)', padding: '120px 0' }}
+    >
+      <div className="container-custom relative z-10 flex flex-col items-center">
 
-    const colorMap = {
-        green: {
-            badgeBg: 'rgba(107, 221, 161,0.06)',
-            badgeBorder: 'rgba(107, 221, 161,0.15)',
-            badgeBgActive: 'rgba(107, 221, 161,0.1)',
-            badgeBorderActive: 'rgba(107, 221, 161,0.3)',
-            badgeShadow: 'rgba(107, 221, 161,0.1)',
-            iconBg: 'rgba(107, 221, 161,0.06)',
-            iconBorder: 'rgba(107, 221, 161,0.1)',
-            iconBgActive: 'rgba(107, 221, 161,0.1)',
-            iconShadow: 'rgba(107, 221, 161,0.08)',
-            textColor: '#6bdda1',
-        },
-        blue: {
-            badgeBg: 'rgba(24, 93, 232,0.06)',
-            badgeBorder: 'rgba(24, 93, 232,0.15)',
-            badgeBgActive: 'rgba(24, 93, 232,0.1)',
-            badgeBorderActive: 'rgba(24, 93, 232,0.3)',
-            badgeShadow: 'rgba(24, 93, 232,0.1)',
-            iconBg: 'rgba(24, 93, 232,0.06)',
-            iconBorder: 'rgba(24, 93, 232,0.1)',
-            iconBgActive: 'rgba(24, 93, 232,0.1)',
-            iconShadow: 'rgba(24, 93, 232,0.08)',
-            textColor: '#3B82F6',
-        },
-        result: {
-            badgeBg: 'rgba(107, 221, 161,0.08)',
-            badgeBorder: 'rgba(107, 221, 161,0.2)',
-            badgeBgActive: 'rgba(107, 221, 161,0.14)',
-            badgeBorderActive: 'rgba(107, 221, 161,0.4)',
-            badgeShadow: 'rgba(107, 221, 161,0.15)',
-            iconBg: 'rgba(107, 221, 161,0.1)',
-            iconBorder: 'rgba(107, 221, 161,0.2)',
-            iconBgActive: 'rgba(107, 221, 161,0.15)',
-            iconShadow: 'rgba(107, 221, 161,0.25)',
-            textColor: '#6bdda1',
-        },
-    };
+        {/* Header */}
+        <div className="text-center mb-14 md:mb-16 reveal">
+          <span style={{ display: 'block', marginBottom: '14px', fontSize: '12px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#6bdda1' }}>
+            Qué es Sentinel
+          </span>
+          <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 46px)', fontWeight: 700, color: '#F5F5F7', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '16px' }}>
+            Sentinel es tu Empleado IA comercial.
+          </h2>
+          <p style={{ fontSize: '17px', color: '#8B8B9E', lineHeight: 1.55, maxWidth: '560px', margin: '0 auto' }}>
+            No solo responde mensajes. Atiende, califica y sigue oportunidades para que tu equipo no pierda clientes por falta de tiempo.
+          </p>
+        </div>
 
-    return (
-        <section
-            id="como-funciona"
-            ref={sectionRef}
-            className="section-scala relative flex flex-col items-center"
-        >
-            <div className="container-custom relative z-10 flex flex-col items-center">
+        {/* Layout: Mockup + Cards */}
+        <div className="w-full max-w-[1000px] grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 items-start">
 
-                {/* ── CARD WRAPPER (with glows behind) ── */}
-                <div className="relative w-full max-w-[1100px] mx-auto">
-
-                    {/* ═══ FULL AMBIENT GLOW — covers entire card area ═══ */}
-                    <div
-                        className="absolute pointer-events-none z-0"
-                        style={{
-                            top: '-250px',
-                            left: '-250px',
-                            right: '-250px',
-                            bottom: '-250px',
-                            background: `radial-gradient(ellipse at 50% 50%, rgba(24, 93, 232,0.22), transparent 50%)`,
-                            filter: 'blur(30px)',
-                        }}
-                    />
-
-                    {/* ═══ GLOW TOP — intense blue edge bleed ═══ */}
-                    <div
-                        className="absolute pointer-events-none z-0"
-                        style={{
-                            top: '-220px',
-                            left: '-200px',
-                            right: '-200px',
-                            height: '500px',
-                            background: `radial-gradient(1000px 400px at 50% 100%, rgba(24, 93, 232,0.55), transparent 60%), radial-gradient(700px 300px at 65% 85%, rgba(24, 93, 232,0.35), transparent 55%), radial-gradient(500px 250px at 35% 90%, rgba(79,70,229,0.25), transparent 55%)`,
-                            filter: 'blur(20px)',
-                        }}
-                    />
-
-                    {/* ═══ GLOW BOTTOM — intense blue edge bleed ═══ */}
-                    <div
-                        className="absolute pointer-events-none z-0"
-                        style={{
-                            bottom: '-220px',
-                            left: '-200px',
-                            right: '-200px',
-                            height: '500px',
-                            background: `radial-gradient(1000px 400px at 50% 0%, rgba(24, 93, 232,0.50), transparent 60%), radial-gradient(700px 300px at 40% 15%, rgba(24, 93, 232,0.30), transparent 55%), radial-gradient(500px 250px at 60% 10%, rgba(79,70,229,0.22), transparent 55%)`,
-                            filter: 'blur(20px)',
-                        }}
-                    />
-
-                    {/* ═══ THE CARD — everything inside ═══ */}
-                    <div
-                        className="relative rounded-[24px] flex flex-col items-center"
-                        style={{
-                            background: 'linear-gradient(180deg, rgba(13,13,20,0.95) 0%, rgba(10,10,15,0.90) 100%)',
-                            border: '1px solid rgba(24, 93, 232,0.15)',
-                            padding: '56px 48px 40px',
-                            boxShadow: `
-                                0 0 30px rgba(24, 93, 232,0.20),
-                                0 0 80px rgba(24, 93, 232,0.16),
-                                0 0 160px rgba(24, 93, 232,0.12),
-                                0 0 300px rgba(79,70,229,0.08),
-                                0 20px 60px rgba(0,0,0,0.5)
-                            `,
-                            zIndex: 1,
-                        }}
-                    >
-                        {/* ── LABEL ── */}
-                        <motion.p
-                            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.10)', borderRadius: '100px', fontSize: '14px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#D0D0DC', marginBottom: '20px' }}
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5 }}
-                        >
-                            Qué es SCALA
-                        </motion.p>
-
-                        {/* ── H2 TITLE ── */}
-                        <motion.h2
-                            className="section-h2 text-center"
-                            initial={{ opacity: 0, y: 16 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                        >
-                            Auditamos, arreglamos y entrenamos.<br />En 30 días.
-                        </motion.h2>
-
-                        {/* ── SUBTITLE ── */}
-                        <motion.p
-                            className="section-sub text-center"
-                            initial={{ opacity: 0, y: 14 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                        >
-                            Todo lo que tu equipo necesita para dejar de perder ventas, implementado de principio a fin.
-                        </motion.p>
-
-                        {/* Timeline */}
-                        <div ref={timelineRef} className="relative w-full mb-10">
-                            {/* Horizontal connecting track (desktop) */}
-                            <div className="hidden md:block absolute top-[84px] z-0" style={{ left: 'calc(12.5%)', right: 'calc(12.5%)' }}>
-                                <div className="h-[3px] w-full bg-white/[0.06] rounded-full">
-                                    <motion.div
-                                        className="h-full rounded-full timeline-line-fill"
-                                        style={{
-                                            width: lineFill,
-                                            background: 'linear-gradient(90deg, #6bdda1 0%, #185de8 33%, #3B82F6 66%, #6bdda1 100%)',
-                                        }}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Vertical connecting track (mobile) — LEFT SIDE */}
-                            <div className="md:hidden absolute left-[23px] top-10 bottom-10 w-[3px] bg-white/[0.06] z-0">
-                                <motion.div
-                                    className="w-full rounded-full"
-                                    style={{
-                                        height: lineFill,
-                                        background: 'linear-gradient(180deg, #6bdda1, #185de8, #3B82F6)',
-                                        boxShadow: '0 0 12px rgba(107, 221, 161,0.2)',
-                                    }}
-                                />
-                            </div>
-
-                            {/* 4 Nodes */}
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-0 relative z-10">
-                                {nodes.map((node) => {
-                                    const c = colorMap[node.color];
-                                    const Icon = node.icon;
-                                    const isResult = node.color === 'result';
-                                    return (
-                                        <motion.div
-                                            key={node.step}
-                                            className="flex flex-col items-start text-left pl-16 md:items-center md:text-center md:pl-0 px-3 relative"
-                                            initial={{ opacity: 0, y: 24 }}
-                                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                            transition={{ duration: 0.6, delay: (node.step - 1) * 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                        >
-                                            {/* Watermark Number */}
-                                            <div className="absolute top-[40px] left-1/2 -translate-x-1/2 md:left-1/2 md:-translate-x-1/2 text-[100px] font-bold leading-none pointer-events-none select-none" style={{ color: '#ffffff', opacity: 0.03, zIndex: -1 }}>
-                                                {node.number}
-                                            </div>
-
-                                            {/* Badge */}
-                                            <div
-                                                className={`flex items-center justify-center gap-[8px] mb-8 px-[16px] rounded-full transition-all duration-400 h-[28px] ${isResult ? 'node-badge-green' : c.textColor === '#3B82F6' ? 'node-badge-blue' : 'node-badge-green'}`}
-                                                style={{
-                                                    background: isInView ? c.badgeBgActive : c.badgeBg,
-                                                }}
-                                            >
-                                                {!isResult && <span className="text-[11px] font-bold opacity-50 uppercase tracking-widest" style={{ color: c.textColor }}>{node.number}</span>}
-                                                {!isResult && <span className="w-[3px] h-[3px] rounded-full bg-white/20"></span>}
-                                                <span className="text-[13px] font-semibold" style={{ color: c.textColor }}>{node.days}</span>
-                                            </div>
-
-                                            {/* Icon — on left line in mobile, centered in desktop */}
-                                            <div
-                                                className={`w-[48px] h-[48px] flex items-center justify-center rounded-full mb-4 md:mb-6 transition-all duration-400 z-10 md:relative absolute left-0 md:left-auto ${isResult ? 'node-icon-result' : c.textColor === '#6bdda1' ? 'node-icon-green' : ''}`}
-                                                style={{
-                                                    background: '#0D0D14',
-                                                    border: `2px solid ${isInView ? c.textColor : c.iconBorder}`,
-                                                    color: isInView ? c.textColor : '#A0A0B0',
-                                                }}
-                                            >
-                                                <Icon size={20} strokeWidth={2} />
-                                            </div>
-
-                                            {/* Title */}
-                                            <h3
-                                                className="text-[17px] font-semibold mb-2 tracking-tight"
-                                                style={{ color: isResult ? '#6bdda1' : '#F5F5F7' }}
-                                            >
-                                                {node.title}
-                                            </h3>
-
-                                            {/* Description */}
-                                            <p
-                                                className="text-[14.5px] leading-relaxed max-w-[220px]"
-                                                style={{ color: isResult ? 'rgba(107, 221, 161,0.85)' : '#A0A0B0' }}
-                                            >
-                                                {node.desc}
-                                            </p>
-                                        </motion.div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-
-                        {/* Footer: Ideal para + chips */}
-                        <div className="w-full pt-7 mt-2 border-t border-white/[0.04] flex flex-col items-center">
-                            <p className="text-[12px] font-semibold text-[#5A5A6E] uppercase tracking-[0.1em] mb-5">Ideal para:</p>
-                            <div className="flex justify-center gap-3 flex-wrap">
-                                <div className="inline-flex items-center gap-2 px-[16px] py-[8px] rounded-full bg-white/[0.02] border border-white/[0.05] text-[13px] text-[#A0A0B0] hover:bg-white/[0.05] hover:text-[#F5F5F7] transition-colors">
-                                    <MessageCircle size={16} className="text-[#8B8B9E] shrink-0" />
-                                    <span>Ventas por WhatsApp</span>
-                                </div>
-                                <div className="inline-flex items-center gap-2 px-[16px] py-[8px] rounded-full bg-white/[0.02] border border-white/[0.05] text-[13px] text-[#A0A0B0] hover:bg-white/[0.05] hover:text-[#F5F5F7] transition-colors">
-                                    <Camera size={16} className="text-[#8B8B9E] shrink-0" />
-                                    <span>Ventas por Instagram</span>
-                                </div>
-                                <div className="inline-flex items-center gap-2 px-[16px] py-[8px] rounded-full bg-white/[0.02] border border-white/[0.05] text-[13px] text-[#A0A0B0] hover:bg-white/[0.05] hover:text-[#F5F5F7] transition-colors">
-                                    <Users size={16} className="text-[#8B8B9E] shrink-0" />
-                                    <span>Equipos comerciales</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          {/* Mockup WhatsApp */}
+          <div className="relative reveal">
+            <div style={{
+              maxWidth: '380px', margin: '0 auto',
+              background: '#0B141A', borderRadius: '24px',
+              border: '1px solid rgba(255,255,255,0.08)',
+              overflow: 'hidden',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(107,221,161,0.03)',
+            }}>
+              {/* WA Header */}
+              <div className="flex items-center gap-[10px] px-4 py-[10px]" style={{ background: '#1F2C34', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                <span className="text-[14px]" style={{ color: '#8696A0' }}>←</span>
+                <div className="w-[32px] h-[32px] rounded-full flex items-center justify-center text-[12px] font-semibold shrink-0" style={{ background: '#6bdda1', color: '#000' }}>S</div>
+                <div className="flex flex-col flex-1 min-w-0">
+                  <span className="text-[14px] font-medium text-[#E9EDEF] truncate">Sentinel</span>
+                  <span className="text-[11px]" style={{ color: '#8696A0' }}>en línea</span>
                 </div>
+              </div>
 
+              {/* Chat Messages */}
+              <div className="flex flex-col gap-2 p-4" style={{
+                minHeight: '320px',
+                backgroundColor: '#0B141A',
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}>
+                {chatMessages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`max-w-[85%] px-3 py-2 text-[13px] leading-[1.45] ${msg.from === 'client' ? 'self-start rounded-tr-xl rounded-br-xl rounded-bl-xl rounded-tl-sm' : 'self-end rounded-tl-xl rounded-bl-xl rounded-br-xl rounded-tr-sm'}`}
+                    style={{
+                      background: msg.from === 'client' ? '#202C33' : 'rgba(107,221,161,0.12)',
+                      color: '#E9EDEF',
+                      opacity: i < visibleMsgs ? 1 : 0,
+                      transform: i < visibleMsgs ? 'translateY(0)' : 'translateY(8px)',
+                      transition: 'opacity 0.4s ease, transform 0.4s ease',
+                    }}
+                  >
+                    {msg.text}
+                    <span className="block text-right text-[10px] mt-0.5" style={{ color: '#8696A0' }}>{msg.time}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-        </section>
-    );
+
+            {/* Floating Chips */}
+            <div className="flex flex-wrap justify-center gap-2 mt-5">
+              {chips.map((chip, i) => (
+                <span
+                  key={chip}
+                  className="reveal"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '6px',
+                    padding: '6px 14px', borderRadius: '100px', fontSize: '12px', fontWeight: 600,
+                    background: 'rgba(107,221,161,0.06)', border: '1px solid rgba(107,221,161,0.15)',
+                    color: '#6bdda1', letterSpacing: '0.03em',
+                  }}
+                >
+                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#6bdda1' }} />
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* 3 Cards */}
+          <div className="flex flex-col gap-4 reveal-stagger">
+            {cards.map((card) => (
+              <div
+                key={card.title}
+                className="reveal"
+                style={{
+                  background: 'rgba(255,255,255,0.025)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  borderRadius: '18px',
+                  padding: '24px 28px',
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#F5F5F7', marginBottom: '6px', letterSpacing: '-0.01em' }}>
+                  {card.title}
+                </h3>
+                <p style={{ fontSize: '15px', color: '#8B8B9E', lineHeight: 1.55 }}>
+                  {card.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
