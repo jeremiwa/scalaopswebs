@@ -23,49 +23,34 @@ export const Hero = () => {
       />
 
       {/* Main Content Container */}
-      <div className="container-custom relative z-10 flex flex-col items-center px-[24px] md:px-0 mx-auto w-full max-w-[360px] md:max-w-[760px]">
+      <div className="container-custom relative z-10 flex flex-col items-center px-[20px] md:px-0 mx-auto w-full max-w-[100%] sm:max-w-[480px] md:max-w-[800px]">
 
 
 
         {/* 03 Headline */}
-        <div className="flex flex-col items-center w-full max-w-[330px] md:max-w-[680px] text-center">
+        <div className="flex flex-col items-center w-full text-center">
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
             style={{
               fontFamily: 'var(--font-primary), Inter, sans-serif',
-              fontSize: 'clamp(32px, 8vw, 64px)',
+              fontSize: 'clamp(25px, 6.8vw, 56px)',
               fontWeight: 800,
-              lineHeight: 1.05,
+              lineHeight: 1.1,
               letterSpacing: '-0.035em',
               color: '#FFFFFF',
               margin: 0,
               padding: 0
             }}
           >
-            Tu negocio no necesita otro empleado.
-          </motion.h1>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
-            style={{
-              fontFamily: 'var(--font-primary), Inter, sans-serif',
-              fontSize: 'clamp(32px, 8vw, 64px)',
-              fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: '-0.035em',
-              margin: 0,
-              padding: 0,
+            Tu negocio no necesita otro empleado. <span style={{
               background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-            }}
-          >
-            Necesita un Empleado IA.
+              whiteSpace: 'nowrap'
+            }}>Necesita un Empleado IA.</span>
           </motion.h1>
         </div>
 
@@ -76,13 +61,12 @@ export const Hero = () => {
           transition={{ duration: 0.4, delay: 0.5 }}
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: 'clamp(16px, 4vw, 20px)',
+            fontSize: 'clamp(14px, 3.8vw, 18px)',
             color: 'rgba(255,255,255,0.72)',
             lineHeight: 1.42,
-            maxWidth: '315px',
-            mdMaxWidth: '600px',
+            maxWidth: '100%',
             textAlign: 'center',
-            marginTop: '18px',
+            marginTop: '16px',
             marginBottom: '20px'
           }}
         >
