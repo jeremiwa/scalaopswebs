@@ -1,21 +1,29 @@
 /**
  * Sentinel Landing Page — /agente-ia
  * VSL mobile-first landing for Sentinel AI Employee product
+ * 
+ * Section order:
+ * 01 Hero → 02 Credibilidad → 03 Diagnóstico (Dolor) → 04 Tabla USD →
+ * 05 Qué es Sentinel → 06 Demo (QueEsScala) → 07 Bot vs Sentinel →
+ * 08 Calculadora ROI → 09 Resultados → 10 Garantía → 11 Filtro →
+ * 12 Pricing → 13 Proceso → 14 FAQ → 15 CTA Final → Footer
  */
 
 import { SEO } from '../components/SEO';
 import { Navbar } from '../components/agente-ia/Navbar';
 import { Hero } from '../components/agente-ia/Hero';
 import { Credibilidad } from '../components/agente-ia/Credibilidad';
-import { NotABot } from '../components/agente-ia/StoryboardDolor'; // Dolor Simple
-import { WhatIsSentinel } from '../components/agente-ia/QueEsScala'; // Demo
+import { NotABot } from '../components/agente-ia/StoryboardDolor';
+import { TablaUSD } from '../components/agente-ia/TablaUSD';
+import { QueEsSentinel } from '../components/agente-ia/QueEsSentinel';
+import { WhatIsSentinel } from '../components/agente-ia/QueEsScala';
 import { BotVsSentinel } from '../components/agente-ia/BotVsSentinel';
-import { HumanoVsSentinel } from '../components/agente-ia/HumanoVsSentinel';
-import { BloqueEquipo } from '../components/agente-ia/BloqueEquipo';
 import { Calculadora } from '../components/agente-ia/Calculadora';
 import { Resultados } from '../components/agente-ia/Resultados';
-import { ForWho } from '../components/agente-ia/CostoInvisible'; // Para Quién
-import { Pricing } from '../components/agente-ia/Escalar'; // Oferta
+import { Garantia } from '../components/agente-ia/Garantia';
+import { ForWho } from '../components/agente-ia/CostoInvisible';
+import { Pricing } from '../components/agente-ia/Escalar';
+import { Proceso } from '../components/agente-ia/Proceso';
 import { FAQ } from '../components/agente-ia/FAQ';
 import { CtaFinal } from '../components/agente-ia/CtaFinal';
 import { Footer } from '../components/agente-ia/Footer';
@@ -26,7 +34,7 @@ export const AgenteIA = () => {
   useAnimations();
 
   return (
-    <div className="min-h-screen bg-[#030504] selection:bg-[#68E6A3] selection:text-[#030504] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#000000] selection:bg-[#00D4AA] selection:text-[#000000] relative overflow-x-hidden">
       <SEO
         title="Sentinel — Tu Empleado IA Comercial | ScalaOps"
         description="Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram con el tono de tu negocio. Implementación personalizada por USD 997."
@@ -46,19 +54,21 @@ export const AgenteIA = () => {
       <Navbar />
 
       <main>
-        <Hero />
-        <Credibilidad />
-        <NotABot />
-        <WhatIsSentinel />
-        <BotVsSentinel />
-        <HumanoVsSentinel />
-        <BloqueEquipo />
-        <Calculadora />
-        <Resultados />
-        <ForWho />
-        <Pricing />
-        <FAQ />
-        <CtaFinal />
+        {/* S01 */}<Hero />
+        {/* S02 */}<Credibilidad />
+        {/* S03 */}<NotABot />
+        {/* S04 */}<TablaUSD />
+        {/* S05 */}<QueEsSentinel />
+        {/* S06 */}<WhatIsSentinel />
+        {/* S07 */}<BotVsSentinel />
+        {/* S08 */}<Calculadora />
+        {/* S09 */}<Resultados />
+        {/* S10 */}<Garantia />
+        {/* S11 */}<ForWho />
+        {/* S12 */}<Pricing />
+        {/* S13 */}<Proceso />
+        {/* S14 */}<FAQ />
+        {/* S15 */}<CtaFinal />
       </main>
 
       <Footer />
