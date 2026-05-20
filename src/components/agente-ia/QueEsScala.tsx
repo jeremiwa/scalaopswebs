@@ -196,12 +196,12 @@ export const WhatIsSentinel = () => {
     setVisibleMsgs([]);
     setShowTyping(false);
 
-    let delay = 300;
+    let delay = 600; // Pausa inicial
     msgs.forEach((msg) => {
       if (msg.from === 'sentinel') {
         const typingTimer = setTimeout(() => setShowTyping(true), delay);
         timerRefs.current.push(typingTimer);
-        delay += 1200; // time typing
+        delay += 1800; // Tiempo simulando que escribe
       }
 
       const msgTimer = setTimeout(() => {
@@ -209,7 +209,9 @@ export const WhatIsSentinel = () => {
         setVisibleMsgs(prev => [...prev, msg]);
       }, delay);
       timerRefs.current.push(msgTimer);
-      delay += msg.from === 'client' ? 800 : 500;
+      
+      // Tiempo extra para que el usuario pueda leer el mensaje antes del siguiente
+      delay += msg.from === 'client' ? 1500 : 2500; 
     });
   }, [clearTimers]);
 
