@@ -27,7 +27,7 @@ export const FaqCorta = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section ref={ref} className="w-full bg-[#000000] py-[64px] flex flex-col items-center">
+    <section ref={ref} className="w-full bg-[#000000] py-[48px] md:py-[80px] flex flex-col items-center">
       <div className="container-custom px-[20px] w-full max-w-[600px] mx-auto">
         
         <motion.div 

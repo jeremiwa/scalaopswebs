@@ -42,7 +42,7 @@ export const S03_FueraDeHorario = () => {
   const phase = step < 4 ? 'sin' : step === 4 ? 'trans' : step < 10 ? 'con' : 'reset';
 
   return (
-    <section ref={ref} className="w-full bg-[#000000] py-[80px] md:py-[120px] flex flex-col items-center overflow-hidden">
+    <section ref={ref} className="w-full bg-[#000000] py-[48px] md:py-[80px] flex flex-col items-center overflow-hidden">
       
       <div className="container-custom px-[20px] w-full max-w-[800px] mx-auto flex flex-col items-center">
         

@@ -9,7 +9,7 @@ export const CtaFinalSimple = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="cta-final" ref={ref} className="w-full bg-[#000000] py-[100px] md:py-[140px] flex flex-col items-center relative overflow-hidden">
+    <section id="cta-final" ref={ref} className="w-full bg-[#000000] py-[64px] md:py-[100px] flex flex-col items-center relative overflow-hidden">
       
       {/* Background glow sutil */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0066FF]/10 blur-[150px] rounded-full pointer-events-none" />

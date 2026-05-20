@@ -10,7 +10,7 @@ export const OfertaSimple = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="pricing" ref={ref} className="w-full bg-[#000000] py-[64px] md:py-[100px] flex flex-col items-center relative overflow-hidden">
+    <section id="pricing" ref={ref} className="w-full bg-[#000000] py-[48px] md:py-[80px] flex flex-col items-center relative overflow-hidden">
       
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00D4AA]/5 blur-[120px] rounded-full pointer-events-none" />

@@ -34,7 +34,7 @@ export const S05_TestimoniosScala = () => {
   };
 
   return (
-    <section ref={ref} className="w-full bg-[#000000] py-[80px] md:py-[120px] flex flex-col items-center overflow-hidden border-y border-white/[0.02]">
+    <section ref={ref} className="w-full bg-[#000000] py-[48px] md:py-[80px] flex flex-col items-center overflow-hidden border-y border-white/[0.02]">
       
       <div className="container-custom px-0 md:px-[20px] w-full max-w-[1200px] mx-auto">
         
