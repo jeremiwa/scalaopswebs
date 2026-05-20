@@ -2,30 +2,23 @@
  * Sentinel Landing Page — /agente-ia
  * VSL mobile-first landing for Sentinel AI Employee product
  * 
- * Section order:
- * 01 Hero → 02 Credibilidad → 03 Diagnóstico (Dolor) → 04 Tabla USD →
- * 05 Qué es Sentinel → 06 Demo (QueEsScala) → 07 Bot vs Sentinel →
- * 08 Calculadora ROI → 09 Resultados → 10 Garantía → 11 Filtro →
- * 12 Pricing → 13 Proceso → 14 FAQ → 15 CTA Final → Footer
+ * Section order (Simplified):
+ * 01 Hero → 02 Demo (QueEsScala) → 03 Dolor Simple → 04 Diferenciación Breve →
+ * 05 Sentinel Vs Vendedor → 06 Prueba Social Corta → 07 Oferta Simple → 
+ * 08 FAQ Corta → 09 CTA Final Simple → Footer
  */
 
 import { SEO } from '../components/SEO';
 import { Navbar } from '../components/agente-ia/Navbar';
 import { Hero } from '../components/agente-ia/Hero';
-import { Credibilidad } from '../components/agente-ia/Credibilidad';
-import { NotABot } from '../components/agente-ia/StoryboardDolor';
-import { TablaUSD } from '../components/agente-ia/TablaUSD';
-import { QueEsSentinel } from '../components/agente-ia/QueEsSentinel';
 import { WhatIsSentinel } from '../components/agente-ia/QueEsScala';
-import { BotVsSentinel } from '../components/agente-ia/BotVsSentinel';
-import { Calculadora } from '../components/agente-ia/Calculadora';
-import { Resultados } from '../components/agente-ia/Resultados';
-import { Garantia } from '../components/agente-ia/Garantia';
-import { ForWho } from '../components/agente-ia/CostoInvisible';
-import { Pricing } from '../components/agente-ia/Escalar';
-import { Proceso } from '../components/agente-ia/Proceso';
-import { FAQ } from '../components/agente-ia/FAQ';
-import { CtaFinal } from '../components/agente-ia/CtaFinal';
+import { DolorSimple } from '../components/agente-ia/DolorSimple';
+import { DiferenciacionBreve } from '../components/agente-ia/DiferenciacionBreve';
+import { SentinelVsVendedor } from '../components/agente-ia/SentinelVsVendedor';
+import { PruebaSocialCorta } from '../components/agente-ia/PruebaSocialCorta';
+import { OfertaSimple } from '../components/agente-ia/OfertaSimple';
+import { FaqCorta } from '../components/agente-ia/FaqCorta';
+import { CtaFinalSimple } from '../components/agente-ia/CtaFinalSimple';
 import { Footer } from '../components/agente-ia/Footer';
 import { StickyCTA } from '../components/agente-ia/StickyCTA';
 import { useAnimations } from '../hooks/useAnimations';
@@ -54,21 +47,15 @@ export const AgenteIA = () => {
       <Navbar />
 
       <main>
-        {/* S01 */}<Hero />
-        {/* S06 */}<WhatIsSentinel />
-        {/* S02 */}<Credibilidad />
-        {/* S03 */}<NotABot />
-        {/* S04 */}<TablaUSD />
-        {/* S05 */}<QueEsSentinel />
-        {/* S07 */}<BotVsSentinel />
-        {/* S08 */}<Calculadora />
-        {/* S09 */}<Resultados />
-        {/* S10 */}<Garantia />
-        {/* S11 */}<ForWho />
-        {/* S12 */}<Pricing />
-        {/* S13 */}<Proceso />
-        {/* S14 */}<FAQ />
-        {/* S15 */}<CtaFinal />
+        <Hero />
+        <WhatIsSentinel />
+        <DolorSimple />
+        <DiferenciacionBreve />
+        <SentinelVsVendedor />
+        <PruebaSocialCorta />
+        <OfertaSimple />
+        <FaqCorta />
+        <CtaFinalSimple />
       </main>
 
       <Footer />

@@ -21,8 +21,8 @@ export const StickyCTA = () => {
       let shouldShow = scrollY > heroHeight * 0.25;
 
       // Check if in pricing or final CTA section to hide
-      const pricingEl = document.getElementById('sentinel-pricing');
-      const finalCtaEl = document.getElementById('sentinel-cta-final');
+      const pricingEl = document.getElementById('pricing');
+      const finalCtaEl = document.getElementById('cta-final');
       
       if (pricingEl) {
         const rect = pricingEl.getBoundingClientRect();
@@ -64,7 +64,8 @@ export const StickyCTA = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '64px',
+        minHeight: '60px',
+        maxHeight: '60px',
       }}>
         <Link
           to={CTA_URL}
@@ -83,7 +84,7 @@ export const StickyCTA = () => {
             fontFamily: 'var(--font-primary), Inter, sans-serif',
             fontWeight: 800,
             fontSize: '15px',
-            color: '#FFFFFF',
+            color: '#020403',
             textDecoration: 'none',
             boxShadow: '0 4px 16px rgba(0, 212, 170, 0.2)',
             letterSpacing: '-0.01em',
