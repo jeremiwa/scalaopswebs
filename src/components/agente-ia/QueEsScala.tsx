@@ -313,7 +313,7 @@ export const WhatIsSentinel = () => {
                   <div className="w-4 h-4 rounded-full bg-[#6bdda1] animate-pulse" />
                 </div>
                 <div>
-                  <div className="text-[14px] font-bold text-white tracking-wide">Scala AI Agent</div>
+                  <div className="text-[14px] font-bold text-white tracking-wide">Sentinel</div>
                   <div className="text-[11px] text-[#6bdda1] font-medium tracking-wider uppercase">Operativo 24/7</div>
                 </div>
               </div>
