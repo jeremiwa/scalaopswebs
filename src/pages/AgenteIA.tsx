@@ -12,6 +12,7 @@ import { SEO } from '../components/SEO';
 import { Navbar } from '../components/agente-ia/Navbar';
 import { Hero } from '../components/agente-ia/Hero';
 import { WhatIsSentinel } from '../components/agente-ia/QueEsScala';
+import { S02_BentoDolores } from '../components/agente-ia/S02_BentoDolores';
 import { S03_FueraDeHorario } from '../components/agente-ia/S03_FueraDeHorario';
 import { S04_ComparativaSimple } from '../components/agente-ia/S04_ComparativaSimple';
 import { S05_TestimoniosScala } from '../components/agente-ia/S05_TestimoniosScala';
@@ -48,6 +49,7 @@ export const AgenteIA = () => {
       <main>
         <Hero />
         <WhatIsSentinel />
+        <S02_BentoDolores />
         <S03_FueraDeHorario />
         <S04_ComparativaSimple />
         <S05_TestimoniosScala />
