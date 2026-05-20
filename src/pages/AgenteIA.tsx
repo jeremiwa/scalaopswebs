@@ -2,20 +2,19 @@
  * Sentinel Landing Page — /agente-ia
  * VSL mobile-first landing for Sentinel AI Employee product
  * 
- * Section order (Simplified):
- * 01 Hero → 02 Demo (QueEsScala) → 03 Dolor Simple → 04 Diferenciación Breve →
- * 05 Sentinel Vs Vendedor → 06 Prueba Social Corta → 07 Oferta Simple → 
- * 08 FAQ Corta → 09 CTA Final Simple → Footer
+ * Section order (Simplified VSL):
+ * 01 Hero → 02 Demo (QueEsScala) → 03 Fuera De Horario (Dolor animado) → 
+ * 04 Comparativa Simple → 05 Testimonios (Scala Style) → 06 Oferta Simple → 
+ * 07 FAQ Corta → 08 CTA Final Simple → Footer
  */
 
 import { SEO } from '../components/SEO';
 import { Navbar } from '../components/agente-ia/Navbar';
 import { Hero } from '../components/agente-ia/Hero';
 import { WhatIsSentinel } from '../components/agente-ia/QueEsScala';
-import { DolorSimple } from '../components/agente-ia/DolorSimple';
-import { DiferenciacionBreve } from '../components/agente-ia/DiferenciacionBreve';
-import { SentinelVsVendedor } from '../components/agente-ia/SentinelVsVendedor';
-import { PruebaSocialCorta } from '../components/agente-ia/PruebaSocialCorta';
+import { S03_FueraDeHorario } from '../components/agente-ia/S03_FueraDeHorario';
+import { S04_ComparativaSimple } from '../components/agente-ia/S04_ComparativaSimple';
+import { S05_TestimoniosScala } from '../components/agente-ia/S05_TestimoniosScala';
 import { OfertaSimple } from '../components/agente-ia/OfertaSimple';
 import { FaqCorta } from '../components/agente-ia/FaqCorta';
 import { CtaFinalSimple } from '../components/agente-ia/CtaFinalSimple';
@@ -49,10 +48,9 @@ export const AgenteIA = () => {
       <main>
         <Hero />
         <WhatIsSentinel />
-        <DolorSimple />
-        <DiferenciacionBreve />
-        <SentinelVsVendedor />
-        <PruebaSocialCorta />
+        <S03_FueraDeHorario />
+        <S04_ComparativaSimple />
+        <S05_TestimoniosScala />
         <OfertaSimple />
         <FaqCorta />
         <CtaFinalSimple />
