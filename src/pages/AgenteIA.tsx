@@ -55,11 +55,11 @@ export const AgenteIA = () => {
 
       <main>
         {/* S01 */}<Hero />
+        {/* S06 */}<WhatIsSentinel />
         {/* S02 */}<Credibilidad />
         {/* S03 */}<NotABot />
         {/* S04 */}<TablaUSD />
         {/* S05 */}<QueEsSentinel />
-        {/* S06 */}<WhatIsSentinel />
         {/* S07 */}<BotVsSentinel />
         {/* S08 */}<Calculadora />
         {/* S09 */}<Resultados />
