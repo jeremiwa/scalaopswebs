@@ -1,11 +1,14 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { DollarSign, Zap, Clock, MessageSquare, RefreshCw, ListChecks } from 'lucide-react';
 
-const EASE_APPLE = [0.16, 1, 0.3, 1];
+const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const BLUE = '#4A8FFF';
 
 const bloques = [
   {
     etiqueta: "Costos",
+    icon: DollarSign,
     dolor: "USD 18.000+/año",
     subdato: "en sueldo, cargas, aguinaldo, ART",
     resolucion: "USD 997",
@@ -13,6 +16,7 @@ const bloques = [
   },
   {
     etiqueta: "Velocidad",
+    icon: Zap,
     dolor: "20 min",
     subdato: "tarda tu equipo en responder",
     resolucion: "<8 segundos",
@@ -20,6 +24,7 @@ const bloques = [
   },
   {
     etiqueta: "Horario",
+    icon: Clock,
     dolor: "40% de leads",
     subdato: "entran fuera del horario laboral",
     resolucion: "24/7/365",
@@ -27,6 +32,7 @@ const bloques = [
   },
   {
     etiqueta: "Capacidad",
+    icon: MessageSquare,
     dolor: "1 chat por vez",
     subdato: "es lo que atiende un humano",
     resolucion: "50+ simultáneos",
@@ -34,6 +40,7 @@ const bloques = [
   },
   {
     etiqueta: "Rotación",
+    icon: RefreshCw,
     dolor: "3 meses",
     subdato: "para capacitar a cada vendedor nuevo",
     resolucion: "entrenado una vez",
@@ -41,6 +48,7 @@ const bloques = [
   },
   {
     etiqueta: "Tareas repetitivas",
+    icon: ListChecks,
     dolor: "60% del día",
     subdato: "tu mejor vendedor responde lo mismo",
     resolucion: "filtra y deriva",
@@ -87,7 +95,7 @@ export const S02_BentoDolores = () => {
           }}
         >
           Seis dolores.<br />
-          <span style={{ color: 'rgba(0, 212, 170, 0.9)' }}>Una sola solución.</span>
+          <span style={{ color: BLUE }}>Una sola solución.</span>
         </motion.h2>
 
         {/* SUBHEADLINE */}
@@ -111,99 +119,108 @@ export const S02_BentoDolores = () => {
           className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-[32px] md:mb-[48px]"
           style={{ gap: 'clamp(8px, 1.5vw, 12px)' }}
         >
-          {bloques.map((b, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 8 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.3, delay: 0.55 + i * 0.06, ease: EASE_APPLE }}
-              className="flex flex-col justify-between bg-[#0C0C0E] rounded-[18px] transition-colors duration-200 ease-out"
-              style={{
-                border: '0.5px solid rgba(255,255,255,0.08)',
-                padding: 'clamp(22px, 3vw, 28px)',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; }}
-            >
-              {/* Etiqueta */}
-              <span
-                className="block mb-[10px]"
+          {bloques.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 8 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.3, delay: 0.55 + i * 0.06, ease: EASE_APPLE }}
+                className="flex flex-col justify-between bg-[#0C0C0E] rounded-[18px] transition-colors duration-200 ease-out"
                 style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  color: 'rgba(255,255,255,0.45)',
-                  letterSpacing: '0em',
+                  border: '0.5px solid rgba(255,255,255,0.08)',
+                  padding: 'clamp(22px, 3vw, 28px)',
                 }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; }}
               >
-                {b.etiqueta}
-              </span>
+                {/* Ícono + Etiqueta */}
+                <div className="flex items-center gap-[8px] mb-[10px]">
+                  <Icon
+                    size={18}
+                    strokeWidth={1.5}
+                    style={{ color: `${BLUE}d9`, flexShrink: 0 }}
+                  />
+                  <span
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '11px',
+                      fontWeight: 500,
+                      color: 'rgba(255,255,255,0.48)',
+                      letterSpacing: '0em',
+                    }}
+                  >
+                    {b.etiqueta}
+                  </span>
+                </div>
 
-              {/* Dato dolor */}
-              <h3
-                className="mb-[6px]"
-                style={{
-                  fontFamily: 'Saira, sans-serif',
-                  fontSize: 'clamp(26px, 4vw, 32px)',
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.03em',
-                  color: 'rgba(232, 82, 107, 0.9)',
-                }}
-              >
-                {b.dolor}
-              </h3>
+                {/* Dato dolor */}
+                <h3
+                  className="mb-[6px]"
+                  style={{
+                    fontFamily: 'Saira, sans-serif',
+                    fontSize: 'clamp(26px, 4vw, 32px)',
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.03em',
+                    color: 'rgba(255,255,255,0.95)',
+                  }}
+                >
+                  {b.dolor}
+                </h3>
 
-              {/* Subdato */}
-              <p
-                className="mb-[16px]"
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(12px, 2.5vw, 13px)',
-                  lineHeight: 1.35,
-                  color: 'rgba(255,255,255,0.6)',
-                }}
-              >
-                {b.subdato}
-              </p>
+                {/* Subdato */}
+                <p
+                  className="mb-[16px]"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: 'clamp(12px, 2.5vw, 13px)',
+                    lineHeight: 1.35,
+                    color: 'rgba(255,255,255,0.6)',
+                  }}
+                >
+                  {b.subdato}
+                </p>
 
-              {/* Divisor */}
-              <div
-                className="mb-[16px]"
-                style={{
-                  width: '32px',
-                  height: '0.5px',
-                  backgroundColor: 'rgba(255,255,255,0.12)',
-                }}
-              />
+                {/* Divisor */}
+                <div
+                  className="mb-[16px]"
+                  style={{
+                    width: '32px',
+                    height: '0.5px',
+                    backgroundColor: 'rgba(255,255,255,0.10)',
+                  }}
+                />
 
-              {/* Resolución */}
-              <h4
-                className="mb-[6px]"
-                style={{
-                  fontFamily: 'Saira, sans-serif',
-                  fontSize: 'clamp(15px, 2.8vw, 17px)',
-                  fontWeight: 500,
-                  lineHeight: 1.2,
-                }}
-              >
-                <span style={{ color: 'rgba(255,255,255,0.7)' }}>Sentinel: </span>
-                <span style={{ color: 'rgba(0,212,170,0.85)' }}>{b.resolucion}</span>
-              </h4>
+                {/* Resolución */}
+                <h4
+                  className="mb-[6px]"
+                  style={{
+                    fontFamily: 'Saira, sans-serif',
+                    fontSize: 'clamp(15px, 2.8vw, 17px)',
+                    fontWeight: 500,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ color: 'rgba(255,255,255,0.7)' }}>Sentinel: </span>
+                  <span style={{ color: BLUE }}>{b.resolucion}</span>
+                </h4>
 
-              {/* Microcopy */}
-              <p
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '11px',
-                  lineHeight: 1.35,
-                  color: 'rgba(255,255,255,0.4)',
-                }}
-              >
-                {b.microcopy}
-              </p>
-            </motion.div>
-          ))}
+                {/* Microcopy */}
+                <p
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '11px',
+                    lineHeight: 1.35,
+                    color: 'rgba(255,255,255,0.4)',
+                  }}
+                >
+                  {b.microcopy}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CIERRE */}
@@ -223,7 +240,7 @@ export const S02_BentoDolores = () => {
             }}
           >
             Seis problemas que cuestan caro. Uno solo que{' '}
-            <span style={{ color: 'rgba(0,212,170,0.9)' }}>los resuelve.</span>
+            <span style={{ color: BLUE }}>los resuelve.</span>
           </p>
 
           <a
