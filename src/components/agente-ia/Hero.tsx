@@ -1,12 +1,61 @@
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Play } from 'lucide-react';
 
 const CTA_URL = '/formulario';
 
+const useCountUp = (end: number, duration: number, trigger: boolean, delayMs: number = 0) => {
+  const [val, setVal] = useState(0);
+  const frameRef = useRef(0);
+
+  useEffect(() => {
+    if (!trigger) return;
+    let startTime: number | null = null;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const animate = (ts: number) => {
+      if (!startTime) startTime = ts;
+      const p = Math.min((ts - startTime) / duration, 1);
+      const ease = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+      setVal(Math.floor(end * ease));
+      if (p < 1) {
+        frameRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    timeoutId = setTimeout(() => {
+      frameRef.current = requestAnimationFrame(animate);
+    }, delayMs);
+
+    return () => {
+      clearTimeout(timeoutId);
+      cancelAnimationFrame(frameRef.current);
+    };
+  }, [end, duration, trigger, delayMs]);
+
+  return val;
+};
+
 export const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  
+  const timeCount = useCountUp(8, 800, isInView, 1400);
+  const chatCount = useCountUp(50, 800, isInView, 1400);
+
+  const [glitch, setGlitch] = useState(false);
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => {
+        setGlitch(true);
+      }, 1400); // 1100ms fade delay + 300ms transition time
+      return () => clearTimeout(timer);
+    }
+  }, [isInView]);
+
   return (
-    <section className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-[100px] md:pt-[140px] pb-[48px]" style={{ background: '#000000', minHeight: '100vh' }}>
+    <section ref={sectionRef} className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-[100px] md:pt-[140px] pb-[80px]" style={{ background: '#000000', minHeight: '100vh' }}>
       
       {/* Background Radial overlay - clean and premium */}
       <div
@@ -25,81 +74,155 @@ export const Hero = () => {
       {/* Main Content Container */}
       <div className="container-custom relative z-10 flex flex-col items-center px-[20px] md:px-0 mx-auto w-full max-w-[100%] sm:max-w-[480px] md:max-w-[800px]">
 
-
+        {/* 02 Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.3, delay: 0.1 }}
+          style={{ color: '#00D4AA', fontSize: '12px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', fontFamily: 'Inter, sans-serif', marginBottom: '16px', textAlign: 'center' }}
+        >
+          ANTES DE CONTRATAR
+        </motion.div>
 
         {/* 03 Headline */}
-        <div className="flex flex-col items-center w-full text-center">
+        <div className="flex flex-col items-center w-full text-center mb-[24px]">
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
             style={{
-              fontFamily: 'var(--font-primary), Inter, sans-serif',
-              fontSize: 'clamp(25px, 6.8vw, 56px)',
+              fontFamily: 'Saira, var(--font-primary), sans-serif',
+              fontSize: 'clamp(44px, 8vw, 72px)',
               fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: '-0.035em',
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
               color: '#FFFFFF',
               margin: 0,
               padding: 0
             }}
           >
-            Tu negocio no necesita otro empleado. <span style={{
+            Antes de contratar otro vendedor,<br />
+            <span style={{
               background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              whiteSpace: 'nowrap'
-            }}>Necesita un Empleado IA.</span>
+            }}>leé esto.</span>
           </motion.h1>
         </div>
 
         {/* 04 Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, delay: 0.5 }}
+          className="mb-[32px]"
           style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: 'clamp(14px, 3.8vw, 18px)',
             color: 'rgba(255,255,255,0.72)',
             lineHeight: 1.42,
-            maxWidth: '100%',
+            maxWidth: '600px',
             textAlign: 'center',
-            marginTop: '16px',
-            marginBottom: '20px'
           }}
         >
-          Sentinel atiende, califica y sigue oportunidades 24/7, sin sumar otro sueldo a tu equipo.
+          Tener a tu equipo tapado respondiendo consultas te está costando más de <span style={{color: '#FF4D6D', fontWeight: 700}}>USD 18.000</span> al año en leads muertos. Sentinel atiende, califica y hace seguimientos en automático.
         </motion.p>
 
-        {/* 05 Beneficios compactos */}
+        {/* 05 Línea-puente */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 1.1 }}
+          className="mb-[24px] px-[24px] md:px-0 text-center w-full max-w-[500px]"
+        >
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(15px, 4vw, 17px)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5, margin: 0 }}>
+            Mientras leés esto, te están escribiendo. Si nadie responde en 5 minutos, ya perdiste el{' '}
+            <span className={glitch ? "glitch-animation" : ""} style={{ color: '#FF4D6D', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1.1em', display: 'inline-block' }}>50%</span>
+            {' '}de esos leads.
+          </p>
+        </motion.div>
+
+        {/* 06 Stat strips */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.6 }}
-          className="w-full flex flex-row flex-wrap justify-center gap-[8px] mb-[24px]"
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.3, delay: 1.4 }}
+          className="w-[100vw] sm:w-full mb-[48px] overflow-hidden"
         >
-          <div className="chip-benefit">
-            <div className="chip-dot" />
-            <span className="chip-text">Sin aumentos</span>
-          </div>
-          <div className="chip-benefit">
-            <div className="chip-dot" />
-            <span className="chip-text">Sin rotación</span>
-          </div>
-          <div className="chip-benefit">
-            <div className="chip-dot" />
-            <span className="chip-text">Seguimiento automático</span>
+          <div className="stat-strip-container px-[20px] sm:px-0">
+            {/* Stat 1 */}
+            <div className="stat-box">
+              <span className="stat-number">&lt;{timeCount}s</span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.6 }}
+                className="stat-label"
+              >
+                Tiempo de<br/>respuesta
+              </motion.span>
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.2, delay: 1.4 }}
+                className="stat-divider origin-top" 
+              />
+            </div>
+            
+            {/* Stat 2 */}
+            <div className="stat-box">
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 1.4 }}
+                className="stat-number"
+              >
+                24/7
+              </motion.span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.6 }}
+                className="stat-label"
+              >
+                Operación<br/>sin pausas
+              </motion.span>
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.2, delay: 1.48 }}
+                className="stat-divider origin-top" 
+              />
+            </div>
+
+            {/* Stat 3 */}
+            <div className="stat-box">
+              <span className="stat-number">{chatCount}+</span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.6 }}
+                className="stat-label"
+              >
+                Chats<br/>simultáneos
+              </motion.span>
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.2, delay: 1.56 }}
+                className="stat-divider origin-top desktop-hidden" 
+              />
+            </div>
           </div>
         </motion.div>
 
-        {/* 06 Video Container */}
+        {/* 07 Video Container */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="w-full relative rounded-[24px] overflow-hidden flex items-center justify-center cursor-pointer group"
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 1.5 }}
+          className="w-full relative rounded-[24px] overflow-hidden flex items-center justify-center cursor-pointer group mb-[32px]"
           style={{
             aspectRatio: '16/9',
             background: '#070B12',
@@ -127,12 +250,12 @@ export const Hero = () => {
           </video>
         </motion.div>
 
-        {/* 07 CTA Primario */}
+        {/* 08 CTA Primario */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.8 }}
-          className="w-full flex flex-col items-center relative mt-[18px] md:max-w-[420px]"
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 1.6 }}
+          className="w-full flex flex-col items-center relative md:max-w-[420px]"
         >
           {/* Subtle Glow */}
           <div
@@ -167,11 +290,11 @@ export const Hero = () => {
           </Link>
         </motion.div>
 
-        {/* 08 Microcopy */}
+        {/* 09 Microcopy */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.9 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 1.7 }}
           style={{
             fontSize: '13px',
             color: 'rgba(255,255,255,0.48)',
@@ -187,36 +310,93 @@ export const Hero = () => {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .chip-benefit {
+        .stat-strip-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          width: 100%;
+        }
+        .stat-box {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: center;
-          gap: 6px;
-          background: rgba(255,255,255,0.035);
-          border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 999px;
-          padding: 0 12px;
-          height: 42px;
-          white-space: nowrap;
+          padding: 16px 0;
+          position: relative;
         }
-        .chip-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: #00D4AA;
-          flex-shrink: 0;
+        .stat-number {
+          font-family: 'Saira', sans-serif;
+          font-weight: 800;
+          font-size: clamp(32px, 8vw, 48px);
+          color: #FFFFFF;
+          letter-spacing: -0.02em;
+          line-height: 1;
         }
-        .chip-text {
-          font-family: Inter, sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          color: rgba(255,255,255,0.86);
+        .stat-label {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: clamp(11px, 2.5vw, 13px);
+          color: rgba(255,255,255,0.55);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-top: 8px;
+          text-align: center;
+          line-height: 1.3;
+          max-width: 120px;
+        }
+        .stat-divider {
+          position: absolute;
+          right: 0;
+          top: 15%;
+          height: 70%;
+          width: 1px;
+          background: rgba(0,212,170,0.15);
+          overflow: hidden;
+        }
+        .desktop-hidden {
+          display: none;
+        }
+        .stat-divider::after {
+          content: '';
+          position: absolute;
+          top: -100%;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, transparent, #00D4AA, transparent);
+          animation: shimmerDivider 8s infinite ease-in-out;
+        }
+        @keyframes shimmerDivider {
+          0%, 80% { top: -100%; }
+          90% { top: 100%; }
+          100% { top: 100%; }
+        }
+        @keyframes glitch-coral {
+          0% { transform: translate(0) }
+          20% { transform: translate(-2px, 1px) }
+          40% { transform: translate(-1px, -1px) }
+          60% { transform: translate(2px, 1px) }
+          80% { transform: translate(1px, -1px) }
+          100% { transform: translate(0) }
+        }
+        .glitch-animation {
+          animation: glitch-coral 0.2s cubic-bezier(.25, .46, .45, .94) both;
         }
         .hover-scale {
           transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .hover-scale:hover {
           transform: scale(0.985);
+        }
+        @media (max-width: 480px) {
+          .stat-strip-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .stat-box:nth-child(3) {
+            grid-column: 1 / -1;
+            margin-top: 16px;
+          }
+          .stat-box:nth-child(2) .stat-divider {
+            display: none;
+          }
         }
       `}} />
     </section>
