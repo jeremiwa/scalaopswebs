@@ -5,33 +5,39 @@ const CTA_URL = '/formulario';
 
 const trackEvent = () => {
   if ((window as any).dataLayer) {
-    (window as any).dataLayer.push({ event: 'sentinel_cta_clicked', location: 'sticky', page: 'agente-ia', offer: 'sentinel_997' });
+    (window as any).dataLayer.push({ event: 'sentinel_cta_clicked', location: 'sticky', page: 'agente-ia' });
   }
 };
 
 export const StickyCTA = () => {
   const [visible, setVisible] = useState(false);
-  const [inPricing, setInPricing] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const heroHeight = window.innerHeight;
 
-      // Show after 20% of viewport
-      setVisible(scrollY > heroHeight * 0.2);
+      // Show after 25% of viewport
+      let shouldShow = scrollY > heroHeight * 0.25;
 
-      // Check if in pricing section to change copy
+      // Check if in pricing or final CTA section to hide
       const pricingEl = document.getElementById('sentinel-pricing');
-      let isPricing = false;
+      const finalCtaEl = document.getElementById('sentinel-cta-final');
+      
       if (pricingEl) {
         const rect = pricingEl.getBoundingClientRect();
-        // If pricing section is within viewport bounds
         if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-          isPricing = true;
+          shouldShow = false;
         }
       }
-      setInPricing(isPricing);
+      if (finalCtaEl) {
+        const rect = finalCtaEl.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          shouldShow = false;
+        }
+      }
+
+      setVisible(shouldShow);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -44,17 +50,17 @@ export const StickyCTA = () => {
       style={{
         transform: visible ? 'translateY(0)' : 'translateY(100%)',
         opacity: visible ? 1 : 0,
-        transition: 'transform 250ms cubic-bezier(0.25, 1, 0.5, 1), opacity 250ms linear',
+        transition: 'transform 300ms ease-out, opacity 300ms ease-out',
         paddingBottom: 'env(safe-area-inset-bottom, 0px)',
       }}
     >
       <div style={{
-        background: 'rgba(3,5,4,0.95)',
+        background: 'rgba(0,0,0,0.95)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(105,235,170,0.12)',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
         boxShadow: '0 -4px 32px rgba(0,0,0,0.8)',
-        padding: '12px 24px',
+        padding: '8px 24px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -73,17 +79,17 @@ export const StickyCTA = () => {
             maxWidth: '380px',
             height: '48px',
             borderRadius: '999px',
-            background: 'linear-gradient(90deg, #246BFE 0%, #68E6A3 100%)',
+            background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
             fontFamily: 'var(--font-primary), Inter, sans-serif',
             fontWeight: 800,
             fontSize: '15px',
-            color: '#030504',
+            color: '#FFFFFF',
             textDecoration: 'none',
-            boxShadow: '0 4px 16px rgba(105,235,170,0.18)',
+            boxShadow: '0 4px 16px rgba(0, 212, 170, 0.2)',
             letterSpacing: '-0.01em',
           }}
         >
-          {inPricing ? 'Reservar implementación · USD 997' : 'Implementar Sentinel · USD 997'}
+          Implementar Sentinel →
         </Link>
       </div>
     </div>
