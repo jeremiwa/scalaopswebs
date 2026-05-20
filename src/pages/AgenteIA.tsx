@@ -6,6 +6,7 @@
 import { SEO } from '../components/SEO';
 import { Navbar } from '../components/agente-ia/Navbar';
 import { Hero } from '../components/agente-ia/Hero';
+import { Credibilidad } from '../components/agente-ia/Credibilidad';
 import { NotABot } from '../components/agente-ia/StoryboardDolor'; // Dolor Simple
 import { WhatIsSentinel } from '../components/agente-ia/QueEsScala'; // Demo
 import { BotVsSentinel } from '../components/agente-ia/BotVsSentinel';
@@ -46,6 +47,7 @@ export const AgenteIA = () => {
 
       <main>
         <Hero />
+        <Credibilidad />
         <NotABot />
         <WhatIsSentinel />
         <BotVsSentinel />
