@@ -17,8 +17,8 @@ export const StickyCTA = () => {
       const scrollY = window.scrollY;
       const heroHeight = window.innerHeight;
 
-      // Show after 80% of viewport so it does not conflict with Hero
-      let shouldShow = scrollY > heroHeight * 0.8;
+      // Show after 90% of viewport so it does not conflict with Hero
+      let shouldShow = scrollY > heroHeight * 0.9;
 
       // Check if in pricing or final CTA section to hide
       const pricingEl = document.getElementById('sentinel-pricing');

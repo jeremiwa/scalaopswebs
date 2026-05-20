@@ -27,7 +27,7 @@ export const Navbar = () => {
       
       <div 
         className={`container-custom flex items-center justify-between transition-all duration-300 ${
-          scrolled ? 'h-[56px]' : 'h-[72px]'
+          scrolled ? 'h-[56px]' : 'h-[64px]'
         }`}
       >
         <Link to="/" className="hover:opacity-80 transition-opacity">
@@ -40,12 +40,12 @@ export const Navbar = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '46px',
-                padding: '0 22px',
+                height: '42px',
+                padding: '0 18px',
                 borderRadius: '999px',
                 background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '15px',
+                fontSize: '14px',
                 fontWeight: 700,
                 color: '#050706',
                 boxShadow: '0 2px 10px rgba(0, 212, 170, 0.15)',
@@ -54,7 +54,8 @@ export const Navbar = () => {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(0.98)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
-              Implementar Sentinel
+              <span className="md:hidden">Implementar</span>
+              <span className="hidden md:inline">Implementar Sentinel</span>
             </div>
           </Link>
         </div>
