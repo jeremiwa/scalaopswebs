@@ -126,7 +126,7 @@ export const Hero = () => {
             textAlign: 'center',
           }}
         >
-          Tener a tu equipo tapado respondiendo consultas te está costando más de <span style={{color: '#FF4D6D', fontWeight: 700}}>USD 18.000</span> al año en leads muertos. Sentinel atiende, califica y hace seguimientos en automático.
+          Sentinel atiende, califica y sigue oportunidades 24/7, sin sumar otro sueldo a tu equipo.
         </motion.p>
 
         {/* 05 Línea-puente */}
@@ -134,7 +134,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, delay: 1.1 }}
-          className="mb-[24px] px-[24px] md:px-0 text-center w-full max-w-[500px]"
+          className="mb-[40px] px-[24px] md:px-0 text-center w-full max-w-[500px]"
         >
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(15px, 4vw, 17px)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5, margin: 0 }}>
             Mientras leés esto, te están escribiendo. Si nadie responde en 5 minutos, ya perdiste el{' '}
@@ -143,86 +143,12 @@ export const Hero = () => {
           </p>
         </motion.div>
 
-        {/* 06 Stat strips */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.3, delay: 1.4 }}
-          className="w-[100vw] sm:w-full mb-[48px] overflow-hidden"
-        >
-          <div className="stat-strip-container px-[20px] sm:px-0">
-            {/* Stat 1 */}
-            <div className="stat-box">
-              <span className="stat-number">&lt;{timeCount}s</span>
-              <motion.span 
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.4, delay: 1.6 }}
-                className="stat-label"
-              >
-                Tiempo de<br/>respuesta
-              </motion.span>
-              <motion.div 
-                initial={{ scaleY: 0 }}
-                animate={isInView ? { scaleY: 1 } : {}}
-                transition={{ duration: 0.2, delay: 1.4 }}
-                className="stat-divider origin-top" 
-              />
-            </div>
-            
-            {/* Stat 2 */}
-            <div className="stat-box">
-              <motion.span 
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 1.4 }}
-                className="stat-number"
-              >
-                24/7
-              </motion.span>
-              <motion.span 
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.4, delay: 1.6 }}
-                className="stat-label"
-              >
-                Operación<br/>sin pausas
-              </motion.span>
-              <motion.div 
-                initial={{ scaleY: 0 }}
-                animate={isInView ? { scaleY: 1 } : {}}
-                transition={{ duration: 0.2, delay: 1.48 }}
-                className="stat-divider origin-top" 
-              />
-            </div>
-
-            {/* Stat 3 */}
-            <div className="stat-box">
-              <span className="stat-number">{chatCount}+</span>
-              <motion.span 
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.4, delay: 1.6 }}
-                className="stat-label"
-              >
-                Chats<br/>simultáneos
-              </motion.span>
-              <motion.div 
-                initial={{ scaleY: 0 }}
-                animate={isInView ? { scaleY: 1 } : {}}
-                transition={{ duration: 0.2, delay: 1.56 }}
-                className="stat-divider origin-top desktop-hidden" 
-              />
-            </div>
-          </div>
-        </motion.div>
-
         {/* 07 Video Container */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 1.5 }}
-          className="w-full relative rounded-[24px] overflow-hidden flex items-center justify-center cursor-pointer group mb-[32px]"
+          className="w-full relative rounded-[24px] overflow-hidden flex items-center justify-center cursor-pointer group mb-[24px]"
           style={{
             aspectRatio: '16/9',
             background: '#070B12',
@@ -250,11 +176,84 @@ export const Hero = () => {
           </video>
         </motion.div>
 
+        {/* 06 Stat strips (Movido abajo del video, más chicos y premium) */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 1.6 }}
+          className="w-full max-w-[600px] mb-[32px] overflow-hidden rounded-[16px]"
+          style={{
+            background: 'rgba(255,255,255,0.015)',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+          }}
+        >
+          <div className="stat-strip-container px-[16px]">
+            {/* Stat 1 */}
+            <div className="stat-box">
+              <span className="stat-number">&lt;{timeCount}s</span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.8 }}
+                className="stat-label"
+              >
+                Tiempo de respuesta
+              </motion.span>
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.2, delay: 1.7 }}
+                className="stat-divider origin-top" 
+              />
+            </div>
+            
+            {/* Stat 2 */}
+            <div className="stat-box">
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 1.7 }}
+                className="stat-number"
+              >
+                24/7
+              </motion.span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.8 }}
+                className="stat-label"
+              >
+                Operación continua
+              </motion.span>
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.2, delay: 1.75 }}
+                className="stat-divider origin-top desktop-hidden-divider" 
+              />
+            </div>
+
+            {/* Stat 3 */}
+            <div className="stat-box">
+              <span className="stat-number">{chatCount}+</span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.8 }}
+                className="stat-label"
+              >
+                Chats simultáneos
+              </motion.span>
+            </div>
+          </div>
+        </motion.div>
+
         {/* 08 CTA Primario */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 1.6 }}
+          transition={{ duration: 0.4, delay: 1.7 }}
           className="w-full flex flex-col items-center relative md:max-w-[420px]"
         >
           {/* Subtle Glow */}
@@ -294,7 +293,7 @@ export const Hero = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 1.7 }}
+          transition={{ duration: 0.4, delay: 1.8 }}
           style={{
             fontSize: '13px',
             color: 'rgba(255,255,255,0.48)',
@@ -319,13 +318,13 @@ export const Hero = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: 16px 0;
+          padding: 12px 0;
           position: relative;
         }
         .stat-number {
           font-family: 'Saira', sans-serif;
           font-weight: 800;
-          font-size: clamp(32px, 8vw, 48px);
+          font-size: clamp(24px, 5vw, 32px);
           color: #FFFFFF;
           letter-spacing: -0.02em;
           line-height: 1;
@@ -333,11 +332,11 @@ export const Hero = () => {
         .stat-label {
           font-family: 'Inter', sans-serif;
           font-weight: 500;
-          font-size: clamp(11px, 2.5vw, 13px);
+          font-size: clamp(9px, 2.2vw, 11px);
           color: rgba(255,255,255,0.55);
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          margin-top: 8px;
+          margin-top: 6px;
           text-align: center;
           line-height: 1.3;
           max-width: 120px;
@@ -345,14 +344,11 @@ export const Hero = () => {
         .stat-divider {
           position: absolute;
           right: 0;
-          top: 15%;
-          height: 70%;
+          top: 20%;
+          height: 60%;
           width: 1px;
           background: rgba(0,212,170,0.15);
           overflow: hidden;
-        }
-        .desktop-hidden {
-          display: none;
         }
         .stat-divider::after {
           content: '';
@@ -390,11 +386,15 @@ export const Hero = () => {
           .stat-strip-container {
             grid-template-columns: repeat(2, 1fr);
           }
+          .stat-box {
+            padding: 16px 0;
+          }
           .stat-box:nth-child(3) {
             grid-column: 1 / -1;
-            margin-top: 16px;
+            padding-top: 0;
+            padding-bottom: 16px;
           }
-          .stat-box:nth-child(2) .stat-divider {
+          .desktop-hidden-divider {
             display: none;
           }
         }
