@@ -91,23 +91,23 @@ export const Hero = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
             style={{
-              fontFamily: 'Saira, var(--font-primary), sans-serif',
-              fontSize: 'clamp(44px, 8vw, 72px)',
+              fontFamily: 'var(--font-primary), Inter, sans-serif',
+              fontSize: 'clamp(25px, 6.8vw, 56px)',
               fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
+              lineHeight: 1.1,
+              letterSpacing: '-0.035em',
               color: '#FFFFFF',
               margin: 0,
               padding: 0
             }}
           >
-            Antes de contratar otro vendedor,<br />
-            <span style={{
+            Tu negocio no necesita otro empleado. <span style={{
               background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-            }}>leé esto.</span>
+              whiteSpace: 'nowrap'
+            }}>Necesita un Empleado IA.</span>
           </motion.h1>
         </div>
 
