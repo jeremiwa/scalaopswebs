@@ -2,57 +2,51 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { DollarSign, Zap, Clock, MessageSquare, RefreshCw, ListChecks } from 'lucide-react';
 
-const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const BLUE = '#4A8FFF';
 
 const bloques = [
   {
     etiqueta: "Costos",
     icon: DollarSign,
-    dolor: "USD 18.000+/año",
-    subdato: "en sueldo, cargas, aguinaldo, ART",
-    resolucion: "USD 997",
-    microcopy: "Sin cargas. Sin aguinaldo. Sin ART.",
+    solucion: "Implementación única USD 997",
+    descripcion: "Sin sueldo mensual, sin cargas, sin aguinaldo, sin ART.",
+    dolor: "Antes: USD 18.000+ al año por cada vendedor.",
   },
   {
     etiqueta: "Velocidad",
     icon: Zap,
-    dolor: "20 min",
-    subdato: "tarda tu equipo en responder",
-    resolucion: "<8 segundos",
-    microcopy: "Mientras la competencia duerme.",
+    solucion: "Responde en menos de 8 segundos",
+    descripcion: "Cada consulta tiene respuesta instantánea, sin importar el volumen.",
+    dolor: "Antes: tu equipo tarda 20 minutos promedio.",
   },
   {
     etiqueta: "Horario",
     icon: Clock,
-    dolor: "40% de leads",
-    subdato: "entran fuera del horario laboral",
-    resolucion: "24/7/365",
-    microcopy: "Sábado 23hs, lunes feriado, Navidad.",
+    solucion: "Atiende 24/7/365",
+    descripcion: "Sábado a las 23hs, domingo, feriados, Navidad. Nunca cierra.",
+    dolor: "Antes: el 40% de tus leads entran fuera de horario.",
   },
   {
     etiqueta: "Capacidad",
     icon: MessageSquare,
-    dolor: "1 chat por vez",
-    subdato: "es lo que atiende un humano",
-    resolucion: "50+ simultáneos",
-    microcopy: "Sin tiempos de espera. Nunca.",
+    solucion: "50+ chats en simultáneo",
+    descripcion: "Sin filas de espera. Atiende a todos al mismo tiempo, sin saturarse.",
+    dolor: "Antes: un humano solo atiende un chat por vez.",
   },
   {
     etiqueta: "Rotación",
     icon: RefreshCw,
-    dolor: "3 meses",
-    subdato: "para capacitar a cada vendedor nuevo",
-    resolucion: "entrenado una vez",
-    microcopy: "Cero re-capacitación. Cero curva.",
+    solucion: "Entrenado una sola vez",
+    descripcion: "Aprende tu negocio en días y se queda. Cero re-capacitación.",
+    dolor: "Antes: 3 meses para capacitar a cada vendedor nuevo.",
   },
   {
     etiqueta: "Tareas repetitivas",
     icon: ListChecks,
-    dolor: "60% del día",
-    subdato: "tu mejor vendedor responde lo mismo",
-    resolucion: "filtra y deriva",
-    microcopy: "Tu equipo solo cierra oportunidades reales.",
+    solucion: "Filtra y deriva oportunidades reales",
+    descripcion: "Tu equipo solo recibe los leads calificados, listos para cerrar.",
+    dolor: "Antes: tu mejor vendedor pierde el 60% del día respondiendo lo mismo.",
   },
 ];
 
@@ -72,37 +66,37 @@ export const S02_BentoDolores = () => {
         <motion.span
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 0.5 } : {}}
-          transition={{ duration: 0.3, ease: EASE_APPLE }}
+          transition={{ duration: 0.3, ease: EASE }}
           className="block text-white text-[10px] font-medium tracking-[0.08em] mb-[16px] text-center"
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
-          LO QUE SENTINEL TE SACA DE ENCIMA
+          LO QUE RESUELVE SENTINEL
         </motion.span>
 
         {/* HEADLINE */}
         <motion.h2
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.15, ease: EASE_APPLE }}
+          transition={{ duration: 0.4, delay: 0.15, ease: EASE }}
           className="text-center mb-[24px]"
           style={{
             fontFamily: 'Saira, sans-serif',
             fontSize: 'clamp(34px, 5.5vw, 52px)',
             fontWeight: 700,
             lineHeight: 1.02,
-            letterSpacing: '-0.04em',
-            color: '#FFFFFF',
+            letterSpacing: '-0.035em',
+            color: 'rgba(255,255,255,0.95)',
           }}
         >
-          Seis dolores.<br />
-          <span style={{ color: BLUE }}>Una sola solución.</span>
+          Seis problemas resueltos.<br />
+          Con un solo <span style={{ color: BLUE }}>Empleado IA.</span>
         </motion.h2>
 
         {/* SUBHEADLINE */}
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 0.55, y: 0 } : {}}
-          transition={{ duration: 0.3, delay: 0.35, ease: EASE_APPLE }}
+          transition={{ duration: 0.3, delay: 0.35, ease: EASE }}
           className="text-center mb-[32px] md:mb-[48px] max-w-[90%] md:max-w-[500px]"
           style={{
             fontFamily: 'Inter, sans-serif',
@@ -111,7 +105,7 @@ export const S02_BentoDolores = () => {
             color: '#FFFFFF',
           }}
         >
-          Mirá lo que cambia el día que activás Sentinel.
+          Lo que cambia el día que activás Sentinel.
         </motion.p>
 
         {/* GRID */}
@@ -126,97 +120,68 @@ export const S02_BentoDolores = () => {
                 key={i}
                 initial={{ opacity: 0, y: 8 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.55 + i * 0.06, ease: EASE_APPLE }}
-                className="flex flex-col justify-between bg-[#0C0C0E] rounded-[18px] transition-colors duration-200 ease-out"
+                transition={{ duration: 0.3, delay: 0.55 + i * 0.06, ease: EASE }}
+                className="flex flex-col bg-[#0C0C0E] rounded-[18px] transition-colors duration-200 ease-out"
                 style={{
                   border: '0.5px solid rgba(255,255,255,0.08)',
-                  padding: 'clamp(22px, 3vw, 28px)',
+                  padding: 'clamp(24px, 3vw, 28px)',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; }}
               >
-                {/* Ícono + Etiqueta */}
-                <div className="flex items-center gap-[8px] mb-[10px]">
-                  <Icon
-                    size={18}
-                    strokeWidth={1.5}
-                    style={{ color: `${BLUE}d9`, flexShrink: 0 }}
-                  />
-                  <span
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '11px',
-                      fontWeight: 500,
-                      color: 'rgba(255,255,255,0.48)',
-                      letterSpacing: '0em',
-                    }}
-                  >
+                {/* 1. Ícono + Etiqueta */}
+                <div className="flex items-center gap-[8px] mb-[12px]">
+                  <Icon size={18} strokeWidth={1.5} style={{ color: `${BLUE}d9`, flexShrink: 0 }} />
+                  <span style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '11px',
+                    fontWeight: 500,
+                    color: 'rgba(255,255,255,0.50)',
+                  }}>
                     {b.etiqueta}
                   </span>
                 </div>
 
-                {/* Dato dolor */}
-                <h3
-                  className="mb-[6px]"
-                  style={{
-                    fontFamily: 'Saira, sans-serif',
-                    fontSize: 'clamp(26px, 4vw, 32px)',
-                    fontWeight: 700,
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.03em',
-                    color: 'rgba(255,255,255,0.95)',
-                  }}
-                >
-                  {b.dolor}
+                {/* 2. Solución (protagonista) */}
+                <h3 style={{
+                  fontFamily: 'Saira, sans-serif',
+                  fontSize: 'clamp(26px, 4vw, 32px)',
+                  fontWeight: 700,
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.03em',
+                  color: 'rgba(255,255,255,0.95)',
+                  marginBottom: '6px',
+                }}>
+                  {b.solucion}
                 </h3>
 
-                {/* Subdato */}
-                <p
-                  className="mb-[16px]"
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: 'clamp(12px, 2.5vw, 13px)',
-                    lineHeight: 1.35,
-                    color: 'rgba(255,255,255,0.6)',
-                  }}
-                >
-                  {b.subdato}
+                {/* 3. Descripción */}
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: 'clamp(13px, 2.5vw, 14px)',
+                  lineHeight: 1.45,
+                  color: 'rgba(255,255,255,0.60)',
+                  marginBottom: '14px',
+                }}>
+                  {b.descripcion}
                 </p>
 
-                {/* Divisor */}
-                <div
-                  className="mb-[16px]"
-                  style={{
-                    width: '32px',
-                    height: '0.5px',
-                    backgroundColor: 'rgba(255,255,255,0.10)',
-                  }}
-                />
+                {/* 4. Divisor */}
+                <div style={{
+                  width: '32px',
+                  height: '0.5px',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  marginBottom: '14px',
+                }} />
 
-                {/* Resolución */}
-                <h4
-                  className="mb-[6px]"
-                  style={{
-                    fontFamily: 'Saira, sans-serif',
-                    fontSize: 'clamp(15px, 2.8vw, 17px)',
-                    fontWeight: 500,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  <span style={{ color: 'rgba(255,255,255,0.7)' }}>Sentinel: </span>
-                  <span style={{ color: BLUE }}>{b.resolucion}</span>
-                </h4>
-
-                {/* Microcopy */}
-                <p
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '11px',
-                    lineHeight: 1.35,
-                    color: 'rgba(255,255,255,0.4)',
-                  }}
-                >
-                  {b.microcopy}
+                {/* 5. Contexto dolor */}
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: 'clamp(11px, 2vw, 12px)',
+                  lineHeight: 1.4,
+                  color: 'rgba(255,255,255,0.35)',
+                }}>
+                  {b.dolor}
                 </p>
               </motion.div>
             );
@@ -227,20 +192,18 @@ export const S02_BentoDolores = () => {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.3, delay: 1.0, ease: EASE_APPLE }}
+          transition={{ duration: 0.3, delay: 1.0, ease: EASE }}
           className="text-center flex flex-col items-center gap-[20px]"
         >
-          <p
-            style={{
-              fontFamily: 'Saira, sans-serif',
-              fontSize: 'clamp(16px, 3.5vw, 20px)',
-              fontWeight: 600,
-              color: '#FFFFFF',
-              lineHeight: 1.2,
-            }}
-          >
-            Seis problemas que cuestan caro. Uno solo que{' '}
-            <span style={{ color: BLUE }}>los resuelve.</span>
+          <p style={{
+            fontFamily: 'Saira, sans-serif',
+            fontSize: 'clamp(17px, 3.5vw, 20px)',
+            fontWeight: 500,
+            color: 'rgba(255,255,255,0.90)',
+            lineHeight: 1.2,
+          }}>
+            Un solo Empleado IA.{' '}
+            <span style={{ color: BLUE }}>Seis problemas que dejás de tener.</span>
           </p>
 
           <a
