@@ -74,16 +74,6 @@ export const Hero = () => {
       {/* Main Content Container */}
       <div className="container-custom relative z-10 flex flex-col items-center px-[20px] md:px-0 mx-auto w-full max-w-[100%] sm:max-w-[480px] md:max-w-[800px]">
 
-        {/* 02 Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          style={{ color: '#00D4AA', fontSize: '12px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', fontFamily: 'Inter, sans-serif', marginBottom: '16px', textAlign: 'center' }}
-        >
-          ANTES DE CONTRATAR
-        </motion.div>
-
         {/* 03 Headline */}
         <div className="flex flex-col items-center w-full text-center mb-[24px]">
           <motion.h1
@@ -92,7 +82,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
             style={{
               fontFamily: 'var(--font-primary), Inter, sans-serif',
-              fontSize: 'clamp(25px, 6.8vw, 56px)',
+              fontSize: 'clamp(32px, 6.8vw, 56px)',
               fontWeight: 800,
               lineHeight: 1.1,
               letterSpacing: '-0.035em',
@@ -101,7 +91,8 @@ export const Hero = () => {
               padding: 0
             }}
           >
-            Tu negocio no necesita otro empleado. <span style={{
+            Tu negocio no necesita otro empleado.<br />
+            <span style={{
               background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -126,22 +117,9 @@ export const Hero = () => {
             textAlign: 'center',
           }}
         >
-          Sentinel atiende, califica y sigue oportunidades 24/7, sin sumar otro sueldo a tu equipo.
+          Sentinel atiende, califica y sigue oportunidades 24/7,<br />
+          sin sumar otro sueldo a tu equipo.
         </motion.p>
-
-        {/* 05 Línea-puente */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 1.1 }}
-          className="mb-[40px] px-[24px] md:px-0 text-center w-full max-w-[500px]"
-        >
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(15px, 4vw, 17px)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5, margin: 0 }}>
-            Mientras leés esto, te están escribiendo. Si nadie responde en 5 minutos, ya perdiste el{' '}
-            <span className={glitch ? "glitch-animation" : ""} style={{ color: '#FF4D6D', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1.1em', display: 'inline-block' }}>50%</span>
-            {' '}de esos leads.
-          </p>
-        </motion.div>
 
         {/* 07 Video Container */}
         <motion.div
