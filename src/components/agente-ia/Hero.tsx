@@ -51,20 +51,6 @@ export const Hero = () => {
 
       <div className="container-custom relative z-10 flex flex-col items-center text-center px-[24px] md:px-0">
 
-        {/* Eyebrow */}
-        <div
-          className="sentinel-fade-in inline-block mb-3"
-          style={{
-            fontSize: '12px',
-            fontWeight: 800,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#68E6A3',
-          }}
-        >
-          WHATSAPP + INSTAGRAM 24/7
-        </div>
-
         {/* H1 */}
         <div className="w-full max-w-[700px] mx-auto">
           <h1

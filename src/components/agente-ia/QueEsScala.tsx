@@ -26,7 +26,9 @@ const industries: Industry[] = [
       { from: 'client', text: 'Hola, ¿tenés talle 42?' },
       { from: 'sentinel', text: 'Sí, hay stock. ¿Lo querés para retirar o envío?' },
       { from: 'client', text: 'Envío a Palermo.' },
-      { from: 'sentinel', text: 'Perfecto. Envío gratis a Palermo. Te reservo el talle 42 y te paso el link de pago.' }
+      { from: 'sentinel', text: 'Perfecto. Envío gratis a Palermo. Te reservo el talle 42 y te paso el link de pago.' },
+      { from: 'client', text: 'Listo, ya pagué.' },
+      { from: 'sentinel', text: 'Excelente, recibimos el pago. Mañana despachamos 🚀' }
     ],
   },
   {
@@ -38,7 +40,9 @@ const industries: Industry[] = [
       { from: 'client', text: 'Busco depto en Palermo, 2 ambientes.' },
       { from: 'sentinel', text: 'Perfecto. ¿Comprar o alquilar? ¿Y en qué rango de presupuesto estás?' },
       { from: 'client', text: 'Comprar. Hasta USD 140.000.' },
-      { from: 'sentinel', text: 'Tenemos opciones que encajan. Te agendo una visita esta semana.' }
+      { from: 'sentinel', text: 'Tenemos opciones que encajan. Te dejo el link para agendar una visita esta semana.' },
+      { from: 'client', text: 'Agendé para el jueves.' },
+      { from: 'sentinel', text: 'Turno confirmado. Nos vemos el jueves.' }
     ],
   },
   {
@@ -50,7 +54,9 @@ const industries: Industry[] = [
       { from: 'client', text: 'Necesito un auto premium por una semana.' },
       { from: 'sentinel', text: 'Perfecto. ¿Para qué fechas y en qué zona lo retirás?' },
       { from: 'client', text: 'Del lunes al domingo, en CABA.' },
-      { from: 'sentinel', text: 'Hay disponibilidad. Te dejo la reserva iniciada por 7 días.' }
+      { from: 'sentinel', text: 'Hay disponibilidad. Te dejo el link para abonar la seña y bloquear la fecha.' },
+      { from: 'client', text: 'Ya pagué la seña.' },
+      { from: 'sentinel', text: 'Reserva confirmada por 7 días. Te esperamos el lunes.' }
     ],
   },
   {
@@ -62,7 +68,9 @@ const industries: Industry[] = [
       { from: 'client', text: 'Me interesa el programa, ¿cuánto sale?' },
       { from: 'sentinel', text: 'Te paso la info. Antes: ¿buscás aprender desde cero o ya tenés experiencia?' },
       { from: 'client', text: 'Ya tengo experiencia y quiero escalar.' },
-      { from: 'sentinel', text: 'Perfecto. Por tu perfil, te conviene una llamada para ver si aplicás.' }
+      { from: 'sentinel', text: 'Perfecto. Por tu perfil, te conviene una llamada para ver si aplicás. Agendá acá.' },
+      { from: 'client', text: 'Ahí reservé.' },
+      { from: 'sentinel', text: 'Llamada confirmada. Hablamos pronto.' }
     ],
   },
   {
@@ -74,7 +82,9 @@ const industries: Industry[] = [
       { from: 'client', text: 'Hola, quiero hacerme limpieza facial.' },
       { from: 'sentinel', text: 'Perfecto. ¿Buscás limpieza profunda, hidratación o tratamiento antiage?' },
       { from: 'client', text: 'Limpieza profunda.' },
-      { from: 'sentinel', text: 'Tenemos turno disponible esta semana. Te lo puedo reservar con una seña.' }
+      { from: 'sentinel', text: 'Tenemos turno disponible esta semana. Te dejo el link para pagar la seña y reservar.' },
+      { from: 'client', text: 'Listo, seña pagada.' },
+      { from: 'sentinel', text: 'Turno reservado con éxito. Te esperamos ✨' }
     ],
   },
   {
@@ -86,7 +96,9 @@ const industries: Industry[] = [
       { from: 'client', text: 'Necesito mejorar mis ventas por WhatsApp.' },
       { from: 'sentinel', text: 'Perfecto. ¿Cuántas consultas reciben por día aproximadamente?' },
       { from: 'client', text: 'Entre 40 y 60.' },
-      { from: 'sentinel', text: 'Hay mucho para optimizar. Te agendo un diagnóstico comercial.' }
+      { from: 'sentinel', text: 'Hay mucho para optimizar. Te dejo mi calendario para agendar un diagnóstico.' },
+      { from: 'client', text: 'Agendado para el martes.' },
+      { from: 'sentinel', text: '¡Excelente! El martes analizamos tu proceso comercial.' }
     ],
   },
 ];
@@ -120,16 +132,11 @@ export const WhatIsSentinel = () => {
     let delay = 600;
     const msgs = industry.conversations;
 
-    // Progression marks:
-    // Step 1: Detectó intención (after 1st client msg)
-    // Step 2: Respondió objeción (after 1st sentinel msg)
-    // Step 3: Cerró acción (after last sentinel msg)
-
     msgs.forEach((msg, index) => {
       if (msg.from === 'sentinel') {
         const typingTimer = setTimeout(() => setShowTyping(true), delay);
         timerRefs.current.push(typingTimer);
-        delay += 700; // Type fast 0.7s
+        delay += 800; // Type fast 0.8s
       }
 
       const msgTimer = setTimeout(() => {
@@ -146,7 +153,7 @@ export const WhatIsSentinel = () => {
       }, delay);
       timerRefs.current.push(msgTimer);
       
-      delay += msg.from === 'client' ? 1200 : 1800; 
+      delay += msg.from === 'client' ? 1400 : 2000; 
     });
   }, [clearTimers]);
 
@@ -189,16 +196,16 @@ export const WhatIsSentinel = () => {
     <section
       ref={sectionRef}
       className="relative"
-      style={{ background: '#030504', borderTop: '1px solid rgba(255,255,255,0.04)', padding: '72px 0' }}
+      style={{ background: '#020202', borderTop: '1px solid rgba(255,255,255,0.04)', padding: '72px 0' }}
     >
       <div className="container-custom relative z-10 flex flex-col items-center">
 
         {/* Header */}
         <div className="text-center mb-8 px-[24px]">
-          <h2 style={{ fontSize: 'clamp(32px, 8vw, 42px)', fontWeight: 800, color: '#F5F7FA', letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '12px' }}>
+          <h2 style={{ fontSize: 'clamp(32px, 8vw, 42px)', fontWeight: 800, color: '#F5F5F7', letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '12px' }}>
             Elegí tu rubro y mirá cómo vende Sentinel.
           </h2>
-          <p style={{ fontSize: '17px', color: '#9EA0B4', lineHeight: 1.45, maxWidth: '400px', margin: '0 auto' }}>
+          <p style={{ fontSize: '17px', color: '#8B8B9E', lineHeight: 1.45, maxWidth: '400px', margin: '0 auto' }}>
             Cada demo termina con una acción comercial concreta: venta, reserva, turno o llamada.
           </p>
         </div>
@@ -214,21 +221,21 @@ export const WhatIsSentinel = () => {
                   onClick={() => switchIndustry(i)}
                   className="snap-start shrink-0 flex items-center gap-2 px-5 py-3 transition-all duration-300"
                   style={{
-                    background: active ? 'rgba(105, 235, 170, 0.10)' : 'rgba(255,255,255,0.03)',
-                    border: active ? '1px solid rgba(105, 235, 170, 0.4)' : '1px solid rgba(255,255,255,0.08)',
+                    background: active ? 'rgba(24,93,232,0.1)' : 'rgba(255,255,255,0.03)',
+                    border: active ? '1px solid rgba(24,93,232,0.4)' : '1px solid rgba(255,255,255,0.08)',
                     borderRadius: '100px',
-                    color: active ? '#68E6A3' : '#7D8195',
+                    color: active ? '#185de8' : '#7D8195',
                     fontSize: '15px',
                     fontWeight: 600,
                   }}
                 >
-                  {active && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#68E6A3' }} />}
+                  {active && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#185de8' }} />}
                   {ind.label}
                 </button>
               );
             })}
           </div>
-          <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-[#030504] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-[#020202] to-transparent pointer-events-none" />
         </div>
 
         {/* Progress Bar */}
@@ -244,8 +251,8 @@ export const WhatIsSentinel = () => {
         <div className="w-full max-w-[400px] px-4">
           <div
             style={{
-              background: '#050807',
-              border: '1px solid rgba(105, 235, 170, 0.16)',
+              background: '#050505',
+              border: '1px solid rgba(255,255,255,0.08)',
               borderRadius: '28px',
               overflow: 'hidden',
               boxShadow: '0 12px 40px rgba(0,0,0,0.5)',
@@ -254,7 +261,7 @@ export const WhatIsSentinel = () => {
           >
             {/* Header */}
             <div style={{
-              background: '#080C0B',
+              background: '#0A0A0F',
               borderBottom: '1px solid rgba(255,255,255,0.05)',
               padding: '16px 20px',
               display: 'flex',
@@ -262,17 +269,12 @@ export const WhatIsSentinel = () => {
               gap: '12px'
             }}>
               <div className="relative">
-                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#111815', border: '1px solid rgba(105,235,170,0.2)' }} />
-                <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#68E6A3] border-2 border-[#080C0B]" />
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#111', border: '1px solid rgba(24,93,232,0.2)' }} />
+                <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#185de8] border-2 border-[#0A0A0F]" />
               </div>
               <div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: '#F5F7FA' }}>Sentinel</div>
-                <div style={{ fontSize: '11px', fontWeight: 600, color: '#68E6A3', letterSpacing: '0.05em' }}>OPERATIVO 24/7</div>
-              </div>
-              <div className="ml-auto flex gap-1">
-                <div className="w-1 h-1 rounded-full bg-[#246BFE]" />
-                <div className="w-1 h-1 rounded-full bg-[#68E6A3]" />
-                <div className="w-1 h-1 rounded-full bg-[#68E6A3]" />
+                <div style={{ fontSize: '15px', fontWeight: 700, color: '#F5F5F7' }}>Sentinel</div>
+                <div style={{ fontSize: '11px', fontWeight: 600, color: '#185de8', letterSpacing: '0.05em' }}>OPERATIVO 24/7</div>
               </div>
             </div>
 
@@ -280,10 +282,10 @@ export const WhatIsSentinel = () => {
             <div
               ref={chatContainerRef}
               className="p-5 flex flex-col gap-4 overflow-y-auto hide-scrollbar scroll-smooth relative"
-              style={{ height: '340px' }}
+              style={{ height: '360px' }}
             >
               <div
-                className="absolute inset-0 z-50 transition-opacity duration-300 pointer-events-none bg-[#050807]"
+                className="absolute inset-0 z-50 transition-opacity duration-300 pointer-events-none bg-[#050505]"
                 style={{ opacity: chatFading ? 1 : 0 }}
               />
 
@@ -297,7 +299,7 @@ export const WhatIsSentinel = () => {
                     className={`flex ${msg.from === 'client' ? 'justify-end' : 'justify-start'}`}
                   >
                     {msg.from === 'sentinel' && (
-                      <div className="w-6 h-6 rounded-full bg-[#111815] shrink-0 mr-2 mt-auto mb-1 border border-white/5" />
+                      <div className="w-6 h-6 rounded-full bg-[#111] shrink-0 mr-2 mt-auto mb-1 border border-white/5" />
                     )}
                     <div
                       style={{
@@ -306,11 +308,11 @@ export const WhatIsSentinel = () => {
                         borderBottomLeftRadius: msg.from === 'sentinel' ? '4px' : '16px',
                         borderBottomRightRadius: msg.from === 'client' ? '4px' : '16px',
                         maxWidth: '85%',
-                        fontSize: '15px',
-                        lineHeight: 1.4,
-                        color: msg.from === 'client' ? '#FFF' : '#E2E8F0',
-                        background: msg.from === 'client' ? 'linear-gradient(135deg, #246BFE, #1d56cc)' : '#0F1613',
-                        border: msg.from === 'sentinel' ? '1px solid rgba(105, 235, 170, 0.15)' : 'none',
+                        fontSize: '14px',
+                        lineHeight: 1.5,
+                        color: msg.from === 'client' ? '#FFF' : '#A0A0B5',
+                        background: msg.from === 'client' ? '#185de8' : '#0A0A0F',
+                        border: msg.from === 'sentinel' ? '1px solid rgba(24,93,232,0.2)' : 'none',
                         boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                       }}
                     >
@@ -327,20 +329,20 @@ export const WhatIsSentinel = () => {
                   exit={{ opacity: 0 }}
                   className="flex justify-start"
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#111815] shrink-0 mr-2 mt-auto mb-1 border border-white/5" />
+                  <div className="w-6 h-6 rounded-full bg-[#111] shrink-0 mr-2 mt-auto mb-1 border border-white/5" />
                   <div
                     style={{
                       padding: '12px 16px',
                       borderRadius: '16px',
                       borderBottomLeftRadius: '4px',
-                      background: '#0F1613',
-                      border: '1px solid rgba(105, 235, 170, 0.15)',
+                      background: '#0A0A0F',
+                      border: '1px solid rgba(24,93,232,0.2)',
                     }}
                   >
-                    <div className="flex gap-1">
-                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-[#68E6A3]" />
-                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }} className="w-1.5 h-1.5 rounded-full bg-[#68E6A3]" />
-                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }} className="w-1.5 h-1.5 rounded-full bg-[#68E6A3]" />
+                    <div className="flex gap-1.5">
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-[#8B8B9E]" />
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.15 }} className="w-1.5 h-1.5 rounded-full bg-[#8B8B9E]" />
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.3 }} className="w-1.5 h-1.5 rounded-full bg-[#8B8B9E]" />
                     </div>
                   </div>
                 </motion.div>
@@ -355,22 +357,22 @@ export const WhatIsSentinel = () => {
                   className="mt-2 w-full"
                 >
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(36,107,254,0.14), rgba(104,230,163,0.14))',
-                    border: '1px solid rgba(105,235,170,0.35)',
+                    background: 'linear-gradient(135deg, rgba(24,93,232,0.1), rgba(24,93,232,0.05))',
+                    border: '1px solid rgba(24,93,232,0.3)',
                     borderRadius: '16px',
                     padding: '16px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px'
                   }}>
-                    <div className="bg-[#68E6A3]/20 rounded-full p-2">
-                      <CheckCircle2 className="w-6 h-6 text-[#68E6A3]" />
+                    <div className="bg-[#185de8]/20 rounded-full p-2">
+                      <CheckCircle2 className="w-6 h-6 text-[#185de8]" />
                     </div>
                     <div>
-                      <h4 style={{ fontSize: '16px', fontWeight: 800, color: '#F5F7FA', marginBottom: '2px' }}>
+                      <h4 style={{ fontSize: '16px', fontWeight: 800, color: '#F5F5F7', marginBottom: '2px' }}>
                         {industries[activeIndustry].resultTitle}
                       </h4>
-                      <p style={{ fontSize: '13px', color: '#9EA0B4' }}>
+                      <p style={{ fontSize: '13px', color: '#A0A0B5' }}>
                         {industries[activeIndustry].resultDesc}
                       </p>
                     </div>
@@ -390,7 +392,7 @@ const ProgressStep = ({ label, active }: { label: string, active: boolean }) => 
   <div className="flex flex-col items-center gap-1.5">
     <div 
       className="w-2.5 h-2.5 rounded-full transition-colors duration-300"
-      style={{ background: active ? '#68E6A3' : 'rgba(255,255,255,0.1)' }}
+      style={{ background: active ? '#185de8' : 'rgba(255,255,255,0.1)' }}
     />
     <span 
       className="text-center transition-colors duration-300"
@@ -398,7 +400,7 @@ const ProgressStep = ({ label, active }: { label: string, active: boolean }) => 
         fontSize: '10px', 
         fontWeight: active ? 700 : 500, 
         textTransform: 'uppercase', 
-        color: active ? '#F5F7FA' : '#7D8195',
+        color: active ? '#F5F5F7' : '#7D8195',
         maxWidth: '70px',
         lineHeight: 1.1
       }}
