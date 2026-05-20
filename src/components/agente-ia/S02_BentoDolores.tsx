@@ -18,7 +18,7 @@ const bloques = [
     icon: Zap,
     solucion: "Responde en menos de 8 segundos",
     descripcion: "Cada consulta tiene respuesta instantánea, sin importar el volumen.",
-    dolor: "Antes: tu equipo tarda 20 minutos promedio.",
+    dolor: "Antes: tu equipo tarda 40 minutos promedio.",
   },
   {
     etiqueta: "Horario",
@@ -108,9 +108,9 @@ export const S02_BentoDolores = () => {
           Lo que cambia el día que activás Sentinel.
         </motion.p>
 
-        {/* GRID */}
+        {/* GRID — 2 cols mobile, 2 cols tablet, 3 cols desktop */}
         <div
-          className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-[32px] md:mb-[48px]"
+          className="w-full grid grid-cols-2 lg:grid-cols-3 mb-[32px] md:mb-[48px]"
           style={{ gap: 'clamp(8px, 1.5vw, 12px)' }}
         >
           {bloques.map((b, i) => {
@@ -124,62 +124,66 @@ export const S02_BentoDolores = () => {
                 className="flex flex-col bg-[#0C0C0E] rounded-[18px] transition-colors duration-200 ease-out"
                 style={{
                   border: '0.5px solid rgba(255,255,255,0.08)',
-                  padding: 'clamp(24px, 3vw, 28px)',
+                  padding: 'clamp(16px, 3vw, 28px)',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; }}
               >
-                {/* 1. Ícono + Etiqueta */}
-                <div className="flex items-center gap-[8px] mb-[12px]">
-                  <Icon size={18} strokeWidth={1.5} style={{ color: `${BLUE}d9`, flexShrink: 0 }} />
-                  <span style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '11px',
-                    fontWeight: 500,
-                    color: 'rgba(255,255,255,0.50)',
-                  }}>
-                    {b.etiqueta}
-                  </span>
+                {/* Ícono */}
+                <div className="mb-[8px] md:mb-[12px]">
+                  <Icon size={20} strokeWidth={1.5} style={{ color: BLUE, flexShrink: 0 }} />
                 </div>
 
-                {/* 2. Solución (protagonista) */}
+                {/* Etiqueta como título */}
                 <h3 style={{
                   fontFamily: 'Saira, sans-serif',
-                  fontSize: 'clamp(26px, 4vw, 32px)',
+                  fontSize: 'clamp(16px, 3.5vw, 22px)',
                   fontWeight: 700,
                   lineHeight: 1.15,
-                  letterSpacing: '-0.03em',
-                  color: 'rgba(255,255,255,0.95)',
-                  marginBottom: '6px',
+                  letterSpacing: '-0.02em',
+                  color: '#FFFFFF',
+                  marginBottom: 'clamp(8px, 1.5vw, 12px)',
                 }}>
-                  {b.solucion}
+                  {b.etiqueta}
                 </h3>
 
-                {/* 3. Descripción */}
+                {/* Solución */}
+                <p style={{
+                  fontFamily: 'Saira, sans-serif',
+                  fontSize: 'clamp(14px, 2.8vw, 18px)',
+                  fontWeight: 600,
+                  lineHeight: 1.2,
+                  color: BLUE,
+                  marginBottom: 'clamp(6px, 1vw, 8px)',
+                }}>
+                  {b.solucion}
+                </p>
+
+                {/* Descripción */}
                 <p style={{
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(13px, 2.5vw, 14px)',
+                  fontSize: 'clamp(11px, 2.2vw, 14px)',
                   lineHeight: 1.45,
-                  color: 'rgba(255,255,255,0.60)',
-                  marginBottom: '14px',
+                  color: 'rgba(255,255,255,0.80)',
+                  marginBottom: 'clamp(10px, 1.5vw, 14px)',
                 }}>
                   {b.descripcion}
                 </p>
 
-                {/* 4. Divisor */}
+                {/* Divisor */}
                 <div style={{
                   width: '32px',
                   height: '0.5px',
                   backgroundColor: 'rgba(255,255,255,0.08)',
-                  marginBottom: '14px',
+                  marginBottom: 'clamp(10px, 1.5vw, 14px)',
                 }} />
 
-                {/* 5. Contexto dolor */}
+                {/* Contexto dolor en rojo */}
                 <p style={{
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(11px, 2vw, 12px)',
+                  fontSize: 'clamp(10px, 2vw, 12px)',
                   lineHeight: 1.4,
-                  color: 'rgba(255,255,255,0.35)',
+                  color: '#E85B5B',
                 }}>
                   {b.dolor}
                 </p>
