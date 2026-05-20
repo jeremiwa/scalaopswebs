@@ -35,14 +35,27 @@ export const Navbar = () => {
         </Link>
         <div className="flex items-center">
           <Link to={CTA_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-            <Button 
-              variant="primary" 
-              className={`text-[13px] font-bold tracking-wide transition-all duration-300 ${
-                scrolled ? 'px-4 py-2 h-[40px]' : 'px-5 py-2.5 h-[48px]'
-              }`}
+            <div 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '46px',
+                padding: '0 22px',
+                borderRadius: '999px',
+                background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '15px',
+                fontWeight: 700,
+                color: '#050706',
+                boxShadow: '0 2px 10px rgba(0, 212, 170, 0.15)',
+                transition: 'transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(0.98)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               Implementar Sentinel
-            </Button>
+            </div>
           </Link>
         </div>
       </div>
