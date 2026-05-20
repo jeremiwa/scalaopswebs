@@ -59,7 +59,7 @@ export const S04_ComparativaSimple = () => {
                   Costo anual estimado
                 </span>
                 <div className="text-[20px] md:text-[40px] font-[800] text-white leading-none mb-[8px] md:mb-[12px]" style={{ fontFamily: 'Saira, sans-serif', letterSpacing: '-0.02em' }}>
-                  USD 12000+
+                  USD 12500+
                 </div>
                 <p className="text-[10px] md:text-[13px] text-white/40 leading-[1.3]" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Sin contar comisiones, cargas, capacitación ni rotación.
