@@ -25,23 +25,7 @@ export const Hero = () => {
       {/* Main Content Container */}
       <div className="container-custom relative z-10 flex flex-col items-center px-[24px] md:px-0 mx-auto w-full max-w-[360px] md:max-w-[760px]">
 
-        {/* 02 Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
-          style={{
-            color: '#00D4AA',
-            fontSize: '11px',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.22em',
-            marginBottom: '16px',
-            textAlign: 'center'
-          }}
-        >
-          Antes de contratar
-        </motion.div>
+
 
         {/* 03 Headline */}
         <div className="flex flex-col items-center w-full max-w-[330px] md:max-w-[680px] text-center">
