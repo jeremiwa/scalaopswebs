@@ -91,7 +91,7 @@ export const Hero = () => {
               padding: 0
             }}
           >
-            Tu negocio no necesita otro empleado.<br />
+            Tu negocio no necesita más personal,<br />
             <span style={{
               background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
               WebkitBackgroundClip: 'text',
@@ -117,8 +117,7 @@ export const Hero = () => {
             textAlign: 'center',
           }}
         >
-          Sentinel atiende, califica y sigue oportunidades 24/7,<br />
-          sin sumar otro sueldo a tu equipo.
+          Sentinel atiende, califica, vende y hace seguimiento 24/7.
         </motion.p>
 
         {/* 07 Video Container */}
