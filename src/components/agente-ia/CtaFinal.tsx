@@ -1,82 +1,68 @@
 import { Link } from 'react-router-dom';
-import { Button } from '../ui/Button';
 
 const CTA_URL = '/formulario';
-const WA_URL = 'https://wa.link/sn01qs';
-
-const trackEvent = (location: string) => {
-  if ((window as any).dataLayer) {
-    (window as any).dataLayer.push({ event: 'sentinel_cta_clicked', location, page: 'agente-ia', offer: 'sentinel_997' });
-  }
-};
 
 export const CtaFinal = () => {
   return (
-    <section id="sentinel-cta-final" className="relative" style={{ background: '#000000', padding: '80px 0 60px' }}>
-      {/* Glow */}
-      <div style={{
-        position: 'absolute', top: '-80px', left: '-100px', right: '-100px', bottom: '-80px',
-        zIndex: 0, pointerEvents: 'none', borderRadius: '80px',
-        background: 'radial-gradient(ellipse at 50% 60%, rgba(107,221,161,0.07) 0%, rgba(107,221,161,0.02) 40%, transparent 65%)',
-        filter: 'blur(120px)', transform: 'translateZ(0)',
-      }} />
-      {/* Dot grid */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-        maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-      }} />
+    <section id="sentinel-cta-final" className="relative" style={{ background: '#030504', padding: '96px 0', overflow: 'hidden' }}>
+      
+      {/* Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none z-0 bg-[#246BFE] blur-[150px] opacity-10 rounded-full" />
+      <div className="absolute bottom-[-20%] right-[10%] w-[400px] h-[400px] pointer-events-none z-0 bg-[#68E6A3] blur-[120px] opacity-15 rounded-full" />
 
-      <div className="container-custom relative z-10 flex flex-col items-center text-center">
-        <div className="max-w-[700px] mx-auto reveal">
-          <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 46px)', fontWeight: 700, color: '#F5F5F7', letterSpacing: '-0.03em', lineHeight: 1.08, marginBottom: '16px' }}>
-            Tus clientes ya están escribiendo.<br className="hidden md:block" /> La pregunta es quién les responde primero.
-          </h2>
-          <p style={{ fontSize: '17px', color: '#8B8B9E', lineHeight: 1.5, maxWidth: '520px', margin: '0 auto 40px' }}>
-            Implementá Sentinel y dejá de perder oportunidades por falta de respuesta, seguimiento o tiempo.
-          </p>
+      <div className="container-custom relative z-10 flex flex-col items-center px-[24px] md:px-0 max-w-[600px] mx-auto text-center reveal">
+        
+        <h2 style={{ 
+          fontSize: 'clamp(32px, 8vw, 48px)', 
+          fontWeight: 800, 
+          color: '#F5F7FA', 
+          letterSpacing: '-0.03em', 
+          lineHeight: 1.05, 
+          marginBottom: '20px' 
+        }}>
+          Dejá de perder clientes por mensajes que nadie siguió.
+        </h2>
+        
+        <p style={{ 
+          fontSize: '18px', 
+          color: '#9EA0B4', 
+          lineHeight: 1.45,
+          maxWidth: '42ch',
+          margin: '0 auto 40px'
+        }}>
+          Sentinel atiende, filtra y vende 24/7 para que tu equipo llegue a las oportunidades correctas.
+        </p>
 
-          {/* CTA */}
-          <div className="relative inline-block">
-            <div className="absolute -inset-4 rounded-[18px] pointer-events-none" style={{
-              background: 'radial-gradient(ellipse at center, rgba(107,221,161,0.12) 0%, transparent 70%)',
-              filter: 'blur(20px)',
-            }} />
-            <Link
-              to={CTA_URL} target="_blank" rel="noopener noreferrer"
-              className="relative btn-hover-scale overflow-hidden flex items-center justify-center cursor-pointer"
-              style={{
-                background: 'linear-gradient(90deg, #185de8, #6bdda1)',
-                padding: '18px 44px', borderRadius: '100px',
-                fontFamily: 'var(--font-primary)', fontWeight: 800, fontSize: '15px', color: '#000',
-                boxShadow: '0 0 40px rgba(107,221,161,0.1)', textDecoration: 'none',
-              }}
-              onClick={() => trackEvent('final')}
-            >
-              <div className="absolute inset-0 bg-white/30 skew-x-[-20deg] animate-shimmer-btn" style={{ width: '30%' }} />
-              <span className="relative z-10">Quiero implementar Sentinel</span>
-            </Link>
-          </div>
+        <Link
+          to={CTA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            maxWidth: '380px',
+            height: '60px',
+            borderRadius: '999px',
+            background: 'linear-gradient(90deg, #246BFE 0%, #68E6A3 100%)',
+            fontFamily: 'var(--font-primary), Inter, sans-serif',
+            fontWeight: 800,
+            fontSize: '16px',
+            color: '#030504',
+            textDecoration: 'none',
+            boxShadow: '0 4px 32px rgba(105,235,170,0.25)',
+            letterSpacing: '-0.01em',
+            marginBottom: '16px',
+          }}
+        >
+          Implementar Sentinel · USD 997
+        </Link>
+        
+        <p style={{ fontSize: '13px', color: '#7D8195', fontWeight: 600 }}>
+          Precio lanzamiento · Implementación personalizada · Cupos limitados
+        </p>
 
-          {/* Microcopy */}
-          <div className="mt-6 text-[13px] flex flex-wrap justify-center items-center gap-x-6 gap-y-3 font-medium" style={{ color: 'rgba(203,213,225,0.68)' }}>
-            <span className="flex items-center gap-1.5"><span className="text-[#6bdda1]">✓</span> USD 997 precio lanzamiento</span>
-            <span className="hidden md:block w-1 h-1 rounded-full bg-white/10" />
-            <span className="flex items-center gap-1.5"><span className="text-[#6bdda1]">✓</span> Implementación personalizada</span>
-            <span className="hidden md:block w-1 h-1 rounded-full bg-white/10" />
-            <span className="flex items-center gap-1.5"><span className="text-[#6bdda1]">✓</span> Cupos sujetos a disponibilidad</span>
-          </div>
-
-          {/* WhatsApp */}
-          <div className="mt-10">
-            <a href={WA_URL} target="_blank" rel="noopener noreferrer"
-              className="text-[14px] hover:text-[#6bdda1] transition-colors border-b border-transparent hover:border-[#6bdda1] pb-0.5 inline-flex items-center gap-1"
-              style={{ color: 'rgba(203,213,225,0.60)' }}
-            >
-              ¿Preferís escribirnos? Abrir WhatsApp →
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

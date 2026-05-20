@@ -6,11 +6,15 @@
 import { SEO } from '../components/SEO';
 import { Navbar } from '../components/agente-ia/Navbar';
 import { Hero } from '../components/agente-ia/Hero';
-import { WhatIsSentinel } from '../components/agente-ia/QueEsScala';
-import { NotABot } from '../components/agente-ia/StoryboardDolor';
+import { NotABot } from '../components/agente-ia/StoryboardDolor'; // Dolor Simple
+import { WhatIsSentinel } from '../components/agente-ia/QueEsScala'; // Demo
+import { BotVsSentinel } from '../components/agente-ia/BotVsSentinel';
+import { HumanoVsSentinel } from '../components/agente-ia/HumanoVsSentinel';
+import { BloqueEquipo } from '../components/agente-ia/BloqueEquipo';
+import { Calculadora } from '../components/agente-ia/Calculadora';
 import { Resultados } from '../components/agente-ia/Resultados';
-import { ForWho } from '../components/agente-ia/CostoInvisible';
-import { Pricing } from '../components/agente-ia/Escalar';
+import { ForWho } from '../components/agente-ia/CostoInvisible'; // Para Quién
+import { Pricing } from '../components/agente-ia/Escalar'; // Oferta
 import { FAQ } from '../components/agente-ia/FAQ';
 import { CtaFinal } from '../components/agente-ia/CtaFinal';
 import { Footer } from '../components/agente-ia/Footer';
@@ -21,7 +25,7 @@ export const AgenteIA = () => {
   useAnimations();
 
   return (
-    <div className="min-h-screen bg-[#000000] selection:bg-[#6bdda1] selection:text-[#030712] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#030504] selection:bg-[#68E6A3] selection:text-[#030504] relative overflow-x-hidden">
       <SEO
         title="Sentinel — Tu Empleado IA Comercial | ScalaOps"
         description="Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram con el tono de tu negocio. Implementación personalizada por USD 997."
@@ -41,27 +45,21 @@ export const AgenteIA = () => {
       <Navbar />
 
       <main>
-        {/* 1. Hero + VSL */}
         <Hero />
-        {/* 2. Qué es Sentinel */}
-        <WhatIsSentinel />
-        {/* 3. No es un bot */}
         <NotABot />
-        {/* 4. Prueba social */}
+        <WhatIsSentinel />
+        <BotVsSentinel />
+        <HumanoVsSentinel />
+        <BloqueEquipo />
+        <Calculadora />
         <Resultados />
-        {/* 5. Para quién es */}
         <ForWho />
-        {/* 6. Precio */}
         <Pricing />
-        {/* 7. FAQ */}
         <FAQ />
-        {/* 8. CTA Final */}
         <CtaFinal />
       </main>
 
       <Footer />
-
-      {/* 9. Sticky CTA Mobile */}
       <StickyCTA />
     </div>
   );

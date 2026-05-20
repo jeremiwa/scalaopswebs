@@ -1,87 +1,97 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
     q: '¿Sentinel reemplaza a mis vendedores?',
-    a: 'No necesariamente. Sentinel ayuda a que tu equipo no pierda oportunidades. Responde, filtra y sigue clientes para que los vendedores lleguen a conversaciones más ordenadas.',
+    a: 'No. Automatiza la primera atención, el filtro y el seguimiento para que tu equipo trabaje mejores oportunidades.'
   },
   {
-    q: '¿Es igual que ManyChat o un bot tradicional?',
-    a: 'No. Un bot tradicional suele funcionar con reglas o flujos rígidos. Sentinel está pensado como un empleado IA conversacional, entrenado con información de tu negocio y orientado al proceso comercial.',
+    q: '¿Puede vender solo?',
+    a: 'Puede responder, recomendar, enviar links, agendar o avanzar oportunidades según el proceso de tu negocio.'
   },
   {
-    q: '¿Puede equivocarse?',
-    a: 'Como toda IA, puede requerir ajustes. Por eso se configura, se prueba y se entrena antes de dejarlo funcionando.',
+    q: '¿Va a sonar robótico?',
+    a: 'No. Se entrena con tu información, tono, reglas comerciales y respuestas reales.'
   },
   {
-    q: '¿Qué pasa si el cliente pregunta algo muy específico?',
-    a: 'Sentinel puede derivar la conversación a una persona de tu equipo cuando corresponde.',
+    q: '¿Funciona para mi rubro?',
+    a: 'Funciona mejor si recibís consultas por WhatsApp o Instagram y necesitás responder, filtrar o seguir clientes.'
   },
   {
-    q: '¿En cuánto tiempo puede estar funcionando?',
-    a: 'Depende de la información disponible y del alcance, pero la idea es que pueda estar funcionando en pocos días.',
+    q: '¿Cuánto tarda?',
+    a: 'La primera versión puede quedar lista en pocos días, según la información disponible.'
   },
   {
-    q: '¿Necesito saber de tecnología?',
-    a: 'No. Scala se encarga de la implementación técnica y de dejar el sistema preparado para operar.',
-  },
-  {
-    q: '¿El precio es final?',
-    a: 'USD 997 es el precio lanzamiento de implementación. Si hay costos de plataformas externas, mantenimiento o herramientas adicionales, se informan antes de avanzar.',
-  },
-  {
-    q: '¿Sirve si recibo pocas consultas?',
-    a: 'Si recibís muy pocas consultas, probablemente no sea la prioridad. Sentinel tiene más sentido cuando ya hay oportunidades entrando y querés dejar de perderlas.',
-  },
+    q: '¿Hay costos mensuales?',
+    a: 'Si hay herramientas, mantenimiento o consumo externo, se informa antes de avanzar.'
+  }
 ];
 
 export const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative border-t border-white/[0.03]" style={{ background: '#020202', padding: '72px 0' }}>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, #6bdda1, transparent)' }} />
-
-      <div className="container-custom relative z-10 flex flex-col items-center">
-        <div className="text-center mb-10 md:mb-14 reveal">
-          <span className="mb-4 block" style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#6B6B80' }}>
-            Dudas frecuentes
-          </span>
-          <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 46px)', fontWeight: 700, color: '#F5F5F7', letterSpacing: '-0.03em', lineHeight: 1.08 }}>
-            Preguntas antes de implementar.
+    <section className="relative" style={{ background: '#030504', padding: '72px 0' }}>
+      <div className="container-custom relative z-10 flex flex-col px-[24px] md:px-0 max-w-[600px] mx-auto">
+        
+        <div className="text-center mb-8 reveal">
+          <h2 style={{ 
+            fontSize: 'clamp(28px, 7vw, 40px)', 
+            fontWeight: 800, 
+            color: '#F5F7FA', 
+            letterSpacing: '-0.02em', 
+            lineHeight: 1.1 
+          }}>
+            Preguntas frecuentes
           </h2>
         </div>
 
-        <div className="w-full max-w-[680px] reveal-stagger">
-          {faqs.map((faq, i) => (
-            <div
-              key={i}
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className={`border-b border-white/[0.06] py-6 cursor-pointer ${i === 0 ? 'border-t' : ''}`}
-              style={{ minHeight: '44px' }}
-            >
-              <div className="flex justify-between items-center text-[17px] font-medium text-[#F5F5F7] group">
-                <span className="group-hover:text-white transition-colors pr-4">{faq.q}</span>
-                <ChevronDown
-                  size={20}
-                  className={`text-[#5A5A6E] transition-transform duration-300 shrink-0 ${openIndex === i ? 'rotate-180 text-[#6bdda1]' : ''}`}
-                />
-              </div>
-              <div
-                className="overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] text-[15px] leading-[1.6]"
+        <div className="flex flex-col gap-3 reveal-stagger">
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div 
+                key={i} 
+                className="reveal flex flex-col rounded-[16px] overflow-hidden transition-all duration-300"
                 style={{
-                  maxHeight: openIndex === i ? '250px' : '0px',
-                  opacity: openIndex === i ? 1 : 0,
-                  paddingTop: openIndex === i ? '12px' : '0px',
-                  color: 'rgba(203,213,225,0.72)',
+                  background: isOpen ? '#080C0B' : '#050706',
+                  border: isOpen ? '1px solid rgba(105, 235, 170, 0.3)' : '1px solid rgba(255, 255, 255, 0.06)',
                 }}
               >
-                {faq.a}
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="flex items-center justify-between w-full p-5 text-left focus:outline-none"
+                >
+                  <span style={{ fontSize: '16px', fontWeight: 600, color: isOpen ? '#68E6A3' : '#F5F7FA', pr: '16px' }}>
+                    {faq.q}
+                  </span>
+                  <div className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full ml-3" style={{ background: isOpen ? 'rgba(105, 235, 170, 0.15)' : 'rgba(255, 255, 255, 0.05)' }}>
+                    {isOpen ? <Minus className="w-3.5 h-3.5 text-[#68E6A3]" /> : <Plus className="w-3.5 h-3.5 text-[#9EA0B4]" />}
+                  </div>
+                </button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="px-5 pb-5 pt-0">
+                        <p style={{ fontSize: '15px', color: '#9EA0B4', lineHeight: 1.45, margin: 0 }}>
+                          {faq.a}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

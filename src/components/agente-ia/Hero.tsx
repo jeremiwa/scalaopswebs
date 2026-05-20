@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
-import { Button } from '../ui/Button';
 import { Link } from 'react-router-dom';
+import { Play } from 'lucide-react';
 
 const CTA_URL = '/formulario';
 
@@ -16,14 +16,15 @@ const trackEvent = (location: string) => {
 };
 
 const heroChips = [
-  'Personalizado para tu negocio',
-  'Precio lanzamiento',
-  'Listo en pocos días',
+  'No se olvida',
+  'No descansa',
+  'No deja consultas frías',
 ];
 
 export const Hero = () => {
   const videoRef = useRef<HTMLDivElement>(null);
   const [videoVisible, setVideoVisible] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if ((window as any).dataLayer) {
@@ -43,153 +44,186 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden" style={{ background: '#000000', paddingTop: '100px', paddingBottom: '32px' }}>
+    <section className="relative overflow-hidden" style={{ background: '#030504', paddingTop: '100px', paddingBottom: '32px' }}>
       {/* Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] pointer-events-none z-0 bg-[#246BFE] blur-[140px] opacity-15 rounded-full" />
+      <div className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] pointer-events-none z-0 bg-[#68E6A3] blur-[120px] opacity-10 rounded-full" />
 
-      <div className="container-custom relative z-10 flex flex-col items-center text-center">
+      <div className="container-custom relative z-10 flex flex-col items-center text-center px-[24px] md:px-0">
 
-        {/* Badge */}
+        {/* Eyebrow */}
         <div
-          className="sentinel-fade-in inline-flex items-center gap-2 mb-5"
+          className="sentinel-fade-in inline-block mb-3"
           style={{
-            padding: '7px 18px',
-            background: 'rgba(107, 221, 161, 0.06)',
-            border: '1px solid rgba(107, 221, 161, 0.15)',
-            borderRadius: '100px',
             fontSize: '12px',
-            fontWeight: 600,
-            letterSpacing: '0.06em',
+            fontWeight: 800,
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: '#6bdda1',
+            color: '#68E6A3',
           }}
         >
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#6bdda1', flexShrink: 0 }} />
-          Precio lanzamiento · USD 997
+          WHATSAPP + INSTAGRAM 24/7
         </div>
 
         {/* H1 */}
-        <div className="max-w-[740px] mx-auto px-4 md:px-0">
+        <div className="w-full max-w-[700px] mx-auto">
           <h1
-            className="sentinel-fade-in text-[26px] md:text-[42px] lg:text-[48px] font-[800] leading-[1.08] tracking-[-0.03em]"
-            style={{ marginBottom: '14px', animationDelay: '0.1s' }}
+            className="sentinel-fade-in text-[#F5F7FA]"
+            style={{ 
+              fontSize: 'clamp(36px, 9vw, 46px)', 
+              fontWeight: 800, 
+              lineHeight: 1.05, 
+              letterSpacing: '-0.03em',
+              marginBottom: '16px', 
+              animationDelay: '0.1s' 
+            }}
           >
-            <span className="text-white">Tu negocio no necesita otro empleado.{' '}</span>
-            <span className="scala-gradient-text">Necesita un Empleado IA.</span>
+            Tu equipo no puede responder todo.<br />
+            <span style={{ color: '#68E6A3' }}>Sentinel sí.</span>
           </h1>
 
           <p
             className="sentinel-fade-in"
             style={{
-              fontSize: '16px',
-              color: '#A0A0B5',
-              opacity: 0.88,
-              lineHeight: 1.55,
-              maxWidth: '54ch',
+              fontSize: '18px',
+              color: '#9EA0B4',
+              lineHeight: 1.45,
+              maxWidth: '38ch',
               margin: '0 auto',
               marginBottom: '28px',
               animationDelay: '0.2s',
             }}
           >
-            Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram para que tu equipo no pierda clientes por falta de tiempo.
+            Un Empleado IA que atiende, filtra y vende usando la información real de tu negocio.
           </p>
         </div>
 
-        {/* Video */}
+        {/* 3 Chips */}
+        <div className="sentinel-fade-in flex flex-wrap justify-center gap-2 mb-8" style={{ animationDelay: '0.25s' }}>
+          {heroChips.map((chip, index) => (
+            <span
+              key={chip}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 16px',
+                borderRadius: '100px',
+                fontSize: '14px',
+                fontWeight: 600,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(105,235,170,0.18)',
+                color: '#F5F7FA',
+                letterSpacing: '0.01em',
+                animation: \`fadeInUp 0.5s ease forwards \${0.3 + index * 0.12}s\`,
+                opacity: 0,
+                transform: 'translateY(10px)',
+              }}
+            >
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#68E6A3', flexShrink: 0 }} />
+              {chip}
+            </span>
+          ))}
+        </div>
+
+        {/* Video Container */}
         <div
           ref={videoRef}
-          className="sentinel-scale-in relative w-full"
-          style={{ maxWidth: '680px', animationDelay: '0.3s' }}
+          className="sentinel-scale-in relative w-full mb-8"
+          style={{ maxWidth: '680px', animationDelay: '0.4s' }}
         >
           {/* Video glow */}
           <div style={{
-            position: 'absolute', top: '-80px', left: '-80px', right: '-80px', bottom: '-80px',
+            position: 'absolute', top: '-40px', left: '-40px', right: '-40px', bottom: '-40px',
             zIndex: 0, pointerEvents: 'none', borderRadius: '80px',
-            background: 'radial-gradient(ellipse at 50% 50%, rgba(107, 221, 161, 0.025) 0%, rgba(24, 93, 232, 0.015) 40%, transparent 70%)',
-            filter: 'blur(100px)', transform: 'translateZ(0)',
+            background: 'radial-gradient(ellipse at 50% 50%, rgba(105, 235, 170, 0.05) 0%, rgba(36, 107, 254, 0.03) 40%, transparent 70%)',
+            filter: 'blur(60px)', transform: 'translateZ(0)',
           }} />
+          
           <div
-            className="bg-[#050505] relative shadow-lg overflow-hidden z-20"
+            className="bg-[#050706] relative shadow-lg overflow-hidden z-20"
             style={{
-              borderRadius: '18px',
-              border: '1px solid rgba(107, 221, 161, 0.12)',
-              boxShadow: '0 16px 50px rgba(0,0,0,0.5), 0 0 30px rgba(107, 221, 161, 0.04), inset 0 1px 0 rgba(255,255,255,0.05)',
+              borderRadius: '24px',
+              border: '1px solid rgba(105, 235, 170, 0.16)',
+              boxShadow: '0 16px 40px rgba(0,0,0,0.6), 0 0 30px rgba(105, 235, 170, 0.04)',
             }}
           >
             <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-              {videoVisible && (
-                <iframe
-                  src="https://player.vimeo.com/video/1180578010?badge=0&autopause=0&player_id=0&app_id=58479"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                  title="Sentinel — Empleado IA Comercial"
-                  loading="lazy"
-                />
+              {!isPlaying ? (
+                <div 
+                  className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer group"
+                  onClick={() => setIsPlaying(true)}
+                  style={{ background: 'linear-gradient(180deg, #0A0F0D 0%, #030504 100%)' }}
+                >
+                  <div className="w-[64px] h-[64px] rounded-full flex items-center justify-center mb-4 transition-transform group-hover:scale-105"
+                    style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <Play className="w-8 h-8 text-[#68E6A3] ml-1" fill="currentColor" />
+                  </div>
+                  <p style={{ color: '#F5F7FA', fontSize: '15px', fontWeight: 600, letterSpacing: '-0.01em' }}>
+                    Antes de contratar otro vendedor, mirá esto.
+                  </p>
+                </div>
+              ) : (
+                videoVisible && (
+                  <iframe
+                    src="https://player.vimeo.com/video/1180578010?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    title="Sentinel — Empleado IA Comercial"
+                    loading="lazy"
+                  />
+                )
               )}
             </div>
           </div>
-          {/* Caption */}
-          <p style={{
-            textAlign: 'center', marginTop: '12px', fontSize: '12px',
-            color: '#5A5A6E', fontStyle: 'italic', fontWeight: 500,
-          }}>
-            Miralo antes de contratar otro vendedor.
-          </p>
         </div>
 
-        {/* CTA */}
-        <div className="sentinel-fade-in flex flex-col items-center mt-8" style={{ animationDelay: '0.45s' }}>
+        {/* Main CTA */}
+        <div className="sentinel-fade-in flex flex-col items-center w-full" style={{ animationDelay: '0.6s' }}>
           <Link
             to={CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ textDecoration: 'none' }}
             onClick={() => trackEvent('hero')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              maxWidth: '380px',
+              height: '56px',
+              borderRadius: '999px',
+              background: 'linear-gradient(90deg, #246BFE 0%, #68E6A3 100%)',
+              fontFamily: 'var(--font-primary), Inter, sans-serif',
+              fontWeight: 800,
+              fontSize: '16px',
+              color: '#030504',
+              textDecoration: 'none',
+              boxShadow: '0 4px 20px rgba(105,235,170,0.2)',
+              letterSpacing: '-0.01em',
+              marginBottom: '12px',
+            }}
           >
-            <Button variant="primary" className="text-lg px-10 py-4 btn-hover-lift">
-              Quiero implementar Sentinel
-            </Button>
+            Implementar Sentinel · USD 997
           </Link>
-
-          {/* 3 Chips */}
-          <div className="flex flex-wrap justify-center gap-2 mt-5">
-            {heroChips.map((chip) => (
-              <span
-                key={chip}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '6px 14px',
-                  borderRadius: '100px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  color: 'rgba(255,255,255,0.60)',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#6bdda1', flexShrink: 0 }} />
-                {chip}
-              </span>
-            ))}
-          </div>
+          <p style={{ fontSize: '13px', color: '#7D8195', fontWeight: 500 }}>
+            Personalizado para tu negocio · Listo en pocos días
+          </p>
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{ __html: \`
         @keyframes sentinel-fade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes sentinel-scale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-        .sentinel-fade-in { animation: sentinel-fade 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .sentinel-scale-in { animation: sentinel-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        @keyframes sentinel-scale { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .sentinel-fade-in { animation: sentinel-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .sentinel-scale-in { animation: sentinel-scale 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
         @media (prefers-reduced-motion: reduce) {
           .sentinel-fade-in, .sentinel-scale-in { animation: none; opacity: 1; transform: none; }
         }
-      `}} />
+      \`}} />
     </section>
   );
 };
