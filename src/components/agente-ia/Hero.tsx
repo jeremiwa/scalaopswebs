@@ -115,7 +115,7 @@ export const Hero = () => {
                 border: '1px solid rgba(105,235,170,0.18)',
                 color: '#F5F7FA',
                 letterSpacing: '0.01em',
-                animation: \`fadeInUp 0.5s ease forwards \${0.3 + index * 0.12}s\`,
+                animation: `fadeInUp 0.5s ease forwards ${0.3 + index * 0.12}s`,
                 opacity: 0,
                 transform: 'translateY(10px)',
               }}
@@ -214,7 +214,7 @@ export const Hero = () => {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: \`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes sentinel-fade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes sentinel-scale { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -223,7 +223,7 @@ export const Hero = () => {
         @media (prefers-reduced-motion: reduce) {
           .sentinel-fade-in, .sentinel-scale-in { animation: none; opacity: 1; transform: none; }
         }
-      \`}} />
+      `}} />
     </section>
   );
 };
