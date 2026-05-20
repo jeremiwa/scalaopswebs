@@ -66,7 +66,7 @@ export const S03_FueraDeHorario = () => {
           className="flex flex-wrap justify-center gap-[12px] mb-[64px]"
         >
           {['Domingo · 22:47', 'Feriado · 00:18', 'Vendedor ocupado'].map((chip, i) => (
-            <div key={i} className="px-[16px] py-[8px] rounded-full bg-white/5 border border-white/10 text-white/60 text-[13px] font-medium flex items-center gap-[6px]" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <div key={i} className="px-[16px] py-[8px] rounded-full bg-white/5 border border-white/10 text-white text-[13px] font-bold flex items-center gap-[6px]" style={{ fontFamily: 'Inter, sans-serif' }}>
               <Clock className="w-3.5 h-3.5" />
               {chip}
             </div>
