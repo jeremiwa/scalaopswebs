@@ -34,18 +34,17 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
             style={{
-              fontFamily: 'Saira, var(--font-primary), sans-serif',
-              fontSize: 'clamp(36px, 8vw, 68px)',
+              fontFamily: 'var(--font-primary), Inter, sans-serif',
+              fontSize: 'clamp(32px, 8vw, 64px)',
               fontWeight: 800,
-              lineHeight: 1.03,
+              lineHeight: 1.05,
               letterSpacing: '-0.035em',
               color: '#FFFFFF',
               margin: 0,
               padding: 0
             }}
           >
-            Antes de contratar<br />
-            otro vendedor,
+            Tu negocio no necesita otro empleado.
           </motion.h1>
           
           <motion.h1
@@ -53,10 +52,10 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
             style={{
-              fontFamily: 'Saira, var(--font-primary), sans-serif',
-              fontSize: 'clamp(36px, 8vw, 68px)',
+              fontFamily: 'var(--font-primary), Inter, sans-serif',
+              fontSize: 'clamp(32px, 8vw, 64px)',
               fontWeight: 800,
-              lineHeight: 1.03,
+              lineHeight: 1.05,
               letterSpacing: '-0.035em',
               margin: 0,
               padding: 0,
@@ -66,7 +65,7 @@ export const Hero = () => {
               backgroundClip: 'text',
             }}
           >
-            leé esto.
+            Necesita un Empleado IA.
           </motion.h1>
         </div>
 

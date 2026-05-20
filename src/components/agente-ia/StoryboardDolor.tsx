@@ -114,14 +114,6 @@ export const NotABot = () => {
             }}
           >
             escapa la <span style={{ color: 'var(--color-loss, #FF4D6D)' }}>plata</span>.
-            {/* Scratch visual under 'plata' */}
-            <motion.div
-              initial={{ scaleX: 0, originX: 0 }}
-              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 1.2 }}
-              className="absolute bottom-[8%] right-[0] h-[3px] bg-[#FF4D6D] rounded-full"
-              style={{ width: 'clamp(100px, 20vw, 150px)', zIndex: -1, transform: 'rotate(-2deg) translateY(2px)' }}
-            />
           </motion.div>
         </div>
 
