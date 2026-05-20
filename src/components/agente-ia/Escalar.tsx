@@ -30,7 +30,7 @@ const bonuses = [
 
 export const Pricing = () => {
   return (
-    <section id="sentinel-pricing" className="relative" style={{ background: '#000000', padding: '130px 0' }}>
+    <section id="sentinel-pricing" className="relative" style={{ background: '#000000', padding: '80px 0' }}>
       {/* Glow */}
       <div style={{
         position: 'absolute', top: '-120px', left: '-120px', right: '-120px', bottom: '-120px',

@@ -48,15 +48,14 @@ export const StickyCTA = () => {
       }}
     >
       <div style={{
-        background: 'rgba(5,5,5,0.92)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        boxShadow: '0 -4px 20px rgba(0,0,0,0.4)',
-        padding: '10px 16px',
+        background: 'rgba(2,2,2,0.94)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderTop: '1px solid rgba(107,221,161,0.10)',
+        boxShadow: '0 -4px 24px rgba(0,0,0,0.5)',
+        padding: '8px 14px',
         display: 'flex',
         justifyContent: 'center',
-        maxHeight: '64px',
       }}>
         <Link
           to={CTA_URL}
@@ -68,17 +67,18 @@ export const StickyCTA = () => {
             alignItems: 'center',
             justifyContent: 'center',
             width: '100%',
-            maxWidth: '400px',
+            maxWidth: '380px',
             minHeight: '44px',
-            padding: '12px 24px',
+            padding: '11px 20px',
             borderRadius: '100px',
             background: 'linear-gradient(90deg, #185de8, #6bdda1)',
             fontFamily: 'var(--font-primary)',
-            fontWeight: 800,
-            fontSize: '14px',
+            fontWeight: 700,
+            fontSize: '13.5px',
             color: '#000',
             textDecoration: 'none',
-            boxShadow: '0 0 20px rgba(107,221,161,0.15)',
+            boxShadow: '0 0 16px rgba(107,221,161,0.12)',
+            letterSpacing: '0.01em',
           }}
         >
           Implementar Sentinel · USD 997

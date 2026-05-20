@@ -18,7 +18,7 @@ const sentinelItems = [
 
 export const NotABot = () => {
   return (
-    <section className="relative" style={{ background: '#000000', padding: '130px 0' }}>
+    <section className="relative" style={{ background: '#000000', padding: '72px 0' }}>
       {/* Ambient glow */}
       <div style={{
         position: 'absolute', top: '-100px', left: '-100px', right: '-100px', bottom: '-100px',

@@ -15,6 +15,12 @@ const trackEvent = (location: string) => {
   }
 };
 
+const heroChips = [
+  'Personalizado para tu negocio',
+  'Precio lanzamiento',
+  'Listo en pocos días',
+];
+
 export const Hero = () => {
   const videoRef = useRef<HTMLDivElement>(null);
   const [videoVisible, setVideoVisible] = useState(false);
@@ -37,7 +43,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden" style={{ background: '#000000', paddingTop: '120px', paddingBottom: '48px' }}>
+    <section className="relative overflow-hidden" style={{ background: '#000000', paddingTop: '100px', paddingBottom: '32px' }}>
       {/* Glows */}
       <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#185de8] blur-[120px] opacity-15 rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] pointer-events-none z-0 bg-[#6bdda1] blur-[120px] opacity-15 rounded-full" />
@@ -46,13 +52,13 @@ export const Hero = () => {
 
         {/* Badge */}
         <div
-          className="sentinel-fade-in inline-flex items-center gap-2 mb-6"
+          className="sentinel-fade-in inline-flex items-center gap-2 mb-5"
           style={{
-            padding: '8px 20px',
+            padding: '7px 18px',
             background: 'rgba(107, 221, 161, 0.06)',
             border: '1px solid rgba(107, 221, 161, 0.15)',
             borderRadius: '100px',
-            fontSize: '13px',
+            fontSize: '12px',
             fontWeight: 600,
             letterSpacing: '0.06em',
             textTransform: 'uppercase',
@@ -64,29 +70,29 @@ export const Hero = () => {
         </div>
 
         {/* H1 */}
-        <div className="max-w-[800px] mx-auto px-4 md:px-0">
+        <div className="max-w-[740px] mx-auto px-4 md:px-0">
           <h1
-            className="sentinel-fade-in text-[28px] md:text-[44px] lg:text-[50px] font-[800] leading-[1.08] tracking-[-0.03em]"
-            style={{ marginBottom: '16px', animationDelay: '0.1s' }}
+            className="sentinel-fade-in text-[26px] md:text-[42px] lg:text-[48px] font-[800] leading-[1.08] tracking-[-0.03em]"
+            style={{ marginBottom: '14px', animationDelay: '0.1s' }}
           >
-            <span className="text-white">Tu negocio no necesita otro bot. </span>
-            <span className="scala-gradient-text">Necesita un Empleado IA que no deje clientes sin responder.</span>
+            <span className="text-white">Tu negocio no necesita otro empleado.{' '}</span>
+            <span className="scala-gradient-text">Necesita un Empleado IA.</span>
           </h1>
 
           <p
             className="sentinel-fade-in"
             style={{
-              fontSize: '17px',
+              fontSize: '16px',
               color: '#A0A0B5',
               opacity: 0.88,
               lineHeight: 1.55,
-              maxWidth: '58ch',
+              maxWidth: '54ch',
               margin: '0 auto',
-              marginBottom: '36px',
+              marginBottom: '28px',
               animationDelay: '0.2s',
             }}
           >
-            Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram, con el tono y proceso de tu negocio.
+            Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram para que tu equipo no pierda clientes por falta de tiempo.
           </p>
         </div>
 
@@ -94,21 +100,21 @@ export const Hero = () => {
         <div
           ref={videoRef}
           className="sentinel-scale-in relative w-full"
-          style={{ maxWidth: '720px', animationDelay: '0.3s' }}
+          style={{ maxWidth: '680px', animationDelay: '0.3s' }}
         >
           {/* Video glow */}
           <div style={{
-            position: 'absolute', top: '-100px', left: '-100px', right: '-100px', bottom: '-100px',
+            position: 'absolute', top: '-80px', left: '-80px', right: '-80px', bottom: '-80px',
             zIndex: 0, pointerEvents: 'none', borderRadius: '80px',
             background: 'radial-gradient(ellipse at 50% 50%, rgba(107, 221, 161, 0.025) 0%, rgba(24, 93, 232, 0.015) 40%, transparent 70%)',
-            filter: 'blur(120px)', transform: 'translateZ(0)',
+            filter: 'blur(100px)', transform: 'translateZ(0)',
           }} />
           <div
             className="bg-[#050505] relative shadow-lg overflow-hidden z-20"
             style={{
-              borderRadius: '20px',
+              borderRadius: '18px',
               border: '1px solid rgba(107, 221, 161, 0.12)',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(107, 221, 161, 0.04), inset 0 1px 0 rgba(255,255,255,0.05)',
+              boxShadow: '0 16px 50px rgba(0,0,0,0.5), 0 0 30px rgba(107, 221, 161, 0.04), inset 0 1px 0 rgba(255,255,255,0.05)',
             }}
           >
             <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
@@ -127,7 +133,7 @@ export const Hero = () => {
           </div>
           {/* Caption */}
           <p style={{
-            textAlign: 'center', marginTop: '14px', fontSize: '13px',
+            textAlign: 'center', marginTop: '12px', fontSize: '12px',
             color: '#5A5A6E', fontStyle: 'italic', fontWeight: 500,
           }}>
             Miralo antes de contratar otro vendedor.
@@ -135,7 +141,7 @@ export const Hero = () => {
         </div>
 
         {/* CTA */}
-        <div className="sentinel-fade-in flex flex-col items-center mt-10" style={{ animationDelay: '0.45s' }}>
+        <div className="sentinel-fade-in flex flex-col items-center mt-8" style={{ animationDelay: '0.45s' }}>
           <Link
             to={CTA_URL}
             target="_blank"
@@ -147,16 +153,31 @@ export const Hero = () => {
               Quiero implementar Sentinel
             </Button>
           </Link>
-          <p style={{
-            marginTop: '14px', fontSize: '13px', color: '#5A5A6E',
-            display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px 16px',
-          }}>
-            <span>Implementación personalizada</span>
-            <span style={{ color: 'rgba(255,255,255,0.12)' }}>·</span>
-            <span>Precio lanzamiento</span>
-            <span style={{ color: 'rgba(255,255,255,0.12)' }}>·</span>
-            <span>En pocos días funcionando</span>
-          </p>
+
+          {/* 3 Chips */}
+          <div className="flex flex-wrap justify-center gap-2 mt-5">
+            {heroChips.map((chip) => (
+              <span
+                key={chip}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '6px 14px',
+                  borderRadius: '100px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  color: 'rgba(255,255,255,0.60)',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#6bdda1', flexShrink: 0 }} />
+                {chip}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 

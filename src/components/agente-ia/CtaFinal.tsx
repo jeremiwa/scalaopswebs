@@ -12,7 +12,7 @@ const trackEvent = (location: string) => {
 
 export const CtaFinal = () => {
   return (
-    <section id="sentinel-cta-final" className="relative" style={{ background: '#000000', padding: '120px 0 80px' }}>
+    <section id="sentinel-cta-final" className="relative" style={{ background: '#000000', padding: '80px 0 60px' }}>
       {/* Glow */}
       <div style={{
         position: 'absolute', top: '-80px', left: '-100px', right: '-100px', bottom: '-80px',

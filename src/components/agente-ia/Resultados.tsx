@@ -8,7 +8,7 @@ export const Resultados = () => {
       background: '#020202',
       borderTop: '1px solid rgba(255,255,255,0.04)',
       borderBottom: '1px solid rgba(255,255,255,0.04)',
-      padding: '120px 0 130px',
+      padding: '72px 0 80px',
       position: 'relative', overflow: 'hidden',
     }}>
       {/* Ambient glow */}

@@ -40,7 +40,7 @@ export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative border-t border-white/[0.03]" style={{ background: '#020202', padding: '100px 0' }}>
+    <section className="relative border-t border-white/[0.03]" style={{ background: '#020202', padding: '72px 0' }}>
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, #6bdda1, transparent)' }} />
 
       <div className="container-custom relative z-10 flex flex-col items-center">
