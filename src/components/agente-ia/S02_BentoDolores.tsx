@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { DollarSign, Zap, Clock, MessageSquare, RefreshCw, ListChecks, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SentinelLogo } from './SentinelLogo';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const BLUE = '#4A8FFF';

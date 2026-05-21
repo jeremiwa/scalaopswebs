@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { SentinelLogo } from './SentinelLogo';
 import { Link } from 'react-router-dom';
 
 const CTA_URL = '/formulario';
@@ -55,7 +56,7 @@ export const CtaFinalSimple = () => {
               textDecoration: 'none'
             }}
           >
-            Implementar Sentinel
+            <SentinelLogo className="w-5 h-5 mr-2" /> Implementar Sentinel
           </Link>
           <p className="text-[13px] text-white/40 text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
             Precio lanzamiento · Personalizado para tu negocio · Listo en 7 días

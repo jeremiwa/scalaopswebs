@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { SentinelLogo } from './SentinelLogo';
 import { Link } from 'react-router-dom';
 
 const CTA_URL = '/formulario';
@@ -90,7 +91,7 @@ export const StickyCTA = () => {
             letterSpacing: '-0.01em',
           }}
         >
-          Implementar Sentinel →
+          <SentinelLogo className="w-4 h-4" /> Implementar Sentinel →
         </Link>
       </div>
     </div>

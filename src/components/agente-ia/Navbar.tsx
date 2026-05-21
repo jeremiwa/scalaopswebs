@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Logo } from '../ui/Logo';
 import { Button } from '../ui/Button';
 import { Link } from 'react-router-dom';
+import { SentinelLogo } from './SentinelLogo';
 
 const CTA_URL = '/formulario';
 
@@ -30,8 +31,13 @@ export const Navbar = () => {
           scrolled ? 'h-[56px]' : 'h-[64px]'
         }`}
       >
-        <Link to="/" className="hover:opacity-80 transition-opacity">
+        <Link to="/" className="hover:opacity-80 transition-opacity flex items-center gap-3">
           <Logo />
+          <div className="h-[20px] w-px bg-white/20 hidden md:block"></div>
+          <div className="flex items-center gap-2">
+            <SentinelLogo className="w-5 h-5 hidden md:block" />
+            <span className="text-white font-bold tracking-widest text-[14px] hidden md:block" style={{ fontFamily: 'Saira, sans-serif' }}>SENTINEL</span>
+          </div>
         </Link>
         <div className="flex items-center">
           <Link to={CTA_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
@@ -54,8 +60,8 @@ export const Navbar = () => {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(0.98)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
-              <span className="md:hidden">Implementar</span>
-              <span className="hidden md:inline">Implementar Sentinel</span>
+              <span className="md:hidden flex items-center gap-2"><SentinelLogo className="w-4 h-4" /> Implementar</span>
+              <span className="hidden md:flex items-center gap-2"><SentinelLogo className="w-4 h-4" /> Implementar Sentinel</span>
             </div>
           </Link>
         </div>

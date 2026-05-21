@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { Play } from 'lucide-react';
+import { SentinelLogo } from './SentinelLogo';
 
 const CTA_URL = '/formulario';
 
@@ -238,31 +239,40 @@ export const Hero = () => {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[120%] bg-[#00D4AA] blur-[30px] rounded-full z-0 pointer-events-none opacity-20"
           />
           
-          <Link
+          <Link 
             to={CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 hover-scale w-full flex justify-center"
-            style={{ textDecoration: 'none' }}
-          >
-            <div style={{
-              display: 'flex',
+            style={{
+              display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '100%',
+              gap: '8px',
               height: '56px',
-              padding: '0 24px',
+              padding: '0 32px',
               borderRadius: '999px',
               background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)',
-              fontFamily: 'Inter, var(--font-primary), sans-serif',
-              fontWeight: 800,
-              fontSize: '17px',
-              color: '#020403',
-              boxShadow: '0 4px 16px rgba(0, 212, 170, 0.15)',
-              letterSpacing: '-0.01em',
-            }}>
-              Implementar Sentinel
-            </div>
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '16px',
+              fontWeight: 700,
+              color: '#050706',
+              textDecoration: 'none',
+              boxShadow: '0 4px 20px rgba(0, 212, 170, 0.25)',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 25px rgba(0, 212, 170, 0.35)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 212, 170, 0.25)';
+            }}
+          >
+            <SentinelLogo className="w-5 h-5" />
+            Implementar Sentinel
           </Link>
         </motion.div>
 
