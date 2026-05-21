@@ -126,32 +126,22 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 1.5 }}
-          className="w-full relative rounded-[24px] overflow-hidden flex items-center justify-center cursor-pointer group mb-[24px]"
+          className="w-full relative rounded-[24px] overflow-hidden flex items-center justify-center mb-[24px] bg-[#070B12]"
           style={{
-            aspectRatio: '16/9',
-            background: '#070B12',
             border: '1px solid rgba(255,255,255,0.10)',
             boxShadow: '0 10px 30px rgba(0,102,255,0.06)'
           }}
         >
-          {/* Custom Poster Overlay */}
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#000000]/70">
-            <div className="w-[58px] h-[58px] rounded-full bg-[#0066FF]/20 border border-[#0066FF]/40 backdrop-blur-md flex items-center justify-center mb-2 group-hover:scale-105 transition-transform duration-300">
-              <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
-            </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 500, color: '#FFFFFF', letterSpacing: '0.02em' }}>
-              Mirá cómo trabaja Sentinel
-            </span>
+          <div style={{ padding: '56.25% 0 0 0', position: 'relative', width: '100%' }}>
+            <iframe 
+              src="https://player.vimeo.com/video/1194518903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin" 
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+              title="VSL V2">
+            </iframe>
           </div>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-50 mix-blend-screen"
-          >
-            <source src="https://storage.googleapis.com/scala-assets/vsl-demo.mp4" type="video/mp4" />
-          </video>
         </motion.div>
 
         {/* 06 Stat strips (Movido abajo del video, más chicos y premium) */}
