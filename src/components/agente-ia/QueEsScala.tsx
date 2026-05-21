@@ -272,7 +272,7 @@ export const WhatIsSentinel = () => {
             Elegí tu rubro y mirá cómo trabajaría Sentinel.
           </h2>
           <p style={{ fontSize: '16px', color: '#8B8B9E', lineHeight: 1.55, maxWidth: '540px', margin: '0 auto' }}>
-            Cada negocio tiene preguntas, objeciones y procesos distintos. Sentinel se entrena con la información de tu empresa para responder con tu tono y agendar o vender.
+            Sentinel: el empleado IA que se entrena con la información de tu empresa para responder con tu tono y agendar o vender.
           </p>
         </div>
 
@@ -420,28 +420,23 @@ export const WhatIsSentinel = () => {
 
         {/* Capability Cards — compact */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-[700px] mt-10 reveal-stagger px-4">
-          {[
-            { title: 'Responde', desc: 'Atiende consultas incluso cuando tu equipo no está.' },
-            { title: 'Califica', desc: 'Detecta si el cliente tiene intención real.' },
-            { title: 'Vende', desc: 'Envía links de pago de forma autónoma.' },
-            { title: 'Agenda', desc: 'Sincroniza reuniones en el calendario.' },
-          ].map((card) => (
+          {['Responde 24/7', 'Califica', 'Vende', 'Agenda'].map((title) => (
             <div
-              key={card.title}
+              key={title}
               className="reveal"
               style={{
                 background: 'rgba(255,255,255,0.025)',
                 border: '1px solid rgba(255,255,255,0.06)',
                 borderRadius: '16px',
                 padding: '18px 16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#6bdda1', marginBottom: '6px', letterSpacing: '-0.01em' }}>
-                {card.title}
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#6bdda1', letterSpacing: '-0.01em', textAlign: 'center' }}>
+                {title}
               </h3>
-              <p style={{ fontSize: '12px', color: '#8B8B9E', lineHeight: 1.45 }}>
-                {card.desc}
-              </p>
             </div>
           ))}
         </div>
