@@ -1,16 +1,17 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { DollarSign, Zap, Clock, MessageSquare, RefreshCw, ListChecks } from 'lucide-react';
+import { DollarSign, Zap, Clock, MessageSquare, RefreshCw, ListChecks, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const BLUE = '#4A8FFF';
+const CARD_GAP = 14;
 
 const cards = [
   {
     cat: "COSTOS",
     icon: DollarSign,
     dolor: "Pagar otro sueldo no debería ser tu única salida.",
-    solucion: "Implementar Sentinel USD 997.\nSin sueldo mensual, cargas ni aguinaldo.",
+    solucion: "Implementar Sentinel USD 997.\nSin sueldo, sindicato o indemnización.",
     costaLabel: "HOY TE CUESTA",
     costa: "+USD 18.000/año por vendedor",
   },
@@ -68,12 +69,24 @@ export const S02_BentoDolores = () => {
     const onScroll = () => {
       const child = el.firstElementChild as HTMLElement | null;
       if (!child) return;
-      const w = child.offsetWidth + 14;
+      const w = child.offsetWidth + CARD_GAP;
       setActiveIndex(Math.min(Math.round(el.scrollLeft / w), cards.length - 1));
     };
     el.addEventListener('scroll', onScroll, { passive: true });
     return () => el.removeEventListener('scroll', onScroll);
   }, []);
+
+  const scrollTo = useCallback((dir: 'prev' | 'next') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const child = el.firstElementChild as HTMLElement | null;
+    if (!child) return;
+    const w = child.offsetWidth + CARD_GAP;
+    const target = dir === 'next'
+      ? Math.min(activeIndex + 1, cards.length - 1)
+      : Math.max(activeIndex - 1, 0);
+    el.scrollTo({ left: target * w, behavior: 'smooth' });
+  }, [activeIndex]);
 
   return (
     <section
@@ -105,17 +118,56 @@ export const S02_BentoDolores = () => {
         </motion.h2>
       </div>
 
-      {/* Carousel */}
+      {/* Carousel wrapper with arrows */}
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.45, delay: 0.45, ease: EASE }}
-        className="w-full max-w-[1100px]"
+        className="w-full max-w-[1100px] relative"
       >
+        {/* Left arrow */}
+        <button
+          onClick={() => scrollTo('prev')}
+          aria-label="Anterior"
+          className="hidden md:flex absolute left-[-4px] top-1/2 -translate-y-1/2 z-20 items-center justify-center rounded-full transition-all duration-200"
+          style={{
+            width: '44px',
+            height: '44px',
+            backgroundColor: activeIndex === 0 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.08)',
+            border: '0.5px solid rgba(255,255,255,0.12)',
+            cursor: activeIndex === 0 ? 'default' : 'pointer',
+            opacity: activeIndex === 0 ? 0.3 : 1,
+          }}
+          onMouseEnter={(e) => { if (activeIndex > 0) (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.14)'; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = activeIndex === 0 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.08)'; }}
+        >
+          <ChevronLeft size={20} style={{ color: '#fff' }} />
+        </button>
+
+        {/* Right arrow */}
+        <button
+          onClick={() => scrollTo('next')}
+          aria-label="Siguiente"
+          className="hidden md:flex absolute right-[-4px] top-1/2 -translate-y-1/2 z-20 items-center justify-center rounded-full transition-all duration-200"
+          style={{
+            width: '44px',
+            height: '44px',
+            backgroundColor: activeIndex === cards.length - 1 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.08)',
+            border: '0.5px solid rgba(255,255,255,0.12)',
+            cursor: activeIndex === cards.length - 1 ? 'default' : 'pointer',
+            opacity: activeIndex === cards.length - 1 ? 0.3 : 1,
+          }}
+          onMouseEnter={(e) => { if (activeIndex < cards.length - 1) (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.14)'; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = activeIndex === cards.length - 1 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.08)'; }}
+        >
+          <ChevronRight size={20} style={{ color: '#fff' }} />
+        </button>
+
+        {/* Scrollable track */}
         <div
           ref={scrollRef}
           className="flex overflow-x-auto"
-          style={{ gap: '14px', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', paddingLeft: '20px', paddingRight: '20px', paddingBottom: '4px' }}
+          style={{ gap: `${CARD_GAP}px`, scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', paddingLeft: '20px', paddingRight: '20px', paddingBottom: '4px' }}
         >
           {cards.map((c, i) => {
             const Icon = c.icon;
@@ -125,6 +177,7 @@ export const S02_BentoDolores = () => {
                 className="flex-shrink-0 flex flex-col relative group"
                 style={{
                   width: 'clamp(300px, 84vw, 360px)',
+                  minHeight: '380px',
                   scrollSnapAlign: 'center',
                   borderRadius: '22px',
                   overflow: 'hidden',
