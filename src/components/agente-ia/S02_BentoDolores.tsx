@@ -114,7 +114,7 @@ export const S02_BentoDolores = () => {
       >
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto lg:grid lg:grid-cols-3 lg:overflow-visible"
+          className="flex overflow-x-auto"
           style={{ gap: '14px', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', paddingLeft: '20px', paddingRight: '20px', paddingBottom: '4px' }}
         >
           {cards.map((c, i) => {
@@ -244,7 +244,7 @@ export const S02_BentoDolores = () => {
         </div>
 
         {/* Dots */}
-        <div className="flex lg:hidden items-center justify-center gap-[6px] mt-[22px]">
+        <div className="flex items-center justify-center gap-[6px] mt-[24px] md:mt-[32px]">
           {cards.map((_, i) => (
             <div
               key={i}
