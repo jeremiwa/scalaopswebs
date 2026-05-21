@@ -1,25 +1,30 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { DollarSign, Zap, Clock, MessageSquare, RefreshCw, ListChecks } from 'lucide-react';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const BLUE = '#4A8FFF';
 
 const cards = [
   {
     cat: "COSTOS",
+    icon: DollarSign,
     dolor: "Pagar otro sueldo no debería ser tu única salida.",
-    solucion: "Sentinel trabaja por USD 997 de implementación.\nSin sueldo mensual, cargas ni aguinaldo.",
+    solucion: "Implementar Sentinel USD 997.\nSin sueldo mensual, cargas ni aguinaldo.",
     costaLabel: "HOY TE CUESTA",
     costa: "+USD 18.000/año por vendedor",
   },
   {
     cat: "VELOCIDAD",
+    icon: Zap,
     dolor: "Cuando responden tarde, el cliente ya está comparando.",
     solucion: "Sentinel responde en menos de 8 segundos.",
     costaLabel: "HOY TE CUESTA",
-    costa: "ventas que se enfrían en minutos",
+    costa: "ventas que perdes en minutos",
   },
   {
     cat: "HORARIO",
+    icon: Clock,
     dolor: "Tus clientes compran cuando tu equipo no está.",
     solucion: "Sentinel atiende 24/7/365.\nDe noche, domingos y feriados.",
     costaLabel: "HOY TE CUESTA",
@@ -27,6 +32,7 @@ const cards = [
   },
   {
     cat: "CAPACIDAD",
+    icon: MessageSquare,
     dolor: "Cuando entran muchos chats, tu equipo colapsa.",
     solucion: "Sentinel atiende 50+ chats en simultáneo.",
     costaLabel: "HOY TE CUESTA",
@@ -34,6 +40,7 @@ const cards = [
   },
   {
     cat: "ROTACIÓN",
+    icon: RefreshCw,
     dolor: "Capacitás vendedores… y después se van.",
     solucion: "Sentinel se entrena una vez y queda.",
     costaLabel: "HOY TE CUESTA",
@@ -41,6 +48,7 @@ const cards = [
   },
   {
     cat: "TAREAS REPETITIVAS",
+    icon: ListChecks,
     dolor: "Tu mejor vendedor está respondiendo lo mismo todo el día.",
     solucion: "Sentinel filtra, responde y deriva oportunidades reales.",
     costaLabel: "HOY TE CUESTA",
@@ -75,15 +83,6 @@ export const S02_BentoDolores = () => {
     >
       {/* Header */}
       <div className="w-full max-w-[1100px] mx-auto px-[20px] flex flex-col items-center relative z-10">
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 0.4 } : {}}
-          transition={{ duration: 0.3, ease: EASE }}
-          style={{ fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', color: '#fff', display: 'block', marginBottom: '18px', textAlign: 'center' }}
-        >
-          LO QUE RESUELVE SENTINEL
-        </motion.span>
-
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -96,23 +95,11 @@ export const S02_BentoDolores = () => {
             letterSpacing: '-0.035em',
             color: '#fff',
             textAlign: 'center',
-            marginBottom: '18px',
+            marginBottom: 'clamp(36px, 6vw, 56px)',
           }}
         >
-          Seis dolores que hoy te cuestan ventas.<br />
-          <span style={{ background: 'linear-gradient(90deg, #0066FF, #00D4AA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            Un solo Empleado IA para resolverlos.
-          </span>
+          Sentinel: Seis soluciones para tu negocio.
         </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={isInView ? { opacity: 0.6, y: 0 } : {}}
-          transition={{ duration: 0.3, delay: 0.3, ease: EASE }}
-          style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(14px, 3vw, 16px)', lineHeight: 1.45, color: '#fff', textAlign: 'center', maxWidth: '480px', marginBottom: 'clamp(36px, 6vw, 56px)' }}
-        >
-          Todo lo que dejás de perder cuando activás Sentinel.
-        </motion.p>
       </div>
 
       {/* Carousel */}
@@ -127,126 +114,130 @@ export const S02_BentoDolores = () => {
           className="flex overflow-x-auto lg:grid lg:grid-cols-3 lg:overflow-visible"
           style={{ gap: '14px', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', paddingLeft: '20px', paddingRight: '20px', paddingBottom: '4px' }}
         >
-          {cards.map((c, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex flex-col relative group"
-              style={{
-                width: 'clamp(300px, 84vw, 360px)',
-                scrollSnapAlign: 'center',
-                borderRadius: '22px',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Gradient top accent bar */}
-              <div style={{ height: '2px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', flexShrink: 0 }} />
-
-              {/* Card body */}
+          {cards.map((c, i) => {
+            const Icon = c.icon;
+            return (
               <div
-                className="flex-1 flex flex-col transition-colors duration-200"
+                key={i}
+                className="flex-shrink-0 flex flex-col relative group"
                 style={{
-                  backgroundColor: '#0A0D0C',
-                  border: '0.5px solid rgba(255,255,255,0.07)',
-                  borderTop: 'none',
-                  borderRadius: '0 0 22px 22px',
-                  padding: 'clamp(22px, 5vw, 30px)',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.16)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'; }}
-              >
-                {/* Background texture bars */}
-                <div style={{ position: 'absolute', top: '30px', right: '20px', opacity: 0.04, pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <div style={{ width: '40px', height: '3px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', borderRadius: '2px' }} />
-                  <div style={{ width: '28px', height: '3px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', borderRadius: '2px' }} />
-                  <div style={{ width: '18px', height: '3px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', borderRadius: '2px' }} />
-                </div>
-
-                {/* Category */}
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  letterSpacing: '0.12em',
-                  color: 'rgba(255,255,255,0.30)',
-                  marginBottom: '16px',
-                  display: 'block',
-                }}>
-                  {c.cat}
-                </span>
-
-                {/* Dolor */}
-                <h3 style={{
-                  fontFamily: 'Saira, sans-serif',
-                  fontSize: 'clamp(22px, 5.2vw, 28px)',
-                  fontWeight: 700,
-                  lineHeight: 1.12,
-                  letterSpacing: '-0.025em',
-                  color: '#FFFFFF',
-                  marginBottom: 'clamp(20px, 4vw, 26px)',
-                }}>
-                  {c.dolor}
-                </h3>
-
-                {/* Solution band */}
-                <div style={{
-                  padding: 'clamp(14px, 3vw, 18px)',
-                  borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(0,102,255,0.08), rgba(0,212,170,0.08))',
-                  border: '0.5px solid rgba(0,212,170,0.18)',
-                  marginBottom: 'clamp(14px, 3vw, 18px)',
-                  position: 'relative' as const,
+                  width: 'clamp(300px, 84vw, 360px)',
+                  scrollSnapAlign: 'center',
+                  borderRadius: '22px',
                   overflow: 'hidden',
-                }}>
-                  {/* Subtle left glow */}
-                  <div style={{ position: 'absolute', top: '-20px', left: '-20px', width: '80px', height: '80px', background: 'radial-gradient(circle, rgba(0,102,255,0.15), transparent 70%)', pointerEvents: 'none' }} />
-                  <p style={{
-                    fontFamily: 'Saira, sans-serif',
-                    fontSize: 'clamp(15px, 3.4vw, 18px)',
-                    fontWeight: 600,
-                    lineHeight: 1.35,
-                    whiteSpace: 'pre-line',
-                    background: 'linear-gradient(90deg, #4A8FFF, #00D4AA)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    position: 'relative' as const,
-                  }}>
-                    {c.solucion}
-                  </p>
-                </div>
+                }}
+              >
+                {/* Gradient top accent bar */}
+                <div style={{ height: '2px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', flexShrink: 0 }} />
 
-                {/* HOY TE CUESTA */}
-                <div style={{
-                  padding: 'clamp(12px, 2.5vw, 16px)',
-                  borderRadius: '12px',
-                  backgroundColor: 'rgba(255,255,255,0.025)',
-                  border: '0.5px solid rgba(255,255,255,0.06)',
-                  marginTop: 'auto',
-                }}>
-                  <span style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '9px',
-                    fontWeight: 700,
-                    letterSpacing: '0.1em',
-                    color: 'rgba(255,255,255,0.40)',
-                    display: 'block',
-                    marginBottom: '6px',
-                  }}>
-                    {c.costaLabel}
-                  </span>
+                {/* Card body */}
+                <div
+                  className="flex-1 flex flex-col transition-colors duration-200"
+                  style={{
+                    backgroundColor: '#0A0D0C',
+                    border: '0.5px solid rgba(255,255,255,0.07)',
+                    borderTop: 'none',
+                    borderRadius: '0 0 22px 22px',
+                    padding: 'clamp(22px, 5vw, 30px)',
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.16)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'; }}
+                >
+                  {/* Background texture bars */}
+                  <div style={{ position: 'absolute', top: '30px', right: '20px', opacity: 0.04, pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ width: '40px', height: '3px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', borderRadius: '2px' }} />
+                    <div style={{ width: '28px', height: '3px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', borderRadius: '2px' }} />
+                    <div style={{ width: '18px', height: '3px', background: 'linear-gradient(90deg, #0066FF, #00D4AA)', borderRadius: '2px' }} />
+                  </div>
+
+                  {/* Category with Icon */}
+                  <div className="flex items-center gap-[10px] mb-[16px]">
+                    <Icon size={20} style={{ color: '#fff' }} />
+                    <h3 style={{
+                      fontFamily: 'Saira, sans-serif',
+                      fontSize: 'clamp(18px, 4vw, 22px)',
+                      fontWeight: 700,
+                      letterSpacing: '0.05em',
+                      color: '#FFFFFF',
+                      textTransform: 'uppercase',
+                    }}>
+                      {c.cat}
+                    </h3>
+                  </div>
+
+                  {/* Dolor */}
                   <p style={{
-                    fontFamily: 'Saira, sans-serif',
-                    fontSize: 'clamp(15px, 3.2vw, 17px)',
-                    fontWeight: 600,
-                    lineHeight: 1.25,
-                    color: 'rgba(255,255,255,0.75)',
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: 'clamp(14px, 3.5vw, 16px)',
+                    fontWeight: 400,
+                    lineHeight: 1.4,
+                    color: 'rgba(255,255,255,0.85)',
+                    marginBottom: 'clamp(20px, 4vw, 26px)',
                   }}>
-                    {c.costa}
+                    {c.dolor}
                   </p>
+
+                  {/* Solution band */}
+                  <div style={{
+                    padding: 'clamp(14px, 3vw, 18px)',
+                    borderRadius: '14px',
+                    background: 'linear-gradient(135deg, rgba(0,102,255,0.08), rgba(0,212,170,0.08))',
+                    border: '0.5px solid rgba(0,212,170,0.18)',
+                    marginBottom: 'clamp(14px, 3vw, 18px)',
+                    position: 'relative' as const,
+                    overflow: 'hidden',
+                  }}>
+                    {/* Subtle left glow */}
+                    <div style={{ position: 'absolute', top: '-20px', left: '-20px', width: '80px', height: '80px', background: 'radial-gradient(circle, rgba(0,102,255,0.15), transparent 70%)', pointerEvents: 'none' }} />
+                    <p style={{
+                      fontFamily: 'Saira, sans-serif',
+                      fontSize: 'clamp(15px, 3.4vw, 18px)',
+                      fontWeight: 600,
+                      lineHeight: 1.35,
+                      whiteSpace: 'pre-line',
+                      background: 'linear-gradient(90deg, #4A8FFF, #00D4AA)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      position: 'relative' as const,
+                    }}>
+                      {c.solucion}
+                    </p>
+                  </div>
+
+                  {/* HOY TE CUESTA */}
+                  <div style={{
+                    padding: 'clamp(12px, 2.5vw, 16px)',
+                    borderRadius: '12px',
+                    backgroundColor: 'rgba(255,255,255,0.04)',
+                    border: '0.5px solid rgba(255,255,255,0.1)',
+                    marginTop: 'auto',
+                  }}>
+                    <span style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '11px',
+                      fontWeight: 800,
+                      letterSpacing: '0.1em',
+                      color: 'rgba(255,255,255,0.9)',
+                      display: 'block',
+                      marginBottom: '6px',
+                    }}>
+                      {c.costaLabel}
+                    </span>
+                    <p style={{
+                      fontFamily: 'Saira, sans-serif',
+                      fontSize: 'clamp(15px, 3.2vw, 17px)',
+                      fontWeight: 600,
+                      lineHeight: 1.25,
+                      color: 'rgba(255,255,255,0.85)',
+                    }}>
+                      {c.costa}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Dots */}
