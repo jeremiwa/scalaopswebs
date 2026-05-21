@@ -98,7 +98,10 @@ export const S02_BentoDolores = () => {
             marginBottom: 'clamp(36px, 6vw, 56px)',
           }}
         >
-          Sentinel: Seis soluciones para tu negocio.
+          Seis problemas que hoy te cuestan ventas.<br />
+          <span style={{ background: 'linear-gradient(90deg, #0066FF, #00D4AA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            Resolvelos con Sentinel.
+          </span>
         </motion.h2>
       </div>
 
