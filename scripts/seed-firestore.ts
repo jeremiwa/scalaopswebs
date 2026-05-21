@@ -8,11 +8,11 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc, collection, addDoc, Timestamp } from 'firebase/firestore';
 
-// Replace string literals with actual values from .env usually, but since it's a script we can hardcode for the public project.
+// Use environment variables for the SDK config
 const firebaseConfig = {
-    apiKey: "AIzaSyByIWVW0L6d8Zz1gzl6Pbh21RZPM1LKiiY",
-    authDomain: "scala-1a776.firebaseapp.com",
-    projectId: "scala-1a776"
+    apiKey: process.env.VITE_FIREBASE_API_KEY || "dummy_key_for_local",
+    authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN || "scala-1a776.firebaseapp.com",
+    projectId: process.env.VITE_FIREBASE_PROJECT_ID || "scala-1a776"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -37,11 +37,11 @@ async function seed() {
     // ─── 1. Users ───
     console.log('👤 Creating users...');
     const users = [
-        { uid: DEMO_USERS.owner, fullName: 'Jeremias Walsh', email: 'jeremias@scalaops.com', photoURL: null, globalRole: 'superadmin', status: 'active' },
-        { uid: DEMO_USERS.sales1, fullName: 'María García', email: 'maria@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
-        { uid: DEMO_USERS.sales2, fullName: 'Carlos Rodríguez', email: 'carlos@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
-        { uid: DEMO_USERS.manager, fullName: 'Ana Pérez', email: 'ana@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
-        { uid: DEMO_USERS.analyst, fullName: 'Lucas Martínez', email: 'lucas@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
+        { uid: DEMO_USERS.owner, fullName: 'Jeremias Walsh', email: 'demo_owner@scalaops.com', photoURL: null, globalRole: 'superadmin', status: 'active' },
+        { uid: DEMO_USERS.sales1, fullName: 'María García', email: 'maria_demo@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
+        { uid: DEMO_USERS.sales2, fullName: 'Carlos Rodríguez', email: 'carlos_demo@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
+        { uid: DEMO_USERS.manager, fullName: 'Ana Pérez', email: 'ana_demo@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
+        { uid: DEMO_USERS.analyst, fullName: 'Lucas Martínez', email: 'lucas_demo@gruporiviera.com', photoURL: null, globalRole: 'user', status: 'active' },
     ];
     for (const u of users) {
         await setDoc(doc(db, 'users', u.uid), { ...u, createdAt: ago(30), lastLoginAt: now }, { merge: true });

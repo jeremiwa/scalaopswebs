@@ -4,12 +4,44 @@ export const config = {
     maxDuration: 60,
 };
 
+// In-memory rate limiting
+const rateLimitMap = new Map<string, { count: number, resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60000;
+const MAX_REQUESTS_PER_WINDOW = 15;
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const record = rateLimitMap.get(ip);
+    
+    if (!record) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+    
+    if (now > record.resetTime) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+    
+    if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+        return true;
+    }
+    
+    record.count += 1;
+    return false;
+}
+
 export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
     try {
+        const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
+        if (isRateLimited(ip as string)) {
+            return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+        }
+
         const { message, previousAnalysis, transcript, history } = req.body;
 
         if (!message) {

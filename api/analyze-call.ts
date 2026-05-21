@@ -5,6 +5,33 @@ export const config = {
     maxDuration: 60,
 };
 
+// In-memory rate limiting (per Edge instance, basic protection)
+const rateLimitMap = new Map<string, { count: number, resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minuto
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const record = rateLimitMap.get(ip);
+    
+    if (!record) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+    
+    if (now > record.resetTime) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+    
+    if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+        return true;
+    }
+    
+    record.count += 1;
+    return false;
+}
+
 const SYSTEM_PROMPT = `Sos un director comercial senior, sales coach de high ticket y analista experto en llamadas de ventas.
 
 Tu tarea es analizar conversaciones comerciales para detectar:
@@ -126,6 +153,11 @@ export default async function handler(req: any, res: any) {
     }
 
     try {
+        const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
+        if (isRateLimited(ip as string)) {
+            return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+        }
+
         const { transcript, downloadUrl, playbookContext } = req.body;
 
         if (!process.env.GEMINI_API_KEY) {
@@ -136,6 +168,24 @@ export default async function handler(req: any, res: any) {
         let contentObj: any = transcript;
 
         if (downloadUrl && !transcript) {
+            // SSRF Protection: Validate URL scheme and domain
+            let parsedUrl;
+            try {
+                parsedUrl = new URL(downloadUrl);
+            } catch (e) {
+                return res.status(400).json({ error: 'Invalid downloadUrl format' });
+            }
+
+            if (parsedUrl.protocol !== 'https:') {
+                return res.status(400).json({ error: 'Only HTTPS URLs are allowed' });
+            }
+
+            // Only allow Firebase Storage or other known safe domains
+            const allowedDomains = ['firebasestorage.googleapis.com'];
+            if (!allowedDomains.includes(parsedUrl.hostname)) {
+                return res.status(403).json({ error: 'Domain not allowed for downloadUrl' });
+            }
+
             const audioRes = await fetch(downloadUrl);
             const arrayBuffer = await audioRes.arrayBuffer();
             const buffer = Buffer.from(arrayBuffer);
