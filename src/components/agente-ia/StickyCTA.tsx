@@ -91,7 +91,7 @@ export const StickyCTA = () => {
             letterSpacing: '-0.01em',
           }}
         >
-          <SentinelLogo className="w-4 h-4" /> Implementar Sentinel →
+          <SentinelLogo className="w-4 h-4" variant="white" /> Implementar Sentinel →
         </Link>
       </div>
     </div>

@@ -271,7 +271,7 @@ export const Hero = () => {
               e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 212, 170, 0.25)';
             }}
           >
-            <SentinelLogo className="w-5 h-5" />
+            <SentinelLogo className="w-5 h-5" variant="white" />
             Implementar Sentinel
           </Link>
         </motion.div>

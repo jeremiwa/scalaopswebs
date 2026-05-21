@@ -60,8 +60,8 @@ export const Navbar = () => {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(0.98)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
-              <span className="md:hidden flex items-center gap-2"><SentinelLogo className="w-4 h-4" /> Implementar</span>
-              <span className="hidden md:flex items-center gap-2"><SentinelLogo className="w-4 h-4" /> Implementar Sentinel</span>
+              <span className="md:hidden flex items-center gap-2"><SentinelLogo className="w-4 h-4" variant="white" /> Implementar</span>
+              <span className="hidden md:flex items-center gap-2"><SentinelLogo className="w-4 h-4" variant="white" /> Implementar Sentinel</span>
             </div>
           </Link>
         </div>

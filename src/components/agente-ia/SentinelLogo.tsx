@@ -1,6 +1,9 @@
 import React from 'react';
 
-export const SentinelLogo = ({ className = "w-6 h-6", style }: { className?: string, style?: React.CSSProperties }) => (
+export const SentinelLogo = ({ className = "w-6 h-6", style, variant = "gradient" }: { className?: string, style?: React.CSSProperties, variant?: "gradient" | "white" | "black" }) => {
+  const strokeColor = variant === "gradient" ? "url(#sentinel-grad-logo)" : variant === "white" ? "#FFFFFF" : "#000000";
+  
+  return (
   <svg 
     className={className} 
     style={style}
@@ -17,7 +20,7 @@ export const SentinelLogo = ({ className = "w-6 h-6", style }: { className?: str
     {/* Blue/Top part */}
     <path 
       d="M4 12 V 6 L 12 3 L 20 6 V 10 L 10 14 H 5" 
-      stroke="url(#sentinel-grad-logo)" 
+      stroke={strokeColor}
       strokeWidth="2.5" 
       strokeLinecap="round" 
       strokeLinejoin="round" 
@@ -25,10 +28,10 @@ export const SentinelLogo = ({ className = "w-6 h-6", style }: { className?: str
     {/* Green/Bottom part */}
     <path 
       d="M20 12 V 15 C 20 18 12 21 12 21 C 12 21 4 18 4 15 V 10 L 14 6 H 19" 
-      stroke="url(#sentinel-grad-logo)" 
+      stroke={strokeColor}
       strokeWidth="2.5" 
       strokeLinecap="round" 
       strokeLinejoin="round" 
     />
   </svg>
-);
+)};
