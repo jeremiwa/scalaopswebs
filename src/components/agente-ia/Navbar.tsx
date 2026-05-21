@@ -34,9 +34,8 @@ export const Navbar = () => {
         <Link to="/" className="hover:opacity-80 transition-opacity flex items-center gap-3">
           <Logo />
           <div className="h-[20px] w-px bg-white/20 hidden md:block"></div>
-          <div className="flex items-center gap-2">
-            <SentinelLogo className="w-5 h-5 hidden md:block" />
-            <span className="text-white font-bold tracking-widest text-[14px] hidden md:block" style={{ fontFamily: 'Saira, sans-serif' }}>SENTINEL</span>
+          <div className="flex items-center">
+            <img src="/images/sentinel-logo-gradient.png" alt="Sentinel Logo" className="h-[18px] md:h-[22px] w-auto" />
           </div>
         </Link>
         <div className="flex items-center">
