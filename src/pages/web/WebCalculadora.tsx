@@ -390,15 +390,14 @@ export const WebCalculadora = () => {
                 </div>
 
                 <div>
-                  <label className="block text-white/80 font-medium mb-4 text-lg">2. De cada 100 consultas, ¿cuántas terminan comprando?</label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label className="block text-white/80 font-medium mb-1 text-lg">2. ¿Cómo sentís tu proceso comercial hoy?</label>
+                  <p className="text-white/40 text-sm mb-4">Elegí la opción que más se acerque a tu realidad.</p>
+                  <div className="flex flex-col gap-3">
                     {[
-                      { val: 0.015, label: 'Menos de 2%' },
-                      { val: 0.035, label: '2% a 5%' },
-                      { val: 0.075, label: '5% a 10%' },
-                      { val: 0.15, label: '10% a 20%' },
-                      { val: 0.25, label: 'Más de 20%' },
-                      { val: 0.07, label: 'No sé' },
+                      { val: 0.12, label: 'Cierro casi todo lo que entra bien calificado' },
+                      { val: 0.06, label: 'Cierro algo, pero se me escapan varias' },
+                      { val: 0.025, label: 'Pierdo muchas, no doy abasto con el seguimiento' },
+                      { val: 0.05, label: 'No tengo idea, no lo estoy midiendo' },
                     ].map(opt => (
                       <RadioOption 
                         key={opt.label} 
@@ -546,6 +545,9 @@ export const WebCalculadora = () => {
               
               <p className="text-white/30 text-xs text-center max-w-md mb-16">
                 Estimación orientativa basada en tus respuestas. No representa una garantía ni reemplaza una auditoría comercial real.
+                {data.closeRateRange === 0.05 && (
+                  <span className="block mt-2 italic text-white/40">*Estimado sobre promedio de mercado. Con datos reales tu diagnóstico es más preciso.</span>
+                )}
               </p>
 
               {/* Cards row */}
