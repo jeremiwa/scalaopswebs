@@ -46,6 +46,7 @@ const WebFilosofia = lazy(() => import('./pages/web/WebFilosofia').then(module =
 const WebAuditoria = lazy(() => import('./pages/web/WebAuditoria').then(module => ({ default: module.WebAuditoria })));
 const WebImplementacion = lazy(() => import('./pages/web/WebImplementacion').then(module => ({ default: module.WebImplementacion })));
 const WebEmpleadoIA = lazy(() => import('./pages/web/WebEmpleadoIA').then(module => ({ default: module.WebEmpleadoIA })));
+const WebCalculadora = lazy(() => import('./pages/web/WebCalculadora').then(module => ({ default: module.WebCalculadora })));
 const TradingDashboard = lazy(() => import('./pages/trading/TradingDashboard').then(module => ({ default: module.TradingDashboard })));
 const AgenteIA = lazy(() => import('./pages/AgenteIA').then(module => ({ default: module.AgenteIA })));
 
@@ -150,6 +151,12 @@ export default function App() {
           <AuthProvider>
             <SistemaLogin />
           </AuthProvider>
+        } />
+        
+        <Route path="/calculadora" element={
+          <Suspense fallback={<div className="h-screen bg-[#000000]" />}>
+            <WebCalculadora />
+          </Suspense>
         } />
         <Route path="/sistema/app/*" element={
           <AuthProvider>
