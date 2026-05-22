@@ -287,7 +287,7 @@ export const WebCalculadora = () => {
   };
 
   return (
-    <WebLayout>
+    <>
       <SEO 
         title="Calculadora de Fugas Comerciales | Scala Ops"
         description="Calculá cuántas ventas podría estar perdiendo tu negocio por respuesta lenta, falta de seguimiento y desorden comercial."
@@ -685,7 +685,7 @@ export const WebCalculadora = () => {
             </button>
         </div>
       )}
-    </WebLayout>
+    </>
   );
 };
 

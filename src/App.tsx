@@ -130,6 +130,11 @@ export default function App() {
           <Route path="auditoria" element={<WebAuditoria />} />
           <Route path="implementacion" element={<WebImplementacion />} />
           <Route path="empleado-ia" element={<WebEmpleadoIA />} />
+          <Route path="calculadora" element={
+            <Suspense fallback={<div className="h-screen bg-[#000000]" />}>
+              <WebCalculadora />
+            </Suspense>
+          } />
         </Route>
 
         {/* ── Landing page antigua → /por-que-scala ── */}
@@ -153,11 +158,6 @@ export default function App() {
           </AuthProvider>
         } />
         
-        <Route path="/calculadora" element={
-          <Suspense fallback={<div className="h-screen bg-[#000000]" />}>
-            <WebCalculadora />
-          </Suspense>
-        } />
         <Route path="/sistema/app/*" element={
           <AuthProvider>
             <ProtectedRoute>
