@@ -56,7 +56,8 @@ export const Hero = () => {
   }, [isInView]);
 
   return (
-    <section ref={sectionRef} className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-[210px] md:pt-[180px] pb-[80px]" style={{ background: '#000000', minHeight: '100vh' }}>
+    <section ref={sectionRef} id="sentinel-hero" className="relative w-full flex flex-col items-center justify-start overflow-hidden pb-[80px]" style={{ background: '#000000', minHeight: '100vh', paddingTop: '210px' }}>
+      <style>{`@media (min-width: 768px) { #sentinel-hero { padding-top: 180px !important; } }`}</style>
       
       {/* Background Radial overlay - clean and premium */}
       <div
