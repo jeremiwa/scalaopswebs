@@ -185,7 +185,7 @@ export const Navbar = () => {
               <span style={{ fontWeight: 800, color: '#6bdda1', fontSize: '17px' }}>GRATIS</span>
             </div>
 
-            {/* Line 2: antes USD 997 */}
+            {/* Line 2: Oferta lanzamiento */}
             <div style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '12px',
@@ -194,14 +194,7 @@ export const Navbar = () => {
               marginTop: '2px',
               textAlign: 'center' as const,
             }}>
-              <span style={{ textDecoration: 'none' }}>antes</span>{' '}
-              <span style={{
-                textDecoration: 'line-through',
-                textDecorationColor: '#888888',
-                textDecorationThickness: '1.5px',
-              }}>
-                USD 997
-              </span>
+              Oferta lanzamiento · antes USD 997
             </div>
 
             {/* Line 3: Countdown boxes */}
