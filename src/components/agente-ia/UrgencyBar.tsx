@@ -79,37 +79,41 @@ export const UrgencyBar = () => {
   if (dismissed || !mounted) return null;
 
   return (
-    <a
-      href="#pricing"
-      onClick={(e) => {
-        e.preventDefault();
-        document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-      }}
-      id="urgency-bar"
-      className="py-[8px] md:py-[12px]"
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 60,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#050505',
-        borderBottom: '1px solid rgba(107,221,161,0.25)',
-        cursor: 'pointer',
-        textDecoration: 'none',
-        paddingLeft: '16px',
-        paddingRight: '48px', // space for X
-        minHeight: '40px',
-      }}
-    >
-      {/* Desktop text (2 lines) */}
-      <div
-        className="hidden md:flex flex-col items-center justify-center w-full"
-        style={{ gap: '4px' }}
+    <>
+      <style>{`
+        .urgency-bar-responsive { height: 56px; }
+        @media (min-width: 768px) { .urgency-bar-responsive { height: 76px; } }
+      `}</style>
+      <a
+        href="#pricing"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        id="urgency-bar"
+        className="urgency-bar-responsive"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 60,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#050505',
+          borderBottom: '1px solid rgba(107,221,161,0.25)',
+          cursor: 'pointer',
+          textDecoration: 'none',
+          paddingLeft: '16px',
+          paddingRight: '48px', // space for X
+        }}
       >
+        {/* Desktop text (2 lines) */}
+        <div
+          className="hidden md:flex flex-col items-center justify-center w-full h-full"
+          style={{ gap: '4px' }}
+        >
         {/* Línea 1 */}
         <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#FFFFFF', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span>🚀</span>
@@ -135,7 +139,7 @@ export const UrgencyBar = () => {
 
       {/* Mobile text (1 line) */}
       <div
-        className="flex md:hidden w-full items-center justify-center flex-wrap"
+        className="flex md:hidden w-full h-full items-center justify-center flex-wrap"
         style={{ gap: '6px' }}
       >
         <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#FFFFFF', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -196,5 +200,6 @@ export const UrgencyBar = () => {
         <X size={14} />
       </button>
     </a>
+    </>
   );
 };
