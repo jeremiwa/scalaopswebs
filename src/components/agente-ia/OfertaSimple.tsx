@@ -8,7 +8,7 @@ const CTA_URL = '/formulario';
 const pad = (n: number) => String(n).padStart(2, '0');
 
 /** Countdown digit box — matches urgency bar style */
-const Digit = ({ value, label }: { value: string; label: string }) => (
+const Digit = ({ value, label, isLast24h }: { value: string; label: string; isLast24h?: boolean }) => (
   <span style={{
     display: 'inline-flex',
     flexDirection: 'column',
@@ -20,14 +20,15 @@ const Digit = ({ value, label }: { value: string; label: string }) => (
       fontWeight: 800,
       fontSize: '16px',
       lineHeight: 1,
-      color: '#FFFFFF',
+      color: isLast24h ? '#FF5C5C' : '#FFFFFF',
       background: '#111',
-      border: '1px solid rgba(107,221,161,0.25)',
+      border: `1px solid ${isLast24h ? 'rgba(255,92,92,0.25)' : 'rgba(107,221,161,0.25)'}`,
       borderRadius: '5px',
       padding: '4px 6px',
       minWidth: '32px',
       textAlign: 'center',
       letterSpacing: '0.02em',
+      transition: 'color 0.3s ease, border-color 0.3s ease',
     }}>
       {value}
     </span>
@@ -59,7 +60,7 @@ const Separator = () => (
 export const OfertaSimple = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const { days, hours, minutes, seconds } = useCountdown();
+  const { days, hours, minutes, seconds, isLast24h } = useCountdown();
 
   return (
     <section id="pricing" ref={ref} className="w-full bg-[#000000] py-[48px] md:py-[80px] flex flex-col items-center relative overflow-hidden">
@@ -95,13 +96,13 @@ export const OfertaSimple = () => {
               <span>🔥 OFERTA DE LANZAMIENTO — TERMINA EN:</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '4px', justifyContent: 'center' }}>
-              <Digit value={pad(days)} label="días" />
+              <Digit value={pad(days)} label="días" isLast24h={isLast24h} />
               <Separator />
-              <Digit value={pad(hours)} label="hs" />
+              <Digit value={pad(hours)} label="hs" isLast24h={isLast24h} />
               <Separator />
-              <Digit value={pad(minutes)} label="min" />
+              <Digit value={pad(minutes)} label="min" isLast24h={isLast24h} />
               <Separator />
-              <Digit value={pad(seconds)} label="seg" />
+              <Digit value={pad(seconds)} label="seg" isLast24h={isLast24h} />
             </div>
           </div>
 

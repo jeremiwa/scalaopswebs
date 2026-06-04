@@ -7,7 +7,7 @@ const STORAGE_KEY = 'sentinel_urgency_bar_dismissed';
 const pad = (n: number) => String(n).padStart(2, '0');
 
 /** Inline countdown digit box — consistent with Hero stat boxes */
-const Digit = ({ value, label }: { value: string; label: string }) => (
+const Digit = ({ value, label, isLast24h }: { value: string; label: string; isLast24h: boolean }) => (
   <span style={{
     display: 'inline-flex',
     flexDirection: 'column',
@@ -19,14 +19,15 @@ const Digit = ({ value, label }: { value: string; label: string }) => (
       fontWeight: 800,
       fontSize: '14px',
       lineHeight: 1,
-      color: '#FFFFFF',
+      color: isLast24h ? '#FF5C5C' : '#FFFFFF',
       background: '#111',
-      border: '1px solid rgba(107,221,161,0.25)',
+      border: `1px solid ${isLast24h ? 'rgba(255,92,92,0.25)' : 'rgba(107,221,161,0.25)'}`,
       borderRadius: '4px',
       padding: '3px 5px',
       minWidth: '28px',
       textAlign: 'center',
       letterSpacing: '0.02em',
+      transition: 'color 0.3s ease, border-color 0.3s ease',
     }}>
       {value}
     </span>
@@ -56,7 +57,7 @@ const Separator = () => (
 );
 
 export const UrgencyBar = () => {
-  const { days, hours, minutes, seconds } = useCountdown();
+  const { days, hours, minutes, seconds, isLast24h } = useCountdown();
   const [dismissed, setDismissed] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -85,6 +86,7 @@ export const UrgencyBar = () => {
         document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
       }}
       id="urgency-bar"
+      className="py-[8px] md:py-[12px]"
       style={{
         position: 'fixed',
         top: 0,
@@ -94,63 +96,70 @@ export const UrgencyBar = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '40px',
         background: '#050505',
         borderBottom: '1px solid rgba(107,221,161,0.25)',
         cursor: 'pointer',
         textDecoration: 'none',
-        padding: '0 48px 0 16px',
+        paddingLeft: '16px',
+        paddingRight: '48px', // space for X
+        minHeight: '40px',
       }}
     >
-      {/* Desktop text */}
+      {/* Desktop text (2 lines) */}
       <div
-        className="hidden md:flex"
-        style={{
-          alignItems: 'center',
-          gap: '10px',
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '13px',
-          fontWeight: 600,
-          color: 'rgba(255,255,255,0.85)',
-        }}
+        className="hidden md:flex flex-col items-center justify-center w-full"
+        style={{ gap: '4px' }}
       >
-        <span>🚀</span>
-        <span>Lanzamiento: implementación de USD 997 bonificada — termina en</span>
-        <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '3px' }}>
-          <Digit value={pad(days)} label="días" />
-          <Separator />
-          <Digit value={pad(hours)} label="hs" />
-          <Separator />
-          <Digit value={pad(minutes)} label="min" />
-          <Separator />
-          <Digit value={pad(seconds)} label="seg" />
-        </span>
-        <span style={{ color: '#6bdda1' }}>→</span>
+        {/* Línea 1 */}
+        <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#FFFFFF', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span>🚀</span>
+          <span>
+            Implementación <span style={{ fontWeight: 800, color: '#6bdda1' }}>GRATIS</span>{' '}
+            <span style={{ fontWeight: 400, color: '#888888', fontSize: '80%', textDecoration: 'line-through' }}>(antes USD 997)</span>
+          </span>
+        </div>
+        {/* Línea 2 */}
+        <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '10.5px', color: '#AAAAAA', fontWeight: 400, display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span>Solo por lanzamiento · Termina en</span>
+          <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '3px' }}>
+            <Digit value={pad(days)} label="días" isLast24h={isLast24h} />
+            <Separator />
+            <Digit value={pad(hours)} label="hs" isLast24h={isLast24h} />
+            <Separator />
+            <Digit value={pad(minutes)} label="min" isLast24h={isLast24h} />
+            <Separator />
+            <Digit value={pad(seconds)} label="seg" isLast24h={isLast24h} />
+          </span>
+        </div>
       </div>
 
-      {/* Mobile text */}
+      {/* Mobile text (1 line) */}
       <div
-        className="flex md:hidden"
-        style={{
-          alignItems: 'center',
-          gap: '8px',
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '11px',
-          fontWeight: 600,
-          color: 'rgba(255,255,255,0.85)',
-        }}
+        className="flex md:hidden w-full items-center justify-center flex-wrap"
+        style={{ gap: '6px' }}
       >
-        <span>Implementación USD 997 → <span style={{ color: '#6bdda1', fontWeight: 800 }}>USD 0</span></span>
-        <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
-        <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '2px' }}>
-          <Digit value={pad(days)} label="días" />
+        <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#FFFFFF', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <span>🚀</span>
+          <span className="whitespace-nowrap">
+            Implementación <span style={{ fontWeight: 800, color: '#6bdda1' }}>GRATIS</span>
+          </span>
+          <span style={{ fontWeight: 400, color: '#888888', textDecoration: 'line-through' }}>USD 997</span>
+        </div>
+        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px' }}>·</span>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2px' }}>
+          {/* Hide days on very small screens, show HH:MM:SS */}
+          {days > 0 && (
+            <>
+              <Digit value={pad(days)} label="d" isLast24h={isLast24h} />
+              <Separator />
+            </>
+          )}
+          <Digit value={pad(hours)} label="h" isLast24h={isLast24h} />
           <Separator />
-          <Digit value={pad(hours)} label="hs" />
+          <Digit value={pad(minutes)} label="m" isLast24h={isLast24h} />
           <Separator />
-          <Digit value={pad(minutes)} label="min" />
-          <Separator />
-          <Digit value={pad(seconds)} label="seg" />
-        </span>
+          <Digit value={pad(seconds)} label="s" isLast24h={isLast24h} />
+        </div>
       </div>
 
       {/* Close button */}

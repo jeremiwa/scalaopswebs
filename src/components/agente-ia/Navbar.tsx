@@ -38,14 +38,11 @@ export const Navbar = () => {
     };
   }, []);
 
-  const topOffset = urgencyBarVisible ? '40px' : '0px';
-
   return (
     <nav 
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${urgencyBarVisible ? 'top-[44px] md:top-[64px]' : 'top-0'} ${
         scrolled ? 'bg-[#030504]/90 backdrop-blur-md border-b border-white/[0.04]' : 'bg-transparent'
       }`}
-      style={{ top: topOffset }}
     >
       {/* Thin premium green line at the top */}
       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, rgba(36,107,254,0.8) 0%, rgba(104,230,163,0.8) 100%)' }} />
