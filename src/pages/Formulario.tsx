@@ -79,13 +79,13 @@ export const Formulario = () => {
                     {/* El Iframe directo corta radicalmente el "waterfall load" evitando inyectar el pesado script wrapper */}
                     <iframe
                       ref={iframeRef}
-                      id="JotFormIFrame-260604555033046"
+                      id="JotFormIFrame-261546503182656"
                       title="Formulario Scala"
                       onLoad={() => { window.scrollTo(0,0); setIsLoaded(true); }}
                       allowTransparency={true}
                       allowFullScreen={true}
                       allow="geolocation; microphone; camera"
-                      src="https://form.jotform.com/260604555033046"
+                      src="https://form.jotform.com/261546503182656"
                       frameBorder="0"
                       style={{ minWidth: '100%', maxWidth: '100%', border: 'none', height: '600px', transition: 'height 0.2s ease-out' }}
                       scrolling="no"
