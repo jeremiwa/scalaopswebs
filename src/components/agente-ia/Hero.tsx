@@ -56,7 +56,7 @@ export const Hero = () => {
   }, [isInView]);
 
   return (
-    <section ref={sectionRef} className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-[140px] md:pt-[180px] pb-[80px]" style={{ background: '#000000', minHeight: '100vh' }}>
+    <section ref={sectionRef} className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-[210px] md:pt-[180px] pb-[80px]" style={{ background: '#000000', minHeight: '100vh' }}>
       
       {/* Background Radial overlay - clean and premium */}
       <div

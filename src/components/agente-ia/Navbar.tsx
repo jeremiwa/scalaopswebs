@@ -194,7 +194,7 @@ export const Navbar = () => {
               marginTop: '2px',
               textAlign: 'center' as const,
             }}>
-              antes{' '}
+              <span style={{ textDecoration: 'none' }}>antes</span>{' '}
               <span style={{
                 textDecoration: 'line-through',
                 textDecorationColor: '#888888',
