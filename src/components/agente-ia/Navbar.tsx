@@ -79,9 +79,9 @@ export const Navbar = () => {
       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, rgba(36,107,254,0.8) 0%, rgba(104,230,163,0.8) 100%)' }} />
       
       <div 
-        className={`container-custom flex flex-col lg:flex-row items-center justify-between transition-all duration-300 py-3 lg:py-0 ${
+        className={`container-custom flex flex-col lg:flex-row items-center justify-between transition-all duration-300 py-[10px] lg:py-0 ${
           scrolled ? 'min-h-[56px]' : 'min-h-[64px]'
-        } gap-4 lg:gap-0`}
+        } gap-[4px] lg:gap-0`}
       >
         
         {/* Left: Logo (and Mobile CTA) */}
@@ -121,18 +121,39 @@ export const Navbar = () => {
         </div>
 
         {/* Center: Urgency Notification */}
-        <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-center justify-center gap-1 sm:gap-4 lg:gap-1 xl:gap-4 order-3 lg:order-none w-full lg:w-auto">
-          {/* Line 1 */}
+
+        {/* ===== MOBILE urgency (< md) ===== */}
+        <div className="flex md:hidden flex-col items-center justify-center order-3 lg:order-none w-full" style={{ gap: '4px' }}>
+          {/* Mobile Line 1 */}
+          <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#FFFFFF', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <span>🚀</span>
+            <span className="whitespace-nowrap">
+              Implementación <span style={{ fontWeight: 800, color: '#6bdda1' }}>GRATIS</span>{' '}
+              <span style={{ fontWeight: 400, color: '#888888', fontSize: '75%', textDecoration: 'line-through', textDecorationColor: '#888888', textDecorationThickness: '1.5px' }}>USD 997</span>
+            </span>
+          </div>
+          {/* Mobile Line 2: inline text countdown */}
+          <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#AAAAAA', fontWeight: 400, display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span>Termina en</span>
+            <span style={{ fontWeight: 600, color: isLast24h ? '#FF5C5C' : '#FFFFFF', letterSpacing: '0.02em', transition: 'color 0.3s ease' }}>
+              {days > 0 && <>{pad(days)}d : </>}{pad(hours)}h : {pad(minutes)}m : {pad(seconds)}s
+            </span>
+          </div>
+        </div>
+
+        {/* ===== DESKTOP urgency (>= md) ===== */}
+        <div className="hidden md:flex flex-row lg:flex-col xl:flex-row items-center justify-center gap-4 lg:gap-1 xl:gap-4 order-3 lg:order-none w-full lg:w-auto">
+          {/* Desktop Line 1 */}
           <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#FFFFFF', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span>🚀</span>
             <span className="whitespace-nowrap">
               Implementación <span style={{ fontWeight: 800, color: '#6bdda1' }}>GRATIS</span>{' '}
-              <span style={{ fontWeight: 400, color: '#888888', fontSize: '80%', textDecoration: 'line-through' }} className="hidden sm:inline">(antes USD 997)</span>
+              <span style={{ fontWeight: 400, color: '#888888', fontSize: '80%', textDecoration: 'line-through' }}>(antes USD 997)</span>
             </span>
           </div>
-          {/* Line 2 */}
+          {/* Desktop Line 2 */}
           <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '10px', color: '#AAAAAA', fontWeight: 400, display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span className="hidden sm:inline">Solo por lanzamiento · Termina en</span>
+            <span>Solo por lanzamiento · Termina en</span>
             <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '2px' }}>
               {days > 0 && (
                 <>
