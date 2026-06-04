@@ -21,10 +21,10 @@ export const Calculadora = () => {
   useEffect(() => {
     const riesgo = Math.round(consultas * 30 * ticket * (porcentaje / 100));
     const rec = Math.round(riesgo * 0.35);
-    const costoAnual = 1585;
+    const costoAnual = 4200;
     const roiCalc = rec > 0 ? Math.round(((rec * 12 - costoAnual) / costoAnual) * 100) : 0;
     const dailyRec = rec / 30;
-    const paybackDays = dailyRec > 0 ? Math.ceil(997 / dailyRec) : 999;
+    const paybackDays = dailyRec > 0 ? Math.ceil(350 / dailyRec) : 999;
 
     setResultado(riesgo);
     setRecupero(rec);
@@ -124,7 +124,7 @@ export const Calculadora = () => {
               </div>
               <div className="flex flex-col items-center gap-1 mt-2">
                 <span style={{ fontSize: '14px', fontWeight: 600, color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
-                  Costo total Sentinel año 1: <span style={{ color: '#00D4AA' }}>USD 1.585</span>
+                  Costo total Sentinel año 1: <span style={{ color: '#00D4AA' }}>USD 4.200</span>
                 </span>
                 <span style={{ fontSize: '14px', fontWeight: 700, color: '#00D4AA', fontFamily: 'Inter, sans-serif' }}>
                   ROI: {roi}% en el primer año

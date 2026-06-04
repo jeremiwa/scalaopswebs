@@ -16,8 +16,16 @@ const faqs = [
     a: "No. Se entrena con tu información, tono, reglas comerciales y respuestas reales."
   },
   {
-    q: "¿Hay costos mensuales?",
-    a: "Si hay herramientas, mantenimiento o consumo externo, se informa antes de avanzar."
+    q: "¿Por qué es mensual y no un pago único?",
+    a: "Porque Sentinel no es un software que se instala y queda quieto. Cada mes lo monitoreamos, lo mejoramos y lo ajustamos con las conversaciones reales de tu negocio. Es un empleado que aprende, no un bot que envejece."
+  },
+  {
+    q: "¿Qué pasa si quiero darlo de baja?",
+    a: "Lo das de baja cuando quieras, sin penalidades ni letra chica. Avisás y listo. Estamos convencidos de que los resultados van a hacer que te quedes."
+  },
+  {
+    q: "¿Hasta cuándo está bonificada la implementación?",
+    a: "Solo durante el período de lanzamiento. Cuando termine, la implementación vuelve a su precio de USD 997 para nuevos clientes. Los que entran ahora la tienen incluida para siempre."
   }
 ];
 
@@ -59,7 +67,7 @@ export const FaqCorta = () => {
                   <span className="text-[16px] font-bold text-white/90" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {faq.q}
                   </span>
-                  <ChevronDown className={`w-5 h-5 text-[#00D4AA] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 text-[#00D4AA] transition-transform duration-300 shrink-0 ml-[12px] ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <AnimatePresence>
                   {isOpen && (

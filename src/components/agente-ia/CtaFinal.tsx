@@ -59,7 +59,7 @@ export const CtaFinal = () => {
           className="cupos-final-text"
           style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}
         >
-          Precio lanzamiento USD 997 · 30 días de garantía · Quedan 3 cupos
+          USD 350/mes · Implementación bonificada · 30 días de garantía
         </motion.p>
 
         {/* Cierre emocional */}

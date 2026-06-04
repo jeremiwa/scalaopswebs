@@ -12,7 +12,7 @@ const cards = [
     cat: "COSTOS",
     icon: DollarSign,
     dolor: "Pagar otro sueldo no debería ser tu única salida.",
-    solucion: "Implementar Sentinel USD 997.\nSin sueldo, sindicato o indemnización.",
+    solucion: "Sentinel: USD 350/mes.\nUn vendedor: USD 1.500/mes + cargas + aguinaldo + indemnización.",
     costaLabel: "HOY TE CUESTA",
     costa: "+USD 18.000/año por vendedor",
   },

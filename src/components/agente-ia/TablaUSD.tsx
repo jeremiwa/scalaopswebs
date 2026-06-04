@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CTA_URL = '/formulario';
 
 const rows = [
-  { concept: 'Sueldo neto mensual', human: 'USD 800–1.200', sentinel: 'Implementación única: USD 997' },
+  { concept: 'Sueldo neto mensual', human: 'USD 800–1.200', sentinel: 'USD 350/mes · Implementación bonificada' },
   { concept: 'Cargas sociales', human: '+50% del bruto', sentinel: 'Sin cargas: USD 0' },
   { concept: 'Aguinaldo', human: '+1 sueldo / año', sentinel: 'Sin aguinaldo' },
   { concept: 'Vacaciones pagas', human: '14 días / año', sentinel: 'Opera 365 días' },
@@ -42,7 +42,7 @@ export const TablaUSD = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   const humanTotal = useCountUp(25000, 1200, isInView);
-  const sentinelTotal = useCountUp(1585, 1200, isInView);
+  const sentinelTotal = useCountUp(4200, 1200, isInView);
 
   return (
     <section ref={sectionRef} className="relative w-full bg-[#000000] py-[80px] lg:py-[120px] overflow-hidden">
@@ -189,9 +189,9 @@ export const TablaUSD = () => {
           <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ padding: '1px', background: 'linear-gradient(90deg, #0066FF 0%, #00D4AA 100%)', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
           <div className="py-8 px-6 w-full text-center">
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.6)', marginBottom: '8px' }}>Año 1: ahorrás entre</p>
-            <h3 style={{ fontFamily: 'Saira, sans-serif', fontSize: 'clamp(28px, 6vw, 42px)', fontWeight: 800, color: '#00D4AA', marginBottom: '8px' }}>USD 16.000 y USD 23.000</h3>
+            <h3 style={{ fontFamily: 'Saira, sans-serif', fontSize: 'clamp(28px, 6vw, 42px)', fontWeight: 800, color: '#00D4AA', marginBottom: '8px' }}>USD 14.000 y USD 21.000</h3>
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.6)' }}>
-              Y Sentinel sigue trabajando el año 2 con solo <span style={{ color: '#00D4AA', fontWeight: 700 }}>USD 588</span> de mantenimiento.
+              Y Sentinel sigue trabajando el año 2 por los mismos <span style={{ color: '#00D4AA', fontWeight: 700 }}>USD 4.200/año</span>.
             </p>
           </div>
         </motion.div>

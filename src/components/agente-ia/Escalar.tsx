@@ -42,7 +42,7 @@ const useCountUp = (end: number, duration: number, trigger: boolean) => {
 export const Pricing = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
-  const priceVal = useCountUp(997, 1500, isInView);
+  const priceVal = useCountUp(350, 1500, isInView);
 
   return (
     <section id="sentinel-pricing" ref={sectionRef} className="relative w-full bg-[#000000] py-[80px] lg:py-[120px] overflow-hidden">
@@ -56,13 +56,13 @@ export const Pricing = () => {
         <motion.h2 initial={{ opacity: 0, y: 15 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center mb-4"
           style={{ fontFamily: 'Saira, var(--font-primary), sans-serif', fontSize: 'clamp(28px, 7vw, 48px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#FFFFFF' }}>
-          Implementá tu Empleado IA<br />por <span style={{ color: '#00D4AA' }}>USD 997</span>.
+          Implementá tu Empleado IA<br />por <span style={{ color: '#00D4AA' }}>USD 350/mes</span>.
         </motion.h2>
 
         <motion.p initial={{ opacity: 0, y: 10 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: 0.4 }}
           className="text-center mb-10"
           style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>
-          Precio lanzamiento por tiempo limitado. Después sube a USD 1.500.
+          USD 350/mes · Implementación bonificada durante el lanzamiento.
         </motion.p>
 
         {/* Pricing Card */}
@@ -89,10 +89,10 @@ export const Pricing = () => {
 
             {/* Price */}
             <div className="mb-3" style={{ fontFamily: 'Saira, sans-serif', fontSize: 'clamp(56px, 14vw, 96px)', fontWeight: 800, color: '#FFFFFF', lineHeight: 1, letterSpacing: '-0.04em' }}>
-              USD {priceVal}
+              USD {priceVal}/mes
             </div>
             <p className="mb-8" style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: 'rgba(255,255,255,0.5)', textAlign: 'center' }}>
-              Implementación única personalizada
+              Implementación bonificada · Tu Empleado IA 24/7
             </p>
 
             <div className="w-full h-[1px] bg-white/[0.06] mb-6" />
@@ -132,10 +132,10 @@ export const Pricing = () => {
             {/* Maintenance */}
             <div className="text-center mb-6">
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>
-                Mantenimiento mensual: desde <span style={{ color: '#00D4AA', fontWeight: 700 }}>USD 49</span>
+                Todo incluido en los <span style={{ color: '#00D4AA', fontWeight: 700 }}>USD 350/mes</span>
               </span>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '4px' }}>
-                Incluye actualizaciones, monitoreo y soporte
+                Actualizaciones, monitoreo y soporte continuo
               </p>
             </div>
 

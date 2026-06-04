@@ -21,6 +21,7 @@ import { FaqCorta } from '../components/agente-ia/FaqCorta';
 import { CtaFinalSimple } from '../components/agente-ia/CtaFinalSimple';
 import { Footer } from '../components/agente-ia/Footer';
 import { StickyCTA } from '../components/agente-ia/StickyCTA';
+import { UrgencyBar } from '../components/agente-ia/UrgencyBar';
 import { useAnimations } from '../hooks/useAnimations';
 
 export const AgenteIA = () => {
@@ -30,7 +31,7 @@ export const AgenteIA = () => {
     <div className="min-h-screen bg-[#000000] selection:bg-[#00D4AA] selection:text-[#000000] relative overflow-x-hidden">
       <SEO
         title="Sentinel — Tu Empleado IA Comercial | ScalaOps"
-        description="Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram con el tono de tu negocio. Implementación personalizada por USD 997."
+        description="Sentinel responde, califica y sigue oportunidades por WhatsApp e Instagram con el tono de tu negocio. USD 350/mes con implementación bonificada."
         canonical="https://scalaops.com/agente-ia"
       />
 
@@ -44,6 +45,7 @@ export const AgenteIA = () => {
       />
 
       <div className="scroll-bar" />
+      <UrgencyBar />
       <Navbar />
 
       <main>

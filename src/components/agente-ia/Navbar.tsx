@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Logo } from '../ui/Logo';
-import { Button } from '../ui/Button';
 import { Link } from 'react-router-dom';
 import { SentinelLogo } from './SentinelLogo';
 
@@ -8,20 +7,45 @@ const CTA_URL = '/formulario';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [urgencyBarVisible, setUrgencyBarVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Check if urgency bar is dismissed
+    const checkUrgencyBar = () => {
+      const bar = document.getElementById('urgency-bar');
+      setUrgencyBarVisible(!!bar);
+    };
+
+    // Listen for urgency bar dismiss
+    const handleDismiss = () => setUrgencyBarVisible(false);
+    window.addEventListener('urgencybar-dismiss', handleDismiss);
+
+    // Initial check
+    checkUrgencyBar();
+
+    // Also check periodically in case of timing issues
+    const interval = setInterval(checkUrgencyBar, 500);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('urgencybar-dismiss', handleDismiss);
+      clearInterval(interval);
+    };
   }, []);
+
+  const topOffset = urgencyBarVisible ? '40px' : '0px';
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-[#030504]/90 backdrop-blur-md border-b border-white/[0.04]' : 'bg-transparent'
       }`}
+      style={{ top: topOffset }}
     >
       {/* Thin premium green line at the top */}
       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, rgba(36,107,254,0.8) 0%, rgba(104,230,163,0.8) 100%)' }} />

@@ -100,13 +100,16 @@ export const S04_ComparativaSimple = () => {
 
               <div className="mt-auto pt-[16px] md:pt-[32px] border-t border-[#00D4AA]/10">
                 <span className="text-[9px] md:text-[14px] text-[#00D4AA]/70 block mb-[4px] md:mb-[8px] uppercase tracking-wider font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Implementación
+                  Costo anual
                 </span>
-                <div className="text-[20px] md:text-[40px] font-[800] text-white leading-none mb-[8px] md:mb-[12px]" style={{ fontFamily: 'Saira, sans-serif', letterSpacing: '-0.02em' }}>
-                  USD 997
+                <div className="text-[20px] md:text-[40px] font-[800] text-white leading-none mb-[4px] md:mb-[8px]" style={{ fontFamily: 'Saira, sans-serif', letterSpacing: '-0.02em' }}>
+                  USD 4.200
                 </div>
-                <p className="text-[10px] md:text-[13px] text-white/60 leading-[1.3]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Precio lanzamiento por implementación personalizada.
+                <p className="text-[10px] md:text-[13px] text-white/60 leading-[1.3] mb-[8px] md:mb-[12px]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  USD 350/mes · Implementación incluida
+                </p>
+                <p className="text-[9px] md:text-[11px] text-white/35 leading-[1.3]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Menos que 3 meses de un sueldo. Por todo el año.
                 </p>
               </div>
             </div>
