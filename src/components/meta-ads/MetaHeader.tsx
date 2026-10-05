@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../ui/Logo';
 import { trackMeta } from './ui';
 
-/** Header mínimo: logo SCALA (mismo componente que /por-que-scala) + CTA compacto. */
+/** Header mínimo: logo SCALA. El CTA del header se muestra SOLO en desktop (en mobile queda el del hero + la barra fija). */
 export function MetaHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-black/70 backdrop-blur-md">
@@ -13,7 +13,7 @@ export function MetaHeader() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackMeta('cta_click', { location: 'header' })}
-          className="inline-flex items-center justify-center text-[#04140d] no-underline"
+          className="hidden items-center justify-center text-[#04140d] no-underline lg:inline-flex"
           style={{
             background: 'linear-gradient(90deg,#185de8,#6bdda1)',
             height: 36,
@@ -24,8 +24,7 @@ export function MetaHeader() {
             fontSize: 13,
           }}
         >
-          <span className="sm:hidden">Vender más</span>
-          <span className="hidden sm:inline">Quiero vender más</span>
+          Quiero vender más
         </Link>
       </div>
     </header>
