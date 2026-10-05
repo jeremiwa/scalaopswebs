@@ -81,7 +81,7 @@ export function MetaHero() {
   return (
     <section
       id="meta-hero"
-      className="relative overflow-hidden bg-black meta-gutter pt-[var(--hero-top)] pb-[var(--section-y)]"
+      className="relative overflow-hidden bg-black pt-[var(--hero-top)] pb-[var(--section-y)]"
     >
       <div
         className="pointer-events-none absolute inset-0"
@@ -93,13 +93,13 @@ export function MetaHero() {
       <div className="relative meta-shell">
         <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-14">
           {/* Columna texto */}
-          <div>
+          <div className="text-center lg:text-left">
             <Reveal>
               <h1 className="font-bold tracking-[-0.02em] text-white text-[40px] leading-[1.05] lg:text-[56px]">
                 Más clientes con{' '}
                 <span className={`whitespace-nowrap ${grad}`}>Meta Ads</span>.
               </h1>
-              <p className="mt-5 max-w-[540px] text-[16px] leading-[1.5] text-white/75 lg:text-[18px]">
+              <p className="mx-auto mt-5 max-w-[540px] text-[16px] leading-[1.5] text-white/75 lg:mx-0 lg:text-[18px]">
                 Hacemos tu publicidad en Meta de punta a punta. Y una IA responde cada consulta en
                 menos de un minuto. Sin sumar gente.
               </p>

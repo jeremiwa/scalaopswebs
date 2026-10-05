@@ -111,7 +111,7 @@ export function MetaQueHacemos() {
     <Section id="que-hacemos" tone="dark">
       <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16">
         {/* Texto + (en desktop) tarjeta 300 */}
-        <div>
+        <div className="text-center lg:text-left">
           <Reveal>
             <Eyebrow>Qué hacemos</Eyebrow>
             <h2 className="text-[28px] font-bold leading-[1.15] text-white lg:text-[40px]">
@@ -121,7 +121,7 @@ export function MetaQueHacemos() {
               <br />
               <span className={grad}>Vos vendés.</span>
             </h2>
-            <p className="mt-5 max-w-[520px] text-[16px] leading-[1.55] text-white/65">
+            <p className="mx-auto mt-5 max-w-[520px] text-[16px] leading-[1.55] text-white/65 lg:mx-0">
               Armamos tus campañas de punta a punta. Y cuando entra la consulta, una IA la responde en
               menos de un minuto.
             </p>

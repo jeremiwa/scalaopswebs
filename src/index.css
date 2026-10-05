@@ -35,17 +35,16 @@ body {
   }
 }
 
-/* Margen lateral real: 28px en mobile, hasta 40px en pantallas grandes. */
-@utility meta-gutter {
-  padding-left: clamp(28px, 7vw, 40px);
-  padding-right: clamp(28px, 7vw, 40px);
-}
-/* Contenedor centrado único para TODOS los bloques. */
-@utility meta-shell {
+/* Contenedor ÚNICO con margen lateral REAL para TODOS los bloques de /meta-ads.
+   Regla plana (sin @layer) y con doble clase → gana siempre en la cascada:
+   no depende de utilidades de Tailwind ni de variables cascada, nunca colapsa a 0. */
+.meta-ads .meta-shell {
   width: 100%;
   max-width: 1120px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: clamp(24px, 6vw, 40px);
+  padding-right: clamp(24px, 6vw, 40px);
 }
 
 h1, h2, h3, h4, h5, h6 {

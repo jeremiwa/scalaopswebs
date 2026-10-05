@@ -71,7 +71,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative ${bg} meta-gutter py-[var(--section-y)] ${className}`}
+      className={`relative ${bg} py-[var(--section-y)] ${className}`}
     >
       <div className="meta-shell">{children}</div>
     </section>

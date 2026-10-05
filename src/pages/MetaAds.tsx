@@ -31,11 +31,13 @@ export function MetaAds() {
         <MetaCierre />
       </main>
       {/* pb extra en mobile para que la barra fija nunca tape el footer */}
-      <footer className="meta-gutter border-t border-white/10 bg-black pt-10 pb-28 text-center lg:pb-10">
-        <div className="flex justify-center opacity-70">
-          <Logo />
+      <footer className="border-t border-white/10 bg-black pt-10 pb-28 text-center lg:pb-10">
+        <div className="meta-shell">
+          <div className="flex justify-center opacity-70">
+            <Logo />
+          </div>
+          <p className="mt-3 text-[12px] text-white/40">© {new Date().getFullYear()} SCALA · Agencia de Meta Ads</p>
         </div>
-        <p className="mt-3 text-[12px] text-white/40">© {new Date().getFullYear()} SCALA · Agencia de Meta Ads</p>
       </footer>
       <MetaStickyCTA />
     </div>

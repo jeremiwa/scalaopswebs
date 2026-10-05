@@ -97,9 +97,9 @@ function CarruselTexto() {
 export function MetaTestimonios() {
   return (
     <Section id="testimonios" tone="dark">
-      <Reveal>
+      <Reveal className="text-center lg:text-left">
         <Eyebrow>Resultados</Eyebrow>
-        <h2 className="max-w-[760px] text-[28px] font-bold leading-[1.15] text-white lg:text-[40px]">
+        <h2 className="mx-auto max-w-[760px] text-[28px] font-bold leading-[1.15] text-white lg:mx-0 lg:text-[40px]">
           Lo que dicen los que ya trabajan con nosotros.
         </h2>
       </Reveal>
