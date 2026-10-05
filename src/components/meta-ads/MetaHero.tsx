@@ -11,7 +11,7 @@ const grad = 'bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-tra
 function Formula() {
   return (
     <div
-      className="flex items-center gap-2 whitespace-nowrap text-[16px] font-extrabold uppercase leading-none sm:text-[18px]"
+      className="flex items-center justify-center gap-2 whitespace-nowrap text-[16px] font-extrabold uppercase leading-none sm:text-[18px] lg:justify-start"
       style={{ fontFamily: 'var(--font-primary)' }}
     >
       <MetaLogo className="h-5 w-auto" />
@@ -79,7 +79,7 @@ function VSL() {
  */
 export function MetaHero() {
   return (
-    <section id="meta-hero" className="relative overflow-hidden bg-black px-5 pt-6 pb-10 lg:pt-16 lg:pb-24">
+    <section id="meta-hero" className="relative overflow-hidden bg-black px-6 pt-6 pb-10 sm:px-8 lg:pt-16 lg:pb-24">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -92,8 +92,7 @@ export function MetaHero() {
           {/* Columna texto */}
           <div>
             <Reveal>
-              <Formula />
-              <h1 className="mt-4 font-bold tracking-[-0.02em] text-white text-[40px] leading-[1.05] lg:text-[56px]">
+              <h1 className="font-bold tracking-[-0.02em] text-white text-[40px] leading-[1.05] lg:text-[56px]">
                 Más clientes con{' '}
                 <span className={`whitespace-nowrap ${grad}`}>Meta Ads</span>.
               </h1>
@@ -114,6 +113,11 @@ export function MetaHero() {
                 location="hero"
                 microcopy="Agendá una llamada. Revisamos tu publicidad y te decimos qué cambiaríamos."
               />
+            </Reveal>
+
+            {/* Fórmula Meta + IA = Más ventas, ahora debajo del CTA. */}
+            <Reveal delay={0.1} className="mt-7">
+              <Formula />
             </Reveal>
           </div>
 
