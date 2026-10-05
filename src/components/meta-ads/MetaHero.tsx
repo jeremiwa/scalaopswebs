@@ -81,7 +81,7 @@ export function MetaHero() {
   return (
     <section
       id="meta-hero"
-      className="relative overflow-hidden bg-black px-[var(--page-gutter)] pt-[var(--hero-top)] pb-[var(--section-y)]"
+      className="relative overflow-hidden bg-black meta-gutter pt-[var(--hero-top)] pb-[var(--section-y)]"
     >
       <div
         className="pointer-events-none absolute inset-0"
@@ -90,7 +90,7 @@ export function MetaHero() {
             'radial-gradient(85% 50% at 50% 0%, rgba(24,93,232,0.12), transparent 62%), radial-gradient(55% 40% at 82% 8%, rgba(107,221,161,0.06), transparent 60%)',
         }}
       />
-      <div className="relative mx-auto w-full max-w-[var(--container-max)]">
+      <div className="relative meta-shell">
         <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-14">
           {/* Columna texto */}
           <div>

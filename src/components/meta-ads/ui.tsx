@@ -71,9 +71,9 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative ${bg} px-[var(--page-gutter)] py-[var(--section-y)] ${className}`}
+      className={`relative ${bg} meta-gutter py-[var(--section-y)] ${className}`}
     >
-      <div className="mx-auto w-full max-w-[var(--container-max)]">{children}</div>
+      <div className="meta-shell">{children}</div>
     </section>
   );
 }

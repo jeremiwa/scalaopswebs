@@ -21,10 +21,10 @@ body {
 }
 
 /* === /meta-ads — sistema de spacing responsive (scoped: no afecta otras páginas) ===
-   Un solo eje de gutter + ritmo vertical por sección. Mobile primero. */
+   Un solo eje de gutter + ritmo vertical por sección. Mobile primero.
+   El gutter y el contenedor se definen como UTILIDADES con valor horneado
+   (no dependen de que una variable cascada resuelva → nunca colapsan a 0). */
 .meta-ads {
-  --page-gutter: clamp(20px, 5vw, 28px);   /* ≤480:20px · 481-767:24-28px · desktop:28px */
-  --container-max: 1120px;
   --section-y: 44px;                         /* padding vertical por sección → ~88px entre secciones */
   --hero-top: 24px;                          /* aire controlado debajo del header */
 }
@@ -33,6 +33,19 @@ body {
     --section-y: 96px;
     --hero-top: 64px;
   }
+}
+
+/* Margen lateral real: 28px en mobile, hasta 40px en pantallas grandes. */
+@utility meta-gutter {
+  padding-left: clamp(28px, 7vw, 40px);
+  padding-right: clamp(28px, 7vw, 40px);
+}
+/* Contenedor centrado único para TODOS los bloques. */
+@utility meta-shell {
+  width: 100%;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {

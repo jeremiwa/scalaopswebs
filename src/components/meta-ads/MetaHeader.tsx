@@ -6,7 +6,7 @@ import { trackMeta } from './ui';
 export function MetaHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-black/70 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-[var(--container-max)] items-center justify-between px-[var(--page-gutter)]">
+      <div className="meta-shell meta-gutter flex h-14 items-center justify-between">
         <Logo />
         <Link
           to="/formulario"

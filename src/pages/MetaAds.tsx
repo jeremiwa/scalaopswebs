@@ -31,7 +31,7 @@ export function MetaAds() {
         <MetaCierre />
       </main>
       {/* pb extra en mobile para que la barra fija nunca tape el footer */}
-      <footer className="border-t border-white/10 bg-black px-[var(--page-gutter)] pt-10 pb-28 text-center lg:pb-10">
+      <footer className="meta-gutter border-t border-white/10 bg-black pt-10 pb-28 text-center lg:pb-10">
         <div className="flex justify-center opacity-70">
           <Logo />
         </div>
