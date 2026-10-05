@@ -49,6 +49,7 @@ const WebEmpleadoIA = lazy(() => import('./pages/web/WebEmpleadoIA').then(module
 const WebCalculadora = lazy(() => import('./pages/web/WebCalculadora').then(module => ({ default: module.WebCalculadora })));
 const TradingDashboard = lazy(() => import('./pages/trading/TradingDashboard').then(module => ({ default: module.TradingDashboard })));
 const AgenteIA = lazy(() => import('./pages/AgenteIA').then(module => ({ default: module.AgenteIA })));
+const MetaAds = lazy(() => import('./pages/MetaAds').then(module => ({ default: module.MetaAds })));
 
 // Home Component that houses the main landing page
 const Home = () => {
@@ -139,6 +140,8 @@ export default function App() {
 
         {/* ── Landing page antigua → /por-que-scala ── */}
         <Route path="/por-que-scala" element={<Home />} />
+        {/* ── Landing nueva → /meta-ads (Agencia de Meta Ads) ── */}
+        <Route path="/meta-ads" element={<MetaAds />} />
         <Route path="/agente-ia" element={<AgenteIA />} />
         <Route path="/formulario" element={<Formulario />} />
         <Route path="/gracias-por-contactarnos" element={<Gracias />} />
