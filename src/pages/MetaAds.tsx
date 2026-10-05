@@ -9,7 +9,7 @@ import { SEO } from '../components/SEO';
 import { Logo } from '../components/ui/Logo';
 import { MetaHeader } from '../components/meta-ads/MetaHeader';
 import { MetaHero } from '../components/meta-ads/MetaHero';
-import { MetaProofStrip } from '../components/meta-ads/MetaProofStrip';
+import { MetaEquation } from '../components/meta-ads/MetaEquation';
 import { MetaTeSuena } from '../components/meta-ads/MetaTeSuena';
 import { MetaDosCosas } from '../components/meta-ads/MetaDosCosas';
 import { MetaDemo } from '../components/meta-ads/MetaDemo';
@@ -30,7 +30,7 @@ export function MetaAds() {
       <MetaHeader />
       <main>
         <MetaHero />
-        <MetaProofStrip />
+        <MetaEquation />
         <MetaTeSuena />
         <MetaDosCosas />
         <MetaDemo />

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Eyebrow, MetaCTA, Reveal, trackMeta } from './ui';
+import { MetaCTA, Reveal, trackMeta } from './ui';
 
 /** ID del VSL (YouTube). Definitivo. */
 const VSL_YOUTUBE_ID = 'VYfRjaPxMb4';
 
 /** VSL con FACHADA: thumbnail + Play; el iframe de YouTube se carga recién al hacer click
- *  (no perjudica el LCP). 16:9, bordes SCALA, responsive, playsinline, sin autoplay con sonido. */
+ *  (no perjudica el LCP). 16:9, bordes SCALA, playsinline, sin autoplay con sonido. */
 function VSL() {
   const [play, setPlay] = useState(false);
   return (
@@ -53,42 +53,44 @@ function VSL() {
   );
 }
 
+/**
+ * BLOQUE 1 / Hero — compacto, mobile-first, stacked.
+ * Orden: H1 → bajada → VIDEO → CTA → microcopy (el microcopy viene dentro de MetaCTA).
+ * Sin eyebrow y sin CTA antes del video.
+ */
 export function MetaHero() {
   return (
-    <section className="relative overflow-hidden bg-black pt-16 pb-14 lg:pt-24 lg:pb-24">
-      {/* Profundidad apenas perceptible: radial azul/verde con opacity muy baja. */}
+    <section className="relative overflow-hidden bg-black pt-8 pb-10 sm:pt-12 sm:pb-12">
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(85% 55% at 50% 0%, rgba(24,93,232,0.12), transparent 62%), radial-gradient(60% 45% at 82% 10%, rgba(107,221,161,0.07), transparent 60%)' }}
+        style={{ background: 'radial-gradient(85% 50% at 50% 0%, rgba(24,93,232,0.12), transparent 62%), radial-gradient(55% 40% at 82% 8%, rgba(107,221,161,0.06), transparent 60%)' }}
       />
-      <div className="relative mx-auto w-full max-w-[1200px] px-5 lg:px-8">
-        <div className="flex flex-col gap-9 lg:grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16">
-          {/* Columna de copy */}
-          <Reveal>
-            <div className="max-w-[580px]">
-              <Eyebrow>Agencia de Meta Ads</Eyebrow>
-              <h1 className="mt-4 font-extrabold tracking-[-0.02em] text-white text-[2.625rem] leading-[1.03] sm:text-[3rem] lg:text-[clamp(3.6rem,4.2vw,4.5rem)]">
-                Más clientes con{' '}
-                <span className="whitespace-nowrap bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-transparent">
-                  Meta Ads
-                </span>
-                .
-              </h1>
-              <p className="mt-5 text-[18px] leading-[1.5] text-white/75 sm:text-[19px]">
-                Hacemos tu publicidad en Meta de punta a punta. Y una IA responde cada consulta en
-                menos de un minuto. Sin sumar gente.
-              </p>
-              <div className="mt-7">
-                <MetaCTA location="hero" />
-              </div>
-            </div>
-          </Reveal>
+      <div className="relative mx-auto w-full max-w-[860px] px-5">
+        <Reveal>
+          <h1 className="font-extrabold tracking-[-0.02em] text-white text-[2.75rem] leading-[1.02] sm:text-[3.25rem] lg:text-[3.75rem]">
+            Más clientes con{' '}
+            <span className="whitespace-nowrap bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-transparent">
+              Meta Ads
+            </span>
+            .
+          </h1>
+          <p className="mt-4 max-w-[600px] text-[18px] leading-[1.5] text-white/75 sm:text-[19px]">
+            Hacemos tu publicidad en Meta de punta a punta. Y una IA responde cada consulta en menos
+            de un minuto. Sin sumar gente.
+          </p>
+        </Reveal>
 
-          {/* Columna del video */}
-          <Reveal delay={0.06}>
+        <Reveal delay={0.05}>
+          <div className="mt-7">
             <VSL />
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <div className="mt-6">
+            <MetaCTA location="hero" />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
