@@ -1,65 +1,62 @@
-import { Section, Reveal } from './ui';
+import { Section, Reveal, Eyebrow } from './ui';
 import { WhatsAppUnread } from './mockups';
-import { X } from 'lucide-react';
 
-const items = [
-  'Una agencia que te trajo likes.',
-  'Un chico que "hace redes".',
-  'Anuncios que armaste vos, a la noche.',
-];
+/** Degradado Scala para destacar un fragmento del titular. */
+const grad = 'bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-transparent';
 
 export function MetaTeSuena() {
   return (
     <Section tone="soft">
-      <Reveal>
-        <h2 className="max-w-[720px] text-[28px] font-extrabold leading-[1.1] text-white sm:text-[38px]">
-          Ya probaste. Y pasó lo de siempre.
-        </h2>
-      </Reveal>
-
-      <Reveal delay={0.06}>
-        <ul className="mt-6 space-y-3">
-          {items.map((t) => (
-            <li key={t} className="flex items-center gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ef4444]/15">
-                <X className="h-3.5 w-3.5 text-[#ef4444]" />
-              </span>
-              <span className="text-[18px] text-white/85">{t}</span>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-
-      <Reveal delay={0.1}>
-        <p
-          className="mt-7 text-[26px] font-extrabold text-white sm:text-[32px]"
-          style={{ fontFamily: 'var(--font-primary)' }}
-        >
-          Mucha plata. <span className="text-[#6bdda1]">Poco cliente.</span>
-        </p>
-      </Reveal>
-
-      <div className="mt-10 grid items-center gap-8 lg:grid-cols-2">
+      <div className="mx-auto max-w-[760px]">
+        {/* Apertura */}
         <Reveal>
-          <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/45">
-              El problema que casi nadie te cuenta
-            </p>
-            <p className="mt-4 text-[18px] leading-relaxed text-white/85 sm:text-[20px]">
-              Es lunes, 9 de la mañana. <strong className="text-white">34 consultas</strong> del fin de
-              semana. <strong className="text-white">12 sin responder.</strong>
-            </p>
-            <p className="mt-3 text-[16px] leading-relaxed text-white/60">
-              El que preguntó el sábado a la noche ya compró. En otro lado.
-            </p>
-            <p className="mt-3 text-[16px] leading-relaxed text-white/60">
-              Y lo peor: no sabés cuántas fueron.
+          <Eyebrow>El problema no siempre es Meta</Eyebrow>
+          <h2 className="mt-4 text-[32px] font-extrabold leading-[1.08] tracking-[-0.01em] text-white sm:text-[40px]">
+            Podés generar consultas <span className={grad}>y perder las ventas igual.</span>
+          </h2>
+          <p className="mt-4 text-[17px] leading-relaxed text-white/65 sm:text-[18px]">
+            Meta hizo su trabajo. El cliente preguntó. El problema es lo que pasó después.
+          </p>
+        </Reveal>
+
+        {/* Bloque de datos (editorial, no cards) */}
+        <Reveal delay={0.06}>
+          <div className="mt-8 flex flex-col gap-6 border-y border-white/10 py-6 sm:flex-row sm:items-center sm:gap-12">
+            <div>
+              <span className="block text-[52px] font-extrabold leading-none text-white sm:text-[60px]" style={{ fontFamily: 'var(--font-primary)' }}>
+                34
+              </span>
+              <span className="mt-1.5 block text-[15px] text-white/55">consultas del fin de semana</span>
+            </div>
+            <div className="hidden w-px self-stretch bg-white/10 sm:block" />
+            <div>
+              <span className="block text-[52px] font-extrabold leading-none text-[#ef4444] sm:text-[60px]" style={{ fontFamily: 'var(--font-primary)' }}>
+                12
+              </span>
+              <span className="mt-1.5 block text-[15px] text-white/55">sin responder</span>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Mockup protagonista */}
+        <Reveal delay={0.08}>
+          <div className="mt-9 w-full">
+            <WhatsAppUnread />
+            <p className="mt-4 text-center text-[15px] text-white/55">
+              El que preguntó el sábado no esperó hasta el lunes.
             </p>
           </div>
         </Reveal>
-        <Reveal delay={0.08}>
-          <div className="flex justify-center lg:justify-end">
-            <WhatsAppUnread />
+
+        {/* Cierre puente */}
+        <Reveal delay={0.1}>
+          <div className="mt-10">
+            <p className="text-[26px] font-extrabold leading-[1.12] text-white sm:text-[32px]" style={{ fontFamily: 'var(--font-primary)' }}>
+              Más consultas no sirven <span className={grad}>si nadie llega a tiempo.</span>
+            </p>
+            <p className="mt-3 text-[15px] text-white/55 sm:text-[16px]">
+              Por eso no trabajamos solamente tus anuncios.
+            </p>
           </div>
         </Reveal>
       </div>

@@ -83,14 +83,16 @@ export function PhoneFrame({
   title = 'Scala IA',
   subtitle = 'en línea',
   unread,
+  maxW = 'max-w-[300px]',
 }: {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
   unread?: number;
+  maxW?: string;
 }) {
   return (
-    <div className="relative mx-auto w-full max-w-[300px]">
+    <div className={`relative mx-auto w-full ${maxW}`}>
       <div className="rounded-[34px] border border-white/12 bg-[#0b141a] p-2 shadow-[0_28px_64px_rgba(0,0,0,0.55)]">
         <div className="overflow-hidden rounded-[26px] bg-[#0b141a]">
           <div className="flex items-center gap-3 bg-[#1f2c33] px-4 py-3">
@@ -147,7 +149,7 @@ export function WhatsAppUnread() {
     ['Nuevo · +54 9 341…', 'Me interesa, ¿cómo sigo?', 'dom 11:08'],
   ];
   return (
-    <PhoneFrame title="Consultas" subtitle="12 sin leer" unread={12}>
+    <PhoneFrame title="Consultas" subtitle="12 sin leer" unread={12} maxW="max-w-[420px]">
       {items.map(([n, t, time], i) => (
         <div key={i} className="flex items-center gap-3 rounded-xl bg-[#111b21] px-3 py-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white/70">
