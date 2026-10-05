@@ -61,7 +61,7 @@ function Timeline() {
               </div>
 
               {/* Columna texto */}
-              <div className={`flex-1 ${isLast ? 'pb-0' : 'pb-7'}`}>
+              <div className={`min-w-0 flex-1 ${isLast ? 'pb-0' : 'pb-7'}`}>
                 {s.n === 1 && (
                   <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#185de8]">
                     Publicidad en Meta
@@ -120,7 +120,7 @@ export function MetaQueHacemos() {
               <br />
               <span className={grad}>Vos vendés.</span>
             </h2>
-            <p className="mt-3 max-w-[520px] text-[16px] leading-[1.55] text-white/65">
+            <p className="mt-5 max-w-[520px] text-[16px] leading-[1.55] text-white/65">
               Armamos tus campañas de punta a punta. Y cuando entra la consulta, una IA la responde en
               menos de un minuto.
             </p>

@@ -5,7 +5,7 @@ const grad = 'bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-tra
 /** Sección 4 — Cierre. Fondo apenas más claro, todo centrado, CTA final + WhatsApp. */
 export function MetaCierre() {
   return (
-    <Section id="cierre" tone="soft" padY="pt-16 pb-20 lg:py-24" className="overflow-hidden">
+    <Section id="cierre" tone="soft" className="overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -27,7 +27,7 @@ export function MetaCierre() {
           <h2 className="mt-5 text-[28px] font-bold leading-[1.15] text-white">
             Empezamos con un piloto de <span className={grad}>90 días.</span>
           </h2>
-          <p className="mt-4 text-[16px] leading-[1.55] text-white/80">
+          <p className="mt-5 text-[16px] leading-[1.55] text-white/80">
             Mes a mes. Sin permanencia. Si no te convence, te vas con todo.
           </p>
           <p className="mx-auto mt-4 max-w-[540px] text-[15px] leading-[1.55] text-white/55">
@@ -35,7 +35,7 @@ export function MetaCierre() {
             redes", no somos nosotros.
           </p>
 
-          <div className="mt-7 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <MetaCTA
               id="meta-cierre-cta"
               location="final"

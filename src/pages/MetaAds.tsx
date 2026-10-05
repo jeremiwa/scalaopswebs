@@ -16,7 +16,7 @@ import { MetaStickyCTA } from '../components/meta-ads/MetaStickyCTA';
 
 export function MetaAds() {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#6bdda1] selection:text-[#030712]">
+    <div className="meta-ads min-h-screen bg-black text-white selection:bg-[#6bdda1] selection:text-[#030712]">
       <SEO
         title="SCALA | Agencia de Meta Ads para vender más"
         description="Hacemos tu publicidad en Meta: mensaje, guiones, videos y campañas. Y una IA responde cada consulta en menos de un minuto."
@@ -31,7 +31,7 @@ export function MetaAds() {
         <MetaCierre />
       </main>
       {/* pb extra en mobile para que la barra fija nunca tape el footer */}
-      <footer className="border-t border-white/10 bg-black px-6 pt-10 pb-28 text-center lg:pb-10">
+      <footer className="border-t border-white/10 bg-black px-[var(--page-gutter)] pt-10 pb-28 text-center lg:pb-10">
         <div className="flex justify-center opacity-70">
           <Logo />
         </div>

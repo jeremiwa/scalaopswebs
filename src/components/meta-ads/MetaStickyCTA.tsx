@@ -39,7 +39,7 @@ export function MetaStickyCTA() {
         show ? 'translate-y-0' : 'translate-y-[130%]'
       }`}
     >
-      <div className="bg-black/90 px-3 pt-3 pb-[calc(env(safe-area-inset-bottom,0px)+12px)] backdrop-blur-md">
+      <div className="bg-black/90 px-[var(--page-gutter)] pt-3 pb-[calc(env(safe-area-inset-bottom,0px)+12px)] backdrop-blur-md">
         <Link
           to="/formulario"
           target="_blank"

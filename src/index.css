@@ -20,6 +20,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* === /meta-ads — sistema de spacing responsive (scoped: no afecta otras páginas) ===
+   Un solo eje de gutter + ritmo vertical por sección. Mobile primero. */
+.meta-ads {
+  --page-gutter: clamp(20px, 5vw, 28px);   /* ≤480:20px · 481-767:24-28px · desktop:28px */
+  --container-max: 1120px;
+  --section-y: 44px;                         /* padding vertical por sección → ~88px entre secciones */
+  --hero-top: 24px;                          /* aire controlado debajo del header */
+}
+@media (min-width: 1024px) {
+  .meta-ads {
+    --section-y: 96px;
+    --hero-top: 64px;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
   font-weight: 700;

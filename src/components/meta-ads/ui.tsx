@@ -53,26 +53,27 @@ export function Reveal({
 }
 
 /**
- * Sección: margen lateral 20px (24 en tablet), vertical 64px mobile / 96px desktop.
- * `padY` permite override donde la spec pide otra medida (hero, cierre).
+ * Sección: gutter y ritmo vertical desde los tokens globales (.meta-ads).
+ * Un solo eje horizontal y una sola escala vertical para TODA la landing.
  */
 export function Section({
   children,
   tone = 'dark',
   id,
   className = '',
-  padY = 'py-16 lg:py-24',
 }: {
   children: React.ReactNode;
   tone?: 'dark' | 'soft';
   id?: string;
   className?: string;
-  padY?: string;
 }) {
   const bg = tone === 'soft' ? 'bg-[#07070c]' : 'bg-[#000000]';
   return (
-    <section id={id} className={`relative ${bg} px-6 ${padY} sm:px-8 ${className}`}>
-      <div className="mx-auto w-full max-w-[1120px]">{children}</div>
+    <section
+      id={id}
+      className={`relative ${bg} px-[var(--page-gutter)] py-[var(--section-y)] ${className}`}
+    >
+      <div className="mx-auto w-full max-w-[var(--container-max)]">{children}</div>
     </section>
   );
 }
@@ -147,7 +148,7 @@ export function MetaCTA({
         Quiero vender más
       </Link>
       {microcopy && (
-        <p className="mx-auto mt-2.5 max-w-[460px] text-center text-[13px] leading-[1.4] text-white/55">
+        <p className="mx-auto mt-3 max-w-[460px] text-center text-[13px] leading-[1.4] text-white/55">
           {microcopy}
         </p>
       )}

@@ -79,7 +79,10 @@ function VSL() {
  */
 export function MetaHero() {
   return (
-    <section id="meta-hero" className="relative overflow-hidden bg-black px-6 pt-6 pb-10 sm:px-8 lg:pt-16 lg:pb-24">
+    <section
+      id="meta-hero"
+      className="relative overflow-hidden bg-black px-[var(--page-gutter)] pt-[var(--hero-top)] pb-[var(--section-y)]"
+    >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -87,7 +90,7 @@ export function MetaHero() {
             'radial-gradient(85% 50% at 50% 0%, rgba(24,93,232,0.12), transparent 62%), radial-gradient(55% 40% at 82% 8%, rgba(107,221,161,0.06), transparent 60%)',
         }}
       />
-      <div className="relative mx-auto w-full max-w-[1120px]">
+      <div className="relative mx-auto w-full max-w-[var(--container-max)]">
         <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-14">
           {/* Columna texto */}
           <div>
@@ -96,18 +99,18 @@ export function MetaHero() {
                 Más clientes con{' '}
                 <span className={`whitespace-nowrap ${grad}`}>Meta Ads</span>.
               </h1>
-              <p className="mt-3 max-w-[540px] text-[16px] leading-[1.5] text-white/75 lg:text-[18px]">
+              <p className="mt-5 max-w-[540px] text-[16px] leading-[1.5] text-white/75 lg:text-[18px]">
                 Hacemos tu publicidad en Meta de punta a punta. Y una IA responde cada consulta en
                 menos de un minuto. Sin sumar gente.
               </p>
             </Reveal>
 
             {/* Video en el flujo mobile (en desktop va en la columna derecha). */}
-            <Reveal delay={0.05} className="mt-5 lg:hidden">
+            <Reveal delay={0.05} className="mt-8 lg:hidden">
               <VSL />
             </Reveal>
 
-            <Reveal delay={0.08} className="mt-4">
+            <Reveal delay={0.08} className="mt-8">
               <MetaCTA
                 id="meta-hero-cta"
                 location="hero"
@@ -116,7 +119,7 @@ export function MetaHero() {
             </Reveal>
 
             {/* Fórmula Meta + IA = Más ventas, ahora debajo del CTA. */}
-            <Reveal delay={0.1} className="mt-7">
+            <Reveal delay={0.1} className="mt-9">
               <Formula />
             </Reveal>
           </div>
