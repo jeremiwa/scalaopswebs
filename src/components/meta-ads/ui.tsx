@@ -155,24 +155,3 @@ export function MetaCTA({
     </div>
   );
 }
-
-/** Enlace secundario de WhatsApp (texto + ícono, área tocable 48px). Destino actual. */
-export function WhatsAppButton({ where }: { where: string }) {
-  return (
-    <div className="flex flex-col items-center">
-      <a
-        href="https://wa.link/sn01qs"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackMeta('whatsapp_click', { where })}
-        className="inline-flex min-h-[48px] items-center justify-center gap-2 text-[16px] font-semibold text-[#6bdda1] no-underline transition-opacity hover:opacity-80"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.74.46 3.44 1.32 4.94L2 22l5.3-1.38a9.86 9.86 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.12-2.9-6.99A9.82 9.82 0 0 0 12.04 2Zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.03 8.03 0 0 1 2.37 5.73c0 4.48-3.64 8.12-8.1 8.12a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.07.8.82-3-.19-.31a8.08 8.08 0 0 1-1.24-4.31c0-4.48 3.64-8.11 8.11-8.11Zm4.68 11.46c-.26-.13-1.52-.75-1.76-.84-.24-.09-.41-.13-.59.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.09-.4-2.07-1.28-.77-.68-1.28-1.52-1.43-1.78-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.46-.06-.13-.59-1.42-.81-1.94-.21-.51-.43-.44-.59-.45l-.5-.01c-.17 0-.46.06-.7.32-.24.26-.92.9-.92 2.2 0 1.3.94 2.56 1.07 2.73.13.17 1.85 2.82 4.48 3.96.63.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.07 1.52-.62 1.74-1.22.21-.6.21-1.11.15-1.22-.06-.11-.24-.17-.5-.3Z" />
-        </svg>
-        Escribinos por WhatsApp
-      </a>
-      <p className="mt-1 text-[13px] text-white/50">Fijate cuánto tardamos en responderte.</p>
-    </div>
-  );
-}

@@ -1,8 +1,8 @@
-import { Section, Reveal, MetaCTA, WhatsAppButton } from './ui';
+import { Section, Reveal, MetaCTA } from './ui';
 
 const grad = 'bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-transparent';
 
-/** Sección 4 — Cierre. Fondo apenas más claro, todo centrado, CTA final + WhatsApp. */
+/** Sección 4 — Cierre. Fondo apenas más claro, todo centrado, CTA final. */
 export function MetaCierre() {
   return (
     <Section id="cierre" tone="soft" className="overflow-hidden">
@@ -42,10 +42,6 @@ export function MetaCierre() {
               center
               microcopy="Una llamada con tus números. No firmás nada."
             />
-          </div>
-
-          <div className="mt-6">
-            <WhatsAppButton where="final" />
           </div>
         </div>
       </Reveal>

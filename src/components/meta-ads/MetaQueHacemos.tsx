@@ -95,9 +95,10 @@ function Card300() {
       }}
     >
       <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#6bdda1]">Desde el día 1</p>
-      <p className="my-2 text-[56px] font-extrabold leading-none" style={{ fontFamily: 'var(--font-primary)' }}>
+      <p className="mt-2 text-[56px] font-extrabold leading-none" style={{ fontFamily: 'var(--font-primary)' }}>
         <span className={grad}>300</span>
       </p>
+      <p className="mt-1 mb-3 text-[18px] font-bold leading-tight text-white">clientes potenciales</p>
       <p className="text-[16px] leading-[1.45] text-white">
         Mientras arrancan las campañas, salimos a buscar 300 clientes potenciales por vos.
       </p>
