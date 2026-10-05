@@ -6,6 +6,7 @@
  * Mientras haya testimonios placeholder, la página va con noindex,nofollow.
  */
 import { SEO } from '../components/SEO';
+import { Logo } from '../components/ui/Logo';
 import { MetaHeader } from '../components/meta-ads/MetaHeader';
 import { MetaHero } from '../components/meta-ads/MetaHero';
 import { MetaTeSuena } from '../components/meta-ads/MetaTeSuena';
@@ -35,8 +36,11 @@ export function MetaAds() {
         <MetaComoEmpezamos />
         <MetaCtaFinal />
       </main>
-      <footer className="border-t border-white/10 bg-black px-5 py-10 text-center">
-        <img src="/images/scala-logo-white.png" alt="SCALA" className="mx-auto h-5 w-auto opacity-70" />
+      {/* pb extra en mobile para que el CTA sticky no tape el footer */}
+      <footer className="border-t border-white/10 bg-black px-5 pt-10 pb-28 text-center sm:pb-10">
+        <div className="flex justify-center opacity-70">
+          <Logo />
+        </div>
         <p className="mt-3 text-[12px] text-white/40">© {new Date().getFullYear()} SCALA · Agencia de Meta Ads</p>
       </footer>
       <MetaStickyCTA />

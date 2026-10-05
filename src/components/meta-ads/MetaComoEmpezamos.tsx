@@ -13,7 +13,7 @@ export function MetaComoEmpezamos() {
   return (
     <Section tone="soft">
       <Reveal>
-        <h2 className="max-w-[760px] text-[28px] font-extrabold leading-[1.1] text-white sm:text-[40px]">
+        <h2 className="max-w-[760px] text-[28px] font-extrabold leading-[1.1] text-white sm:text-[38px]">
           Empezamos con un piloto de 90 días.
         </h2>
         <p className="mt-3 text-[16px] text-white/65 sm:text-[18px]">
@@ -21,19 +21,20 @@ export function MetaComoEmpezamos() {
         </p>
       </Reveal>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-3">
+      <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
         {pasos.map(([t, d], i) => (
-          <Reveal key={t} delay={i * 0.08}>
-            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#6bdda1]/40 text-[14px] font-extrabold text-[#6bdda1]">
+          <Reveal key={t} delay={i * 0.06}>
+            <li className="flex items-start gap-4 py-4">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#6bdda1]/40 text-[13px] font-extrabold text-[#6bdda1]">
                 {i + 1}
               </span>
-              <p className="mt-4 text-[17px] font-bold text-white">{t}</p>
-              <p className="mt-2 text-[15px] leading-snug text-white/65">{d}</p>
-            </div>
+              <p className="text-[16px] text-white/85">
+                <span className="font-bold text-white">{t}:</span> {d}
+              </p>
+            </li>
           </Reveal>
         ))}
-      </div>
+      </ul>
 
       <Reveal delay={0.1}>
         <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-5 sm:p-6">

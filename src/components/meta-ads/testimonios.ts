@@ -1,14 +1,12 @@
 /**
  * Testimonios de texto de /meta-ads.
- * ⚠️ TODO: los 3 son DE EJEMPLO (placeholder:true). Reemplazar a mano por testimonios reales
- * antes de indexar o pautar. No usar nombres de empresas reales. Foto = avatar con iniciales.
+ * Martín S. y Laura G. son REALES (texto + foto tomados de /por-que-scala).
+ * Diego F. es DE EJEMPLO (placeholder:true) → TODO: reemplazar por real.
  */
 export interface Testimonio {
   nombre: string;
-  cargo: string;
-  empresa: string;
-  rubro: string;
-  ciudad: string;
+  rol: string; // "Cargo · Sector"
+  ciudad?: string;
   foto: string | null; // null → avatar con iniciales
   texto: string;
   placeholder: boolean;
@@ -16,35 +14,25 @@ export interface Testimonio {
 
 export const TESTIMONIOS: Testimonio[] = [
   {
-    // TODO: reemplazar por testimonio real
-    nombre: 'Martín R.',
-    cargo: 'Director comercial',
-    empresa: 'Fábrica de aberturas de aluminio',
-    rubro: 'Industria',
-    ciudad: 'Buenos Aires',
-    foto: null,
+    nombre: 'Martín S.',
+    rol: 'Director Comercial · Real Estate',
+    foto: '/images/martin.jpg',
     texto:
-      'Hacía dos años que invertíamos en publicidad y entraban consultas, pero no vendíamos. SCALA cambió los anuncios y, sobre todo, lo que pasaba después: hoy cada consulta se responde en el momento y a mí me llegan las reuniones agendadas.',
-    placeholder: true,
+      'La auditoría fue un antes y un después. Nos mostró fallas reales en cómo vendíamos: objeciones mal trabajadas, poco seguimiento y un equipo sin un proceso claro. Scala nos cambió el negocio.',
+    placeholder: false,
   },
   {
-    // TODO: reemplazar por testimonio real
-    nombre: 'Lucía G.',
-    cargo: 'Socia',
-    empresa: 'Inmobiliaria',
-    rubro: 'Real estate',
-    ciudad: 'Córdoba',
-    foto: null,
+    nombre: 'Laura G.',
+    rol: 'CEO · Agencia B2B',
+    foto: '/images/laura.jpg',
     texto:
-      'Lo que más me cambió no fueron los números, fue dejar de ser la que contesta WhatsApp a las once de la noche. Ahora lo hace la empresa. Y cada mañana sé exactamente qué entró y qué se agendó.',
-    placeholder: true,
+      'Implementamos IA en toda la empresa, la velocidad y profesionalismo 10 puntos. No solo los recomiendo, es casi una obligación si tenés un negocio y no tenés IA.',
+    placeholder: false,
   },
   {
     // TODO: reemplazar por testimonio real
     nombre: 'Diego F.',
-    cargo: 'Gerente',
-    empresa: 'Concesionaria',
-    rubro: 'Automotriz',
+    rol: 'Gerente · Concesionaria',
     ciudad: 'Rosario',
     foto: null,
     texto:

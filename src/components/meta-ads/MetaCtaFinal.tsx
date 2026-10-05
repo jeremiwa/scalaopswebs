@@ -1,4 +1,4 @@
-import { Section, Reveal, MetaCTA, WhatsAppLink } from './ui';
+import { Section, Reveal, MetaCTA, WhatsAppButton } from './ui';
 
 export function MetaCtaFinal() {
   return (
@@ -17,11 +17,9 @@ export function MetaCtaFinal() {
             Contanos qué vendés y te decimos cómo lo venderíamos con Meta Ads. Una llamada con tus
             números. No firmás nada.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col items-center gap-5">
             <MetaCTA location="final" />
-          </div>
-          <div className="mt-6">
-            <WhatsAppLink where="final" />
+            <WhatsAppButton where="final" />
           </div>
         </div>
       </Reveal>

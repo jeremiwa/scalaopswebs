@@ -1,56 +1,100 @@
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { Section, Reveal } from './ui';
-import { ReportCard } from './mockups';
+import { PhoneFrame, ReportCard } from './mockups';
 
-const steps = [
-  ['00:00', 'Entra una consulta desde un anuncio'],
-  ['00:47', 'Responde la IA'],
-  ['01:12', 'Hace preguntas'],
-  ['01:38', 'Cliente calificado'],
-  ['01:54', 'Reunión agendada'],
+type Msg = { secs: number; label: string; me: boolean; text: string };
+
+const SCRIPT: Msg[] = [
+  { secs: 0, label: '00:00', me: false, text: 'Hola, vi el anuncio. ¿Precio de ventanas de aluminio?' },
+  { secs: 47, label: '00:47', me: true, text: '¡Hola! Te ayudo. ¿Es para obra nueva o para reemplazar?' },
+  { secs: 65, label: '01:05', me: false, text: 'Obra nueva, casa.' },
+  { secs: 72, label: '01:12', me: true, text: '¿Cuántas aberturas son, más o menos, y para cuándo las necesitás?' },
+  { secs: 90, label: '01:30', me: false, text: 'Unas 12. Antes de marzo.' },
+  { secs: 98, label: '01:38', me: true, text: 'Perfecto, llegamos bien. Te agendo una visita con un asesor. ¿Jueves 10 h o 16 h?' },
+  { secs: 110, label: '01:50', me: false, text: '16 h.' },
+  { secs: 114, label: '01:54', me: true, text: 'Listo ✅ Visita agendada el jueves a las 16 h. Te llega la confirmación.' },
 ];
+
+const TOTAL = 114;
+const DURATION_MS = 6000;
+const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+function DemoPhone() {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+  const [visible, setVisible] = useState(reduce ? SCRIPT.length : 0);
+  const [clock, setClock] = useState(reduce ? TOTAL : 0);
+
+  useEffect(() => {
+    if (reduce || !inView) return;
+    const start = performance.now();
+    const timers: number[] = [];
+    SCRIPT.forEach((m, i) => {
+      timers.push(
+        window.setTimeout(() => setVisible(i + 1), (m.secs / TOTAL) * DURATION_MS),
+      );
+    });
+    const tick = window.setInterval(() => {
+      const t = Math.min(1, (performance.now() - start) / DURATION_MS);
+      setClock(Math.round(t * TOTAL));
+      if (t >= 1) window.clearInterval(tick);
+    }, 90);
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(tick);
+    };
+  }, [inView, reduce]);
+
+  return (
+    <div ref={ref}>
+      <PhoneFrame title="Aberturas del Sur" subtitle={`IA · ${fmt(clock)}`}>
+        {SCRIPT.slice(0, visible).map((m, i) => (
+          <motion.div
+            key={i}
+            initial={reduce ? false : { opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className={`flex ${m.me ? 'justify-end' : 'justify-start'}`}
+          >
+            <div
+              className={`max-w-[82%] rounded-2xl px-3 py-2 text-[13px] leading-snug ${
+                m.me ? 'rounded-br-md bg-[#144d36] text-white' : 'rounded-bl-md bg-[#202c33] text-white/90'
+              }`}
+            >
+              <p>{m.text}</p>
+              <span className="mt-0.5 block text-right text-[10px] text-white/45">{m.label}</span>
+            </div>
+          </motion.div>
+        ))}
+      </PhoneFrame>
+    </div>
+  );
+}
 
 export function MetaDemo() {
   return (
     <Section tone="soft">
       <Reveal>
-        <h2 className="max-w-[720px] text-[28px] font-extrabold leading-[1.1] text-white sm:text-[40px]">
+        <h2 className="max-w-[720px] text-[28px] font-extrabold leading-[1.1] text-white sm:text-[38px]">
           No te pedimos que nos creas.
         </h2>
       </Reveal>
 
-      <div className="mt-10 grid items-start gap-10 lg:grid-cols-2">
-        {/* Línea de tiempo (vertical) */}
-        <div className="relative pl-3">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-[#185de8] to-[#6bdda1]" />
-          <div className="space-y-5">
-            {steps.map(([t, label], i) => (
-              <Reveal key={t} delay={i * 0.1}>
-                <div className="relative flex items-center gap-4">
-                  <span className="relative z-10 block h-3.5 w-3.5 shrink-0 rounded-full bg-[#6bdda1] shadow-[0_0_0_4px_rgba(107,221,161,0.15)]" />
-                  <div className="flex items-baseline gap-3">
-                    <span className="tabular-nums text-[14px] font-bold text-[#6bdda1]">{t}</span>
-                    <span className="text-[16px] text-white/85 sm:text-[17px]">{label}</span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.2}>
-            <p className="mt-7 pl-8 text-[18px] font-bold text-white">
+      <div className="mt-8 grid items-center gap-10 lg:grid-cols-2">
+        <Reveal>
+          <DemoPhone />
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <div className="flex flex-col items-start gap-5">
+            <ReportCard example />
+            <p className="text-[18px] font-bold text-white">
               Sin que nadie de la empresa tocara el teléfono.
             </p>
-          </Reveal>
-        </div>
-
-        {/* Reporte del lunes (ejemplo) */}
-        <Reveal delay={0.15}>
-          <div className="flex flex-col items-center gap-4 lg:items-start">
-            <ReportCard example />
-            <p className="text-center text-[16px] text-white/70 lg:text-left">
-              <span className="font-semibold text-white">Y no miraste un solo WhatsApp.</span>
-            </p>
             {/* TODO: reemplazar por grabación/capturas reales de un cliente (con permiso) */}
-            <p className="text-[12px] text-white/40">Ejemplo ilustrativo, no es la captura de un cliente.</p>
+            <p className="text-[12px] text-white/40">Ejemplo ilustrativo.</p>
           </div>
         </Reveal>
       </div>
