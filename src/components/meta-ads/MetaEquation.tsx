@@ -33,31 +33,36 @@ function Op({ children }: { children: string }) {
 /** Bloque "ecuación": Meta + IA = Más ventas. Reemplaza al bloque $24M→$58M en este tramo. */
 export function MetaEquation() {
   return (
-    <section className="bg-black px-5 py-7 sm:py-10">
+    <section className="bg-black px-5 py-6 sm:py-9">
       <div className="mx-auto max-w-[900px] text-center">
         <Reveal>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-6">
-            <MetaLogo className="h-9 w-auto sm:h-11" />
-            <Op>+</Op>
-            <span
-              className="relative inline-flex items-center gap-1.5 text-[26px] font-extrabold sm:text-[34px]"
-              style={{ fontFamily: 'var(--font-primary)' }}
-            >
-              <Sparkles className="h-4 w-4 text-[#6bdda1] sm:h-5 sm:w-5" aria-hidden />
-              <span className="bg-gradient-to-r from-[#6bdda1] to-[#20c5ff] bg-clip-text text-transparent">IA</span>
+          {/* Dos unidades que NO se parten: "[Meta] + IA" y "= MÁS VENTAS" → corte limpio en 2 líneas. */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-5">
+            <span className="inline-flex items-center gap-3 whitespace-nowrap sm:gap-4">
+              <MetaLogo className="h-9 w-auto sm:h-10" />
+              <Op>+</Op>
+              <span
+                className="inline-flex items-center gap-1.5 text-[26px] font-extrabold sm:text-[32px]"
+                style={{ fontFamily: 'var(--font-primary)' }}
+              >
+                <Sparkles className="h-4 w-4 text-[#6bdda1] sm:h-5 sm:w-5" aria-hidden />
+                <span className="bg-gradient-to-r from-[#6bdda1] to-[#20c5ff] bg-clip-text text-transparent">IA</span>
+              </span>
             </span>
-            <Op>=</Op>
-            <span
-              className="bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-[26px] font-extrabold uppercase tracking-tight text-transparent sm:text-[34px]"
-              style={{ fontFamily: 'var(--font-primary)' }}
-            >
-              Más ventas
+            <span className="inline-flex items-center gap-3 whitespace-nowrap sm:gap-4">
+              <Op>=</Op>
+              <span
+                className="bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-[26px] font-extrabold uppercase tracking-tight text-transparent sm:text-[32px]"
+                style={{ fontFamily: 'var(--font-primary)' }}
+              >
+                Más ventas
+              </span>
             </span>
           </div>
         </Reveal>
 
         <Reveal delay={0.06}>
-          <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-relaxed text-white/60 sm:text-[16px]">
+          <p className="mx-auto mt-4 max-w-[460px] text-[15px] leading-relaxed text-white/60 sm:text-[16px]">
             Más demanda. Respuestas inmediatas. Más oportunidades de venta.
           </p>
         </Reveal>

@@ -74,21 +74,21 @@ export function MetaHero() {
             </span>
             .
           </h1>
-          <p className="mt-4 max-w-[600px] text-[18px] leading-[1.5] text-white/75 sm:text-[19px]">
+          <p className="mt-3 max-w-[560px] text-[17px] leading-[1.5] text-white/75 sm:text-[18px]">
             Hacemos tu publicidad en Meta de punta a punta. Y una IA responde cada consulta en menos
             de un minuto. Sin sumar gente.
           </p>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="mt-7">
+          <div className="mt-6">
             <VSL />
           </div>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-6">
-            <MetaCTA location="hero" />
+          <div className="mt-5">
+            <MetaCTA location="hero" tall />
           </div>
         </Reveal>
       </div>

@@ -58,15 +58,18 @@ export function Section({
   tone = 'dark',
   id,
   className = '',
+  padY = 'py-10 sm:py-16',
 }: {
   children: React.ReactNode;
   tone?: 'dark' | 'soft';
   id?: string;
   className?: string;
+  /** Override de padding vertical (default preserva el de las demás secciones). */
+  padY?: string;
 }) {
   const bg = tone === 'soft' ? 'bg-[#07070c]' : 'bg-[#000000]';
   return (
-    <section id={id} className={`relative ${bg} px-5 py-10 sm:px-6 sm:py-16 ${className}`}>
+    <section id={id} className={`relative ${bg} px-5 ${padY} sm:px-6 ${className}`}>
       <div className="mx-auto w-full max-w-[1120px]">{children}</div>
     </section>
   );
@@ -80,8 +83,9 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** CTA ÚNICO. Destino: el mismo que hoy usa /por-que-scala (/formulario). Mismo estilo de botón. */
-export function MetaCTA({ location }: { location: string }) {
+/** CTA ÚNICO. Destino: el mismo que hoy usa /por-que-scala (/formulario). Mismo estilo de botón.
+ *  `tall` sube la altura/tamaño solo donde se pida (hero), sin afectar los demás CTAs. */
+export function MetaCTA({ location, tall = false }: { location: string; tall?: boolean }) {
   return (
     <div className="w-full">
       <Link
@@ -92,12 +96,12 @@ export function MetaCTA({ location }: { location: string }) {
         className="inline-flex w-full sm:w-auto items-center justify-center no-underline transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99]"
         style={{
           background: CTA_GRADIENT,
-          minHeight: 52,
-          padding: '0 40px',
+          minHeight: tall ? 60 : 52,
+          padding: tall ? '0 44px' : '0 40px',
           borderRadius: 100,
           fontFamily: BRAND_FONT,
           fontWeight: 800,
-          fontSize: 16,
+          fontSize: tall ? 17 : 16,
           color: '#04140d',
           boxShadow: '0 10px 40px rgba(107,221,161,0.18)',
         }}

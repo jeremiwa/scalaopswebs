@@ -149,7 +149,7 @@ export function WhatsAppUnread() {
     ['Nuevo · +54 9 341…', 'Me interesa, ¿cómo sigo?', 'dom 11:08'],
   ];
   return (
-    <PhoneFrame title="Consultas" subtitle="12 sin leer" unread={12} maxW="max-w-[420px]">
+    <PhoneFrame title="Consultas" subtitle="12 sin leer" unread={12} maxW="max-w-[380px]">
       {items.map(([n, t, time], i) => (
         <div key={i} className="flex items-center gap-3 rounded-xl bg-[#111b21] px-3 py-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white/70">
