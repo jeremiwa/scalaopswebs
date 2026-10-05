@@ -60,27 +60,27 @@ function ProofBox() {
         className="text-[26px] sm:text-[30px] font-extrabold leading-none text-white"
         style={{ fontFamily: 'var(--font-primary)' }}
       >
-        $6M <span className="text-[#6bdda1]">→</span> $40M
+        $24M <span className="text-[#6bdda1]">→</span> $58M
       </p>
       <p className="mt-2 text-[13px] text-white/55">de facturación mensual, en 3 meses (en pesos)</p>
-      {/* TODO: confirmar autorización del caso $6M → $40M antes de indexar/pautar */}
+      {/* TODO: confirmar autorización del caso $24M → $58M antes de indexar/pautar */}
     </div>
   );
 }
 
 export function MetaHero() {
   return (
-    <section className="relative overflow-hidden bg-black px-5 pt-8 pb-14 sm:px-6 sm:pt-12 sm:pb-20">
+    <section className="relative overflow-hidden bg-black px-5 pt-6 pb-10 sm:px-6 sm:pt-10 sm:pb-14">
       <div
         className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(90% 55% at 50% 0%, rgba(24,93,232,0.16), transparent 60%), radial-gradient(70% 50% at 85% 15%, rgba(107,221,161,0.10), transparent 60%)' }}
       />
-      {/* Source order = orden mobile. En lg: texto col1/fila1, VSL col2 (span 2 filas), prueba col1/fila2. */}
-      <div className="relative mx-auto grid w-full max-w-[1120px] gap-7 text-left lg:grid-cols-2 lg:items-start lg:gap-12">
+      {/* Mobile: flex-col en orden exacto (sin grid). En lg: grid 2 col con placement por filas. */}
+      <div className="relative mx-auto flex w-full max-w-[1120px] flex-col gap-6 text-left lg:grid lg:grid-cols-2 lg:items-start lg:gap-12">
         <Reveal className="lg:col-start-1 lg:row-start-1">
           <div>
             <Eyebrow>Agencia de Meta Ads</Eyebrow>
-            <h1 className="mt-4 text-[36px] leading-[1.05] font-extrabold tracking-tight text-white sm:text-[44px] lg:text-[52px]">
+            <h1 className="mt-3 text-[32px] leading-[1.06] font-extrabold tracking-tight text-white sm:text-[42px] lg:text-[52px]">
               Más clientes con{' '}
               <span className="whitespace-nowrap bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-transparent">
                 Meta Ads

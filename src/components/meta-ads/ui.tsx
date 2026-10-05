@@ -66,7 +66,7 @@ export function Section({
 }) {
   const bg = tone === 'soft' ? 'bg-[#07070c]' : 'bg-[#000000]';
   return (
-    <section id={id} className={`relative ${bg} px-5 py-14 sm:px-6 sm:py-24 ${className}`}>
+    <section id={id} className={`relative ${bg} px-5 py-10 sm:px-6 sm:py-16 ${className}`}>
       <div className="mx-auto w-full max-w-[1120px]">{children}</div>
     </section>
   );

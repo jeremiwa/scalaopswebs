@@ -1,7 +1,7 @@
 import { Section, Reveal } from './ui';
 
-/** TODO: cupos. Si lo completás (p.ej. 8), se muestra la línea "Trabajamos con N empresas por mes". */
-const CUPOS: number | null = null;
+/** Cupos mensuales. */
+const CUPOS: number | null = 10;
 
 const pasos = [
   ['Llamada', 'Vemos tu publicidad, tus consultas y cómo vendés hoy.'],

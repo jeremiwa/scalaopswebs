@@ -123,7 +123,7 @@ export function MetaTestimonios() {
         </Reveal>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-8">
         <MetaCTA location="testimonios" />
       </div>
     </Section>

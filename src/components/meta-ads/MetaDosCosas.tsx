@@ -72,7 +72,7 @@ export function MetaDosCosas() {
         </Reveal>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-8">
         <MetaCTA location="dos-cosas" />
       </div>
     </Section>
