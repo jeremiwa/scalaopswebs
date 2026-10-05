@@ -60,7 +60,7 @@ function VSL() {
  */
 export function MetaHero() {
   return (
-    <section className="relative overflow-hidden bg-black pt-8 pb-10 sm:pt-12 sm:pb-12">
+    <section className="relative overflow-hidden bg-black pt-5 pb-6 sm:pt-8 sm:pb-8">
       <div
         className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(85% 50% at 50% 0%, rgba(24,93,232,0.12), transparent 62%), radial-gradient(55% 40% at 82% 8%, rgba(107,221,161,0.06), transparent 60%)' }}

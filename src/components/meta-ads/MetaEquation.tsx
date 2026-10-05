@@ -33,7 +33,7 @@ function Op({ children }: { children: string }) {
 /** Bloque "ecuación": Meta + IA = Más ventas. Reemplaza al bloque $24M→$58M en este tramo. */
 export function MetaEquation() {
   return (
-    <section className="bg-black px-5 py-12 sm:py-16">
+    <section className="bg-black px-5 py-7 sm:py-10">
       <div className="mx-auto max-w-[900px] text-center">
         <Reveal>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-6">
