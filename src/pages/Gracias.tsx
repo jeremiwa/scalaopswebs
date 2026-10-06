@@ -5,6 +5,9 @@ import { useEffect } from 'react';
 export const Gracias = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
+        // Conversión: al cargar la página post-formulario disparamos el Lead del pixel nuevo.
+        const w = window as any;
+        if (w.fbq) w.fbq('trackSingle', '4697348820512055', 'Lead');
     }, []);
 
     return (

@@ -47,14 +47,14 @@ export const Formulario = () => {
                 (dataStr.includes('completed') || dataStr.includes('submission-completed'))
             ) {
                 if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala' });
-                if ((window as any).fbq) (window as any).fbq('track', 'Lead');
+                if ((window as any).fbq) (window as any).fbq('trackSingle', '2374948116336820', 'Lead');
                 navigate('/gracias-por-contactarnos');
             } else if (
                 // Some jotform embeds send a different action when redirecting
                 e.data && e.data.action === 'submission-completed'
             ) {
                 if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala' });
-                if ((window as any).fbq) (window as any).fbq('track', 'Lead');
+                if ((window as any).fbq) (window as any).fbq('trackSingle', '2374948116336820', 'Lead');
                 navigate('/gracias-por-contactarnos');
             }
         };
