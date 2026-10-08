@@ -3,6 +3,7 @@
  * Página NUEVA, independiente de /por-que-scala (no comparte componentes editables).
  *
  * Estructura: Header · Hero · Qué hacemos · Testimonios · Cierre · Footer (+ barra fija mobile).
+ * Los CTA abren el formulario propio en un modal (MetaLeadModalProvider), sin salir de la página.
  * TODO: mientras el carrusel de testimonios de texto esté apagado / sin reales, va noindex.
  */
 import { SEO } from '../components/SEO';
@@ -13,6 +14,7 @@ import { MetaQueHacemos } from '../components/meta-ads/MetaQueHacemos';
 import { MetaTestimonios } from '../components/meta-ads/MetaTestimonios';
 import { MetaCierre } from '../components/meta-ads/MetaCierre';
 import { MetaStickyCTA } from '../components/meta-ads/MetaStickyCTA';
+import { MetaLeadModalProvider } from '../components/meta-ads/MetaLeadModal';
 
 export function MetaAds() {
   return (
@@ -23,23 +25,25 @@ export function MetaAds() {
         canonical="https://scalaops.com/meta-ads"
         noindex
       />
-      <MetaHeader />
-      <main>
-        <MetaHero />
-        <MetaQueHacemos />
-        <MetaTestimonios />
-        <MetaCierre />
-      </main>
-      {/* pb extra en mobile para que la barra fija nunca tape el footer */}
-      <footer className="border-t border-white/10 bg-black pt-10 pb-28 text-center lg:pb-10">
-        <div className="meta-shell">
-          <div className="flex justify-center opacity-70">
-            <Logo />
+      <MetaLeadModalProvider>
+        <MetaHeader />
+        <main>
+          <MetaHero />
+          <MetaQueHacemos />
+          <MetaTestimonios />
+          <MetaCierre />
+        </main>
+        {/* pb extra en mobile para que la barra fija nunca tape el footer */}
+        <footer className="border-t border-white/10 bg-black pt-10 pb-28 text-center lg:pb-10">
+          <div className="meta-shell">
+            <div className="flex justify-center opacity-70">
+              <Logo />
+            </div>
+            <p className="mt-3 text-[12px] text-white/40">© {new Date().getFullYear()} SCALA · Agencia de Meta Ads</p>
           </div>
-          <p className="mt-3 text-[12px] text-white/40">© {new Date().getFullYear()} SCALA · Agencia de Meta Ads</p>
-        </div>
-      </footer>
-      <MetaStickyCTA />
+        </footer>
+        <MetaStickyCTA />
+      </MetaLeadModalProvider>
     </div>
   );
 }

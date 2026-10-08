@@ -33,7 +33,7 @@ export const Gracias = () => {
                 </h1>
 
                 <p className="text-lg md:text-xl text-[#A0A0B5] mb-10 max-w-lg mx-auto">
-                    Hemos recibido tu solicitud. Nos estaremos comunicando a la brevedad para entender cómo podemos ayudarte a escalar tu negocio.
+                    Recibimos tus datos. En unos minutos te escribimos por WhatsApp para coordinar la llamada: tené el teléfono a mano.
                 </p>
 
                 <Link to="/" style={{ textDecoration: 'none' }}>

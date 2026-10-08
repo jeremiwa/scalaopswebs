@@ -5,6 +5,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
+import { useLeadModal } from './MetaLeadModal';
 
 type Win = Window & { dataLayer?: unknown[]; fbq?: (...a: unknown[]) => void };
 
@@ -109,7 +110,21 @@ export function MetaLogo({ className = '' }: { className?: string }) {
 }
 
 /**
- * CTA ÚNICO. Destino: /formulario (mismo que /por-que-scala), en pestaña nueva.
+ * Click de cualquier CTA de la landing: registra el evento y abre el formulario en la misma página.
+ * El enlace sigue apuntando a /formulario: quien lo abre en otra pestaña (Cmd/Ctrl+click) llega al mismo formulario.
+ */
+export function useLeadCta(location: string) {
+  const abrirFormulario = useLeadModal();
+  return (e: React.MouseEvent) => {
+    trackMeta('cta_click', { location });
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    abrirFormulario();
+  };
+}
+
+/**
+ * CTA ÚNICO. Abre el formulario propio en un modal (ver MetaLeadModal), sin salir de la landing.
  * Mobile: 100% ancho, 56px alto. Desktop: ancho automático (mín. 260px).
  * `center` centra en desktop (cierre). `microcopy` agrega la línea inferior centrada.
  */
@@ -124,14 +139,13 @@ export function MetaCTA({
   microcopy?: string;
   center?: boolean;
 }) {
+  const onClick = useLeadCta(location);
   return (
     <div className={`w-full ${center ? 'text-center' : ''}`}>
       <Link
         id={id}
         to="/formulario"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackMeta('cta_click', { location })}
+        onClick={onClick}
         className="inline-flex w-full items-center justify-center no-underline transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99] sm:w-auto sm:min-w-[260px]"
         style={{
           background: CTA_GRADIENT,

@@ -1,70 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
 import { Footer } from '../components/Footer';
 import { SEO } from '../components/SEO';
 
+// Se carga aparte: trae la librería de validación de teléfonos, que no hace falta en el resto del sitio.
+const LeadForm = lazy(() => import('../components/lead-form/LeadForm').then((m) => ({ default: m.LeadForm })));
+
+/** Página /formulario: formulario propio (antes era un iframe de Jotform). Acá apuntan los CTA de todo el sitio. */
 export const Formulario = () => {
-    const iframeRef = useRef<HTMLIFrameElement>(null);
-    const navigate = useNavigate();
-
-    const [isLoaded, setIsLoaded] = useState(false);
-
     useEffect(() => {
-
-        const handleIframeMessage = (e: MessageEvent) => {
-            console.log('Jotform Message Received:', e.data);
-
-            // Sometimes Jotform sends an object instead of a string
-            let dataStr = '';
-            if (typeof e.data === 'string') {
-                dataStr = e.data;
-            } else if (typeof e.data === 'object') {
-                try {
-                    dataStr = JSON.stringify(e.data);
-                } catch (err) {
-                    // Ignore
-                }
-            }
-
-            // Jotform sends 'setHeight' or similar events when it renders
-            if (dataStr.includes('setHeight') || dataStr.includes('MinHeight')) {
-                setIsLoaded(true);
-                const parts = dataStr.split(':');
-                if (parts.length >= 2 && parts[0] === 'setHeight' && iframeRef.current) {
-                    iframeRef.current.style.height = `${parts[1]}px`;
-                } else if (dataStr.includes('MinHeight') && iframeRef.current) {
-                    // MinHeight fallback
-                    let minHeightMatch = dataStr.match(/MinHeight:(\d+)/i);
-                    if (minHeightMatch && minHeightMatch[1]) {
-                        iframeRef.current.style.height = `${minHeightMatch[1]}px`;
-                    }
-                }
-            }
-
-            // Check if it's from Jotform and indicates a completion
-            if (
-                dataStr.includes('JotFormIFrame') &&
-                (dataStr.includes('completed') || dataStr.includes('submission-completed'))
-            ) {
-                if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala' });
-                if ((window as any).fbq) (window as any).fbq('trackSingle', '2374948116336820', 'Lead');
-                navigate('/gracias-por-contactarnos');
-            } else if (
-                // Some jotform embeds send a different action when redirecting
-                e.data && e.data.action === 'submission-completed'
-            ) {
-                if ((window as any).dataLayer) (window as any).dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala' });
-                if ((window as any).fbq) (window as any).fbq('trackSingle', '2374948116336820', 'Lead');
-                navigate('/gracias-por-contactarnos');
-            }
-        };
-
-        window.addEventListener('message', handleIframeMessage);
-
-        return () => {
-            window.removeEventListener('message', handleIframeMessage);
-        };
-    }, [navigate]);
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="min-h-screen bg-scala-bg selection:bg-scala-green selection:text-[#030712] relative overflow-x-hidden flex flex-col">
@@ -75,36 +20,14 @@ export const Formulario = () => {
               noindex={true}
             />
             <main className="flex-grow flex items-center justify-center pt-16 pb-16 px-4">
-                <div className="w-full max-w-4xl mx-auto bg-[#050505] rounded-3xl border border-white/5 p-4 md:p-8 shadow-2xl relative">
-                    {/* El Iframe directo corta radicalmente el "waterfall load" evitando inyectar el pesado script wrapper */}
-                    <iframe
-                      ref={iframeRef}
-                      id="JotFormIFrame-261546503182656"
-                      title="Formulario Scala"
-                      onLoad={() => { window.scrollTo(0,0); setIsLoaded(true); }}
-                      allowTransparency={true}
-                      allowFullScreen={true}
-                      allow="geolocation; microphone; camera"
-                      src="https://form.jotform.com/261546503182656"
-                      frameBorder="0"
-                      style={{ minWidth: '100%', maxWidth: '100%', border: 'none', height: '600px', transition: 'height 0.2s ease-out' }}
-                      scrolling="no"
-                      className={`w-full transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    ></iframe>
-
-                    {!isLoaded && (
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <div className="text-white/50 animate-pulse text-lg font-medium tracking-wide">Cargando formulario...</div>
-                        </div>
-                    )}
-
-                    {/* Legal consent */}
-                    <p className="text-center text-[12px] text-white/30 mt-6 leading-[1.6]">
-                      Al enviar este formulario aceptás nuestra{' '}
-                      <Link to="/legales/privacidad" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Política de Privacidad</Link>
-                      {' '}y nuestros{' '}
-                      <Link to="/legales/terminos" className="text-white/50 hover:text-white underline underline-offset-2 transition-colors">Términos y Condiciones</Link>.
+                <div className="w-full max-w-[600px] mx-auto bg-[#050505] rounded-3xl border border-white/5 p-6 md:p-8 shadow-2xl">
+                    <h1 className="text-[26px] md:text-[30px] font-bold leading-tight text-white">Agendar llamada</h1>
+                    <p className="mt-2 mb-7 text-[15px] leading-[1.5] text-white/60">
+                        Completá tus datos y te escribimos por WhatsApp para coordinarla.
                     </p>
+                    <Suspense fallback={<div className="h-[440px]" aria-busy="true" />}>
+                        <LeadForm />
+                    </Suspense>
                 </div>
             </main>
 

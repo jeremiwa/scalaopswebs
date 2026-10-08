@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { trackMeta } from './ui';
+import { useLeadCta } from './ui';
 
 /**
  * Barra fija SOLO mobile. Visible únicamente cuando NO se ve el botón del hero
@@ -8,6 +8,7 @@ import { trackMeta } from './ui';
  */
 export function MetaStickyCTA() {
   const [show, setShow] = useState(false);
+  const onCta = useLeadCta('sticky');
 
   useEffect(() => {
     const hero = document.getElementById('meta-hero-cta');
@@ -42,9 +43,7 @@ export function MetaStickyCTA() {
       <div className="meta-shell bg-black/90 pt-3 pb-[calc(env(safe-area-inset-bottom,0px)+12px)] backdrop-blur-md">
         <Link
           to="/formulario"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackMeta('cta_click', { location: 'sticky' })}
+          onClick={onCta}
           className="flex h-[52px] w-full items-center justify-center rounded-full text-[16px] font-extrabold text-[#04140d] no-underline"
           style={{ background: 'linear-gradient(90deg,#185de8,#6bdda1)' }}
         >
