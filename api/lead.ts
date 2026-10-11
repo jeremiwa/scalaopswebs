@@ -50,6 +50,12 @@ export default async function handler(req: any, res: any) {
     }
 
     try {
+        // Primero la configuración: así un deploy sin la variable se detecta con cualquier pedido, sin mandar un lead.
+        const intakeUrl = process.env.SENTINEL_FORM_INTAKE_URL;
+        if (!intakeUrl) {
+            return res.status(500).json({ error: 'SENTINEL_FORM_INTAKE_URL is not configured.' });
+        }
+
         const forwarded = req.headers['x-forwarded-for'];
         const ip = String(Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
         if (isRateLimited(ip)) {
@@ -90,11 +96,6 @@ export default async function handler(req: any, res: any) {
             !consultas
         ) {
             return res.status(400).json({ error: 'Faltan datos o hay alguno inválido.' });
-        }
-
-        const intakeUrl = process.env.SENTINEL_FORM_INTAKE_URL;
-        if (!intakeUrl) {
-            return res.status(500).json({ error: 'SENTINEL_FORM_INTAKE_URL is not configured.' });
         }
 
         // Nombres de campo que Sentinel ya entiende. Lo que coincide con el checklist del

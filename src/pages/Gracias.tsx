@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { useEffect } from 'react';
+import { FORMULARIO_PROPIO } from '../components/lead-form/formularioPropio';
 
 export const Gracias = () => {
     useEffect(() => {
@@ -33,7 +34,9 @@ export const Gracias = () => {
                 </h1>
 
                 <p className="text-lg md:text-xl text-[#A0A0B5] mb-10 max-w-lg mx-auto">
-                    Recibimos tus datos. En unos minutos te escribimos por WhatsApp para coordinar la llamada: tené el teléfono a mano.
+                    {FORMULARIO_PROPIO
+                        ? 'Recibimos tus datos. En unos minutos te escribimos por WhatsApp para coordinar la llamada: tené el teléfono a mano.'
+                        : 'Hemos recibido tu solicitud. Nos estaremos comunicando a la brevedad para entender cómo podemos ayudarte a escalar tu negocio.'}
                 </p>
 
                 <Link to="/" style={{ textDecoration: 'none' }}>

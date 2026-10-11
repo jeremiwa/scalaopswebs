@@ -29,12 +29,21 @@ function devFormApi(env: Record<string, string>): Plugin {
             const raw = Buffer.concat(chunks).toString('utf8');
             (req as any).body = raw ? JSON.parse(raw) : {};
             if (env.DEV_GEO_COUNTRY) req.headers['x-vercel-ip-country'] = env.DEV_GEO_COUNTRY;
-            process.env.SENTINEL_FORM_INTAKE_URL ??= env.SENTINEL_FORM_INTAKE_URL;
             const mod = await server.ssrLoadModule(`/api/${name}.ts`);
-            await mod.default(req, {
-              setHeader: (key: string, value: string) => res.setHeader(key, value),
-              status: (code: number) => ({json: (data: unknown) => send(code, data)}),
-            });
+            // La variable se presta sólo durante el pedido. Si quedara en process.env, loadEnv la
+            // seguiría viendo aunque se borre o cambie en .env.local (y un cambio de mock a producción,
+            // o al revés, no se aplicaría hasta matar el proceso).
+            const previo = process.env.SENTINEL_FORM_INTAKE_URL;
+            if (env.SENTINEL_FORM_INTAKE_URL) process.env.SENTINEL_FORM_INTAKE_URL = env.SENTINEL_FORM_INTAKE_URL;
+            try {
+              await mod.default(req, {
+                setHeader: (key: string, value: string) => res.setHeader(key, value),
+                status: (code: number) => ({json: (data: unknown) => send(code, data)}),
+              });
+            } finally {
+              if (previo === undefined) delete process.env.SENTINEL_FORM_INTAKE_URL;
+              else process.env.SENTINEL_FORM_INTAKE_URL = previo;
+            }
           } catch (error: any) {
             send(500, {error: error?.message || 'dev api error'});
           }
@@ -50,6 +59,8 @@ export default defineConfig(({mode}) => {
     plugins: [react(), tailwindcss(), devFormApi(env)],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      // Sólo se publica si la variable existe o no, nunca su valor. Ver src/components/lead-form/formularioPropio.ts.
+      __FORMULARIO_PROPIO__: JSON.stringify(Boolean(env.SENTINEL_FORM_INTAKE_URL)),
     },
     resolve: {
       alias: {

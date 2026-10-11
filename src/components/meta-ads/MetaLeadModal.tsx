@@ -4,6 +4,7 @@
  */
 import React, { Suspense, createContext, lazy, useCallback, useContext, useEffect, useId, useRef, useState } from 'react';
 import { X } from 'lucide-react';
+import { FORMULARIO_PROPIO } from '../lead-form/formularioPropio';
 
 // Se carga aparte (trae la librería de validación de teléfonos) y se pide de antemano
 // apenas la landing queda quieta, para que al tocar el CTA ya esté lista.
@@ -38,6 +39,7 @@ export function MetaLeadModalProvider({ children }: { children: React.ReactNode 
   }, []);
 
   useEffect(() => {
+    if (!FORMULARIO_PROPIO) return;
     const reloj = window.setTimeout(() => void cargarLeadForm().catch(() => {}), 2000);
     return () => window.clearTimeout(reloj);
   }, []);

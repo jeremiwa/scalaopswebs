@@ -6,6 +6,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useLeadModal } from './MetaLeadModal';
+import { FORMULARIO_PROPIO } from '../lead-form/formularioPropio';
 
 type Win = Window & { dataLayer?: unknown[]; fbq?: (...a: unknown[]) => void };
 
@@ -117,11 +118,16 @@ export function useLeadCta(location: string) {
   const abrirFormulario = useLeadModal();
   return (e: React.MouseEvent) => {
     trackMeta('cta_click', { location });
+    // Sin formulario propio en este deploy: el enlace abre /formulario (Jotform) en otra pestaña, como antes.
+    if (!FORMULARIO_PROPIO) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
     abrirFormulario();
   };
 }
+
+/** Atributos del enlace de los CTA: con Jotform se abre en pestaña nueva; con el formulario propio no hace falta. */
+export const CTA_LINK_PROPS = FORMULARIO_PROPIO ? {} : { target: '_blank', rel: 'noopener noreferrer' };
 
 /**
  * CTA ÚNICO. Abre el formulario propio en un modal (ver MetaLeadModal), sin salir de la landing.
@@ -145,6 +151,7 @@ export function MetaCTA({
       <Link
         id={id}
         to="/formulario"
+        {...CTA_LINK_PROPS}
         onClick={onClick}
         className="inline-flex w-full items-center justify-center no-underline transition-transform duration-300 hover:scale-[1.02] active:scale-[0.99] sm:w-auto sm:min-w-[260px]"
         style={{

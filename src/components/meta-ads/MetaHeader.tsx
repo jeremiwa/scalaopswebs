@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Logo } from '../ui/Logo';
-import { useLeadCta } from './ui';
+import { CTA_LINK_PROPS, useLeadCta } from './ui';
 
 /** Header mínimo: logo SCALA. El CTA del header se muestra SOLO en desktop (en mobile queda el del hero + la barra fija). */
 export function MetaHeader() {
@@ -11,6 +11,7 @@ export function MetaHeader() {
         <Logo />
         <Link
           to="/formulario"
+          {...CTA_LINK_PROPS}
           onClick={onCta}
           className="hidden items-center justify-center text-[#04140d] no-underline lg:inline-flex"
           style={{

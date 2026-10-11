@@ -1,12 +1,16 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Footer } from '../components/Footer';
 import { SEO } from '../components/SEO';
+import { FORMULARIO_PROPIO } from '../components/lead-form/formularioPropio';
+import { FormularioJotform } from './FormularioJotform';
 
 // Se carga aparte: trae la librería de validación de teléfonos, que no hace falta en el resto del sitio.
 const LeadForm = lazy(() => import('../components/lead-form/LeadForm').then((m) => ({ default: m.LeadForm })));
 
-/** Página /formulario: formulario propio (antes era un iframe de Jotform). Acá apuntan los CTA de todo el sitio. */
-export const Formulario = () => {
+/** Página /formulario. Acá apuntan los CTA de todo el sitio. Formulario propio si el deploy lo tiene activo; si no, Jotform. */
+export const Formulario = () => (FORMULARIO_PROPIO ? <FormularioPropio /> : <FormularioJotform />);
+
+const FormularioPropio = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
