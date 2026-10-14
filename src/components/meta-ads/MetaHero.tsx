@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Sparkles } from 'lucide-react';
 import { MetaCTA, MetaLogo, Reveal, trackMeta } from './ui';
 
-/** ID del VSL (YouTube). Definitivo. */
-const VSL_YOUTUBE_ID = 'VYfRjaPxMb4';
+/** ID del VSL (Vimeo). Definitivo. */
+const VSL_VIMEO_ID = '1235929852';
 
 const grad = 'bg-gradient-to-r from-[#185de8] to-[#6bdda1] bg-clip-text text-transparent';
 
@@ -24,50 +24,66 @@ function Formula() {
   );
 }
 
-/** VSL con FACHADA: thumbnail + Play; el iframe de YouTube se carga recién al hacer click.
- *  16:9, bordes SCALA, playsinline, sin autoplay con sonido. */
+/** VSL de Vimeo embebido (16:9, bordes SCALA). Muestra el póster propio de Vimeo y reproduce al
+ *  click del usuario (sin autoplay). Conserva el evento de funnel `vsl_play` vía la Player API
+ *  (player.js), igual que el tracking anterior. Mismo patrón de embed que el testimonio de Jordi. */
 function VSL() {
-  const [play, setPlay] = useState(false);
+  const ref = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let player: any;
+
+    const wire = () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const Vimeo = (window as any).Vimeo;
+      if (!Vimeo || !ref.current || cancelled) return;
+      player = new Vimeo.Player(ref.current);
+      let fired = false;
+      player.on('play', () => {
+        if (fired) return; // una sola vez por carga, como la fachada anterior
+        fired = true;
+        trackMeta('vsl_play', { where: 'hero' });
+      });
+    };
+
+    const SRC = 'https://player.vimeo.com/api/player.js';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((window as any).Vimeo) {
+      wire();
+    } else {
+      const existing = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`);
+      if (existing) {
+        existing.addEventListener('load', wire);
+      } else {
+        const s = document.createElement('script');
+        s.src = SRC;
+        s.async = true;
+        s.addEventListener('load', wire);
+        document.body.appendChild(s);
+      }
+    }
+
+    return () => {
+      cancelled = true;
+      if (player && typeof player.off === 'function') player.off('play');
+    };
+  }, []);
+
   return (
     <div className="relative w-full overflow-hidden rounded-[16px] border border-white/10 bg-[#050505] shadow-[0_18px_44px_rgba(0,0,0,0.45)]">
       <div className="relative" style={{ aspectRatio: '16 / 9' }}>
-        {play ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${VSL_YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="absolute inset-0 h-full w-full"
-            title="VSL SCALA — Meta Ads"
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={() => {
-              trackMeta('vsl_play', { where: 'hero' });
-              setPlay(true);
-            }}
-            aria-label="Reproducir video"
-            className="group absolute inset-0 h-full w-full cursor-pointer border-0 p-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6bdda1]"
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${VSL_YOUTUBE_ID}/maxresdefault.jpg`}
-              onError={(e) => {
-                e.currentTarget.src = `https://i.ytimg.com/vi/${VSL_YOUTUBE_ID}/hqdefault.jpg`;
-              }}
-              loading="lazy"
-              alt="Ver el video de SCALA"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/10" />
-            <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 shadow-lg transition-transform group-hover:scale-105">
-              <svg width="22" height="24" viewBox="0 0 22 24" fill="#04140d" aria-hidden>
-                <path d="M21 12 0 24V0z" />
-              </svg>
-            </span>
-          </button>
-        )}
+        <iframe
+          ref={ref}
+          src={`https://player.vimeo.com/video/${VSL_VIMEO_ID}?badge=0&autopause=0&player_id=0&app_id=58479`}
+          loading="lazy"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          className="absolute inset-0 h-full w-full"
+          title="SCALA META ADS"
+        />
       </div>
     </div>
   );
