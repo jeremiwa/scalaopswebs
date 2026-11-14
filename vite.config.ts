@@ -10,6 +10,8 @@ import {defineConfig, loadEnv, type Plugin} from 'vite';
  * DEV_GEO_COUNTRY en .env.local simula el país que Vercel detecta por IP.
  */
 const DEV_API = ['lead', 'check-whatsapp', 'geo'];
+/** Variables de servidor que usan esas funciones (en Vercel van en el proyecto). */
+const DEV_SERVER_ENV = ['SENTINEL_FORM_INTAKE_URL', 'META_CAPI_ACCESS_TOKEN', 'META_CAPI_TEST_EVENT_CODE'];
 
 function devFormApi(env: Record<string, string>): Plugin {
   return {
@@ -30,19 +32,21 @@ function devFormApi(env: Record<string, string>): Plugin {
             (req as any).body = raw ? JSON.parse(raw) : {};
             if (env.DEV_GEO_COUNTRY) req.headers['x-vercel-ip-country'] = env.DEV_GEO_COUNTRY;
             const mod = await server.ssrLoadModule(`/api/${name}.ts`);
-            // La variable se presta sólo durante el pedido. Si quedara en process.env, loadEnv la
-            // seguiría viendo aunque se borre o cambie en .env.local (y un cambio de mock a producción,
+            // Las variables se prestan sólo durante el pedido. Si quedaran en process.env, loadEnv las
+            // seguiría viendo aunque se borren o cambien en .env.local (y un cambio de mock a producción,
             // o al revés, no se aplicaría hasta matar el proceso).
-            const previo = process.env.SENTINEL_FORM_INTAKE_URL;
-            if (env.SENTINEL_FORM_INTAKE_URL) process.env.SENTINEL_FORM_INTAKE_URL = env.SENTINEL_FORM_INTAKE_URL;
+            const previos = DEV_SERVER_ENV.map((k) => [k, process.env[k]] as const);
+            for (const k of DEV_SERVER_ENV) if (env[k]) process.env[k] = env[k];
             try {
               await mod.default(req, {
                 setHeader: (key: string, value: string) => res.setHeader(key, value),
                 status: (code: number) => ({json: (data: unknown) => send(code, data)}),
               });
             } finally {
-              if (previo === undefined) delete process.env.SENTINEL_FORM_INTAKE_URL;
-              else process.env.SENTINEL_FORM_INTAKE_URL = previo;
+              for (const [k, previo] of previos) {
+                if (previo === undefined) delete process.env[k];
+                else process.env[k] = previo;
+              }
             }
           } catch (error: any) {
             send(500, {error: error?.message || 'dev api error'});

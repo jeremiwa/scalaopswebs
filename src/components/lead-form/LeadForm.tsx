@@ -1,7 +1,9 @@
 /**
  * Formulario propio "Agendar llamada" (reemplaza al iframe de Jotform).
- * Mismas preguntas que el Jotform, en dos pasos: datos de contacto y datos del negocio.
- * Envía a /api/lead, que lo reenvía a Sentinel (CRM + WhatsApp de apertura).
+ * Dos pasos: datos de contacto y datos del negocio (con facturación, capital si factura
+ * menos de USD 3.000, y a cuánto quiere llevarla).
+ * Envía a /api/lead, que lo reenvía a Sentinel (CRM + WhatsApp de apertura) y, si factura
+ * USD 3.000 o más, le avisa a Meta con SubmitApplication (ver calificacion.ts).
  * El país se preselecciona por la IP del visitante (/api/geo) y el número se comprueba
  * contra WhatsApp antes de pasar al paso 2 (/api/check-whatsapp).
  * Se usa en /formulario y en el modal de /meta-ads.
@@ -11,7 +13,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   CONSULTAS_POR_MES,
   EJEMPLO_DE_NUMERO,
-  FACTURACION_MENSUAL,
   INVERSION_MENSUAL,
   PAISES,
   PAISES_FRECUENTES,
@@ -21,6 +22,15 @@ import {
   paisSugerido,
   paisValido,
 } from './leadFormData';
+import {
+  CAPITAL_DISPONIBLE,
+  EVENTO_CALIFICADO,
+  FACTURACION_MENSUAL,
+  FACTURACION_OBJETIVO,
+  FACTURACION_PIDE_CAPITAL,
+  PIXEL_CAMPANAS,
+  calificaParaMeta,
+} from '../../../api/_lib/calificacion';
 
 type Campo =
   | 'nombre'
@@ -32,6 +42,8 @@ type Campo =
   | 'publicidad'
   | 'inversion'
   | 'facturacion'
+  | 'capital'
+  | 'objetivo'
   | 'consultas'
   | 'website';
 
@@ -39,7 +51,7 @@ type Valores = Record<Campo, string>;
 type Errores = Partial<Record<Campo, string>>;
 
 const PASO_1: Campo[] = ['nombre', 'empresa', 'email', 'telefono'];
-const PASO_2: Campo[] = ['publicidad', 'inversion', 'facturacion', 'consultas'];
+const PASO_2: Campo[] = ['publicidad', 'inversion', 'facturacion', 'capital', 'objetivo', 'consultas'];
 
 const CTA_GRADIENT = 'linear-gradient(90deg,#185de8,#6bdda1)';
 const ERROR_GENERICO = 'No pudimos enviar tus datos. Probá de nuevo en unos segundos.';
@@ -59,9 +71,11 @@ function validar(v: Valores, campos: Campo[]): Errores {
       const tel = analizarTelefono(v.telefono, v.pais);
       if (tel.ok === false) e.telefono = tel.error;
     }
-    if ((c === 'publicidad' || c === 'inversion' || c === 'facturacion' || c === 'consultas') && !v[c]) {
+    if ((c === 'publicidad' || c === 'inversion' || c === 'facturacion' || c === 'objetivo' || c === 'consultas') && !v[c]) {
       e[c] = 'Elegí una opción.';
     }
+    // El capital sólo se pregunta (y se exige) a quien factura menos de USD 3.000.
+    if (c === 'capital' && v.facturacion === FACTURACION_PIDE_CAPITAL && !v.capital) e.capital = 'Elegí una opción.';
   }
   return e;
 }
@@ -101,6 +115,16 @@ async function consultarWhatsApp(codigoPais: string, nacional: string): Promise<
   }
 }
 
+/** Identificador del envío, el mismo para el evento del navegador y el del servidor: así Meta los deduplica. */
+function nuevoEventId(): string {
+  try {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+  } catch {
+    /* navegadores viejos: sigue abajo */
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+}
+
 function Chevron() {
   return (
     <svg
@@ -133,6 +157,8 @@ export function LeadForm() {
     publicidad: '',
     inversion: '',
     facturacion: '',
+    capital: '',
+    objetivo: '',
     consultas: '',
     website: '',
   }));
@@ -144,6 +170,8 @@ export function LeadForm() {
   const paisTocado = useRef(false);
   /** Último número que WhatsApp confirmó, para no volver a consultarlo al ir y volver de paso. */
   const numeroConfirmado = useRef('');
+  /** Uno por formulario: si la persona reintenta tras un error, Meta no lo cuenta dos veces. */
+  const eventId = useRef(nuevoEventId());
 
   const pais = paisPorCodigo(v.pais);
   const id = (campo: Campo) => `${uid}-${campo}`;
@@ -165,7 +193,12 @@ export function LeadForm() {
   }, []);
 
   const set = (campo: Campo, valor: string) => {
-    setV((prev) => ({ ...prev, [campo]: valor }));
+    setV((prev) => ({
+      ...prev,
+      [campo]: valor,
+      // Si deja de facturar menos de USD 3.000, el capital que había elegido ya no corresponde.
+      ...(campo === 'facturacion' && valor !== FACTURACION_PIDE_CAPITAL ? { capital: '' } : {}),
+    }));
     if (errores[campo]) setErrores((prev) => ({ ...prev, [campo]: undefined }));
   };
 
@@ -224,6 +257,8 @@ export function LeadForm() {
 
     setEnviando(true);
     setErrorEnvio('');
+    // Link de WhatsApp con el mensaje listo, si Sentinel lo armó (ver api/lead.ts). Sin link, Sentinel le escribe él.
+    let whatsapp = '';
     try {
       const res = await fetch('/api/lead', {
         method: 'POST',
@@ -233,13 +268,18 @@ export function LeadForm() {
           empresa: v.empresa.trim(),
           email: v.email.trim(),
           pais: paisPorCodigo(tel.pais).name,
+          pais_iso: tel.pais,
           codigo_pais: tel.codigoPais,
           telefono: tel.nacional,
           rubro: v.rubro,
           publicidad_activa: v.publicidad,
           inversion: v.inversion,
           facturacion: v.facturacion,
+          capital: v.facturacion === FACTURACION_PIDE_CAPITAL ? v.capital : '',
+          objetivo: v.objetivo,
           consultas: v.consultas,
+          event_id: eventId.current,
+          url: window.location.href,
           pagina: window.location.pathname,
           utm: utmDeLaUrl(),
           website: v.website,
@@ -251,6 +291,7 @@ export function LeadForm() {
         setEnviando(false);
         return;
       }
+      if (typeof data.whatsapp_url === 'string' && data.whatsapp_url.startsWith('https://wa.me/')) whatsapp = data.whatsapp_url;
     } catch {
       setErrorEnvio(ERROR_GENERICO);
       setEnviando(false);
@@ -261,7 +302,12 @@ export function LeadForm() {
     const w = window as any;
     if (w.dataLayer) w.dataLayer.push({ event: 'form_submitted', form_name: 'aplicacion_scala', pagina: window.location.pathname });
     if (w.fbq) w.fbq('trackSingle', '2374948116336820', 'Lead');
-    navigate('/gracias-por-contactarnos');
+    // Calificado (factura USD 3.000 o más): el mismo evento que manda el servidor por Conversions API, con el mismo id.
+    if (w.fbq && calificaParaMeta(v.facturacion)) {
+      w.fbq('trackSingle', PIXEL_CAMPANAS, EVENTO_CALIFICADO, { facturacion_mensual: v.facturacion }, { eventID: eventId.current });
+    }
+    // Recién después de los eventos. "envio" identifica este envío: la página de gracias dispara su Lead una sola vez por envío.
+    navigate('/gracias-por-contactarnos', { state: { envio: eventId.current, ...(whatsapp ? { whatsapp } : {}) } });
   };
 
   /**
@@ -511,7 +557,10 @@ export function LeadForm() {
           </fieldset>
 
           {select('inversion', '¿Cuánto invertís al mes en publicidad?', INVERSION_MENSUAL)}
-          {select('facturacion', 'Facturación mensual aproximada', FACTURACION_MENSUAL)}
+          {select('facturacion', '¿Cuánto factura tu negocio por mes (neto)?', FACTURACION_MENSUAL)}
+          {v.facturacion === FACTURACION_PIDE_CAPITAL &&
+            select('capital', '¿Cuánto capital tenés disponible para invertir en el negocio?', CAPITAL_DISPONIBLE)}
+          {select('objetivo', '¿A cuánto te gustaría llevar tu facturación mensual?', FACTURACION_OBJETIVO)}
           {select('consultas', '¿Cuántas consultas recibís por mes, aproximadamente?', CONSULTAS_POR_MES)}
         </div>
       )}

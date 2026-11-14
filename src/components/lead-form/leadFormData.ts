@@ -1,7 +1,7 @@
 /**
  * Datos del formulario propio (reemplaza a Jotform): opciones de cada pregunta,
  * países con su prefijo y la validación del número de WhatsApp (libphonenumber).
- * Las preguntas y opciones son las mismas que tenía el Jotform "Agendar llamada".
+ * Las preguntas de facturación, capital y objetivo están en calificacion.ts (las usa también el servidor).
  */
 import { getCountries, getCountryCallingCode, parsePhoneNumberFromString, type CountryCode } from 'libphonenumber-js/min';
 
@@ -22,14 +22,6 @@ export const INVERSION_MENSUAL = [
   '5.000 a 10.000 USD',
   '10.000 a 30.000 USD',
   'Más de 30.000 USD',
-];
-
-export const FACTURACION_MENSUAL = [
-  'Menos de USD 5.000',
-  'USD 5.000 – 20.000',
-  'USD 20.000 – 50.000',
-  'USD 50.000 – 100.000',
-  'USD 100.000+',
 ];
 
 export const CONSULTAS_POR_MES = [
