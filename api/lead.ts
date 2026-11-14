@@ -30,13 +30,15 @@ const RATE_LIMIT_WINDOW_MS = 60000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 
 /**
- * Con la redirección, Sentinel contesta en uno o dos segundos con el link. Cuando
- * igual le escribe él (camino de siempre), responde recién después de generar y
- * mandar la apertura: varios segundos. El lead ya quedó creado mucho antes, así que
- * no hacemos esperar a la persona: si en este plazo no hubo error, se da por recibido
- * (sin link: Sentinel le escribe).
+ * Con la redirección, Sentinel tarda unos 4,5 s en contestar con el link (revisa la
+ * sesión de cada línea en Evolution). Si la web se rinde antes, el link se pierde y,
+ * como Sentinel ya dejó al lead esperando que escriba él, nadie le escribe: el 14/11
+ * pasó con los 6 formularios del día con 4 s de espera. Por eso el plazo es holgado.
+ * Cuando igual le escribe Sentinel (lead que ya tenía conversación), responde recién
+ * después de generar y mandar la apertura (~20 s): ahí se da por recibido al vencer
+ * el plazo, sin link, y Sentinel le escribe.
  */
-const SENTINEL_WAIT_MS = 4000;
+const SENTINEL_WAIT_MS = 12000;
 
 /** El link que devuelve Sentinel, sólo si es de WhatsApp. Cualquier otra cosa se ignora. */
 function linkDeWhatsApp(v: unknown): string {
