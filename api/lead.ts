@@ -21,7 +21,8 @@ import { enviarEventoCalificado } from './_lib/metaCapi.js';
 import { calificaParaMeta } from './_lib/calificacion.js';
 
 export const config = {
-    maxDuration: 30,
+    // La espera a Sentinel (SENTINEL_WAIT_MS) más el aviso a Meta (3,5 s como mucho) y margen.
+    maxDuration: 90,
 };
 
 // In-memory rate limiting
@@ -33,12 +34,13 @@ const MAX_REQUESTS_PER_WINDOW = 5;
  * Con la redirección, Sentinel tarda unos 4,5 s en contestar con el link (revisa la
  * sesión de cada línea en Evolution). Si la web se rinde antes, el link se pierde y,
  * como Sentinel ya dejó al lead esperando que escriba él, nadie le escribe: el 14/11
- * pasó con los 6 formularios del día con 4 s de espera. Por eso el plazo es holgado.
+ * pasó con los 6 formularios del día con 4 s de espera. Por eso se espera hasta un
+ * minuto, tarde lo que tarde (el formulario le muestra "generando tu link").
  * Cuando igual le escribe Sentinel (lead que ya tenía conversación), responde recién
- * después de generar y mandar la apertura (~20 s): ahí se da por recibido al vencer
- * el plazo, sin link, y Sentinel le escribe.
+ * después de generar y mandar la apertura (~20 s), sin link, y Sentinel le escribe.
+ * Si se pasa del minuto, se da por recibido igual, sin link.
  */
-const SENTINEL_WAIT_MS = 12000;
+const SENTINEL_WAIT_MS = 60000;
 
 /** El link que devuelve Sentinel, sólo si es de WhatsApp. Cualquier otra cosa se ignora. */
 function linkDeWhatsApp(v: unknown): string {

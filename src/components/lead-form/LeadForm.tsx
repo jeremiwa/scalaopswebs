@@ -55,6 +55,8 @@ const PASO_2: Campo[] = ['publicidad', 'inversion', 'facturacion', 'capital', 'o
 
 const CTA_GRADIENT = 'linear-gradient(90deg,#185de8,#6bdda1)';
 const ERROR_GENERICO = 'No pudimos enviar tus datos. Probá de nuevo en unos segundos.';
+/** Desde cuándo el aviso de espera dice que está tardando más de lo normal (lo normal son unos 5 s). */
+const ESPERA_LARGA_MS = 12000;
 
 const labelCls = 'mb-1.5 block text-[14px] font-medium leading-[1.35] text-white/85';
 const controlCls =
@@ -164,6 +166,16 @@ export function LeadForm() {
   }));
   const [errores, setErrores] = useState<Errores>({});
   const [enviando, setEnviando] = useState(false);
+  // Sentinel puede tardar hasta un minuto en armar el link de WhatsApp: pasado un rato se avisa que sigue en curso.
+  const [demora, setDemora] = useState(false);
+  useEffect(() => {
+    if (!enviando) {
+      setDemora(false);
+      return;
+    }
+    const t = window.setTimeout(() => setDemora(true), ESPERA_LARGA_MS);
+    return () => window.clearTimeout(t);
+  }, [enviando]);
   const [verificando, setVerificando] = useState(false);
   const [errorEnvio, setErrorEnvio] = useState('');
   /** La persona ya eligió país o empezó a escribir el número: el país por IP no se lo pisa. */
@@ -587,8 +599,28 @@ export function LeadForm() {
             color: '#04140d',
           }}
         >
-          {paso === 1 ? (verificando ? 'Verificando tu WhatsApp…' : 'Continuar') : enviando ? 'Enviando…' : 'Enviar'}
+          {paso === 1 ? (
+            verificando ? 'Verificando tu WhatsApp…' : 'Continuar'
+          ) : enviando ? (
+            <span className="inline-flex items-center gap-2.5">
+              <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="3" opacity="0.25" />
+                <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+              Generando tu link de WhatsApp…
+            </span>
+          ) : (
+            'Enviar'
+          )}
         </button>
+
+        {paso === 2 && enviando && (
+          <p role="status" aria-live="polite" className="mt-3 text-center text-[14px] leading-[1.45] text-white/70">
+            {demora
+              ? 'Está tardando un poco más de lo normal. Ya casi está: no cierres esta página.'
+              : 'Estamos preparando tu chat de WhatsApp con el mensaje listo. Tarda unos segundos.'}
+          </p>
+        )}
 
         {paso === 2 && (
           <>
