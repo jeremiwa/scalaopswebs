@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const sections = [
   {
     title: "1. Introducción",
-    content: `En Scala Ops valoramos la privacidad de las personas que visitan nuestro sitio web y se contactan con nosotros. Esta Política de Privacidad describe de qué manera recopilamos, utilizamos, almacenamos y protegemos la información que los usuarios nos proporcionan a través de nuestro sitio web, formularios, canales de contacto y herramientas vinculadas.\n\nEl uso del sitio web de Scala Ops implica la lectura y aceptación de esta Política de Privacidad. Si una persona no estuviera de acuerdo con alguna de sus disposiciones, deberá abstenerse de utilizar el sitio y de proporcionar datos personales por medio del mismo.`
+    content: `En Scala Ops valoramos la privacidad de las personas que visitan nuestro sitio web y se contactan con nosotros. Esta Política de Privacidad describe de qué manera recopilamos, utilizamos, almacenamos y protegemos la información que los usuarios nos proporcionan a través de nuestro sitio web, formularios, canales de contacto y herramientas vinculadas.\n\nEl uso del sitio web de Scala Ops implica la lectura y aceptación de esta Política de Privacidad. Si una persona no estuviera de acuerdo con alguna de sus disposiciones, deberá abstenerse de utilizar el sitio y de proporcionar datos personales por medio del mismo.\n\nResponsable: Scala Ops es el nombre comercial de Franco Villa (VILLA, FRANCO), persona humana inscripta ante la Agencia de Recaudación y Control Aduanero (ARCA), con domicilio en Pinamar, Provincia de Buenos Aires, Argentina.`
   },
   {
     title: "2. Alcance",
-    content: `Esta política aplica al uso del sitio web de Scala Ops, a los formularios de contacto, a los medios de comunicación integrados en el sitio —incluyendo WhatsApp— y a las herramientas que puedan utilizarse para gestionar consultas, seguimiento comercial, automatización y comunicaciones informativas o comerciales.`
+    content: `Esta política aplica al uso del sitio web de Scala Ops, a los formularios de contacto, a los medios de comunicación integrados en el sitio —incluyendo WhatsApp— y a las herramientas que puedan utilizarse para gestionar consultas, seguimiento comercial, automatización y comunicaciones informativas o comerciales.\n\nTambién aplica a Sentinel, la plataforma de atención y seguimiento comercial por WhatsApp que Scala Ops presta a empresas, en los términos de la sección 12.`
   },
   {
     title: "3. Información que recopilamos",
@@ -108,28 +108,44 @@ const sections = [
     content2: `Dicha compartición se limita, en principio, a lo necesario para operar el sitio, gestionar consultas y desarrollar actividades razonablemente vinculadas a la prestación o promoción de los servicios.`
   },
   {
-    title: "12. Derechos del usuario",
+    title: "12. Datos que Sentinel procesa por cuenta de empresas clientes",
+    content: `Scala Ops presta a empresas el servicio Sentinel, un asistente que atiende y da seguimiento por WhatsApp a las personas que se contactan con esas empresas. Para hacerlo, la empresa conecta su cuenta de WhatsApp Business a Sentinel, ya sea mediante la plataforma oficial de WhatsApp Business de Meta (WhatsApp Business Platform / Cloud API) o mediante otras integraciones autorizadas por la empresa.\n\nEn ese caso, la empresa cliente es la responsable del tratamiento de los datos de sus contactos y Scala Ops actúa como encargado del tratamiento: trata esos datos sólo por cuenta y según las instrucciones de la empresa, para prestarle el servicio. Los datos que pueden tratarse son:`,
+    list: [
+      "Número de teléfono y nombre de perfil de WhatsApp de quien escribe",
+      "Mensajes de texto, notas de voz, imágenes, videos y documentos enviados o recibidos en la conversación",
+      "Estado de los mensajes (enviado, entregado, leído) y fecha y hora",
+      "Origen del contacto, como el anuncio o formulario por el que llegó",
+      "Datos que la propia empresa carga sobre sus contactos (por ejemplo, etapa comercial o notas)"
+    ],
+    content2: `Esos datos se usan para responder y dar seguimiento a las consultas en nombre de la empresa, transcribir notas de voz y describir imágenes para poder responderlas, mostrarle las conversaciones al equipo de la empresa y generarle métricas de su atención. No se usan para fines propios de Scala Ops, no se venden ni se comparten con otras empresas clientes.\n\nPara prestar el servicio intervienen proveedores que procesan esos datos por cuenta de Scala Ops: Meta Platforms (WhatsApp), proveedores de infraestructura y bases de datos en la nube, y proveedores de modelos de inteligencia artificial contratados por API para generar respuestas, transcribir audio y describir imágenes, según sus condiciones de uso por API.\n\nLos datos se conservan mientras la empresa cliente mantenga el servicio. Cuando la empresa desconecta su cuenta o da de baja el servicio, o cuando lo pide, Scala Ops elimina los datos de sus contactos, salvo que una norma obligue a conservarlos. Las credenciales de acceso que Meta entrega para operar cada cuenta se guardan en bases de datos de acceso restringido y se usan sólo para prestar el servicio a esa empresa.`
+  },
+  {
+    title: "13. Eliminación de datos",
+    content: `Cualquier persona puede pedir que se eliminen sus datos, incluidos los de conversaciones de WhatsApp atendidas por Sentinel. Las instrucciones están en la página de Eliminación de datos (scalaops.com/legales/eliminacion-de-datos). También puede escribir a info@scalaops.com indicando el número de teléfono y, si corresponde, la empresa con la que se comunicó.`
+  },
+  {
+    title: "14. Derechos del usuario",
     content: `El usuario podrá solicitar, cuando corresponda y conforme a la normativa aplicable, el acceso, actualización o rectificación de sus datos personales, así como realizar consultas sobre el tratamiento de su información.\n\nPara ello podrá escribir a: info@scalaops.com\n\nScala Ops hará esfuerzos razonables para atender solicitudes legítimas dentro de un plazo razonable, sin perjuicio de las limitaciones técnicas, operativas o legales que pudieran existir.`
   },
   {
-    title: "13. Comunicaciones comerciales",
+    title: "15. Comunicaciones comerciales",
     content: `Al proporcionar sus datos mediante formularios o canales de contacto, el usuario acepta que Scala Ops pueda enviar comunicaciones vinculadas a sus servicios, contenidos, novedades o propuestas comerciales, siempre que exista una relación razonable con la interacción iniciada por el usuario o con el interés manifestado.\n\nEl usuario podrá solicitar dejar de recibir dichas comunicaciones escribiendo a info@scalaops.com.`
   },
   {
-    title: "14. Menores de edad",
+    title: "16. Menores de edad",
     content: `El sitio y los servicios descriptos por Scala Ops no están dirigidos específicamente a menores de edad. Si un menor proporciona información sin la debida intervención de sus representantes legales, dicha situación deberá ser informada para que Scala Ops evalúe su eventual eliminación.`
   },
   {
-    title: "15. Enlaces externos",
+    title: "17. Enlaces externos",
     content: `El sitio puede incluir enlaces a sitios, servicios o plataformas de terceros. Scala Ops no controla ni garantiza las políticas de privacidad, prácticas o contenidos de dichos entornos externos, por lo que recomienda a cada usuario revisar sus términos y políticas de manera independiente.`
   },
   {
-    title: "16. Cambios en esta política",
+    title: "18. Cambios en esta política",
     content: `Scala Ops podrá modificar esta Política de Privacidad en cualquier momento, especialmente ante cambios en el sitio, en las herramientas utilizadas, en la forma de prestar servicios o en la normativa aplicable. La versión vigente será la publicada en el sitio al momento de la consulta.`
   },
   {
-    title: "17. Contacto",
-    content: `Para consultas relacionadas con esta Política de Privacidad o con el uso de datos, el usuario puede contactarse a:\n\ninfo@scalaops.com\nCiudad Autónoma de Buenos Aires (CABA), Argentina`
+    title: "19. Contacto",
+    content: `Para consultas relacionadas con esta Política de Privacidad o con el uso de datos, el usuario puede contactarse a:\n\ninfo@scalaops.com\nPinamar, Provincia de Buenos Aires, Argentina`
   }
 ];
 
@@ -154,7 +170,7 @@ export const WebPrivacidad = () => {
             className="mb-6"
           >
             <span className="text-[12px] font-medium text-[#666] tracking-wide" style={{ fontFamily: 'var(--font-secondary)' }}>
-              Última actualización: 17 de abril de 2026
+              Última actualización: 15 de noviembre de 2026
             </span>
           </motion.div>
 
@@ -240,9 +256,14 @@ export const WebPrivacidad = () => {
             <Link to="/" className="text-[14px] text-[#666] hover:text-white transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
               ← Volver al inicio
             </Link>
-            <Link to="/legales/terminos" className="text-[14px] text-[#666] hover:text-[#6bdda1] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
-              Ver Términos y Condiciones →
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Link to="/legales/eliminacion-de-datos" className="text-[14px] text-[#666] hover:text-[#6bdda1] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
+                Eliminación de datos
+              </Link>
+              <Link to="/legales/terminos" className="text-[14px] text-[#666] hover:text-[#6bdda1] transition-colors font-medium" style={{ fontFamily: 'var(--font-secondary)' }}>
+                Ver Términos y Condiciones →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

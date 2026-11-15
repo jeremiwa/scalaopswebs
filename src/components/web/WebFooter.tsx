@@ -88,6 +88,8 @@ export const WebFooter = () => {
             <Link to="/legales/privacidad" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Política de privacidad</Link>
             <span className="text-white/10">|</span>
             <Link to="/legales/terminos" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Términos y condiciones</Link>
+            <span className="text-white/10">|</span>
+            <Link to="/legales/eliminacion-de-datos" className="text-[13px] text-[#666666] hover:text-white transition-colors" style={{ fontFamily: 'var(--font-secondary)' }}>Eliminación de datos</Link>
           </div>
         </div>
         

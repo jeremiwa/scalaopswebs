@@ -9,7 +9,7 @@ const sections = [
   },
   {
     title: "2. Identificación",
-    content: `El presente sitio se encuentra identificado comercialmente como Scala Ops y tiene como finalidad brindar información sobre servicios, soluciones, contenidos y formas de contacto vinculadas con consultoría, procesos, ventas, automatización e inteligencia artificial aplicada a empresas.\n\nScala Ops utiliza en este sitio su denominación comercial. Ciertos datos societarios, fiscales o registrales podrán ser incorporados cuando corresponda.\n\nCanal de contacto:\ninfo@scalaops.com\nCiudad Autónoma de Buenos Aires (CABA), Argentina`
+    content: `El presente sitio se encuentra identificado comercialmente como Scala Ops y tiene como finalidad brindar información sobre servicios, soluciones, contenidos y formas de contacto vinculadas con consultoría, procesos, ventas, automatización e inteligencia artificial aplicada a empresas.\n\nScala Ops es el nombre comercial de Franco Villa (VILLA, FRANCO), persona humana inscripta ante la Agencia de Recaudación y Control Aduanero (ARCA), con domicilio en Pinamar, Provincia de Buenos Aires, Argentina.\n\nCanal de contacto:\ninfo@scalaops.com\nPinamar, Provincia de Buenos Aires, Argentina`
   },
   {
     title: "3. Objeto del sitio",
@@ -82,7 +82,7 @@ const sections = [
   },
   {
     title: "18. Contacto",
-    content: `Para cualquier consulta relacionada con estos Términos y Condiciones, el usuario podrá escribir a:\n\ninfo@scalaops.com\nCiudad Autónoma de Buenos Aires (CABA), Argentina`
+    content: `Para cualquier consulta relacionada con estos Términos y Condiciones, el usuario podrá escribir a:\n\ninfo@scalaops.com\nPinamar, Provincia de Buenos Aires, Argentina`
   }
 ];
 
@@ -107,7 +107,7 @@ export const WebTerminos = () => {
             className="mb-6"
           >
             <span className="text-[12px] font-medium text-[#666] tracking-wide" style={{ fontFamily: 'var(--font-secondary)' }}>
-              Última actualización: 17 de abril de 2026
+              Última actualización: 15 de noviembre de 2026
             </span>
           </motion.div>
 

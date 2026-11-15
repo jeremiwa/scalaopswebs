@@ -40,6 +40,7 @@ import { WebLayout } from './components/web/WebLayout';
 import { WebPrivacidad } from './pages/web/WebPrivacidad';
 import { WebTerminos } from './pages/web/WebTerminos';
 
+const WebEliminacionDatos = lazy(() => import('./pages/web/WebEliminacionDatos').then(module => ({ default: module.WebEliminacionDatos })));
 const WebHome = lazy(() => import('./pages/web/WebHome').then(module => ({ default: module.WebHome })));
 const WebNosotros = lazy(() => import('./pages/web/WebNosotros').then(module => ({ default: module.WebNosotros })));
 const WebFilosofia = lazy(() => import('./pages/web/WebFilosofia').then(module => ({ default: module.WebFilosofia })));
@@ -127,6 +128,7 @@ export default function App() {
           <Route path="filosofia" element={<WebFilosofia />} /> 
           <Route path="legales/privacidad" element={<WebPrivacidad />} />
           <Route path="legales/terminos" element={<WebTerminos />} />
+          <Route path="legales/eliminacion-de-datos" element={<WebEliminacionDatos />} />
           <Route path="contacto" element={<WebAuditoria />} />
           <Route path="auditoria" element={<WebAuditoria />} />
           <Route path="implementacion" element={<WebImplementacion />} />
